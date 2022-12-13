@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { Navigate } from "react-router-dom";
-import { setAlert } from "../actions/alert";
-import { register } from "../actions/auth";
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
+import { GoogleLogin } from "@react-oauth/google";
+import { useTranslation } from "react-i18next";
+import JWTDecode from "jwt-decode";
+import { googleLogin } from "../../actions/auth";
 
-import Title from "../components/common/title/Title";
+import Title from "../../components/common/title/Title";
 
 const SingUp = ({ setAlert, register, isAuthenticated }) => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -32,6 +37,15 @@ const SingUp = ({ setAlert, register, isAuthenticated }) => {
     // }
   };
 
+  const handleLogin = (tokenResponse) => {
+    const user = JWTDecode(tokenResponse.credential);
+    googleLogin({
+      name: user.given_name,
+      email: user.email,
+      type: "google",
+    });
+  };
+
   if (isAuthenticated) {
     return <Navigate to="/" />;
   }
@@ -39,7 +53,7 @@ const SingUp = ({ setAlert, register, isAuthenticated }) => {
   return (
     <>
       <div className="">
-        <Title title={"Create New Account"} />
+        <Title title={"Sign Up"} />
 
         <div className="bg-third dark:bg-thirdDark py-10">
           <div className="n-container">
@@ -86,16 +100,38 @@ const SingUp = ({ setAlert, register, isAuthenticated }) => {
               </p>
               <p className="mt-2 text-sm items-center flex gap-1">
                 <input type={"checkbox"} />I agree to Staking Rewards{" "}
-                <span className="text-[#F4BC1D]">Terms of Service</span> &{" "}
-                <span className="text-[#F4BC1D]">Privacy Policy</span>
+                <span className="text-[#FF2F40]">Terms of Service</span> &{" "}
+                <span className="text-[#FF2F40]">Privacy Policy</span>
               </p>
 
               <button
-                className="w-full bg-[#F4BC1D] text-white mt-5 h-10 rounded"
+                className="w-full bg-[#FF2F40] text-white mt-5 h-10 rounded"
                 onClick={onSubmit}
               >
                 SING UP
               </button>
+
+              <div className="mt-5 flex items-center justify-between">
+                <hr className="w-2/5" />
+                <p className="font-bold">{t("OR")}</p>
+                <hr className="w-2/5" />
+              </div>
+              <div className="flex justify-center mt-3">
+                <GoogleLogin
+                  onSuccess={handleLogin}
+                  onError={() => {
+                    console.log("Login Failed");
+                  }}
+                  width="400"
+                  size="large"
+                />
+              </div>
+              <p className="text-black dark:text-white text-center mt-5">
+                {t("Don't have a account")}? &nbsp;
+                <Link to={"/signup"}>
+                  <span className="text-[#FF2F40]">{t("Sign Up")}</span>
+                </Link>
+              </p>
             </div>
           </div>
         </div>

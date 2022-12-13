@@ -25,8 +25,8 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 
 // Views
 import Home from "./views/Home";
-import Login from "./views/Login";
-import SignUp from "./views/SignUp";
+import Login from "./views/auth/Login";
+import SignUp from "./views/auth/SignUp";
 import Header from "./components/layout/Header";
 
 function App() {

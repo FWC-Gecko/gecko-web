@@ -17,6 +17,8 @@ module.exports = {
       sixth: "#ffffff",
       sixthDark: "#303f50",
 
+      primaryGray: "#F5F5F5",
+
       color7: "#000000",
       color7d: "#AFBECF",
 

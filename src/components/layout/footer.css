@@ -8,9 +8,5 @@
 }
 
 .footer_title {
-  @apply border-b-2 border-[#F29D20]  text-xl font-bold;
-}
-
-.footer_text {
-  /* @apply text-white; */
+  @apply border-b-4  pb-3 border-[#FF808A]  text-xl font-bold;
 }
