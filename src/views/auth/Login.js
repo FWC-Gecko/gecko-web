@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { login, googleLogin } from "../actions/auth";
+import { login, googleLogin } from "../../actions/auth";
 import JWTDecode from "jwt-decode";
-import Title from "../components/common/title/Title";
+import Title from "../../components/common/title/Title";
 import { GoogleLogin } from "@react-oauth/google";
-// import KakaoLogin from "react-kakao-login";
 import { useTranslation } from "react-i18next";
 
 const Login = ({ login, googleLogin, isAuthenticated }) => {
@@ -93,7 +92,7 @@ const Login = ({ login, googleLogin, isAuthenticated }) => {
                 {/* <p className="text-sm text-[#F4BC1D]">Forgot Password?</p> */}
               </div>
               <button
-                className="w-full bg-[#F4BC1D] text-white mt-5 h-10 rounded"
+                className="w-full bg-[#FF2F40] text-white mt-5 h-10 rounded"
                 onClick={onSubmit}
               >
                 {t("LOGIN")}
@@ -113,30 +112,10 @@ const Login = ({ login, googleLogin, isAuthenticated }) => {
                   size="large"
                 />
               </div>
-              {/* <button className="w-full bg-[#F4BC1D] rounded flex h-10 justify-center items-center text-black gap-2 mt-5 p-2">
-                <img src="/img/talk.png" alt="" className="h-8" />
-                Login in with Katao Talk
-              </button> */}
-              {/* <KakaoLogin
-                token="9f9adbbb6c411661c804bc19b1142a15"
-                onSuccess={kakaoLoginSuccess}
-                onFail={console.error}
-                onLogout={console.info}
-                render={({ onClick }) => (
-                  <button
-                    onClick={onClick}
-                    type="button"
-                    className="w-full bg-[#F4BC1D] rounded flex h-10 justify-center items-center text-black gap-2 mt-5 p-2"
-                  >
-                    <img src="/img/talk.png" alt="" className="h-8" />
-                    {t("Login in with Katao Talk")}
-                  </button>
-                )}
-              /> */}
               <p className="text-black dark:text-white text-center mt-5">
                 {t("Don't have a account")}? &nbsp;
                 <Link to={"/signup"}>
-                  <span className="text-[#F4BC1D]">{t("Sign Up")}</span>
+                  <span className="text-[#FF2F40]">{t("Sign Up")}</span>
                 </Link>
               </p>
             </div>

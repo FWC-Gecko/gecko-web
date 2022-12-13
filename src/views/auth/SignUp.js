@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { setAlert } from "../actions/alert";
-import { register } from "../actions/auth";
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-import Title from "../components/common/title/Title";
+import Title from "../../components/common/title/Title";
 
 const SingUp = ({ setAlert, register, isAuthenticated }) => {
   useEffect(() => {
