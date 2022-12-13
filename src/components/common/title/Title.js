@@ -2,11 +2,11 @@ import React from "react";
 
 import "./Title.css";
 
-const Title = ({ title, subTitle }) => {
+const Title = ({ title, subTitle, isBlock }) => {
   return (
     <>
-      <div className="bg-primaryGray">
-        <div className="title bg-primaryDark dark:bg-gray-100">
+      <div className={`bg-primaryGray`}>
+        <div className={`title bg-primaryDark dark:bg-gray-100`}>
           <div className="n-container">
             <h1 className="text-center text-3xl sm:text-4xl font-bold text-white pt-10 ">
               {title}
@@ -19,6 +19,7 @@ const Title = ({ title, subTitle }) => {
               <div className="w-8 bg-primaryPink h-2 rounded-full"></div>
               <div className="w-2 bg-primaryPink h-2 rounded-full"></div>
             </div>
+            {isBlock && <div className="h-[100px]"></div>}
           </div>
         </div>
       </div>
