@@ -5,7 +5,7 @@ import "./Title.css";
 const Title = ({ title, subTitle }) => {
   return (
     <>
-      <div className="bg-white">
+      <div className="bg-primaryGray">
         <div className="title bg-primaryDark dark:bg-gray-100">
           <div className="n-container">
             <h1 className="text-center text-3xl sm:text-4xl font-bold text-white pt-10 ">

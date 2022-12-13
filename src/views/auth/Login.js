@@ -37,19 +37,6 @@ const Login = ({ login, googleLogin, isAuthenticated }) => {
     });
   };
 
-  // const kakaoLoginSuccess = (userData) => {
-  //   const user = userData.profile?.kakao_account;
-  //   googleLogin({
-  //     name: user?.profile?.nickname || "",
-  //     email: user?.email,
-  //     type: "kakao",
-  //   });
-  // };
-
-  const responseGoogle = (response) => {
-    console.log(response);
-  };
-
   if (isAuthenticated) {
     return <Navigate to="/" />;
   }
@@ -59,9 +46,9 @@ const Login = ({ login, googleLogin, isAuthenticated }) => {
       <div className="">
         <Title title={t("Login")} />
 
-        <div className="bg-third dark:bg-thirdDark py-10">
+        <div className="bg-primaryGray dark:bg-thirdDark py-10">
           <div className="n-container">
-            <div className="max-w-[400px] w-11/12 m-auto text-black dark:text-white">
+            <div className="max-w-[400px] w-11/12 m-auto text-black">
               <div>
                 <p>{t("Email")}</p>
                 <input
