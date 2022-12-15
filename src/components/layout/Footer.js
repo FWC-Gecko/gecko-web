@@ -8,18 +8,18 @@ const Footer = () => {
   const { t } = useTranslation();
   return (
     <>
-      <div className="footer bg-primary dark:bg-primaryDark dark:bg-gray-100 text-white">
+      <div className="footer bg-[#121318] dark:bg-gray-100 text-white">
         <div className="n-container">
-          <div className="py-10 sm:py-20 sm:flex justify-between gap-10">
-            <div>
+          <div className="py-5 sm:py-10 sm:flex justify-between gap-10">
+            <div className="flex items-center justify-start sm:block">
               <img src="/img/logo.png" className="h-20" alt="" />
-              <p className="footer_text max-w-[300px] mt-5 text-white">
+              <p className="footer_text max-w-[300px] mt-5 sm:mt-0 text-white">
                 Lorem Ipsum is simply dummy text of the printing and type
                 setting industry. Lorem Ipsum has been the industry.
               </p>
             </div>
 
-            <div className="flex justify-between gap-5 w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 w-full">
               <div className="mt-3">
                 <h1 className="footer_title">{t("Products")}</h1>
 
@@ -67,15 +67,15 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="border-t border-black dark:border-white  py-4 sm:flex justify-between items-center">
+          <div className="border-t border-[#595959] py-4 sm:flex justify-between items-center">
             <div className="text-center sm:text-right">
               <p>© 2022 Football World Communityt. All rights reserved</p>
             </div>
-            <div className="flex gap-2 justify-center">
-              <img src="/img/discord.png" alt="" />
-              <img src="/img/facebook.png" alt="" />
-              <img src="/img/twitter.png" alt="" />
-              <img src="/img/instagram.png" alt="" />
+            <div className="flex gap-2 justify-center mt-4 sm:mt-0">
+              <img src="/img/socials/discord.png" alt="" />
+              <img src="/img/socials/facebook.png" alt="" />
+              <img src="/img/socials/twitter.png" alt="" />
+              <img src="/img/socials/instagram.png" alt="" />
             </div>
           </div>
         </div>
