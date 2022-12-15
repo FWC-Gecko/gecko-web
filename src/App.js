@@ -20,7 +20,6 @@ import { LOGOUT } from "./actions/types";
 // Components
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import Alert from "./components/layout/Alert";
 import PrivateRoute from "./components/routing/PrivateRoute";
 
 // Views
@@ -50,7 +49,6 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Alert />
         <Routes>
           <Route
             path="/"

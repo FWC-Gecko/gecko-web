@@ -1,9 +1,11 @@
+import { googleLogout } from "@react-oauth/google";
 import { setAlert } from "../actions/alert";
 import {
   AUTH_ERROR,
   GOOGLE_LOGIN,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
+  LOGOUT,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
   USER_LOADED,
@@ -36,7 +38,7 @@ export default function useAuth() {
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
-      store.dispatch(setAlert("Login Success.", "success"));
+      setAlert("Login Success.", "success");
       loadUser();
     } catch (err) {
       const errors = err.response.data.errors;
@@ -96,5 +98,11 @@ export default function useAuth() {
     }
   };
 
-  return { loadUser, login, googleLogin, register };
+  // Logout
+  const logout = async () => {
+    if (googleLogout) googleLogout();
+    store.dispatch({ type: LOGOUT });
+  };
+
+  return { loadUser, login, googleLogin, register, logout };
 }
