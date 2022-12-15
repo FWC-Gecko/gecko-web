@@ -65,19 +65,20 @@ const Login = () => {
               <img src="/img/logo.png" alt="" className="w-32 h-32" />
               <p className="text-white font-bold text-4xl">Sign Into</p>
               <p className="text-white font-bold text-xl mt-3">Your Account</p>
-              <div>
-                <p className="text-white mt-3">{t("Email")}</p>
+              <div className="mt-3">
+                <p className="text-white">{t("Email")}</p>
                 <input
-                  type={"text"}
+                  type={"email"}
                   placeholder="Enter email"
                   className="py-2 px-4 w-full mt-2 rounded outline-none bg-gradient-to-t from-[#575A70] to-[#575A70] text-white"
                   name="email"
                   value={email}
                   onChange={onChange}
+                  required
                 />
               </div>
-              <div className="mt-5">
-                <p className="text-white mt-3">{t("Password")}</p>
+              <div className="mt-3">
+                <p className="text-white">{t("Password")}</p>
                 <input
                   type={"password"}
                   placeholder="Enter password"
@@ -86,9 +87,10 @@ const Login = () => {
                   value={password}
                   onChange={onChange}
                   minLength="6"
+                  required
                 />
               </div>
-              <div className="flex justify-end mt-5">
+              <div className="flex justify-end mt-4">
                 {/* <p className="text-sm items-center text-white flex gap-1">
                 <input type={"checkbox"} /> {t("Remember Me")}
               </p> */}
@@ -101,14 +103,14 @@ const Login = () => {
                 {t("LOGIN")}
               </button>
             </form>
-            <div className="mt-6 flex items-center text-white justify-between">
+            <div className="mt-4 flex items-center text-white justify-between">
               <hr className="w-2/5" />
               <p className="font-bold">{t("OR")}</p>
               <hr className="w-2/5" />
             </div>
             <button
               onClick={onGoogleLogin}
-              className="w-full flex justify-center items-center gap-3 bg-gradient-to-r from-[#575A70]/10 to-[#575A70]/20 text-white mt-5 h-12 rounded"
+              className="w-full flex justify-center items-center gap-3 bg-gradient-to-r from-[#575A70]/10 to-[#575A70]/20 text-white mt-3 h-12 rounded"
             >
               <img src="/img/google.png" alt="" className="w-8" />
               {t("Login in with Google")}

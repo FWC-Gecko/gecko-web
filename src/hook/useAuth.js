@@ -4,6 +4,8 @@ import {
   GOOGLE_LOGIN,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
+  REGISTER_FAIL,
+  REGISTER_SUCCESS,
   USER_LOADED,
 } from "../actions/types";
 import store from "../store";
@@ -70,5 +72,29 @@ export default function useAuth() {
     }
   };
 
-  return { loadUser, login, googleLogin };
+  // Register User
+  const register = async (formData) => {
+    try {
+      const res = await api.post("/users", formData);
+      store.dispatch({
+        type: REGISTER_SUCCESS,
+        payload: res.data,
+      });
+      loadUser();
+    } catch (err) {
+      const errors = err.response.data.errors;
+
+      if (errors) {
+        errors.forEach((error) =>
+          store.dispatch(setAlert(error.msg, "danger"))
+        );
+      }
+
+      store.dispatch({
+        type: REGISTER_FAIL,
+      });
+    }
+  };
+
+  return { loadUser, login, googleLogin, register };
 }
