@@ -1,38 +1,55 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  Button,
+} from "@material-tailwind/react";
+
 import LanguageSelect from "../section/navbar/LanguageSelect";
 import PriceSelect from "../section/navbar/PriceSelect";
 import { useTranslation } from "react-i18next";
-
-import { logout } from "../../actions/auth";
+import useAuth from "../../hook/useAuth";
+import useLoading from "../../hook/useLoading";
 
 function Header() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
   const { t } = useTranslation();
+  const { logout } = useAuth();
+  const { setLoading } = useLoading();
+
+  const onLogout = async () => {
+    setLoading(true);
+    await logout();
+    setLoading(false);
+  };
 
   const Infos = () => {
     return (
       <div className="flex justify-start gap-4 items-center">
         <p className="text-sm text-white font-normal">
-          Cryptos <span className="text-[#FF808A]">22,011</span>
+          Cryptos <span className="text-[#BA4DF9]">22,011</span>
         </p>
         <p className="text-sm text-white font-normal">
-          Market Cap <span className="text-[#FF808A]">$840,576,683,048</span>
+          Market Cap <span className="text-[#BA4DF9]">$840,576,683,048</span>
         </p>
         <p className="text-sm text-white font-normal">
-          Exchanges <span className="text-[#FF808A]">529</span>
+          Exchanges <span className="text-[#BA4DF9]">529</span>
         </p>
         <p className="text-sm text-white font-normal">
-          Market Cap <span className="text-[#FF808A]">$840,576,683,048</span>
+          Market Cap <span className="text-[#BA4DF9]">$840,576,683,048</span>
         </p>
       </div>
     );
   };
 
   return (
-    <div className="bg-black py-3">
+    <div className="bg-[#101115] py-2">
       <div className="n-container flex justify-between gap-4">
         <Infos />
         <div className="flex justify-end items-center gap-4">
@@ -40,27 +57,45 @@ function Header() {
           <PriceSelect />
           {isAuthenticated ? (
             <div className="hidden sm:block">
-              <Link to={"/profile"}>
-                <p className="text-black dark:text-white cursor-pointer text-lg font-medium text-right">
-                  {user && user.name}
-                </p>
-              </Link>
-              <p
-                className="text-black dark:text-white cursor-pointer text-sm text-right"
-                onClick={logout}
-              >
-                {t("Logout")}
-              </p>
+              <Menu>
+                <MenuHandler>
+                  <div className="flex justify-end gap-2 items-center">
+                    <img
+                      src={user && user.avatar}
+                      alt=""
+                      className="w-8 rounded-full"
+                    />
+                    <p className="text-white cursor-pointer text-lg text-right">
+                      {user && user.name}
+                    </p>
+                    <img
+                      src="/img/down_arrow.png"
+                      alt=""
+                      className="w-3 mt-1"
+                    />
+                  </div>
+                </MenuHandler>
+                <MenuList className="w-32 bg-[#101115] border-white/5 border py-3">
+                  <MenuItem>
+                    <p
+                      className="text-white cursor-pointer text-sm text-center"
+                      onClick={onLogout}
+                    >
+                      {t("Logout")}
+                    </p>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
             </div>
           ) : (
             <div className="hidden sm:flex gap-4">
               <Link to={"login"}>
-                <button className="px-4 text-white bg-white/20 h-10 rounded-lg">
+                <button className="px-4 text-white bg-white/20 py-2 rounded-full">
                   {t("Log In")}
                 </button>
               </Link>
               <Link to={"signup"}>
-                <button className="px-4 text-white bg-[#FF6673]  h-10 rounded-lg">
+                <button className="px-4 text-white  bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] py-2 rounded-full">
                   {t("Sign Up")}
                 </button>
               </Link>

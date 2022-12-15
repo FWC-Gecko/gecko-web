@@ -12,7 +12,6 @@ import {
   UPDATE_FAIL,
   GOOGLE_LOGIN,
 } from "./types";
-import { googleLogout } from "@react-oauth/google";
 
 /*
   NOTE: we don't need a config object for axios as the
@@ -59,10 +58,4 @@ export const updateUser = (formData) => async (dispatch) => {
       type: UPDATE_FAIL,
     });
   }
-};
-
-// Logout
-export const logout = () => (dispatch) => {
-  if (googleLogout) googleLogout();
-  dispatch({ type: LOGOUT });
 };
