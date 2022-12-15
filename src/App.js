@@ -29,6 +29,7 @@ import Login from "./views/auth/Login";
 import SignUp from "./views/auth/SignUp";
 import Header from "./components/layout/Header";
 import Loading from "./components/layout/Loading";
+import Profile from "./views/auth/Profile";
 
 function App() {
   useEffect(() => {
@@ -50,21 +51,20 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
+        <Header />
+        <Navbar />
         <Routes>
+          <Route path="/" element={<Home />} />
+
           <Route
-            path="/"
-            element={
-              <>
-                <Header />
-                <Navbar />
-                <Home />
-                <Footer />
-              </>
-            }
+            path="/user/profile"
+            element={<PrivateRoute component={Profile} />}
           />
+
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
+        <Footer />
       </Router>
       <Loading />
       <ToastContainer />
