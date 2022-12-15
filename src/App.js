@@ -28,6 +28,7 @@ import Home from "./views/Home";
 import Login from "./views/auth/Login";
 import SignUp from "./views/auth/SignUp";
 import Header from "./components/layout/Header";
+import Loading from "./components/layout/Loading";
 
 function App() {
   useEffect(() => {
@@ -49,16 +50,24 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Header />
-        <Navbar />
         <Alert />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <Navbar />
+                <Home />
+                <Footer />
+              </>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
-        <Footer />
       </Router>
+      <Loading />
       <ToastContainer />
     </Provider>
   );

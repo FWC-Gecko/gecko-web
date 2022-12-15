@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { connect } from "react-redux";
-import { setAlert } from "../../actions/alert";
-import { register } from "../../actions/auth";
-import PropTypes from "prop-types";
-import { GoogleLogin } from "@react-oauth/google";
-import { useTranslation } from "react-i18next";
+
 import JWTDecode from "jwt-decode";
-import { googleLogin } from "../../actions/auth";
-
 import Title from "../../components/common/title/Title";
+import { useGoogleLogin } from "@react-oauth/google";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import useAuth from "../../hook/useAuth";
+import useLoading from "../../hook/useLoading";
 
-const SingUp = ({ setAlert, register, isAuthenticated }) => {
+const Login = () => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const user = useSelector((state) => state.auth.user);
   const { t } = useTranslation();
+  const { register, googleLogin } = useAuth();
+  const { setLoading } = useLoading();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    password2: "",
   });
 
   const { name, email, password } = formData;
@@ -30,21 +33,25 @@ const SingUp = ({ setAlert, register, isAuthenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // if (password !== password2) {
-    //   setAlert("Passwords do not match", "danger");
-    // } else {
-    register({ name, email, password });
-    // }
+    setLoading(true);
+    const req = { name, email, password };
+    await register(req);
+    setLoading(false);
   };
 
-  const handleLogin = (tokenResponse) => {
-    const user = JWTDecode(tokenResponse.credential);
-    googleLogin({
-      name: user.given_name,
-      email: user.email,
-      type: "google",
-    });
-  };
+  const onGoogleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      const user = JWTDecode(tokenResponse.credential);
+      console.log("tokenResponse", user);
+      setLoading(true);
+      await googleLogin({
+        name: user.given_name,
+        email: user.email,
+        type: "google",
+      });
+      setLoading(false);
+    },
+  });
 
   if (isAuthenticated) {
     return <Navigate to="/" />;
@@ -52,87 +59,81 @@ const SingUp = ({ setAlert, register, isAuthenticated }) => {
 
   return (
     <>
-      <div className="">
-        <Title title={"Sign Up"} />
-
-        <div className="bg-third dark:bg-thirdDark py-10">
-          <div className="n-container">
-            <div className="max-w-[400px] w-11/12 m-auto text-black dark:text-white">
-              <div>
-                <p>Nickname</p>
+      <div className="fixed top-0 left-0 w-screen h-screen authBg z-40">
+        <div className="sm:w-1/2 h-full flex justify-center items-center bg-gradient-to-t from-[#D38E4C]/20 to-[#1A1B23]/20">
+          <div className="max-w-[400px] w-11/12 m-auto text-black">
+            <form onSubmit={onSubmit}>
+              <img src="/img/logo.png" alt="" className="w-32 h-32" />
+              <p className="text-white font-bold text-4xl">Sign Into</p>
+              <p className="text-white font-bold text-xl mt-3">Your Account</p>
+              <div className="mt-3">
+                <p className="text-white">{t("Name")}</p>
                 <input
                   type={"text"}
-                  placeholder="Enter nickname"
-                  className="py-2 px-4 w-full bg-fourth dark:bg-fourthDark border border-black dark:border-0 mt-2 rounded"
+                  placeholder="Enter name"
+                  className="py-2 px-4 w-full mt-2 rounded outline-none bg-gradient-to-t from-[#575A70] to-[#575A70] text-white"
                   name="name"
                   value={name}
                   onChange={onChange}
+                  required
                 />
               </div>
-
-              <div className="mt-5">
-                <p>Email</p>
+              <div className="mt-3">
+                <p className="text-white">{t("Email")}</p>
                 <input
                   type={"email"}
                   placeholder="Enter email"
-                  className="py-2 px-4 w-full bg-fourth dark:bg-fourthDark border border-black dark:border-0 mt-2 rounded"
+                  className="py-2 px-4 w-full mt-2 rounded outline-none bg-gradient-to-t from-[#575A70] to-[#575A70] text-white"
                   name="email"
                   value={email}
                   onChange={onChange}
+                  required
                 />
               </div>
-
-              <div className="mt-5">
-                <p>Password</p>
+              <div className="mt-3">
+                <p className="text-white">{t("Password")}</p>
                 <input
                   type={"password"}
                   placeholder="Enter password"
-                  className="py-2 px-4 w-full bg-fourth dark:bg-fourthDark border border-black dark:border-0 mt-2 rounded"
+                  className="py-2 px-4 w-full mt-2 rounded outline-none bg-gradient-to-t from-[#575A70] to-[#575A70] text-white"
                   name="password"
                   value={password}
                   onChange={onChange}
+                  minLength="6"
+                  required
                 />
               </div>
-
-              <p className="mt-5 text-sm items-center flex gap-1">
-                <input type={"checkbox"} /> Sign up to the newsletter to get the
-                latest updates from us
-              </p>
-              <p className="mt-2 text-sm items-center flex gap-1">
-                <input type={"checkbox"} />I agree to Staking Rewards{" "}
-                <span className="text-[#FF2F40]">Terms of Service</span> &{" "}
-                <span className="text-[#FF2F40]">Privacy Policy</span>
-              </p>
-
+              <div className="flex justify-end mt-4">
+                {/* <p className="text-sm items-center text-white flex gap-1">
+                <input type={"checkbox"} /> {t("Remember Me")}
+              </p> */}
+                <p className="text-sm text-[#BA4DF9]">Forgot Password?</p>
+              </div>
               <button
-                className="w-full bg-[#FF2F40] text-white mt-5 h-10 rounded"
-                onClick={onSubmit}
+                type="submit"
+                className="w-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white mt-5 h-12 rounded"
               >
-                SING UP
+                {t("SIGN UP")}
               </button>
-
-              <div className="mt-5 flex items-center justify-between">
-                <hr className="w-2/5" />
-                <p className="font-bold">{t("OR")}</p>
-                <hr className="w-2/5" />
-              </div>
-              <div className="flex justify-center mt-3">
-                <GoogleLogin
-                  onSuccess={handleLogin}
-                  onError={() => {
-                    console.log("Login Failed");
-                  }}
-                  width="400"
-                  size="large"
-                />
-              </div>
-              <p className="text-black dark:text-white text-center mt-5">
-                {t("Don't have a account")}? &nbsp;
-                <Link to={"/signup"}>
-                  <span className="text-[#FF2F40]">{t("Sign Up")}</span>
-                </Link>
-              </p>
+            </form>
+            <div className="mt-4 flex items-center text-white justify-between">
+              <hr className="w-2/5" />
+              <p className="font-bold">{t("OR")}</p>
+              <hr className="w-2/5" />
             </div>
+            <button
+              onClick={onGoogleLogin}
+              className="w-full flex justify-center items-center gap-3 bg-gradient-to-r from-[#575A70]/10 to-[#575A70]/20 text-white mt-3 h-12 rounded"
+            >
+              <img src="/img/google.png" alt="" className="w-8" />
+              {t("Login in with Google")}
+            </button>
+            <p className="text-white text-center mt-5">
+              {t("Don't have a account")}? &nbsp;
+              <Link to={"/login"}>
+                <span className="text-[#BA4DF9]">{t("Sign In")}</span>
+              </Link>
+            </p>
           </div>
         </div>
       </div>
@@ -140,14 +141,4 @@ const SingUp = ({ setAlert, register, isAuthenticated }) => {
   );
 };
 
-SingUp.propTypes = {
-  setAlert: PropTypes.func.isRequired,
-  register: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
-};
-
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps, { setAlert, register })(SingUp);
+export default Login;
