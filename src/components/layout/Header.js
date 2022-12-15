@@ -75,8 +75,15 @@ function Header() {
                     />
                   </div>
                 </MenuHandler>
-                <MenuList className="w-32 bg-[#101115] border-white/5 border py-3">
-                  <MenuItem>
+                <MenuList className="w-32 bg-[#101115] border-white/5 border p-0">
+                  <MenuItem className="hover:bg-white/10 flex justify-center items-center p-2">
+                    <Link to="/auth/profile">
+                      <p className="text-white cursor-pointer text-sm text-center">
+                        {t("Profile")}
+                      </p>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem className="hover:bg-white/10 flex justify-center items-center p-2">
                     <p
                       className="text-white cursor-pointer text-sm text-center"
                       onClick={onLogout}
