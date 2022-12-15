@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { GoogleLogin } from "@react-oauth/google";
 import { useTranslation } from "react-i18next";
 import JWTDecode from "jwt-decode";
-import { googleLogin } from "../../actions/auth";
+// import { googleLogin } from "../../actions/auth";
 
 import Title from "../../components/common/title/Title";
 
@@ -39,11 +39,11 @@ const SingUp = ({ setAlert, register, isAuthenticated }) => {
 
   const handleLogin = (tokenResponse) => {
     const user = JWTDecode(tokenResponse.credential);
-    googleLogin({
-      name: user.given_name,
-      email: user.email,
-      type: "google",
-    });
+    // googleLogin({
+    //   name: user.given_name,
+    //   email: user.email,
+    //   type: "google",
+    // });
   };
 
   if (isAuthenticated) {
