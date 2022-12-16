@@ -5,5 +5,5 @@
 }
 
 .footer_title {
-  @apply border-b-4  pb-3 border-[#BA4DF9]  text-xl font-bold;
+  @apply border-b-4  pb-3 border-[#BA4DF9] w-max  text-xl font-bold;
 }

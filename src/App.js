@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useSearchParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
@@ -30,6 +25,7 @@ import SignUp from "./views/auth/SignUp";
 import Header from "./components/layout/Header";
 import Loading from "./components/layout/Loading";
 import Profile from "./views/auth/Profile";
+import ListToken from "./views/listToken/ListToken";
 
 function App() {
   useEffect(() => {
@@ -55,14 +51,16 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route
             path="/user/profile"
             element={<PrivateRoute component={Profile} />}
           />
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/list-token"
+            element={<PrivateRoute component={ListToken} />}
+          />
         </Routes>
         <Footer />
       </Router>
