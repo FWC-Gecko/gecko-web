@@ -1,7 +1,7 @@
 .footer {
-  @apply w-full;
+  /* @apply w-full;
   background-image: url("../../images/footer_bg.png");
-  background-size: 100% 100%;
+  background-size: 100% 100%; */
 }
 
 .footer_title {
