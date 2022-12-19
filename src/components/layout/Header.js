@@ -97,12 +97,12 @@ function Header() {
           ) : (
             <div className="hidden sm:flex gap-4">
               <Link to={"login"}>
-                <button className="px-4 text-white bg-white/20 py-2 rounded-full">
+                <button className="px-4 text-white bg-white/20 h-9 rounded-full">
                   {t("Log In")}
                 </button>
               </Link>
               <Link to={"signup"}>
-                <button className="px-4 text-white  bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] py-2 rounded-full">
+                <button className="px-4 text-white  bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] h-9 rounded-full">
                   {t("Sign Up")}
                 </button>
               </Link>
