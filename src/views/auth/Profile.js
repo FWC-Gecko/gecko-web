@@ -54,7 +54,104 @@ function Profile() {
             </div>
           </div>
           <div className="sm:w-2/3">
-            <p className="text-xl font-medium text-white">Information</p>
+            <div>
+              <p className="text-xl font-medium text-white">Information</p>
+              <div className="mt-4 flex justify-between gap-8">
+                <div className="w-full">
+                  <p className="text-white font-medium">Display Name</p>
+                  <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
+                    <input
+                      type={"text"}
+                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                      placeholder="Name"
+                    />
+                  </div>
+                </div>
+                <div className="w-full">
+                  <p className="text-white font-medium">User Name</p>
+                  <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
+                    <input
+                      type={"text"}
+                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                      placeholder="Username"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 flex justify-between gap-8">
+                <div className="w-full">
+                  <p className="text-white font-medium">Biography</p>
+                  <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
+                    <textarea
+                      className="bg-transparent outline-0 px-3 py-2 text-white w-full h-28"
+                      placeholder="A brief introduction about yourself"
+                    />
+                  </div>
+                </div>
+                <div className="w-full">
+                  <p className="text-white font-medium">Birthday</p>
+                  <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
+                    <input
+                      type={"text"}
+                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                      placeholder="Username"
+                    />
+                  </div>
+                  <p className="text-white font-medium mt-4">Website</p>
+                  <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
+                    <input
+                      type={"text"}
+                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                      placeholder="Username"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 flex justify-end">
+                <button className="px-8 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white">
+                  Save
+                </button>
+              </div>
+            </div>
+            <div>
+              <p className="text-xl font-medium text-white">
+                Accounts Information
+              </p>
+              <div className="flex justify-between items-end gap-6 mt-4">
+                <div className="w-full">
+                  <p className="text-white font-medium">Email Address</p>
+                  <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
+                    <input
+                      type={"email"}
+                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                    />
+                  </div>
+                </div>
+                <div className="w-full">
+                  <p className="text-white font-medium">Wallet</p>
+                  <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
+                    <input
+                      type={"text"}
+                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                    />
+                  </div>
+                </div>
+                <button className="px-8 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white">
+                  Connect
+                </button>
+              </div>
+              <div className="flex justify-between items-end mt-4">
+                <div>
+                  <p className="text-white font-medium">Password</p>
+                  <p className="text-[#9A9A9A] font-medium mt-2">
+                    Set a unique password to protect your personal account.{" "}
+                  </p>
+                </div>
+                <button className="px-8 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white">
+                  Change Password
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
