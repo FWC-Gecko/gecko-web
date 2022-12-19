@@ -46,6 +46,12 @@ const Navbar = () => {
                 <p className="text-white">Portfolio</p>
               </div>
             </div>
+
+            <Link to={"/list-token"}>
+              <button className="bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] py-2 px-5 flex justify-center items-center rounded-full text-white font-medium">
+                + List Token
+              </button>
+            </Link>
           </div>
         </div>
       </div>
