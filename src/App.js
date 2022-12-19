@@ -65,7 +65,7 @@ function App() {
         <Footer />
       </Router>
       <Loading />
-      <ToastContainer />
+      <ToastContainer theme="dark" />
     </Provider>
   );
 }

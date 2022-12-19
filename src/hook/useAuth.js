@@ -104,5 +104,26 @@ export default function useAuth() {
     store.dispatch({ type: LOGOUT });
   };
 
-  return { loadUser, login, googleLogin, register, logout };
+  // Update Profile
+  const updateProfile = async (req) => {
+    try {
+      api.defaults.headers.post["Content-Type"] = "multipart/form-data";
+      const res = await api.put("/auth/me", req);
+      if (res.data.success) {
+        store.dispatch(setAlert(res.data.message, "success"));
+        store.dispatch(loadUser());
+        return true;
+      }
+      return false;
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        store.dispatch(setAlert(error?.response?.data?.message, "error"));
+      } else {
+        store.dispatch(setAlert("Server Error.", "error"));
+      }
+      return false;
+    }
+  };
+
+  return { loadUser, login, googleLogin, register, logout, updateProfile };
 }
