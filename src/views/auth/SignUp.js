@@ -63,7 +63,9 @@ const Login = () => {
         <div className="sm:w-1/2 h-full flex justify-center items-center bg-gradient-to-t from-[#D38E4C]/20 to-[#1A1B23]/20">
           <div className="max-w-[400px] w-11/12 m-auto text-black">
             <form onSubmit={onSubmit}>
-              <img src="/img/logo.png" alt="" className="w-32 h-32" />
+              <Link to="/">
+                <img src="/img/logo.png" alt="" className="w-32 h-32" />
+              </Link>
               <p className="text-white font-bold text-4xl">Sign Into</p>
               <p className="text-white font-bold text-xl mt-3">Your Account</p>
               <div className="mt-3">
