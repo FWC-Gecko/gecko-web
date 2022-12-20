@@ -47,8 +47,12 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Header />
-        <Navbar />
+        <div className="fixed top-0 left-0 w-screen">
+          <Header />
+          <Navbar />
+        </div>
+        <div className="h-[140px]"></div>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -65,7 +69,7 @@ function App() {
         <Footer />
       </Router>
       <Loading />
-      <ToastContainer />
+      <ToastContainer theme="dark" />
     </Provider>
   );
 }

@@ -77,7 +77,7 @@ function Header() {
                 </MenuHandler>
                 <MenuList className="w-32 bg-[#101115] border-white/5 border p-0">
                   <MenuItem className="hover:bg-white/10 flex justify-center items-center p-2">
-                    <Link to="/user/profile">
+                    <Link to="/user/profile" className="">
                       <p className="text-white cursor-pointer text-sm text-center">
                         {t("Profile")}
                       </p>

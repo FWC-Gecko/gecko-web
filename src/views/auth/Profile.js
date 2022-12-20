@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import ChangeAvatarModal from "../../components/section/ChangeAvatarModal";
 
 function Profile() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
+  const [isChangeAvatarModal, toggleChangeAvatarModal] = useState(false);
 
   return (
     <div className="bg-[#0B0B0F]">
@@ -47,7 +49,10 @@ function Profile() {
               </p>
               <p className="text-center text-white mt-0">{user?.email}</p>
               <div className="flex justify-center mt-5">
-                <button className="w-max px-5 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white m-auto">
+                <button
+                  className="w-max px-5 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white m-auto"
+                  onClick={() => toggleChangeAvatarModal(true)}
+                >
                   Edit Avatar
                 </button>
               </div>
@@ -155,6 +160,10 @@ function Profile() {
           </div>
         </div>
       </div>
+
+      {isChangeAvatarModal ? (
+        <ChangeAvatarModal toggleChangeAvatarModal={toggleChangeAvatarModal} />
+      ) : null}
     </div>
   );
 }
