@@ -51,7 +51,7 @@ function App() {
           <Header />
           <Navbar />
         </div>
-        <div className="h-[140px]"></div>
+        <div className="h-[130px]"></div>
 
         <Routes>
           <Route path="/" element={<Home />} />

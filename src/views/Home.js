@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="bg-[#0B0B0F] pb-10">
+      <div className="bg-[#0B0B0F] pt-5 pb-10">
         <div className="n-container rounded-2xl bg-gradient-to-t from-[#1B1C23]/0 to-[#121318] p-10">
           <div className="flex justify-between items-center gap-10">
             <div className="sm:w-1/2">
@@ -75,7 +75,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-
+          <AssetsTable />
           <div className="flex justify-between items-center gap-10 mt-20">
             <div className="sm:w-1/2">
               <img src="/img/plt.png" alt="" />
