@@ -125,7 +125,7 @@ const Login = () => {
             </div>
             <button
               onClick={onGoogleLogin}
-              className="w-full flex justify-center items-center gap-3 bg-gradient-to-r from-[#575A70]/10 to-[#575A70]/20 text-white mt-3 h-12 rounded"
+              className="w-full flex justify-center items-center gap-3 bg-gradient-to-r from-[#575A70]/40 to-[#575A70]/50 text-white mt-3 h-12 rounded"
             >
               <img src="/img/google.png" alt="" className="w-8" />
               {t("Login in with Google")}
