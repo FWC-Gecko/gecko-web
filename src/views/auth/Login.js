@@ -32,10 +32,14 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const req = { email, password };
-    await login(req);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const req = { email, password };
+      await login(req);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   const onGoogleLogin = useGoogleLogin({

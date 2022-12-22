@@ -47,11 +47,8 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div className="fixed top-0 left-0 w-screen">
-          <Header />
-          <Navbar />
-        </div>
-        <div className="h-[140px]"></div>
+        <Header />
+        <Navbar />
 
         <Routes>
           <Route path="/" element={<Home />} />
