@@ -26,7 +26,7 @@ const Navbar = () => {
               <SearchInput />
             </div>
 
-            <div className="hidden lg:flex text-white text-center items-center gap-3">
+            <div className="hidden lg:flex text-white text-lg text-center items-center gap-3">
               {menus.map((row, key) => {
                 return (
                   <Link to={row.link}>
