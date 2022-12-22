@@ -16,9 +16,7 @@ const Footer = () => {
               <p className="footer_text max-w-[440px] mt-5 sm:mt-0 text-white">
                 Football World Community is a project that was created with the
                 aim of bringing football and cryptocurrencies together so that
-                users can enter the world of crypto football. FWC is a digital
-                currency platform that allows users to create digital currencies
-                while maintaining security and safety.
+                users can enter the world of crypto football.
               </p>
             </div>
 
