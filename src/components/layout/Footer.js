@@ -13,9 +13,12 @@ const Footer = () => {
           <div className="py-5 sm:py-10 sm:flex justify-between gap-10">
             <div className="flex items-center justify-start sm:block">
               <img src="/img/logo.png" className="h-20" alt="" />
-              <p className="footer_text max-w-[300px] mt-5 sm:mt-0 text-white">
-                Lorem Ipsum is simply dummy text of the printing and type
-                setting industry. Lorem Ipsum has been the industry.
+              <p className="footer_text max-w-[440px] mt-5 sm:mt-0 text-white">
+                Football World Community is a project that was created with the
+                aim of bringing football and cryptocurrencies together so that
+                users can enter the world of crypto football. FWC is a digital
+                currency platform that allows users to create digital currencies
+                while maintaining security and safety.
               </p>
             </div>
 
