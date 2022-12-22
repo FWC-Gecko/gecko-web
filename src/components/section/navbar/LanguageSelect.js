@@ -1,72 +1,53 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+} from "@material-tailwind/react";
+import { languages } from "../../../constants";
+
 function LanguageSelect() {
-  const [language, setSelLang] = useState("US");
-  const [showFlag, setShowFlag] = useState("none");
+  const [language, setSelLang] = useState(languages[0]);
 
   const { i18n } = useTranslation();
 
-  const setSelLanguage = (lg) => {
-    setSelLang(`${lg}`);
-    i18n.changeLanguage(`${lg}`);
-    setShowFlag("none");
-  };
-
-  const toggleFlagDropDown = () => {
-    if (showFlag === "none") {
-      setShowFlag("block");
-    } else {
-      setShowFlag("none");
-    }
+  const setSelLanguage = (lang) => {
+    setSelLang(lang);
+    i18n.changeLanguage(`${lang.slug}`);
   };
 
   return (
     <div>
       <div className="w-max relative">
-        <div
-          onClick={toggleFlagDropDown}
-          className=" flex items-center gap-2 cursor-pointer"
-        >
-          <p className="text-fourth">
-            {language === "US" && "English"}
-            {language === "JP" && "Japanese"}
-          </p>
-          <img src="/img/down_arrow.png" alt="" className="w-3 mt-1" />
-        </div>
-
-        <div
-          id="myDropdown"
-          className="absolute top-8 left-0 rounded-lg text-black  shadow-md text-left bg-white py-3 px-2 w-max cursor-pointer"
-          style={{ display: showFlag }}
-        >
-          <div
-            onClick={() => setSelLanguage("US")}
-            className="flex items-center gap-1"
-          >
-            <img
-              src={
-                "http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg"
-              }
-              alt=""
-              width={"20"}
-            />
-            <p>US</p>
-          </div>
-          <div
-            onClick={() => setSelLanguage("JP")}
-            className="flex items-center gap-1 mt-2"
-          >
-            <img
-              src={
-                "http://purecatamphetamine.github.io/country-flag-icons/3x2/JP.svg"
-              }
-              alt=""
-              width={"20"}
-            />
-            <p>JP</p>
-          </div>
-        </div>
+        <Menu>
+          <MenuHandler>
+            <div className=" flex items-center gap-2 cursor-pointer">
+              <p className="text-fourth">{language.name}</p>
+              <img src="/img/down_arrow.png" alt="" className="w-3 mt-1" />
+            </div>
+          </MenuHandler>
+          <MenuList className="w-max bg-[#101115] border-white/5 border p-0">
+            {languages.map((row, key) => {
+              return (
+                <MenuItem
+                  className="hover:bg-white/10 flex justify-start items-center p-2"
+                  key={key}
+                >
+                  <div
+                    onClick={() => setSelLanguage(row)}
+                    className="flex items-center gap-2 text-white"
+                  >
+                    <img src={row.flag} alt="" width={"20"} />
+                    <p>{row.name}</p>
+                  </div>
+                </MenuItem>
+              );
+            })}
+          </MenuList>
+        </Menu>
       </div>
     </div>
   );
