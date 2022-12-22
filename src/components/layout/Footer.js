@@ -24,7 +24,10 @@ const Footer = () => {
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 w-full">
               <div className="mt-3">
-                <h1 className="footer_title">{t("Products")}</h1>
+                <h1 className="footer_title bg-gradient-to-r from-[]">
+                  {t("Products")}
+                </h1>
+                <div className="w-10 h-1 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]"></div>
 
                 <div className="mt-5">
                   <p className="footer_text">- {t("Blockchain Explorer")}</p>
@@ -36,6 +39,7 @@ const Footer = () => {
               </div>
               <div className="mt-3">
                 <h1 className="footer_title">{t("Company")}</h1>
+                <div className="w-10 h-1 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]"></div>
 
                 <div className="mt-5">
                   <p className="footer_text">- {t("Blockchain Explorer")}</p>
@@ -47,6 +51,7 @@ const Footer = () => {
               </div>
               <div className="mt-3">
                 <h1 className="footer_title">{t("Support ")}</h1>
+                <div className="w-10 h-1 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]"></div>
 
                 <div className="mt-5">
                   <p className="footer_text">- {t("Blockchain Explorer")}</p>
@@ -58,6 +63,7 @@ const Footer = () => {
               </div>
               <div className="mt-3">
                 <h1 className="footer_title">{t("Socials")}</h1>
+                <div className="w-10 h-1 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]"></div>
 
                 <div className="mt-5">
                   <p className="footer_text">- {t("Blockchain Explorer")}</p>
