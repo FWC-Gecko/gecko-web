@@ -26,6 +26,7 @@ import Header from "./components/layout/Header";
 import Loading from "./components/layout/Loading";
 import Profile from "./views/auth/Profile";
 import ListToken from "./views/listToken/ListToken";
+import TokenDetail from "./views/TokenDetail";
 
 function App() {
   useEffect(() => {
@@ -52,6 +53,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/token-detail/:tokeId" element={<TokenDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route

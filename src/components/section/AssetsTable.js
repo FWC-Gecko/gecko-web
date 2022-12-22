@@ -1,8 +1,11 @@
 import { style } from "@mui/system";
 import React from "react";
 import DataTable from "react-data-table-component";
+import { useNavigate } from "react-router-dom";
 
 function AssetsTable() {
+  const navigate = useNavigate();
+
   const columns = [
     { name: "#", selector: (row) => row.no, width: "40px" },
     { name: "Name", selector: (row) => row.name, width: "150px" },
@@ -780,6 +783,11 @@ function AssetsTable() {
     },
   };
 
+  const onRowClick = async (row) => {
+    console.log(row);
+    navigate(`/token-detail/${row?._id}`);
+  };
+
   return (
     <div className="py-5 sm:py-10">
       <div className="bg-[#121318] p-6 rounded-lg">
@@ -801,6 +809,7 @@ function AssetsTable() {
             columns={columns}
             data={data}
             customStyles={customStyles}
+            onRowClicked={onRowClick}
             pagination
           />
         </div>
