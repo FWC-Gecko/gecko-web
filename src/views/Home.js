@@ -13,8 +13,8 @@ const Home = () => {
         <div className="n-container rounded-2xl bg-gradient-to-t from-[#1B1C23]/0 to-[#121318] p-10">
           <div className="flex justify-between items-center gap-10">
             <div className="sm:w-1/2">
-              <p className="text-white text-4xl font-bold leading-snug">
-                Today's Cryptocurrency Prices by{" "}
+              <p className="text-white text-4xl font-bold tracking-widest leading-snug">
+                Today's Cryptocurrency Prices By{" "}
                 <span className="text-[#BA4DF9]">Football World Community</span>
               </p>
               <p className="text-white text-lg mt-5 leading-relaxed">
