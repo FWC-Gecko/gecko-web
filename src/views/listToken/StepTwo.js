@@ -95,7 +95,7 @@ function StepTwo({ activeStep, setActiveStep }) {
           <p className="text-white font-medium">Decimals</p>
           <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
             <input
-              type={"text"}
+              type={"number"}
               className="bg-transparent outline-0 px-3 py-2 text-white w-full"
               placeholder="Decimals"
               value={decimals}

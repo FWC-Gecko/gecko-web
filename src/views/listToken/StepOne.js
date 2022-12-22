@@ -18,21 +18,25 @@ function StepOne({ activeStep, setActiveStep }) {
   const [position, setPosition] = useState(
     list_token_data?.position ? list_token_data.position : positions[0]
   );
+
   const [name, setName] = useState(list_token_data?.name);
-  const [email, setEmail] = useState(list_token_data?.email);
-  const [telegram, setTelegram] = useState(list_token_data?.telegram);
+  const [contactEmail, setContactEmail] = useState(
+    list_token_data?.contactEmail
+  );
+  const [contactTelegram, setContactTelegram] = useState(
+    list_token_data?.contactTelegram
+  );
 
   const onNextStep = async (e) => {
     e.preventDefault();
     setLoading(true);
     // Save the data in the LocalStorage.
     let list_token_data = JSON.parse(localStorage.getItem("list-token"));
-    console.log("list_token_data", list_token_data);
     if (!list_token_data) list_token_data = {};
     list_token_data.position = position;
     list_token_data.name = name;
-    list_token_data.email = email;
-    list_token_data.telegram = telegram;
+    list_token_data.contactEmail = contactEmail;
+    list_token_data.contactTelegram = contactTelegram;
     localStorage.setItem("list-token", JSON.stringify(list_token_data));
     setLoading(false);
     // Go to the next step.
@@ -95,8 +99,8 @@ function StepOne({ activeStep, setActiveStep }) {
             <input
               type={"email"}
               className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={contactEmail}
+              onChange={(e) => setContactEmail(e.target.value)}
               required
             />
           </div>
@@ -107,8 +111,8 @@ function StepOne({ activeStep, setActiveStep }) {
             <input
               type={"text"}
               className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-              value={telegram}
-              onChange={(e) => setTelegram(e.target.value)}
+              value={contactTelegram}
+              onChange={(e) => setContactTelegram(e.target.value)}
               required
             />
           </div>
