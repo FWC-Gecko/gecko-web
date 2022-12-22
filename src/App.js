@@ -45,27 +45,73 @@ function App() {
     });
   }, []);
 
+  const Container = ({
+    isHeader = true,
+    isNavbar = true,
+    isFooter = true,
+    Component,
+    children,
+  }) => {
+    return (
+      <>
+        {isHeader && <Header />}
+        {isNavbar && <Navbar />}
+        {Component && <Component />}
+        {children}
+        {isFooter && <Footer />}
+      </>
+    );
+  };
+
   return (
     <Provider store={store}>
       <Router>
-        <Header />
-        <Navbar />
-
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/token-detail/:tokeId" element={<TokenDetail />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/" element={<Container Component={Home} />} />
+          <Route
+            path="/token-detail/:tokeId"
+            element={<Container Component={TokenDetail} />}
+          />
+          <Route
+            path="/login"
+            element={
+              <Container
+                Component={Login}
+                isNavbar={false}
+                isHeader={false}
+                isFooter={false}
+              />
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <Container
+                Component={SignUp}
+                isNavbar={false}
+                isHeader={false}
+                isFooter={false}
+              />
+            }
+          />
+
           <Route
             path="/user/profile"
-            element={<PrivateRoute component={Profile} />}
+            element={
+              <Container>
+                <PrivateRoute component={Profile} />
+              </Container>
+            }
           />
           <Route
             path="/list-token"
-            element={<PrivateRoute component={ListToken} />}
+            element={
+              <Container>
+                <PrivateRoute component={ListToken} />
+              </Container>
+            }
           />
         </Routes>
-        <Footer />
       </Router>
       <Loading />
       <ToastContainer theme="dark" />

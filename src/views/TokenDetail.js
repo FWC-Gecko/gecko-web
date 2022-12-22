@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OtherTokenInfo from "../components/section/tokenDetail/OtherTokenInfo";
 import Satistic from "../components/section/tokenDetail/Satistic";
 import Transactions from "../components/section/tokenDetail/Transactions";
 
 function TokenDetail() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <div className="bg-[#0B0B0F]">
       <div className="n-container pb-10">
