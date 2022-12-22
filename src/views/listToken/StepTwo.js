@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import useLoading from "../../hook/useLoading";
+import { chains } from "../../constants";
 
 function StepTwo({ activeStep, setActiveStep }) {
   const { setLoading } = useLoading();
 
   let list_token_data = JSON.parse(localStorage.getItem("list-token"));
-  const chains = ["Ethereum", "Binance Smart Chain"];
 
   const [tokenTicker, setTokenTicker] = useState(list_token_data?.tokenTicker);
   const [contractAddress, setContractAddress] = useState(
