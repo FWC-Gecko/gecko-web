@@ -1,14 +1,38 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ChangeAvatarModal from "../../components/section/ChangeAvatarModal";
+import useLoading from "../../hook/useLoading";
+import useAuth from "../../hook/useAuth";
 
 function Profile() {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const { setLoading } = useLoading();
+  const { updateProfile } = useAuth();
   const user = useSelector((state) => state.auth.user);
   const [isChangeAvatarModal, toggleChangeAvatarModal] = useState(false);
 
+  const [displayName, setDisplayName] = useState(user?.displayName);
+  const [name, setName] = useState(user?.name);
+  const [biography, setBiography] = useState(user?.biography);
+  const [birthday, setBirthday] = useState(user?.birthday);
+  const [website, setWebsite] = useState(user?.website);
+
+  const email = user?.email;
+
+  const onUpdateProfile = async () => {
+    const formData = new FormData();
+    formData.append("displayName", displayName);
+    formData.append("name", name);
+    formData.append("biography", biography);
+    formData.append("birthday", birthday);
+    formData.append("website", website);
+    setLoading(true);
+    const res = await updateProfile(formData);
+    console.log("updateProfile", res);
+    setLoading(false);
+  };
+
   return (
-    <div className="bg-[#0B0B0F]">
+    <div className="bg-[#020202]">
       <div className="n-container">
         <div className="bg-[#1B1C23]/70 rounded-3xl flex justify-between items-center">
           <div className="pl-10">
@@ -69,6 +93,8 @@ function Profile() {
                       type={"text"}
                       className="bg-transparent outline-0 px-3 py-2 text-white w-full"
                       placeholder="Name"
+                      value={displayName}
+                      onChange={(e) => setDisplayName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -79,6 +105,8 @@ function Profile() {
                       type={"text"}
                       className="bg-transparent outline-0 px-3 py-2 text-white w-full"
                       placeholder="Username"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -90,6 +118,8 @@ function Profile() {
                     <textarea
                       className="bg-transparent outline-0 px-3 py-2 text-white w-full h-28"
                       placeholder="A brief introduction about yourself"
+                      value={biography}
+                      onChange={(e) => setBiography(e.target.value)}
                     />
                   </div>
                 </div>
@@ -99,7 +129,9 @@ function Profile() {
                     <input
                       type={"text"}
                       className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-                      placeholder="Username"
+                      placeholder="Birthday"
+                      value={birthday}
+                      onChange={(e) => setBirthday(e.target.value)}
                     />
                   </div>
                   <p className="text-white font-medium mt-4">Website</p>
@@ -107,13 +139,18 @@ function Profile() {
                     <input
                       type={"text"}
                       className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-                      placeholder="Username"
+                      placeholder="Website"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
                     />
                   </div>
                 </div>
               </div>
               <div className="mt-4 flex justify-end">
-                <button className="px-8 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white">
+                <button
+                  className="px-8 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white"
+                  onClick={onUpdateProfile}
+                >
                   Save
                 </button>
               </div>
@@ -129,6 +166,8 @@ function Profile() {
                     <input
                       type={"email"}
                       className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                      value={email}
+                      disabled
                     />
                   </div>
                 </div>
