@@ -17,7 +17,7 @@ const Home = () => {
                 Today's Cryptocurrency Prices By{" "}
                 <span className="text-[#BA4DF9]">Football World Community</span>
               </p>
-              <p className="text-white text-lg mt-5 leading-relaxed">
+              <p className="text-white text-xl mt-5 leading-relaxed">
                 The total crypto market volume over the last 24 hours is{" "}
                 <span className="text-[#BA4DF9]">$31.40B</span>, which makes a{" "}
                 <span className="text-[#BA4DF9]">29.97</span>% increase. The
