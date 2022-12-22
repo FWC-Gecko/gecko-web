@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { setAlert } from "../../actions/alert";
 import useLoading from "../../hook/useLoading";
+import store from "../../store";
 
 function StepThree({ activeStep, setActiveStep }) {
   const { setLoading } = useLoading();
@@ -43,7 +45,12 @@ function StepThree({ activeStep, setActiveStep }) {
     list_token_data.discord = discord;
     localStorage.setItem("list-token", JSON.stringify(list_token_data));
     setLoading(false);
-
+    store.dispatch(
+      setAlert(
+        "Submitted successfully! Please wait while your request approved.",
+        "success"
+      )
+    );
     setActiveStep(activeStep - 1);
   };
 

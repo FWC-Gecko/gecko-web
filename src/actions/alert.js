@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 
 export const setAlert = (msg, alertType, timeout = 5000) => {
