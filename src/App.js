@@ -54,8 +54,10 @@ function App() {
   }) => {
     return (
       <>
-        {isHeader && <Header />}
-        {isNavbar && <Navbar />}
+        <div className="flex flex-col-reverse sm:block">
+          {isHeader && <Header />}
+          {isNavbar && <Navbar />}
+        </div>
         {Component && <Component />}
         {children}
         {isFooter && <Footer />}
@@ -114,7 +116,7 @@ function App() {
         </Routes>
       </Router>
       <Loading />
-      <ToastContainer theme="dark" />
+      <ToastContainer theme="dark" autoClose={3000} />
     </Provider>
   );
 }

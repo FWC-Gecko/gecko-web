@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export const setAlert = (msg, alertType, timeout = 5000) => {
+export const setAlert = (msg, alertType, timeout = 3000) => {
   if (alertType === "error") {
     toast.error(msg);
   } else if (alertType === "success") {
@@ -9,6 +9,8 @@ export const setAlert = (msg, alertType, timeout = 5000) => {
     toast.warn(msg);
   } else if (alertType === "info") {
     toast.info(msg);
+  } else if (alertType === "default") {
+    toast(msg);
   } else {
     toast(msg);
   }

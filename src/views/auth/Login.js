@@ -67,10 +67,18 @@ const Login = () => {
           <div className="max-w-[400px] w-11/12 m-auto text-black">
             <form onSubmit={onSubmit}>
               <Link to="/">
-                <img src="/img/logo.png" alt="" className="w-32 h-32" />
+                <img
+                  src="/img/logo.png"
+                  alt=""
+                  className="w-32 h-32 m-auto sm:m-0"
+                />
               </Link>
-              <p className="text-white font-bold text-4xl">Sign Into</p>
-              <p className="text-white font-bold text-xl mt-3">Your Account</p>
+              <p className="text-white font-bold text-4xl text-center sm:text-start">
+                Sign Into
+              </p>
+              <p className="text-white font-bold text-xl mt-3 text-center sm:text-start">
+                Your Account
+              </p>
               <div className="mt-3">
                 <p className="text-white">{t("Email")}</p>
                 <input
