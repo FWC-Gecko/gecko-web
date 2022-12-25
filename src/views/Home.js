@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
-
-import Title from "./../components/common/title/Title";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import AssetsTable from "../components/section/AssetsTable";
+import AssetsTable from "../components/section/assets/AssetsTable";
 import MostCurrencies from "../components/section/home/MostCurrencies";
 
 const Home = () => {

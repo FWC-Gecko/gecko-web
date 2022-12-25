@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 
 import JWTDecode from "jwt-decode";
-import Title from "../../components/common/title/Title";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
