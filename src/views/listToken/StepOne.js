@@ -56,7 +56,7 @@ function StepOne({ activeStep, setActiveStep }) {
         <p className="text-[#D0D0DD] font-medium">
           Please Confirm Your Position with the Project.
         </p>
-        <div className="grid grid-cols-2 w-max mt-2">
+        <div className="sm:grid grid-cols-2 w-max mt-2">
           {positions.map((row, key) => {
             return (
               <div

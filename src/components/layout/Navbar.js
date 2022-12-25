@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-[#0B0B0F] py-3 px-3">
+      <div className="bg-[#0B0B0F] py-3">
         <div className="n-container">
           <div className="flex justify-between items-center">
             <div className="flex justify-start gap-4 items-center">
@@ -36,7 +36,7 @@ const Navbar = () => {
               })}
             </div>
 
-            <div className="flex justify-end gap-5 items-center">
+            <div className="hidden sm:flex justify-end gap-5 items-center">
               <div className="flex justify-start items-center gap-2">
                 <img src="/img/star.png" alt="" />
                 <p className="text-white">Watchlist</p>

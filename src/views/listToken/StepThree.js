@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { setAlert } from "../../actions/alert";
 import useLoading from "../../hook/useLoading";
 import store from "../../store";
 
 function StepThree({ activeStep, setActiveStep }) {
+  const navigate = useNavigate();
   const { setLoading } = useLoading();
   let list_token_data = JSON.parse(localStorage.getItem("list-token"));
   const [projectName, setProjectName] = useState(list_token_data?.projectName);
@@ -16,6 +18,7 @@ function StepThree({ activeStep, setActiveStep }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const tokenData = {
       position: list_token_data.position,
@@ -32,8 +35,13 @@ function StepThree({ activeStep, setActiveStep }) {
       telegram,
       discord,
     };
-
-    console.log("tokenData", tokenData);
+    setAlert(
+      "Submitted successfully! Please wait while your request approved.",
+      "success"
+    );
+    localStorage.removeItem("list-token");
+    setLoading(false);
+    navigate("/");
   };
 
   const onPrevStep = async () => {
@@ -45,12 +53,6 @@ function StepThree({ activeStep, setActiveStep }) {
     list_token_data.discord = discord;
     localStorage.setItem("list-token", JSON.stringify(list_token_data));
     setLoading(false);
-    store.dispatch(
-      setAlert(
-        "Submitted successfully! Please wait while your request approved.",
-        "success"
-      )
-    );
     setActiveStep(activeStep - 1);
   };
 

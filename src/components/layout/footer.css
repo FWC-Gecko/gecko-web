@@ -7,3 +7,7 @@
 .footer_title {
   @apply pb-3 text-xl font-bold;
 }
+
+.footer_text {
+  @apply text-sm sm:text-base;
+}

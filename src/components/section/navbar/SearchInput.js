@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function SearchInput() {
   const [searchValue, setSearchValue] = useState("");
   return (
-    <div className="flex justify-start gap-2 bg-[#1F2128] rounded-full py-2 px-4 items-center">
+    <div className="hidden sm:flex justify-start gap-2 bg-[#1F2128] rounded-full py-2 px-4 items-center">
       <input
         type={"text"}
         value={searchValue}

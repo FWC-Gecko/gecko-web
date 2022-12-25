@@ -38,7 +38,7 @@ function OtherTokenInfo() {
   };
 
   return (
-    <div className="text-white w-full">
+    <div className="text-white w-full mt-5 sm:mt-0">
       <Accordion
         open={open === 1}
         theme={theme}

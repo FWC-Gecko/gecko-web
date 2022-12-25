@@ -30,18 +30,18 @@ function Header() {
 
   const Infos = () => {
     return (
-      <div className="flex justify-start gap-4 items-center">
+      <div className="hidden sm:flex justify-start gap-4 items-center">
         <p className="text-sm text-white font-normal">
-          Cryptos <span className="text-[#BA4DF9]">22,011</span>
+          Cryptos: <span className="text-[#BA4DF9]">22,011</span>
         </p>
         <p className="text-sm text-white font-normal">
-          Market Cap <span className="text-[#BA4DF9]">$840,576,683,048</span>
+          Market Cap: <span className="text-[#BA4DF9]">$840,576,683,048</span>
         </p>
         <p className="text-sm text-white font-normal">
-          Exchanges <span className="text-[#BA4DF9]">529</span>
+          Exchanges: <span className="text-[#BA4DF9]">529</span>
         </p>
         <p className="text-sm text-white font-normal">
-          Market Cap <span className="text-[#BA4DF9]">$840,576,683,048</span>
+          Market Cap: <span className="text-[#BA4DF9]">$840,576,683,048</span>
         </p>
       </div>
     );
@@ -51,11 +51,11 @@ function Header() {
     <div className="bg-[#101115] py-2">
       <div className="n-container flex justify-between gap-4">
         <Infos />
-        <div className="flex justify-end items-center gap-4">
+        <div className="flex justify-end items-center gap-4 w-full sm:w-max">
           <LanguageSelect />
           <PriceSelect />
           {isAuthenticated ? (
-            <div className="hidden sm:block">
+            <div className="">
               <Menu>
                 <MenuHandler>
                   <div className="flex justify-end gap-2 items-center">
@@ -65,7 +65,7 @@ function Header() {
                       className="w-8 rounded-full"
                     />
                     <p className="text-white cursor-pointer text-lg text-right">
-                      {user && user.name}
+                      {user && user?.firstname + " " + user?.lastname}
                     </p>
                     <img
                       src="/img/down_arrow.png"
@@ -94,13 +94,13 @@ function Header() {
               </Menu>
             </div>
           ) : (
-            <div className="hidden sm:flex gap-4">
-              <Link to={"login"}>
+            <div className="flex gap-4">
+              <Link to={"/login"}>
                 <button className="px-4 text-white bg-white/20 h-9 rounded-full">
                   {t("Log In")}
                 </button>
               </Link>
-              <Link to={"signup"}>
+              <Link to={"/signup"}>
                 <button className="px-4 text-white  bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] h-9 rounded-full">
                   {t("Sign Up")}
                 </button>

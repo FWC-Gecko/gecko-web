@@ -21,22 +21,27 @@ const Login = () => {
   }, []);
 
   const [formData, setFormData] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
   });
 
-  const { name, email, password } = formData;
+  const { firstname, lastname, email, password } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const req = { name, email, password };
-    await register(req);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const req = { firstname, lastname, email, password };
+      await register(req);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   const onGoogleLogin = useGoogleLogin({
@@ -59,23 +64,43 @@ const Login = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-screen h-screen authBg z-40">
-        <div className="sm:w-1/2 h-full flex justify-center items-center bg-gradient-to-t from-[#D38E4C]/20 to-[#1A1B23]/20">
-          <div className="max-w-[400px] w-11/12 m-auto text-black">
+      <div className="fixed top-0 overflow-auto left-0 w-screen min-h-screen authBg z-40">
+        <div className="sm:w-1/2 min-h-screen  h-full flex py-10 sm:p-0 justify-center items-center bg-gradient-to-t from-[#D38E4C]/20 to-[#1A1B23]/20">
+          <div className="max-w-[400px] w-11/12 h-full m-auto text-black">
             <form onSubmit={onSubmit}>
               <Link to="/">
-                <img src="/img/logo.png" alt="" className="w-32 h-32" />
+                <img
+                  src="/img/logo.png"
+                  alt=""
+                  className="w-32 h-32 m-auto sm:m-0"
+                />
               </Link>
-              <p className="text-white font-bold text-4xl">Sign Into</p>
-              <p className="text-white font-bold text-xl mt-3">Your Account</p>
+              <p className="text-white font-bold text-4xl text-center sm:text-start">
+                Sign Into
+              </p>
+              <p className="text-white font-bold text-xl mt-3 text-center sm:text-start">
+                Your Account
+              </p>
               <div className="mt-3">
-                <p className="text-white">{t("Name")}</p>
+                <p className="text-white">{t("First Name")}</p>
                 <input
                   type={"text"}
-                  placeholder="Enter name"
+                  placeholder="Enter first name"
                   className="py-2 px-4 w-full mt-2 rounded outline-none bg-gradient-to-t from-[#575A70] to-[#575A70] text-white"
-                  name="name"
-                  value={name}
+                  name="firstname"
+                  value={firstname}
+                  onChange={onChange}
+                  required
+                />
+              </div>
+              <div className="mt-3">
+                <p className="text-white">{t("Last Name")}</p>
+                <input
+                  type={"text"}
+                  placeholder="Enter last name"
+                  className="py-2 px-4 w-full mt-2 rounded outline-none bg-gradient-to-t from-[#575A70] to-[#575A70] text-white"
+                  name="lastname"
+                  value={lastname}
                   onChange={onChange}
                   required
                 />

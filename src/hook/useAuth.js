@@ -105,21 +105,21 @@ export default function useAuth() {
   };
 
   // Update Profile
-  const updateProfile = async (req) => {
+  const updateProfile = async (formData) => {
     try {
       api.defaults.headers.post["Content-Type"] = "multipart/form-data";
-      const res = await api.put("/auth/me", req);
+      const res = await api.put("/auth/me", formData);
       if (res.data.success) {
-        store.dispatch(setAlert(res.data.message, "success"));
-        store.dispatch(loadUser());
+        setAlert(res.data.message, "success");
+        loadUser();
         return true;
       }
       return false;
     } catch (error) {
       if (error?.response?.data?.message) {
-        store.dispatch(setAlert(error?.response?.data?.message, "error"));
+        setAlert(error?.response?.data?.message, "error");
       } else {
-        store.dispatch(setAlert("Server Error.", "error"));
+        setAlert("Server Error.", "error");
       }
       return false;
     }
