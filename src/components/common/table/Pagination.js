@@ -56,11 +56,11 @@ const Pagination = (props) => {
   };
 
   return (
-    <div className="flex justify-between items-center gap-2">
+    <div className="sm:flex justify-between items-center gap-2">
       <p className="text-white font-thin">
         Total Assets: <span className="text-white font-bold">{totalCount}</span>
       </p>
-      <div className="flex justify-end items-center gap-2">
+      <div className="flex justify-end items-center gap-2 mt-3 sm:mt-0">
         {/* Left navigation arrow */}
         <Button
           onClickFunction={onPrevious}

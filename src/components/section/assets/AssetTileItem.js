@@ -3,7 +3,7 @@ import React from "react";
 function AssetTileItem({ row, onRowClicked }) {
   return (
     <div
-      className="bg-[#21232C] rounded-lg border border-[#23262F] p-3"
+      className="bg-[#21232C] rounded-lg border border-[#23262F] p-3 mt-3 sm:mt-0"
       onClick={onRowClicked}
     >
       <div className="flex justify-between items-center">
