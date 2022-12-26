@@ -103,13 +103,13 @@ function Table({ columns, data, onRowClick }) {
 
   return (
     <>
-      <div className="bg-[#121318] p-6 rounded-lg">
-        <div className="flex justify-between items-center">
-          <div className="flex justify-start gap-6">
+      <div className="bg-[#121318] p-4 sm:p-6 rounded-lg">
+        <div className="sm:flex justify-between items-center">
+          <div className="flex sm:justify-start justify-between gap-6">
             <WatchListButton />
             <PortfolioButton />
           </div>
-          <div className="flex justify-end gap-6">
+          <div className="flex justify-end gap-3 sm:gap-6 mt-3 sm:mt-0">
             <PerPageSelect
               perPages={perPages}
               perPage={perPage}
