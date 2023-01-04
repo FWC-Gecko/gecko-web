@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ChangeAvatarModal from "../../components/section/ChangeAvatarModal";
 import useLoading from "../../hook/useLoading";
 import useAuth from "../../hook/useAuth";
-import useWeb3 from "../../hook/useWeb3";
+import WalletConnectButton from "../../components/section/walletconnect/WalletConnectButton";
 
 function Profile() {
   const { setLoading } = useLoading();
   const { updateProfile } = useAuth();
-  const { connectWallet } = useWeb3();
   const user = useSelector((state) => state.auth.user);
   const [isChangeAvatarModal, toggleChangeAvatarModal] = useState(false);
 
@@ -19,7 +18,7 @@ function Profile() {
   const [website, setWebsite] = useState(user?.website);
 
   const email = user?.email;
-  const [walletAddress, setWalletAddress] = useState(user?.walletAddress);
+  const walletAddress = user?.walletAddress;
 
   const onUpdateProfile = async () => {
     const formData = new FormData();
@@ -32,19 +31,6 @@ function Profile() {
     const res = await updateProfile(formData);
     console.log("updateProfile", res);
     setLoading(false);
-  };
-
-  const onConnect = async () => {
-    try {
-      setLoading(true);
-      const res = await connectWallet();
-      if (res) {
-        setWalletAddress(res);
-      }
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-    }
   };
 
   return (
@@ -208,12 +194,7 @@ function Profile() {
                   </div>
                 </div>
                 <div className="flex justify-end">
-                  <button
-                    className="px-8 py-2 rounded-full mt-4 sm:mt-0 bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white"
-                    onClick={onConnect}
-                  >
-                    Connect
-                  </button>
+                  <WalletConnectButton />
                 </div>
               </div>
               <div className="sm:flex justify-between items-end mt-4">
