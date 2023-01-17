@@ -1,9 +1,11 @@
 import { list } from "postcss";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import useLoading from "../../hook/useLoading";
 
 function StepOne({ activeStep, setActiveStep }) {
   const { setLoading } = useLoading();
+  const user = useSelector((state) => state.auth.user);
 
   let list_token_data = JSON.parse(localStorage.getItem("list-token"));
 
@@ -19,9 +21,11 @@ function StepOne({ activeStep, setActiveStep }) {
     list_token_data?.position ? list_token_data.position : positions[0]
   );
 
-  const [name, setName] = useState(list_token_data?.name);
+  const [name, setName] = useState(
+    list_token_data?.name || user?.firstname + " " + user?.lastname
+  );
   const [contactEmail, setContactEmail] = useState(
-    list_token_data?.contactEmail
+    list_token_data?.contactEmail || user?.email
   );
   const [contactTelegram, setContactTelegram] = useState(
     list_token_data?.contactTelegram
