@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { setAlert } from "../../actions/alert";
 import useLoading from "../../hook/useLoading";
-import store from "../../store";
+import useToken from "../../hook/useToken";
 
 function StepThree({ activeStep, setActiveStep }) {
   const navigate = useNavigate();
   const { setLoading } = useLoading();
+  const { list } = useToken();
   let list_token_data = JSON.parse(localStorage.getItem("list-token"));
   const [projectName, setProjectName] = useState(list_token_data?.projectName);
   const [coinmarketcapUrl, setCoinmarketcapUrl] = useState(
@@ -24,6 +24,7 @@ function StepThree({ activeStep, setActiveStep }) {
       position: list_token_data.position,
       name: list_token_data.name,
       email: list_token_data.email,
+      contactTelegram: list_token_data.contactTelegram,
       token_ticker: list_token_data.tokenTicker,
       contract_address: list_token_data.contractAddress,
       total_supply: list_token_data.totalSupply,
@@ -35,13 +36,13 @@ function StepThree({ activeStep, setActiveStep }) {
       telegram,
       discord,
     };
-    setAlert(
-      "Submitted successfully! Please wait while your request approved.",
-      "success"
-    );
-    localStorage.removeItem("list-token");
+
+    const res = await list(tokenData);
     setLoading(false);
-    navigate("/");
+    if (res) {
+      localStorage.removeItem("list-token");
+      navigate("/");
+    }
   };
 
   const onPrevStep = async () => {

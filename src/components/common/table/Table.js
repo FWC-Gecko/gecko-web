@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
 import Filters from "./Filters";
 import Pagination from "./Pagination";
@@ -84,7 +84,7 @@ function Table({ columns, data, onRowClick }) {
     const lastPageIndex = firstPageIndex + perPage;
     return data.slice(firstPageIndex, lastPageIndex);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage, perPage]);
+  }, [data, currentPage, perPage]);
 
   // Switch Theme
   const themes = [
@@ -100,6 +100,10 @@ function Table({ columns, data, onRowClick }) {
     },
   ];
   const [theme, setTheme] = useState(themes[0].slug);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [data]);
 
   return (
     <>
