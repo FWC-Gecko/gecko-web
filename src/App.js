@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -27,6 +26,8 @@ import Loading from "./components/layout/Loading";
 import Profile from "./views/auth/Profile";
 import ListToken from "./views/listToken/ListToken";
 import TokenDetail from "./views/TokenDetail";
+
+import "./App.css";
 
 function App() {
   useEffect(() => {

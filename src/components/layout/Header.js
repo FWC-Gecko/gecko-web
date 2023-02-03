@@ -14,6 +14,8 @@ import PriceSelect from "../section/navbar/PriceSelect";
 import { useTranslation } from "react-i18next";
 import useAuth from "../../hook/useAuth";
 import useLoading from "../../hook/useLoading";
+import ToggleColorTheme from "../section/navbar/ToggleColorTheme";
+import SignInButton from "../section/navbar/SignInButton";
 
 function Header() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -48,12 +50,13 @@ function Header() {
   };
 
   return (
-    <div className="bg-[#101115] py-2">
+    <div className="bg-white dark:bg-[#101115] py-2">
       <div className="n-container flex justify-between gap-4">
         <Infos />
         <div className="flex justify-end items-center gap-4 w-full sm:w-max">
           <LanguageSelect />
           <PriceSelect />
+          <ToggleColorTheme />
           {isAuthenticated ? (
             <div className="">
               <Menu>
@@ -95,11 +98,7 @@ function Header() {
             </div>
           ) : (
             <div className="flex gap-4">
-              <Link to={"/login"}>
-                <button className="px-4 text-white bg-white/20 h-9 rounded-full">
-                  {t("Log In")}
-                </button>
-              </Link>
+              <SignInButton />
               <Link to={"/signup"}>
                 <button className="px-4 text-white  bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] h-9 rounded-full">
                   {t("Sign Up")}

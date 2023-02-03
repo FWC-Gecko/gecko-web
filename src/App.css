@@ -30,3 +30,11 @@
   @apply w-full bg-[length:200%_100%] bg-left sm:bg-[length:100%_100%];
   background-image: url("./images/auth_bg.png");
 }
+
+.list-token-input-div {
+  @apply bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2;
+}
+
+.list-token-input {
+  @apply bg-transparent outline-0 px-3 py-2 text-white w-full;
+}

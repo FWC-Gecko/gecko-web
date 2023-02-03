@@ -13,5 +13,5 @@ export default function useDarkSide() {
     localStorage.setItem("theme", theme);
   }, [theme, colorTheme]);
 
-  return [colorTheme, setTheme];
+  return { colorTheme, setTheme };
 }

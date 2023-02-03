@@ -2,19 +2,23 @@ import React, { useState } from "react";
 import useLoading from "../../hook/useLoading";
 import { chains } from "../../constants";
 
-function StepTwo({ activeStep, setActiveStep }) {
+function Step2({ activeStep, setActiveStep }) {
   const { setLoading } = useLoading();
 
   let list_token_data = JSON.parse(localStorage.getItem("list-token"));
 
-  const [tokenTicker, setTokenTicker] = useState(list_token_data?.tokenTicker);
-  const [contractAddress, setContractAddress] = useState(
-    list_token_data?.contractAddress
+  const [projectName, setProjectName] = useState(list_token_data?.projectName);
+  const [projectSymbol, setProjectSymbol] = useState(
+    list_token_data?.projectSymbol
   );
-  const [totalSupply, setTotalSupply] = useState(list_token_data?.totalSupply);
-  const [decimals, setDecimals] = useState(list_token_data?.decimals);
-  const [chain, setChain] = useState(
-    list_token_data?.chain ? list_token_data?.chain : chains[0]
+  const [projectLaunchDate, setProjectLaunchDate] = useState(
+    list_token_data?.projectLaunchDate
+  );
+  const [oneLinerDescription, setOneLinerDescription] = useState(
+    list_token_data?.oneLinerDescription
+  );
+  const [detailedDescription, setDetailedDescription] = useState(
+    list_token_data?.detailedDescription
   );
 
   const onNextStep = async (e) => {
@@ -22,11 +26,11 @@ function StepTwo({ activeStep, setActiveStep }) {
     setLoading(true);
     // Save the data in the LocalStorage.
     if (!list_token_data) list_token_data = {};
-    list_token_data.tokenTicker = tokenTicker;
-    list_token_data.contractAddress = contractAddress;
-    list_token_data.totalSupply = totalSupply;
-    list_token_data.decimals = decimals;
-    list_token_data.chain = chain;
+    list_token_data.projectName = projectName;
+    list_token_data.projectSymbol = projectSymbol;
+    list_token_data.projectLaunchDate = projectLaunchDate;
+    list_token_data.oneLinerDescription = oneLinerDescription;
+    list_token_data.detailedDescription = detailedDescription;
     localStorage.setItem("list-token", JSON.stringify(list_token_data));
     setLoading(false);
     // Go to the next step.
@@ -35,11 +39,11 @@ function StepTwo({ activeStep, setActiveStep }) {
 
   const onPrevStep = async () => {
     setLoading(true);
-    list_token_data.tokenTicker = tokenTicker;
-    list_token_data.contractAddress = contractAddress;
-    list_token_data.totalSupply = totalSupply;
-    list_token_data.decimals = decimals;
-    list_token_data.chain = chain;
+    list_token_data.projectName = projectName;
+    list_token_data.projectSymbol = projectSymbol;
+    list_token_data.projectLaunchDate = projectLaunchDate;
+    list_token_data.oneLinerDescription = oneLinerDescription;
+    list_token_data.detailedDescription = detailedDescription;
     localStorage.setItem("list-token", JSON.stringify(list_token_data));
     setLoading(false);
 
@@ -51,73 +55,67 @@ function StepTwo({ activeStep, setActiveStep }) {
       <hr className="text-[#DADADA] my-6" />
       <form onSubmit={onNextStep}>
         <div className="mt-4">
-          <p className="text-white font-medium">Token Ticker</p>
+          <p className="text-white font-medium">Project Name*</p>
           <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
             <input
               type={"text"}
               className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-              placeholder="Enter Token Ticker"
-              value={tokenTicker}
-              onChange={(e) => setTokenTicker(e.target.value)}
-              required
+              placeholder="Enter Project Name"
+              value={projectName}
+              onChange={(e) => setProjectName(e.target.value)}
             />
           </div>
         </div>
         <div className="flex justify-between gap-6 mt-4">
           <div className="w-full">
-            <p className="text-white font-medium">Contract Address</p>
+            <p className="text-white font-medium">Project Symbol</p>
             <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
               <input
                 type={"text"}
                 className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-                placeholder="Enter Contract Address"
-                value={contractAddress}
-                onChange={(e) => setContractAddress(e.target.value)}
-                required
+                placeholder="Enter Project Symbol"
+                value={projectSymbol}
+                onChange={(e) => setProjectSymbol(e.target.value)}
               />
             </div>
           </div>
           <div className="w-full">
-            <p className="text-white font-medium">Total Supply</p>
+            <p className="text-white font-medium">Project Launch Date*</p>
             <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
               <input
-                type={"number"}
+                type={"date"}
                 className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-                placeholder="1"
-                value={totalSupply}
-                onChange={(e) => setTotalSupply(e.target.value)}
-                required
+                placeholder="Date"
+                value={projectLaunchDate}
+                onChange={(e) => setProjectLaunchDate(e.target.value)}
               />
             </div>
           </div>
         </div>
         <div className="mt-4">
-          <p className="text-white font-medium">Decimals</p>
+          <p className="text-white font-medium">One Liner Description*</p>
           <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
             <input
-              type={"number"}
+              type={"text"}
               className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-              placeholder="Decimals"
-              value={decimals}
-              onChange={(e) => setDecimals(e.target.value)}
-              required
+              placeholder="Enter Description"
+              value={oneLinerDescription}
+              onChange={(e) => setOneLinerDescription(e.target.value)}
             />
           </div>
         </div>
         <div className="mt-4">
-          <p className="text-white font-medium">Select Blockchain</p>
-          <div className="w-full rounded-md mt-2">
-            <select
-              className="outline-0 px-3 py-2 text-white w-full bg-gradient-to-r bg-[#202129]"
-              value={chain}
-              onChange={(e) => setChain(e.target.value)}
-            >
-              {chains.map((row, key) => {
-                return <option key={key}>{row}</option>;
-              })}
-            </select>
+          <p className="text-white font-medium">Detailed Description*</p>
+          <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
+            <textarea
+              className="bg-transparent outline-0 px-3 py-2 h-32 text-white w-full"
+              placeholder="Enter Description"
+              value={detailedDescription}
+              onChange={(e) => setDetailedDescription(e.target.value)}
+            />
           </div>
         </div>
+
         <div className="mt-6 flex justify-end gap-4">
           <button
             className="border border-[#BA4DF9] text-white text-sm font-medium rounded-full py-2 px-6"
@@ -137,4 +135,4 @@ function StepTwo({ activeStep, setActiveStep }) {
   );
 }
 
-export default StepTwo;
+export default Step2;
