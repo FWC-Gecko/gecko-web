@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import StepOne from "./StepOne";
 import StepSelector from "./StepSelector";
-import StepThree from "./StepThree";
-import StepTwo from "./StepTwo";
+
+import Step1 from "./Step1";
+import Step2 from "./Step2";
+import Step3 from "./Step3";
+import Step4 from "./Step4";
 
 function ListToken() {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const user = useSelector((state) => state.auth.user);
-
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = [
     {
@@ -19,15 +18,18 @@ function ListToken() {
     },
     {
       step: 2,
-      title: "Token Information",
+      title: "Project Information",
       description: "Write something",
-      notiText: "Let’s start with your Personal Information",
     },
     {
       step: 3,
-      title: "Other",
+      title: "Token Information",
       description: "Write something",
-      notiText: "Let’s start with your Personal Information",
+    },
+    {
+      step: 4,
+      title: "Other Information",
+      description: "Write something",
     },
   ];
 
@@ -64,16 +66,16 @@ function ListToken() {
               Step {activeStep + 1} / {steps.length}
             </p>
             {activeStep === 0 && (
-              <StepOne activeStep={activeStep} setActiveStep={setActiveStep} />
+              <Step1 activeStep={activeStep} setActiveStep={setActiveStep} />
             )}
             {activeStep === 1 && (
-              <StepTwo activeStep={activeStep} setActiveStep={setActiveStep} />
+              <Step2 activeStep={activeStep} setActiveStep={setActiveStep} />
             )}
             {activeStep === 2 && (
-              <StepThree
-                activeStep={activeStep}
-                setActiveStep={setActiveStep}
-              />
+              <Step3 activeStep={activeStep} setActiveStep={setActiveStep} />
+            )}
+            {activeStep === 3 && (
+              <Step4 activeStep={activeStep} setActiveStep={setActiveStep} />
             )}
           </div>
         </div>
