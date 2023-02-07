@@ -28,7 +28,7 @@
 
 .authBg {
   @apply w-full bg-[length:200%_100%] bg-left sm:bg-[length:100%_100%];
-  background-image: url("./images/auth_bg.png");
+  background-image: url("./assets/images/auth_bg.png");
 }
 
 .list-token-input-div {
@@ -37,4 +37,22 @@
 
 .list-token-input {
   @apply bg-transparent outline-0 px-3 py-2 text-white w-full;
+}
+
+.TredingTokenBG {
+  @apply bg-[length:100%_100%] w-full bg-Vector80 dark:bg-DarkVector80;
+  /* background-image: url("./assets/images/Vector80.png"); */
+}
+
+.NewTokenBG {
+  @apply bg-[length:100%_100%] w-full bg-Vector81 dark:bg-DarkVector81;
+}
+
+.authMask {
+  background: linear-gradient(
+    360deg,
+    #d38e4c -2.27%,
+    rgba(26, 27, 35, 0) 116.8%
+  );
+  opacity: 0.35;
 }

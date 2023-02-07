@@ -16,6 +16,7 @@ import useAuth from "../../hook/useAuth";
 import useLoading from "../../hook/useLoading";
 import ToggleColorTheme from "../section/navbar/ToggleColorTheme";
 import SignInButton from "../section/navbar/SignInButton";
+import SignUpButton from "../section/navbar/SignUpButton";
 
 function Header() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -33,16 +34,16 @@ function Header() {
   const Infos = () => {
     return (
       <div className="hidden sm:flex justify-start gap-4 items-center">
-        <p className="text-sm text-white font-normal">
+        <p className="text-sm text-color2 dark:text-white font-normal">
           Cryptos: <span className="text-[#BA4DF9]">22,011</span>
         </p>
-        <p className="text-sm text-white font-normal">
+        <p className="text-sm text-color2 dark:text-white font-normal">
           Market Cap: <span className="text-[#BA4DF9]">$840,576,683,048</span>
         </p>
-        <p className="text-sm text-white font-normal">
+        <p className="text-sm text-color2 dark:text-white font-normal">
           Exchanges: <span className="text-[#BA4DF9]">529</span>
         </p>
-        <p className="text-sm text-white font-normal">
+        <p className="text-sm text-color2 dark:text-white font-normal">
           Market Cap: <span className="text-[#BA4DF9]">$840,576,683,048</span>
         </p>
       </div>
@@ -99,11 +100,7 @@ function Header() {
           ) : (
             <div className="flex gap-4">
               <SignInButton />
-              <Link to={"/signup"}>
-                <button className="px-4 text-white  bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] h-9 rounded-full">
-                  {t("Sign Up")}
-                </button>
-              </Link>
+              <SignUpButton />
             </div>
           )}
         </div>

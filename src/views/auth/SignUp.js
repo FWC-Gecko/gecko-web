@@ -67,7 +67,7 @@ const Login = () => {
       <div className="fixed top-0 overflow-auto left-0 w-screen h-screen authBg z-40">
         <div className="">
           <div className="sm:w-1/2 min-h-screen h-full flex py-10 justify-center items-center bg-gradient-to-t from-[#D38E4C]/20 to-[#1A1B23]/20">
-            <div className="max-w-[400px] w-11/12 h-full m-auto text-black">
+            <div className="max-w-[400px] w-11/12 h-full m-auto text-[#101115]">
               <form onSubmit={onSubmit}>
                 <Link to="/">
                   <img
@@ -76,18 +76,18 @@ const Login = () => {
                     className="w-32 h-32 m-auto sm:m-0"
                   />
                 </Link>
-                <p className="text-white font-bold text-4xl text-center sm:text-start">
+                <p className=" font-bold text-4xl text-center sm:text-start">
                   Sign Into
                 </p>
-                <p className="text-white font-bold text-xl mt-3 text-center sm:text-start">
+                <p className=" font-bold text-xl mt-3 text-center sm:text-start">
                   Your Account
                 </p>
                 <div className="mt-3">
-                  <p className="text-white">{t("First Name")}</p>
+                  <p className="">{t("First Name")}</p>
                   <input
                     type={"text"}
                     placeholder="Enter first name"
-                    className="py-2 px-4 w-full mt-2 rounded outline-none bg-gradient-to-t from-[#575A70] to-[#575A70] text-white"
+                    className="py-2 px-4 w-full mt-2 rounded outline-none bg-gradient-to-t from-[#575A70] to-[#575A70]"
                     name="firstname"
                     value={firstname}
                     onChange={onChange}
@@ -95,11 +95,11 @@ const Login = () => {
                   />
                 </div>
                 <div className="mt-3">
-                  <p className="text-white">{t("Last Name")}</p>
+                  <p className="">{t("Last Name")}</p>
                   <input
                     type={"text"}
                     placeholder="Enter last name"
-                    className="py-2 px-4 w-full mt-2 rounded outline-none bg-gradient-to-t from-[#575A70] to-[#575A70] text-white"
+                    className="py-2 px-4 w-full mt-2 rounded outline-none bg-gradient-to-t from-[#575A70] to-[#575A70]"
                     name="lastname"
                     value={lastname}
                     onChange={onChange}
@@ -107,7 +107,7 @@ const Login = () => {
                   />
                 </div>
                 <div className="mt-3">
-                  <p className="text-white">{t("Email")}</p>
+                  <p className="">{t("Email")}</p>
                   <input
                     type={"email"}
                     placeholder="Enter email"
@@ -119,7 +119,7 @@ const Login = () => {
                   />
                 </div>
                 <div className="mt-3">
-                  <p className="text-white">{t("Password")}</p>
+                  <p className="">{t("Password")}</p>
                   <input
                     type={"password"}
                     placeholder="Enter password"
@@ -151,7 +151,7 @@ const Login = () => {
               </div>
               <button
                 onClick={onGoogleLogin}
-                className="w-full flex justify-center items-center gap-3 bg-gradient-to-r from-[#575A70]/40 to-[#575A70]/50 text-white mt-3 h-12 rounded"
+                className="w-full flex justify-center items-center gap-3 bg-gradient-to-r from-[#575A70]/40 to-[#575A70]/50  mt-3 h-12 rounded"
               >
                 <img src="/img/google.png" alt="" className="w-8" />
                 {t("Login in with Google")}
