@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import SearchInput from "../section/navbar/SearchInput";
+import StarIcon from "@mui/icons-material/Star";
+import PieChartIcon from "@mui/icons-material/PieChart";
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -16,7 +18,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="bg-[#0B0B0F] dark:bg-white py-3">
+      <div className="bg-color3 dark:bg-[#0B0B0F] py-3">
         <div className="n-container">
           <div className="flex justify-between items-center">
             <div className="flex justify-start gap-4 items-center">
@@ -26,7 +28,7 @@ const Navbar = () => {
               <SearchInput />
             </div>
 
-            <div className="hidden lg:flex text-white text-lg text-center items-center gap-3">
+            <div className="hidden lg:flex text-color2 dark:text-white text-lg text-center items-center gap-3">
               {menus.map((row, key) => {
                 return (
                   <Link to={row.link}>
@@ -38,12 +40,13 @@ const Navbar = () => {
 
             <div className="hidden sm:flex justify-end gap-5 items-center">
               <div className="flex justify-start items-center gap-2">
-                <img src="/img/star.png" alt="" />
-                <p className="text-white">Watchlist</p>
+                {/* <img src="/img/star.png" alt="" /> */}
+                <StarIcon className="h-4 cursor-pointer text-[#B9B9B9] dark:text-white" />
+                <p className="text-color2 dark:text-white">Watchlist</p>
               </div>
               <div className="flex justify-start items-center gap-2">
-                <img src="/img/circle.png" alt="" />
-                <p className="text-white">Portfolio</p>
+                <PieChartIcon className="h-4 cursor-pointer text-[#B9B9B9] dark:text-white" />
+                <p className="text-color2 dark:text-white">Portfolio</p>
               </div>
             </div>
 

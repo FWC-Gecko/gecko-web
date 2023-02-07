@@ -13,6 +13,7 @@ body {
   letter-spacing: 1px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply bg-[#F9FBFD] dark:bg-[#0B0B0F];
 }
 
 code {
