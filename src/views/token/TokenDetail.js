@@ -1,10 +1,7 @@
-import React from "react";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import React, { useState } from "react";
 
 import Ad from "../../components/section/ad/Ad";
-import OtherTokenInfo from "../../components/section/tokenDetail/OtherTokenInfo";
 import Satistic from "../../components/section/tokenDetail/Satistic";
-import Transactions from "../../components/section/tokenDetail/Transactions";
 import TokenInfo from "../../components/section/tokenDetail/TokenInfo";
 import Chart from "../../components/section/tokenDetail/Chart";
 import Converter from "../../components/section/tokenDetail/Converter";
@@ -13,8 +10,24 @@ import Description from "../../components/section/tokenDetail/Description";
 import Revaluation from "../../components/section/tokenDetail/Revaluation";
 import Estimate from "../../components/section/tokenDetail/Estimate";
 import News from "../../components/section/tokenDetail/News";
+import { useEffectOnce } from "../../hook/useEffectOnce";
 
 function TokenDetail() {
+  useEffectOnce(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  });
+
+  const subMenus = [
+    "Overview",
+    "Markets",
+    "Historical Data",
+    "News",
+    "Price Estimates",
+    "More Info",
+  ];
+
+  const [subMenu, setSubMenu] = useState(subMenus[0]);
+
   return (
     <>
       <Ad />
@@ -46,7 +59,25 @@ function TokenDetail() {
             <TokenInfo />
           </div>
           <div className="mt-5 sm:mt-10">
-            <Chart />
+            <div className="itemBg5 rounded-full w-max p-2 border-[#23262F] dark:border">
+              {subMenus.map((row, key) => {
+                return (
+                  <button
+                    key={key}
+                    className={`px-6 py-2 rounded-full  ${
+                      subMenu === row
+                        ? "bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white"
+                        : "text-[#8E8E8E]"
+                    } `}
+                    onClick={() => setSubMenu(row)}
+                  >
+                    {row}
+                  </button>
+                );
+              })}
+            </div>
+            {subMenu === "Price Estimates" && <Estimate />}
+            {subMenu === "News" && <News />}
           </div>
           <div className="mt-5 sm:mt-10 flex justify-between gap-6">
             <Converter />
@@ -54,9 +85,7 @@ function TokenDetail() {
           </div>
           <Description />
           <Revaluation />
-          <Estimate />
           <Satistic />
-          <News />
         </div>
       </div>
       <Ad />

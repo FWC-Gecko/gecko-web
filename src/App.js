@@ -31,10 +31,6 @@ import "./App.css";
 
 function App() {
   useEffectOnce(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  });
-
-  useEffectOnce(() => {
     // check for token in LS when app first runs
     if (localStorage.token) {
       // if there is a token set axios headers for all requests

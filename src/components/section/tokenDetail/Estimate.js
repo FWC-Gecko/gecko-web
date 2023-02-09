@@ -5,7 +5,7 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 
 function Estimate() {
   return (
-    <div className="text-color2 dark:text-white rounded-2xl my-10 sm:my-20">
+    <div className="text-color2 dark:text-white rounded-2xl my-5">
       <div className="flex justify-between flex-col-reverse sm:flex-row items-center gap-10">
         <div className="sm:w-1/2">
           <p className="text-2xl sm:text-4xl font-bold tracking-widest text-center sm:text-start leading-snug">
