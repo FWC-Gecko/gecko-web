@@ -97,6 +97,23 @@ function formatNumber(n, p, ts, dp) {
   return t.join(ts) + (n[1] ? dp + n[1] : "");
 }
 
+function getMaxMinValue(_arr) {
+  let max = 0;
+  let min = 9999999999999999999999999999999;
+  _arr.map((row, key) => {
+    if (max < row.price) {
+      max = row.price;
+    }
+    if (min > row.price) {
+      min = row.price;
+    }
+  });
+  return {
+    max: max,
+    min: min,
+  };
+}
+
 export {
   getDeltaTimeFromNow,
   formatDate,
@@ -106,4 +123,5 @@ export {
   formatDateDash,
   validURL,
   formatNumber,
+  getMaxMinValue,
 };

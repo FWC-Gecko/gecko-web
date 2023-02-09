@@ -22,14 +22,14 @@ export default function useToken() {
       const res = await api.get(`/global/token/${tokenID}`);
 
       if (res.data.success) {
-        console.log(res.data.data)
+        console.log(res.data.data);
         return res.data.data;
       }
-      return {}
+      return {};
     } catch (error) {
-      return {}
+      return {};
     }
-  }
+  };
 
   const getAllowedTokens = async () => {
     try {

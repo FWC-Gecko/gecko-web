@@ -8,7 +8,7 @@ import SwitchTheme from "./SwitchTheme";
 import TileTable from "./TileTable";
 import WatchListButton from "./WatchListButton";
 
-function Table({ columns, data, onRowClick }) {
+function Table({ columns, data, onRowClick, isTableLoading = false }) {
   const themeColor = localStorage.getItem("theme");
 
   const customStyles = {
@@ -70,7 +70,10 @@ function Table({ columns, data, onRowClick }) {
         },
         "&:focus": {
           outline: "none",
-          background: "linear-gradient(58.78deg, #5B46DF 1.9%, #BA4DF9 98.4%)",
+          background:
+            themeColor === "light"
+              ? "#F2F2F2"
+              : "linear-gradient(58.78deg, #5B46DF 1.9%, #BA4DF9 98.4%)",
         },
       },
     },
@@ -126,7 +129,8 @@ function Table({ columns, data, onRowClick }) {
           </div>
         </div>
         <div className="mt-4">
-          {theme === "table" && (
+          {isTableLoading && <p>Loading ...</p>}
+          {!isTableLoading && theme === "table" && (
             <DataTable
               columns={columns}
               data={currentTableData}
@@ -134,7 +138,7 @@ function Table({ columns, data, onRowClick }) {
               onRowClicked={onRowClick}
             />
           )}
-          {theme === "tile" && (
+          {!isTableLoading && theme === "tile" && (
             <TileTable
               columns={columns}
               data={currentTableData}
