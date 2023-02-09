@@ -12,25 +12,29 @@ import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 import { LOGOUT } from "./actions/types";
 
+import { useEffectOnce } from "./hook/useEffectOnce";
+
 // Components
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import Container from "./components/layout/Container";
 
 // Views
 import Home from "./views/Home";
 import Login from "./views/auth/Login";
 import SignUp from "./views/auth/SignUp";
-import Header from "./components/layout/Header";
 import Loading from "./components/layout/Loading";
 import Profile from "./views/auth/Profile";
 import ListToken from "./views/listToken/ListToken";
-import TokenDetail from "./views/TokenDetail";
+import TokenDetail from "./views/token/TokenDetail";
 
 import "./App.css";
 
 function App() {
-  useEffect(() => {
+  useEffectOnce(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  });
+
+  useEffectOnce(() => {
     // check for token in LS when app first runs
     if (localStorage.token) {
       // if there is a token set axios headers for all requests
@@ -44,27 +48,7 @@ function App() {
     window.addEventListener("storage", () => {
       if (!localStorage.token) store.dispatch({ type: LOGOUT });
     });
-  }, []);
-
-  const Container = ({
-    isHeader = true,
-    isNavbar = true,
-    isFooter = true,
-    Component,
-    children,
-  }) => {
-    return (
-      <>
-        <div className="flex flex-col-reverse sm:block">
-          {isHeader && <Header />}
-          {isNavbar && <Navbar />}
-        </div>
-        {Component && <Component />}
-        {children}
-        {isFooter && <Footer />}
-      </>
-    );
-  };
+  });
 
   return (
     <Provider store={store}>
@@ -72,7 +56,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Container Component={Home} />} />
           <Route
-            path="/token-detail/:tokeId"
+            path="/token/:tokeId"
             element={<Container Component={TokenDetail} />}
           />
           <Route

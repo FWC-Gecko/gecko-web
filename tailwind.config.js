@@ -7,6 +7,8 @@ module.exports = {
         DarkVector81: "url('./assets/images/DarkVector81.png')",
         Vector80: "url('./assets/images/Vector80.png')",
         Vector81: "url('./assets/images/Vector81.png')",
+        Net: "url('./assets/images/Net.png')",
+        DarkNet: "url('./assets/images/DarkNet.png')",
       },
     },
     colors: {

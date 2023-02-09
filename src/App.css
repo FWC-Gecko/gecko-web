@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .n-container {
-  @apply max-w-[1280px] m-auto w-[95%] sm:w-[90%];
+  @apply max-w-[1440px] m-auto w-[95%] sm:w-[90%];
 }
 
 /* .bg-primary {
@@ -30,9 +30,20 @@
   @apply w-full bg-[length:200%_100%] bg-left sm:bg-[length:100%_100%];
   background-image: url("./assets/images/auth_bg.png");
 }
+.netBg {
+  @apply w-full bg-right bg-no-repeat bg-Net dark:bg-DarkNet;
+}
 
 .list-token-input-div {
   @apply bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2;
+}
+
+.grayGradientBg1 {
+  @apply bg-[#F6F6F6] dark:bg-gradient-to-tr from-[#1D1E26] to-[#1C1D25];
+}
+
+.itemBg1 {
+  @apply bg-[#E9E9E9] dark:bg-[#2A2C36];
 }
 
 .list-token-input {
