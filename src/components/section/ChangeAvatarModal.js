@@ -12,11 +12,9 @@ export default function ChangeAvatarModal({ toggleChangeAvatarModal }) {
       ? user.avatar
       : "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
   );
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [file, setFile] = useState();
 
   // Create a reference to the hidden file input element
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const hiddenFileInput = React.useRef(null);
 
   // Programatically click the hidden file input element
@@ -28,7 +26,6 @@ export default function ChangeAvatarModal({ toggleChangeAvatarModal }) {
   };
   // Call a function (passed as a prop from the parent component)
   // to handle the user-selected file
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChange = (event) => {
     // Assuming only image
     const file = event.target.files[0];
