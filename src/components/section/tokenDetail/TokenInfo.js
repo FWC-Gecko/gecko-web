@@ -71,7 +71,7 @@ function TokenInfo({ tokenInfo }) {
             </p>
           </div>
 
-          {tokenInfo && tokenInfo.contractAddress.length > 0 && (
+          {tokenInfo && tokenInfo.contractAddress && (
             <>
               <p className="mt-4">Contracts:</p>
               <div className="mt-2 flex justify-start gap-3 items-center">
