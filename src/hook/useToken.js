@@ -25,8 +25,9 @@ export default function useToken() {
         console.log(res.data.data)
         return res.data.data;
       }
+      return {}
     } catch (error) {
-      
+      return {}
     }
   }
 

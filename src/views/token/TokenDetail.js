@@ -16,6 +16,7 @@ function TokenDetail() {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   });
 
+  const [tokenInfo, setTokenInfo] = useState({});
   const subMenus = [
     "Overview",
     "Markets",
@@ -27,11 +28,16 @@ function TokenDetail() {
 
   const [subMenu, setSubMenu] = useState(subMenus[0]);
 
-  const { getTokenInformation } = useToken();
+  const {getTokenInformation} = useToken();
 
-  useEffect(async () => {
-    const res = await getTokenInformation("63e52c62c0b59ca123be5f2a");
-  }, []);
+  useEffect(() => {
+    const getTokenInfo = async () => {
+      const res = await getTokenInformation('63e52c62c0b59ca123be5f2a');
+      setTokenInfo(res.token);
+    }
+    
+    getTokenInfo();
+  }, [])
 
   return (
     <>
@@ -40,15 +46,15 @@ function TokenDetail() {
         <div className="n-container">
           <div className="bg-[#1B1C23]/10 dark:bg-[#1B1C23]/70 rounded-3xl flex justify-between items-center overflow-hidden netBg">
             <div className="flex justify-start items-center gap-4 pl-4 sm:pl-10 h-32 sm:h-48 z-10 text-black dark:text-white ">
-              <img src="/img/token-detail.png" alt="" />
+            <img src={tokenInfo && tokenInfo.logo} alt="" />
               <div className="">
                 <p className=" text-2xl sm:text-3xl font-bold">
-                  Football World Community Token
+                {tokenInfo && tokenInfo.name}
                 </p>
                 <p className="text-sm mt-3">
                   Home {`> `}
                   <span className="text-[#BA4DF9]">
-                    Football World Community Token
+                  {tokenInfo && tokenInfo.name}
                   </span>
                 </p>
                 <button className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-3">
