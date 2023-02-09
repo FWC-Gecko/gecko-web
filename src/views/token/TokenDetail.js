@@ -12,6 +12,7 @@ import Chat from "../../components/section/tokenDetail/Chat";
 import Description from "../../components/section/tokenDetail/Description";
 import Revaluation from "../../components/section/tokenDetail/Revaluation";
 import Estimate from "../../components/section/tokenDetail/Estimate";
+import News from "../../components/section/tokenDetail/News";
 
 function TokenDetail() {
   return (
@@ -54,8 +55,11 @@ function TokenDetail() {
           <Description />
           <Revaluation />
           <Estimate />
+          <Satistic />
+          <News />
         </div>
       </div>
+      <Ad />
     </>
   );
 }
