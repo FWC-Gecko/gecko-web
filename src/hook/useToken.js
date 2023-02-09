@@ -19,9 +19,9 @@ export default function useToken() {
 
   const getAllowedTokens = async () => {
     try {
-      const res = await api.get("/tokens/allowed");
+      const res = await api.get("/global/tokens?count=10&search=&page=1");
       if (res.data.success) {
-        return res.data.tokens;
+        return res.data.data.tokens;
       }
       return [];
     } catch (error) {

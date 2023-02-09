@@ -22,45 +22,44 @@ function AssetsTable() {
   }, []);
 
   const columns = [
-    { name: "#", selector: (row, key) => key + 1, width: "40px" },
+    { name: "#", selector: (row, key) => key + 1, width: '3%' },
     {
       name: "Name",
       selector: (row) => (
         <div className="flex justify-start items-center gap-3 py-2">
           <img
-            src="/img/tokens/ETH1.png"
+            src={row.logo}
             alt=""
             className="h-8 w-8 rounded-full"
           />
           <div>
-            <p className="text-white font-bold text-md">BitTorrent</p>
-            <p className="text-[#9B9B9B] text-sm">BTT</p>
+            <p className="text-white font-bold text-md">{row.name}</p>
+            <p className="text-[#9B9B9B] text-sm">{row.symbol}</p>
           </div>
         </div>
       ),
-      width: "150px",
+      width: "10%",
     },
-    { name: "Price", selector: (row) => "$0.0000006751" },
+    { name: "Price", selector: (row) => row.quoteLatest.price.toFixed(6) },
     {
       name: "1h%",
-      selector: (row) => <p className="text-[#16C784]">0.13%</p>,
-      width: "70px",
+      selector: (row) => <p className={row.quoteLatest.percent_change_1h > 0 ? "text-[#16C784]" : "text-[#FF0000]"}>{row.quoteLatest.percent_change_1h}%</p>,
     },
-    { name: "24h%", selector: (row) => "1.69%", width: "70px" },
-    { name: "7d%", selector: (row) => "4.14%", width: "70px" },
-    { name: "Market Cap", selector: (row) => "$640,202,503" },
+    { name: "24h%", selector: (row) => <p className={row.quoteLatest.percent_change_24h > 0 ? "text-[#16C784]" : "text-[#FF0000]"}>{row.quoteLatest.percent_change_24h}%</p> },
+    { name: "7d%", selector: (row) => <p className={row.quoteLatest.percent_change_7d > 0 ? "text-[#16C784]" : "text-[#FF0000]"}>{row.quoteLatest.percent_change_7d}%</p> },
+    { name: "Market Cap", selector: (row) => row.quoteLatest.market_cap },
     {
       name: "Volume(24h)",
       selector: (row) => (
         <div>
-          <p>$19,718,089</p>
-          <p className="text-[#C8C8C8]">29,217,832 BTT</p>
+          <p>${row.quoteLatest.volume_24h}</p>
+          <p className="text-[#C8C8C8]">{row.quoteLatest.circulating_supply} {row.symbol}</p>
         </div>
       ),
     },
     {
       name: "Circulating Supply",
-      selector: (row) => "947,962,000,000,000 BTT",
+      selector: (row) => {return `${row.quoteLatest.circulating_supply} ${row.symbol}`},
     },
     {
       name: "Last 7 Days",
