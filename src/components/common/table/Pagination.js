@@ -44,12 +44,12 @@ const Pagination = (props) => {
         className={`${
           (currentPage !== 1 || currentPage !== lastPage) && selected
             ? "bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]"
-            : "bg-[#21232C]"
+            : "bg-[#F2F2F2] dark:bg-[#21232C] shadow"
         } h-10 cursor-pointer w-10 flex justify-center items-center rounded-full `}
         onClick={onClickFunction}
         disabled={disabled}
       >
-        <p className="text-white">{text}</p>
+        <p>{text}</p>
         {children}
       </button>
     );

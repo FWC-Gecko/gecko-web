@@ -129,7 +129,7 @@ function Table({ columns, data, onRowClick, isTableLoading = false }) {
           </div>
         </div>
         <div className="mt-4">
-          {isTableLoading && <p>Loading ...</p>}
+          {isTableLoading && <p className="text-center py-4">Loading ...</p>}
           {!isTableLoading && theme === "table" && (
             <DataTable
               columns={columns}
