@@ -8,6 +8,7 @@ import {
   MenuItem,
 } from "@material-tailwind/react";
 import { languages } from "../../../constants";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 function LanguageSelect() {
   const [language, setSelLang] = useState(languages[0]);
@@ -24,12 +25,12 @@ function LanguageSelect() {
       <div className="w-max relative">
         <Menu>
           <MenuHandler>
-            <div className=" flex items-center gap-2 cursor-pointer">
+            <div className=" flex items-center cursor-pointer">
               <p className="text-fourth">{language.name}</p>
-              <img src="/img/down_arrow.png" alt="" className="w-3 mt-1" />
+              <ArrowDropDownIcon />
             </div>
           </MenuHandler>
-          <MenuList className="w-max bg-[#101115] border-white/5 border p-0">
+          <MenuList className="w-max dark:bg-[#101115] border-white/5 border p-0">
             {languages.map((row, key) => {
               return (
                 <MenuItem
@@ -38,7 +39,7 @@ function LanguageSelect() {
                 >
                   <div
                     onClick={() => setSelLanguage(row)}
-                    className="flex items-center gap-2 text-white"
+                    className="flex items-center gap-2 "
                   >
                     <img src={row.flag} alt="" width={"20"} />
                     <p>{row.name}</p>

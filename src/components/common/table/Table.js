@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
-import useLocalStorage from "../../../hook/useLocalStorage";
 import Filters from "./Filters";
 import Pagination from "./Pagination";
 import PerPageSelect from "./PerPageSelect";
@@ -10,7 +9,7 @@ import TileTable from "./TileTable";
 import WatchListButton from "./WatchListButton";
 
 function Table({ columns, data, onRowClick }) {
-  const [themeColor, setThemeColor] = useLocalStorage("theme");
+  const [themeColor, setThemeColor] = localStorage.getItem("theme");
 
   const customStyles = {
     table: {

@@ -7,6 +7,7 @@ import {
   MenuItem,
 } from "@material-tailwind/react";
 import { fiats } from "../../../constants";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 function PriceSelect() {
   const { i18n } = useTranslation();
@@ -27,12 +28,12 @@ function PriceSelect() {
       <div className="w-max relative">
         <Menu>
           <MenuHandler>
-            <div className=" flex items-center gap-2 cursor-pointer">
+            <div className=" flex items-center cursor-pointer">
               <p className="text-fourth">{type.text}</p>
-              <img src="/img/down_arrow.png" alt="" className="w-3 mt-1" />
+              <ArrowDropDownIcon />
             </div>
           </MenuHandler>
-          <MenuList className="w-max bg-[#101115] border-white/5 border p-0">
+          <MenuList className="w-max dark:bg-[#101115] border-white/5 border p-0">
             {fiats.map((row, key) => {
               return (
                 <MenuItem
@@ -40,7 +41,7 @@ function PriceSelect() {
                   key={key}
                 >
                   <div className="" onClick={() => setType(row)}>
-                    <p className="text-white">{row.text}</p>
+                    <p className="">{row.text}</p>
                   </div>
                 </MenuItem>
               );
