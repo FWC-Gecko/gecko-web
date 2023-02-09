@@ -23,7 +23,7 @@ function TrendingTokens() {
 
   return (
     <div className="NewTokenBG text-white p-8">
-      <div className="rounded-[18px] bg-gradient-to-r from-[#BA4DF9] to-[#BA4DF9]/0 p-[1px]">
+      <div className="rounded-[18px] dark:bg-gradient-to-r from-[#BA4DF9] to-[#BA4DF9]/0 p-[1px]">
         <div className="bg-[#F6F6F6] dark:bg-[#21232C] rounded-[18px] p-5">
           <div className="flex justify-between w-full items-center mb-6">
             <div className="flex justify-start items-center gap-3">

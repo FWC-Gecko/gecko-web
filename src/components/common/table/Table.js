@@ -9,7 +9,7 @@ import TileTable from "./TileTable";
 import WatchListButton from "./WatchListButton";
 
 function Table({ columns, data, onRowClick }) {
-  const [themeColor, setThemeColor] = localStorage.getItem("theme");
+  const themeColor = localStorage.getItem("theme");
 
   const customStyles = {
     table: {
@@ -26,14 +26,14 @@ function Table({ columns, data, onRowClick }) {
         borderColor: "#23262F",
         borderWidth: "1px",
         borderRadius: "32px",
-        color: "white",
+        color: themeColor === "light" ? "black" : "white",
       },
     },
     rows: {
       style: {
         paddingTop: "3px",
         backgroundColor: "transparent",
-        color: "white",
+        color: themeColor === "light" ? "black" : "white",
         "&:not(:last-of-type)": {
           borderBottomStyle: "solid",
           borderBottomWidth: "1px",
