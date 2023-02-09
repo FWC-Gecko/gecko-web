@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
+import useLocalStorage from "../../../hook/useLocalStorage";
 import Filters from "./Filters";
 import Pagination from "./Pagination";
 import PerPageSelect from "./PerPageSelect";
@@ -9,6 +10,8 @@ import TileTable from "./TileTable";
 import WatchListButton from "./WatchListButton";
 
 function Table({ columns, data, onRowClick }) {
+  const [themeColor, setThemeColor] = useLocalStorage("theme");
+
   const customStyles = {
     table: {
       style: {
@@ -18,7 +21,7 @@ function Table({ columns, data, onRowClick }) {
     },
     headRow: {
       style: {
-        backgroundColor: "#0B0B0F",
+        backgroundColor: themeColor === "light" ? "#F2F2F2" : "#0B0B0F",
         minHeight: "50px",
         borderBottomWidth: "1px",
         borderColor: "#23262F",
@@ -107,7 +110,7 @@ function Table({ columns, data, onRowClick }) {
 
   return (
     <>
-      <div className="bg-[#121318] p-4 sm:p-6 rounded-lg">
+      <div className="itemBg6 p-4 sm:p-6 rounded-lg">
         <div className="sm:flex justify-between items-center">
           <div className="flex sm:justify-start justify-between gap-6">
             <WatchListButton />

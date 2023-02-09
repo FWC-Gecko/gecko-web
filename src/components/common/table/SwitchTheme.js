@@ -2,7 +2,7 @@ import React from "react";
 
 function SwitchTheme({ themes, theme, setTheme }) {
   return (
-    <div className="flex justify-start items-center rounded-full bg-[#21232C] p-1">
+    <div className="flex justify-start items-center rounded-full itemBg7 p-1">
       {themes.map((row, key) => {
         return (
           <div

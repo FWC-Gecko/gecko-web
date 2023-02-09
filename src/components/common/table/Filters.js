@@ -1,9 +1,10 @@
 import React from "react";
+import TuneIcon from "@mui/icons-material/Tune";
 
 function Filters() {
   return (
-    <div className="bg-[#21232C] px-4 py-2 rounded-full text-white flex items-center gap-1">
-      <img src="/img/filter.png" alt="" />
+    <div className="itemBg7 px-4 py-2 rounded-full flex items-center gap-1">
+      <TuneIcon />
       <p>Filters</p>
     </div>
   );
