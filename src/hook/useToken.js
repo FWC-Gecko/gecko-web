@@ -17,9 +17,22 @@ export default function useToken() {
     }
   };
 
+  const getTokenInformation = async (tokenID) => {
+    try {
+      const res = await api.get(`/global/token/${tokenID}`);
+
+      if (res.data.success) {
+        console.log(res.data.data)
+        return res.data.data;
+      }
+    } catch (error) {
+      
+    }
+  }
+
   const getAllowedTokens = async () => {
     try {
-      const res = await api.get("/global/tokens?count=10&search=&page=1");
+      const res = await api.get("/global/tokens?count=30&search=&page=1");
       if (res.data.success) {
         return res.data.data.tokens;
       }
@@ -30,5 +43,5 @@ export default function useToken() {
     }
   };
 
-  return { list, getAllowedTokens };
+  return { list, getAllowedTokens, getTokenInformation };
 }

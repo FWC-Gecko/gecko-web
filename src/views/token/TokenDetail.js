@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import useToken from "../../hook/useToken";
 import Ad from "../../components/section/ad/Ad";
 import Satistic from "../../components/section/tokenDetail/Satistic";
 import TokenInfo from "../../components/section/tokenDetail/TokenInfo";
-import Chart from "../../components/section/tokenDetail/Chart";
 import Converter from "../../components/section/tokenDetail/Converter";
 import Chat from "../../components/section/tokenDetail/Chat";
 import Description from "../../components/section/tokenDetail/Description";
@@ -27,6 +26,12 @@ function TokenDetail() {
   ];
 
   const [subMenu, setSubMenu] = useState(subMenus[0]);
+
+  const { getTokenInformation } = useToken();
+
+  useEffect(async () => {
+    const res = await getTokenInformation("63e52c62c0b59ca123be5f2a");
+  }, []);
 
   return (
     <>
