@@ -30,7 +30,7 @@ function TokenDetail() {
 
   const {getTokenInformation} = useToken();
 
-  useEffect(() => {
+  useEffectOnce(() => {
     const getTokenInfo = async () => {
       const res = await getTokenInformation('63e52c62c0b59ca123be5f2a');
       setTokenInfo(res.token);
@@ -67,7 +67,7 @@ function TokenDetail() {
             </div>
           </div>
           <div className="mt-5 sm:mt-10">
-            <TokenInfo />
+            <TokenInfo tokenInfo={tokenInfo} />
           </div>
           <div className="mt-5 sm:mt-10">
             <div className="itemBg5 rounded-full w-max p-2 border-[#23262F] dark:border">

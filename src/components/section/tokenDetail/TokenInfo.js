@@ -11,18 +11,18 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ArticleIcon from "@mui/icons-material/Article";
 import WarningIcon from "@mui/icons-material/Warning";
 import InfoIcon from "@mui/icons-material/Info";
+import { formatNumber, formatPrice } from "../../../utils";
 
-function TokenInfo() {
+function TokenInfo({ tokenInfo }) {
   return (
     <div className="bg-white dark:bg-[#121318] rounded-lg p-6 text-[#101115] dark:text-white">
       <div className="flex justify-between gap-6">
         <div className="grayGradientBg1 rounded-lg p-6 w-full">
           <div className="flex justify-between items-center gap-3">
             <div className="flex justify-start items-center gap-3">
-              <img src="/img/tokens/token1.png" alt="" className="h-12 w-12" />
-              <p className="text-xl font-medium">BitCoin</p>
+              {/* <img src="/img/tokens/token1.png" alt="" className="h-12 w-12" /> */}
               <p className="itemBg1 px-3 py-1 rounded font-medium text-sm">
-                BTC
+                {tokenInfo && tokenInfo.symbol}
               </p>
               <p className="itemBg1 px-3 py-1 rounded font-medium text-sm cursor-pointer">
                 <StarBorderIcon />
@@ -33,13 +33,14 @@ function TokenInfo() {
             </div>
             <div className="flex justify-end items-center gap-3">
               <p className="itemBg1 px-3 py-1 rounded font-medium text-sm">
-                Rank #2676
+                Rank #{tokenInfo && tokenInfo.cmc_rank}
               </p>
               <p className="itemBg1 px-3 py-1 rounded text-[#9FA0A1] font-medium text-sm">
                 Token
               </p>
               <p className="itemBg1 px-3 py-1 rounded text-[#9FA0A1] font-medium text-sm">
-                On 73,482 Watchlists
+                On {formatNumber(tokenInfo ? tokenInfo.watchlistCount : 0)}{" "}
+                Watchlists
               </p>
             </div>
           </div>
@@ -48,7 +49,9 @@ function TokenInfo() {
             <p className="itemBg1 px-3 py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full">
               <InsertLinkIcon style={{ fontSize: "20px" }} />
               Website
-              <OpenInNewIcon style={{ fontSize: "14px" }} />
+              <a href={tokenInfo && tokenInfo.website1} target="_blank">
+                <OpenInNewIcon style={{ fontSize: "14px" }} />
+              </a>
             </p>
 
             <p className="itemBg1 px-3 py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full">
@@ -68,22 +71,30 @@ function TokenInfo() {
             </p>
           </div>
 
-          <p className="mt-4">Contracts:</p>
-          <div className="mt-2 flex justify-start gap-3 items-center">
-            <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2">
-              <img src="/img/icons/18391.png" alt="" className="h-6 w-6" />
-              BNB Smart Chain (BEP20):{" "}
-              <span className="text-[#FF5665]">0x6d3a...ade19fc</span>
-              <ContentCopyIcon style={{ fontSize: "16px" }} />
-              <img src="/img/icons/metamask1.png" alt="" className="h-5 w-5" />
-            </p>
+          {tokenInfo && tokenInfo.contractAddress.length > 0 && (
+            <>
+              <p className="mt-4">Contracts:</p>
+              <div className="mt-2 flex justify-start gap-3 items-center">
+                <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2">
+                  <img src="/img/icons/18391.png" alt="" className="h-6 w-6" />
+                  BNB Smart Chain (BEP20):{" "}
+                  <span className="text-[#FF5665]">0x6d3a...ade19fc</span>
+                  <ContentCopyIcon style={{ fontSize: "16px" }} />
+                  <img
+                    src="/img/icons/metamask1.png"
+                    alt=""
+                    className="h-5 w-5"
+                  />
+                </p>
 
-            <p className="itemBg1 px-4 py-2 rounded-lg font-bold flex justify-center items-center gap-2">
-              <ArticleIcon style={{ fontSize: "16px" }} />
-              More
-              <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
-            </p>
-          </div>
+                <p className="itemBg1 px-4 py-2 rounded-lg font-bold flex justify-center items-center gap-2">
+                  <ArticleIcon style={{ fontSize: "16px" }} />
+                  More
+                  <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
+                </p>
+              </div>
+            </>
+          )}
 
           <p className="mt-4">Tags:</p>
           <div className="mt-2 flex justify-start gap-3 items-center">
@@ -106,7 +117,9 @@ function TokenInfo() {
         </div>
 
         <div className="grayGradientBg1 rounded-lg p-6">
-          <p className="text-lg font-medium">Qatar 2022 Token Price (FWC)</p>
+          <p className="text-lg font-medium">
+            {tokenInfo && tokenInfo.name} ({tokenInfo && tokenInfo.symbol})
+          </p>
           <div className="flex items-center text-sm gap-3 mt-4">
             <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full shadow">
               Buy
@@ -126,9 +139,11 @@ function TokenInfo() {
             </p>
           </div>
           <div className="mt-4 flex justify-between items-center">
-            <p className="text-4xl font-medium">$0.0...00103</p>
+            <p className="text-4xl font-medium">
+              ${tokenInfo && formatNumber(tokenInfo.price)}
+            </p>
             <button className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-4">
-              9.98%
+              {tokenInfo && formatNumber(tokenInfo.percent_change_24h)}%
             </button>
           </div>
           <div className="mt-4 flex justify-between items-center">
@@ -142,12 +157,12 @@ function TokenInfo() {
           <div className="mt-4 flex items-end gap-3">
             <div>
               <p className="text-sm">Low:</p>
-              <p>$0.0...01024</p>
+              <p>{tokenInfo && formatPrice(tokenInfo.low_24h)}</p>
             </div>
             <div className="w-full h-[6px] bg-[#D1D1D1] rounded mb-2" />
             <div>
               <p className="text-sm">High:</p>
-              <p>$0.0...01179</p>
+              <p>{tokenInfo && formatPrice(tokenInfo.high_24h)}</p>
             </div>
             <div>
               <p className="itemBg1 px-1 py-1 rounded-lg font-medium flex justify-center items-center text-sm gap-1 cursor-pointer">
@@ -167,19 +182,21 @@ function TokenInfo() {
               style={{ fontSize: "16px" }}
             />
             <WarningIcon
-              className="text-[#FF5665]"
+              className="text-[#FF5665] "
               style={{ fontSize: "16px" }}
             />
           </div>
           <div className="flex justify-between items-center mt-2">
-            <p className="text-3xl font-medium tracking-tighter">$10,401,194</p>
-            <p className="rounded-lg bg-[#16C784] px-4 py-2 text-white">
-              0.00%
+            <p className="text-xl font-medium tracking-tighter">
+              {tokenInfo && formatPrice(tokenInfo.market_cap)}
+            </p>
+            <p className={`rounded-lg bg-[#16C784] px-4 py-2 text-white`}>
+              {tokenInfo && formatNumber(tokenInfo.percent_change_24h)}%
             </p>
           </div>
           <div className="flex justify-between items-center text-sm mt-2">
             <p>24h Volume / Market Cap</p>
-            <p>0.131</p>
+            <p>{tokenInfo && formatPrice(tokenInfo.volume_24h)}</p>
           </div>
         </div>
         <div className="grayGradientBg1 rounded-lg p-6 w-full">
@@ -211,9 +228,9 @@ function TokenInfo() {
             />
           </div>
           <div className="flex justify-between items-center mt-2">
-            <p className="text-3xl font-medium tracking-tighter">$19,628,422</p>
+            <p className="text-xl font-medium tracking-tighter">{tokenInfo && formatPrice(tokenInfo.volume_24h)}</p>
             <p className="rounded-lg bg-gradient-to-tr from-[#FF6673] to-[#FF1A2D] px-4 py-2 text-white">
-              13.05%
+              {tokenInfo && formatNumber(tokenInfo.volume_change_24h)}%
             </p>
           </div>
           <div className="flex justify-between items-center text-sm mt-2">
@@ -238,17 +255,17 @@ function TokenInfo() {
             />
           </div>
           <div className="flex justify-between items-center mt-2">
-            <p className="text-3xl font-medium tracking-tighter">
-              99,712,041,000 FWC
+            <p className="text-xl font-medium tracking-tighter">
+              {tokenInfo && formatNumber(tokenInfo.circulatingSupply)} {tokenInfo && tokenInfo.symbol}
             </p>
           </div>
           <div className="flex justify-between items-center text-sm mt-2">
             <p>Max Supply</p>
-            <p>200,000,000,000</p>
+            <p>{tokenInfo && formatNumber(tokenInfo.maxSupply)}</p>
           </div>
           <div className="flex justify-between items-center text-sm mt-1">
             <p>Total Supply</p>
-            <p>200,000,000,000</p>
+            <p>{tokenInfo && formatNumber(tokenInfo.totalSupply)}</p>
           </div>
         </div>
       </div>
