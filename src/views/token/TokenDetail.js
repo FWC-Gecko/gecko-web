@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import useToken from "../../hook/useToken";
 
 import Ad from "../../components/section/ad/Ad";
 import OtherTokenInfo from "../../components/section/tokenDetail/OtherTokenInfo";
@@ -15,6 +16,13 @@ import Estimate from "../../components/section/tokenDetail/Estimate";
 import News from "../../components/section/tokenDetail/News";
 
 function TokenDetail() {
+
+  const {getTokenInformation} = useToken();
+
+  useEffect(async () => {
+    const res = await getTokenInformation('63e52c62c0b59ca123be5f2a');
+  }, [])
+
   return (
     <>
       <Ad />

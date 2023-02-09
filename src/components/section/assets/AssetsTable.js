@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useToken from "../../../hook/useToken";
 import Table from "../../common/table/Table";
 import { formatNumber } from "../../../utils";
+import { useEffectOnce } from "../../../hook/useEffectOnce";
 
 function AssetsTable() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function AssetsTable() {
     setTokens(res);
   };
 
-  useEffect(() => {
+  useEffectOnce(() => {
     getAllowedTokensData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
