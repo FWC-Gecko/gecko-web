@@ -45,7 +45,18 @@
 .itemBg1 {
   @apply bg-[#E9E9E9] dark:bg-[#2A2C36];
 }
-
+.itemBg2 {
+  @apply bg-[#EDEDED] dark:bg-[#121318];
+}
+.itemBg3 {
+  @apply bg-white dark:bg-[#21232C];
+}
+.itemBg4 {
+  @apply bg-[#F1F3F5] dark:bg-[#121318];
+}
+.itemBg5 {
+  @apply bg-[#F2F2F2] dark:bg-[#121318];
+}
 .list-token-input {
   @apply bg-transparent outline-0 px-3 py-2 text-white w-full;
 }

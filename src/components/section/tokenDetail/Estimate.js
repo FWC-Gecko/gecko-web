@@ -19,41 +19,41 @@ function Estimate() {
             estimates for each month-end is on the 21st of each month.
           </p>
           <div className="flex justify-between gap-6 mt-5">
-            <div className="bg-[#121318] rounded-lg w-full p-6">
-              <div className="flex justify-between items-center gap-4 border-b border-white pb-4">
+            <div className="bg-[#F1F3F5] dark:bg-[#121318] rounded-lg w-full p-6">
+              <div className="flex justify-between items-center gap-4 border-b border-[#BDBDBD] dark:border-white pb-4">
                 <div>
-                  <p className="text-white text-lg">31/12/2022</p>
+                  <p className="text-xl">31/12/2022</p>
                   <p className="flex justify-start text-[#636363] -ml-1 mt-1">
                     <PersonIcon />
                     71 Voted
                   </p>
                 </div>
-                <CalendarTodayIcon className="text-white" />
+                <CalendarTodayIcon className="" />
               </div>
               <p className="mt-3 text-xl">Place your estimate</p>
               <p className="text-[#636363]">
                 At least 1 to see how others estimate
               </p>
-              <button className="px-4 py-2 rounded-full bg-[#F2F2F2]/20 text-[#27282C] shadow mt-6">
+              <button className="px-4 py-2 rounded-full bg-[#9B9B9B]/20 dark:bg-[#F2F2F2]/20 text-black/20 dark:text-[#27282C] shadow mt-6">
                 Estimate Closed
               </button>
             </div>
-            <div className="bg-[#121318] rounded-lg w-full p-6">
-              <div className="flex justify-between items-center gap-4 border-b border-white pb-4">
+            <div className="bg-[#F1F3F5] dark:bg-[#121318] rounded-lg w-full p-6">
+              <div className="flex justify-between items-center gap-4 border-b border-[#BDBDBD] dark:border-white pb-4">
                 <div>
-                  <p className="text-white text-lg">31/12/2022</p>
+                  <p className="text-xl">31/12/2022</p>
                   <p className="flex justify-start text-[#636363] -ml-1 mt-1">
                     <PersonIcon />
                     22 Voted
                   </p>
                 </div>
-                <CalendarTodayIcon className="text-white" />
+                <CalendarTodayIcon className="" />
               </div>
               <p className="mt-3 text-xl">Place your estimate</p>
               <p className="text-[#636363]">
                 At least 1 to see how others estimate
               </p>
-              <button className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-6">
+              <button className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white shadow mt-6">
                 Estimate Closed
               </button>
             </div>

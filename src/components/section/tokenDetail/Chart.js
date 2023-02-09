@@ -12,7 +12,7 @@ function Chart(props) {
 
   return (
     <div>
-      <div className="bg-[#F2F2F2] rounded-full w-max p-2">
+      <div className="itemBg5 rounded-full w-max p-2 border-[#23262F] dark:border">
         {types.map((row, key) => {
           return (
             <button

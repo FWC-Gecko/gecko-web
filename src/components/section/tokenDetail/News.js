@@ -7,22 +7,22 @@ function News() {
 
   const NewsItem = () => {
     return (
-      <div className="bg-[#121318] p-6 rounded-lg">
+      <div className="itemBg4 p-6 rounded-lg">
         <img src="/img/news.png" alt="" className="w-full rounded-lg" />
-        <div className="flex justify-between items-center gap-4 mt-2">
+        <div className="flex justify-between items-center gap-4 mt-4">
           <p className="text-[#8B8B8B] items-center flex justify-start">
             <PersonIcon />
             Connor Stron
           </p>
           <div className="flex justify-end items-center gap-4">
             <p className="text-[#8B8B8B]">2 hours ago</p>
-            <div className="bg-[#2A2C34] rounded-full p-1 flex justify-end items-center gap-2">
+            <div className="bg-[#E8E8E8] dark:bg-[#2A2C34] rounded-full p-1 flex justify-end items-center gap-2">
               <img
                 src="/img/41951.png"
                 alt=""
                 className="h-6 w-6 rounded-full"
               />
-              <p className="px-1">FTT</p>
+              <p className="px-1 font-medium">FTT</p>
             </div>
           </div>
         </div>
@@ -45,14 +45,14 @@ function News() {
     <div>
       <div className="flex justify-between items-center gap-4">
         <p className="text-2xl">Bitcoin News</p>
-        <div className="flex justify-end items-center rounded-full border border-white p-1 gap-1">
+        <div className="flex justify-end items-center rounded-full border border-[#C4C4C4] dark:border-white p-1 gap-1">
           {types.map((row, key) => {
             return (
               <p
                 key={key}
-                className={`px-6 text-sm py-2 rounded-full cursor-pointer  ${
+                className={`px-6 text-sm py-3 rounded-full cursor-pointer  ${
                   type === row
-                    ? "bg-[#BA4DF9]"
+                    ? "bg-[#BA4DF9] text-white"
                     : "bg-transparent text-[#636363]"
                 }`}
                 onClick={() => {
