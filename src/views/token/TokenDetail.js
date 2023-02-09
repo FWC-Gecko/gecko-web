@@ -10,8 +10,13 @@ import Revaluation from "../../components/section/tokenDetail/Revaluation";
 import Estimate from "../../components/section/tokenDetail/Estimate";
 import News from "../../components/section/tokenDetail/News";
 import { useEffectOnce } from "../../hook/useEffectOnce";
+import { useParams } from "react-router-dom";
 
 function TokenDetail() {
+
+  const {tokeId} = useParams();
+  console.log(tokeId);
+
   useEffectOnce(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   });
@@ -32,10 +37,9 @@ function TokenDetail() {
 
   useEffectOnce(() => {
     const getTokenInfo = async () => {
-      const res = await getTokenInformation('63e52c62c0b59ca123be5f2a');
+      const res = await getTokenInformation(tokeId);
       setTokenInfo(res.token);
     }
-    
     getTokenInfo();
   }, [])
 
