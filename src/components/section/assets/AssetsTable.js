@@ -111,7 +111,7 @@ function AssetsTable() {
         const { max, min } = getMaxMinValue(row.quoteHistorical);
         console.log(max, min);
         return (
-          <svg height="50" width="200">
+          <svg height="50" width="150">
             <polyline
               points={row.quoteHistorical
                 .map(
@@ -125,7 +125,7 @@ function AssetsTable() {
               style={{
                 fill: "none",
                 stroke: "black",
-                strokeWidth: "2",
+                strokeWidth: "1",
               }}
             />
           </svg>
