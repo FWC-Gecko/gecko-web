@@ -11,6 +11,7 @@ import Converter from "../../components/section/tokenDetail/Converter";
 import Chat from "../../components/section/tokenDetail/Chat";
 import Description from "../../components/section/tokenDetail/Description";
 import Revaluation from "../../components/section/tokenDetail/Revaluation";
+import Estimate from "../../components/section/tokenDetail/Estimate";
 
 function TokenDetail() {
   return (
@@ -52,6 +53,7 @@ function TokenDetail() {
           </div>
           <Description />
           <Revaluation />
+          <Estimate />
         </div>
       </div>
     </>
