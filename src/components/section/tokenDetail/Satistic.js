@@ -6,17 +6,22 @@ function Satistic() {
   return (
     <div className="my-10 sm:my-20">
       <div className="px-6">
-        <div className="flex justify-between items-center gap-4">
+        <div className="sm:flex justify-between items-center gap-4">
           <p className="text-2xl sm:text-4xl font-bold tracking-widest text-center sm:text-start leading-snug">
-            <span className="text-[#BA4DF9]">BTC Price</span> Statistics
+            <span className="text-[#BA4DF9] text-center sm:text-left">
+              BTC Price
+            </span>{" "}
+            Statistics
           </p>
 
-          <button className="text-white px-4 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-6">
-            Show more
-            <ChevronRightIcon />
-          </button>
+          <div className="flex justify-center sm:justify-end mt-6 ">
+            <button className="text-white px-4 py-2 -full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow">
+              Show more
+              <ChevronRightIcon />
+            </button>
+          </div>
         </div>
-        <div className="mt-4 flex justify-between items-start gap-6">
+        <div className="mt-4 sm:flex justify-between items-start gap-6">
           <div className="itemBg3 p-3 rounded-lg w-full">
             <p className="text-xl font-medium">Bitcoin Price Today</p>
             <div className="itemBg2 rounded-lg my-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
@@ -47,7 +52,7 @@ function Satistic() {
               </p>
             </div>
           </div>
-          <div className="w-full">
+          <div className="w-full mt-3 sm:mt-0">
             <div className="itemBg3 p-3 rounded-lg w-full">
               <p className="text-xl font-medium">Bitcoin Market Cap</p>
               <div className="itemBg2 rounded-lg my-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
@@ -78,7 +83,7 @@ function Satistic() {
           </div>
         </div>
       </div>
-      <div className="bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] h-40 rounded-lg -mt-36"></div>
+      <div className="bg-gradient-to-r hidden sm:block from-[#5B46DF] to-[#BA4DF9] h-40 rounded-lg -mt-36"></div>
     </div>
   );
 }

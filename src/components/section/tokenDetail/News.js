@@ -43,7 +43,7 @@ function News() {
 
   return (
     <div className="mt-5">
-      <div className="flex justify-between items-center gap-4">
+      <div className="sm:flex justify-between items-center gap-4">
         <p className="text-2xl">Bitcoin News</p>
         <div className="flex justify-end items-center rounded-full border border-[#C4C4C4] dark:border-white p-1 gap-1">
           {types.map((row, key) => {

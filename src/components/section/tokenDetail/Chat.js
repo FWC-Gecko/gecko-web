@@ -7,18 +7,20 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 function Chat(props) {
   return (
-    <div className="w-full text-[#101115] dark:text-white">
-      <div className="flex justify-between items-center">
-        <p className="text-3xl font-medium">Live Qatar 2022 Token Chat</p>
+    <div className="w-full text-[#101115] dark:text-white mt-10 s:mt-0">
+      <div className="sm:flex justify-between items-center">
+        <p className="text-xl sm:text-3xl text-center sm:text-start font-medium">
+          Live Qatar 2022 Token Chat
+        </p>
 
-        <button className="text-white px-6 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow flex items-center gap-2">
+        <button className="text-white px-6 py-2 m-auto mt-3 sm:m-0 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow flex items-center gap-2">
           View on Community
           <ChevronRightIcon />
         </button>
       </div>
       <div className="mt-4 bg-[#F1F3F5] dark:bg-[#121318] rounded-2xl border border-[#DFDFDF] dark:border-[#23262F]">
         <div className="border-b border-[#DFDFDF] dark:border-[#23262F] flex justify-between items-center px-6 py-4 w-full">
-          <div className="flex justify-start items-center gap-3 w-full">
+          <div className="flex justify-start items-center gap-3 w-full mt-3 sm:mt-0">
             <img src="/img/logo.png" alt="" className="h-10 w-10" />
             <div>
               <p className="text-white">Football World Community</p>
@@ -34,7 +36,7 @@ function Chat(props) {
           <p>asdf</p>
         </div>
         <div className="border-t border-[#DFDFDF] dark:border-[#23262F] flex justify-between items-center px-6 py-4 w-full">
-          <div className="flex justify-center gap-1 items-center">
+          <div className="flex justify-center gap-1 items-center mt-3 sm:mt-0">
             <SmsIcon />
             <p>4</p>
           </div>

@@ -4,7 +4,7 @@ import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 
 function Revaluation() {
   return (
-    <div className="rounded-lg bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] my-10 sm:my-20 p-8 flex justify-between items-center">
+    <div className="rounded-lg bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] my-10 sm:my-20 p-8 sm:flex justify-between items-center">
       <div>
         <p className="text-3xl text-white">
           How do you feel about QATAR 2022 TOKEN today?
@@ -13,7 +13,7 @@ function Revaluation() {
           Vote to see what our Community thinks!
         </p>
       </div>
-      <div className="flex justify-end gap-3">
+      <div className="flex justify-center sm:justify-end gap-3 mt-3 sm:mt-0">
         <button className="bg-white text-[#BA4DF9] rounded-lg px-6 py-2 flex items-center gap-2">
           <ThumbUpAltIcon /> <p>Good</p>
         </button>
