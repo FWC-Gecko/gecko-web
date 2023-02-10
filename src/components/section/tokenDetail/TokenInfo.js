@@ -217,9 +217,9 @@ function TokenInfo({ tokenInfo }) {
           </div>
           <div className="mt-4 flex justify-between items-center">
             <p className="text-4xl font-medium">
-              ${tokenInfo?.price_usd?.toFixed(10)}
+              ${tokenInfo?.price_usd?.toFixed(5)}
             </p>
-            <button className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-4">
+            <button className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-2">
               {tokenInfo?.percent_change_24h_usd?.toFixed(2)}%
             </button>
           </div>
@@ -279,10 +279,11 @@ function TokenInfo({ tokenInfo }) {
         <div className="grayGradientBg1 rounded-lg p-6 w-full mt-3 sm:mt-0">
           <div className="flex justify-start items-center gap-1">
             <p>Fully Diluted Market Cap</p>
-            <InfoIcon
+            {/* <InfoIcon
               className="text-black/40 dark:text-white/60"
               style={{ fontSize: "16px" }}
-            />
+            /> */}
+            <img src="/img/certified.svg" />
             {/* <WarningIcon
               className="text-[#FF5665]"
               style={{ fontSize: "16px" }}
@@ -328,10 +329,7 @@ function TokenInfo({ tokenInfo }) {
               className="text-black/40 dark:text-white/60"
               style={{ fontSize: "16px" }}
             />
-            <WarningIcon
-              className="text-[#FF5665]"
-              style={{ fontSize: "16px" }}
-            />
+            {/* <img src="/img/certified.svg" /> */}
           </div>
           <div className="flex justify-between items-center mt-2">
             <p className="text-xl font-medium tracking-tighter">
