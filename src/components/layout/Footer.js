@@ -20,7 +20,7 @@ const Footer = () => {
               </p>
             </div>
 
-            <div className="grid-cols-2 sm:grid-cols-4 px-2 sm:px-0 gap-5 w-full hidden sm:grid ">
+            <div className="grid-cols-2 sm:grid-cols-4 px-2 sm:px-0 gap-5  hidden sm:grid ">
               <div className="mt-3">
                 <h1 className="footer_title bg-gradient-to-r from-[]">
                   {t("Products")}
@@ -40,11 +40,13 @@ const Footer = () => {
                 <div className="w-10 h-1 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]"></div>
 
                 <div className="mt-5">
-                  <p className="footer_text">- {t("Blockchain Explorer")}</p>
-                  <p className="footer_text">- {t("Crypto API")}</p>
-                  <p className="footer_text">- {t("Crypto Indices")}</p>
-                  <p className="footer_text">- {t("Jobs Board")}</p>
-                  <p className="footer_text">- {t("Sitemap")}</p>
+                  <p className="footer_text">- {t("About us")}</p>
+                  <p className="footer_text">- {t("Terms of use")}</p>
+                  <p className="footer_text">- {t("Privacy Policy")}</p>
+                  <p className="footer_text">- {t("Community Rules")}</p>
+                  <p className="footer_text">- {t("Disclaimer")}</p>
+                  <p className="footer_text">- {t("Methodology")}</p>
+                  <p className="footer_text">- {t("Careers")}</p>
                 </div>
               </div>
               <div className="mt-3">
@@ -52,11 +54,10 @@ const Footer = () => {
                 <div className="w-10 h-1 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]"></div>
 
                 <div className="mt-5">
-                  <p className="footer_text">- {t("Blockchain Explorer")}</p>
-                  <p className="footer_text">- {t("Crypto API")}</p>
-                  <p className="footer_text">- {t("Crypto Indices")}</p>
-                  <p className="footer_text">- {t("Jobs Board")}</p>
-                  <p className="footer_text">- {t("Sitemap")}</p>
+                  <p className="footer_text">- {t("Request Form")}</p>
+                  <p className="footer_text">- {t("Contact Support")}</p>
+                  <p className="footer_text">- {t("FAQ")}</p>
+                  <p className="footer_text">- {t("Glossary")}</p>
                 </div>
               </div>
               <div className="mt-3">
@@ -64,11 +65,11 @@ const Footer = () => {
                 <div className="w-10 h-1 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]"></div>
 
                 <div className="mt-5">
-                  <p className="footer_text">- {t("Blockchain Explorer")}</p>
-                  <p className="footer_text">- {t("Crypto API")}</p>
-                  <p className="footer_text">- {t("Crypto Indices")}</p>
-                  <p className="footer_text">- {t("Jobs Board")}</p>
-                  <p className="footer_text">- {t("Sitemap")}</p>
+                  <p className="footer_text">- {t("Facebook")}</p>
+                  <p className="footer_text">- {t("Twitter")}</p>
+                  <p className="footer_text">- {t("Telegram")}</p>
+                  <p className="footer_text">- {t("Instagram")}</p>
+                  <p className="footer_text">- {t("Interactive Chat")}</p>
                 </div>
               </div>
             </div>

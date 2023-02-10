@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import {
   Menu,
   MenuHandler,
@@ -36,16 +36,16 @@ function Header() {
   const Infos = () => {
     return (
       <div className="hidden sm:flex justify-start gap-4 items-center">
-        <p className="text-sm text-color2 dark:text-white font-normal">
+        <p className="text-sm font-normal">
           Cryptos: <span className="text-[#BA4DF9]">22,011</span>
         </p>
-        <p className="text-sm text-color2 dark:text-white font-normal">
+        <p className="text-sm font-normal">
           Market Cap: <span className="text-[#BA4DF9]">$840,576,683,048</span>
         </p>
-        <p className="text-sm text-color2 dark:text-white font-normal">
+        <p className="text-sm font-normal">
           Exchanges: <span className="text-[#BA4DF9]">529</span>
         </p>
-        <p className="text-sm text-color2 dark:text-white font-normal">
+        <p className="text-sm font-normal">
           Market Cap: <span className="text-[#BA4DF9]">$840,576,683,048</span>
         </p>
       </div>
@@ -73,11 +73,7 @@ function Header() {
                     <p className="cursor-pointer text-lg text-right">
                       {user && user?.userName}
                     </p>
-                    <img
-                      src="/img/down_arrow.png"
-                      alt=""
-                      className="w-3 mt-1"
-                    />
+                    <KeyboardArrowDownIcon />
                   </div>
                 </MenuHandler>
                 <MenuList className="w-32 bg-[#101115] border-white/5 border p-0">
