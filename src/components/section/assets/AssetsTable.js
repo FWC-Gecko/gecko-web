@@ -29,7 +29,7 @@ function AssetsTable() {
     {
       name: "Name",
       selector: (row) => (
-        <div className="flex justify-start items-center gap-3 py-2">
+        <div className="flex justify-start items-center gap-3 py-2 cursor-pointer" onClick={() => onRowClick(row)}>
           <img src={row.logo} alt="" className="h-8 w-8 rounded-full" />
           <div>
             <p className="font-bold text-md">{row.name}</p>

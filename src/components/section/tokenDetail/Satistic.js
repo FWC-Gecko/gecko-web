@@ -3,7 +3,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { formatPrice } from "../../../utils";
 
-function Satistic({tokenInfo}) {
+function Satistic({ tokenInfo }) {
   return (
     <div className="my-10 sm:my-20">
       <div className="px-6">
@@ -27,23 +27,44 @@ function Satistic({tokenInfo}) {
             <p className="text-xl font-medium">{tokenInfo?.name} Price Today</p>
             <div className="itemBg2 rounded-lg my-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
               <p>{tokenInfo?.name} Price</p>
-              <p className="text-[#9B9B9B]">{formatPrice(tokenInfo?.price_usd)}</p>
+              <p className="text-[#9B9B9B]">
+                {formatPrice(tokenInfo?.price_usd)}
+              </p>
             </div>
             <div className="itemBg2 rounded-lg my-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
               <p>Price Change</p>
-              <p className={tokenInfo?.percent_change_24h_usd < 0 ? 'text-[#FF5665]' : 'text-[#16C784]'}>{tokenInfo?.percent_change_24h_usd?.toFixed(2)}%</p>
+              <p
+                className={
+                  tokenInfo?.percent_change_24h_usd < 0
+                    ? "text-[#FF5665]"
+                    : "text-[#16C784]"
+                }
+              >
+                {tokenInfo?.percent_change_24h_usd?.toFixed(2)}%
+              </p>
             </div>
             <div className="itemBg2 rounded-lg my-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
               <p>24h Low / 24h High</p>
               <p className="text-[#9B9B9B]">
-                $0.000000000094 / $0.000000000114
+                {formatPrice(tokenInfo?.low_24h_usd)} /{" "}
+                {formatPrice(tokenInfo?.high_24h_usd)}
               </p>
             </div>
             <div className="itemBg2 rounded-lg my-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
               <p>Trading Volume</p>
               <div className="text-right">
-                <p className="text-[#9B9B9B]">$1,313,963</p>
-                <p className="text-[#FF5665]">17.36%</p>
+                <p className="text-[#9B9B9B]">
+                  {formatPrice(tokenInfo?.volume_24h_usd)}
+                </p>
+                <p
+                  className={
+                    tokenInfo?.volume_change_24h_usd < 0
+                      ? "text-[#FF5665]"
+                      : "text-[#16C784]"
+                  }
+                >
+                  {tokenInfo?.volume_change_24h_usd?.toFixed(2)}%
+                </p>
               </div>
             </div>
             <div className="itemBg2 rounded-lg mt-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
