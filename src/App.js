@@ -17,6 +17,7 @@ import { useEffectOnce } from "./hook/useEffectOnce";
 // Components
 import PrivateRoute from "./components/routing/PrivateRoute";
 import Container from "./components/layout/Container";
+import SendCode from "./views/auth/SendCode";
 
 // Views
 import Home from "./views/Home";
@@ -28,8 +29,11 @@ import ListToken from "./views/listToken/ListToken";
 import TokenDetail from "./views/token/TokenDetail";
 
 import "./App.css";
+import useAuth from "./hook/useAuth";
 
 function App() {
+  const { loadUser } = useAuth();
+
   useEffectOnce(() => {
     // check for token in LS when app first runs
     if (localStorage.token) {
@@ -38,7 +42,7 @@ function App() {
     }
     // try to fetch a user, if no token or invalid token we
     // will get a 401 response from our API
-    store.dispatch(loadUser());
+    loadUser();
 
     // log user out from all tabs if they log out in one tab
     window.addEventListener("storage", () => {
@@ -66,6 +70,18 @@ function App() {
               />
             }
           />
+          <Route
+            path="/auth/send-code"
+            element={
+              <Container
+                Component={SendCode}
+                isNavbar={false}
+                isHeader={false}
+                isFooter={false}
+              />
+            }
+          />
+
           <Route
             path="/signup"
             element={

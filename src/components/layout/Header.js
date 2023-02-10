@@ -25,6 +25,8 @@ function Header() {
   const { logout } = useAuth();
   const { setLoading } = useLoading();
 
+  console.log("user", user);
+
   const onLogout = async () => {
     setLoading(true);
     await logout();
@@ -68,8 +70,8 @@ function Header() {
                       alt=""
                       className="w-8 rounded-full"
                     />
-                    <p className="text-white cursor-pointer text-lg text-right">
-                      {user && user?.firstname + " " + user?.lastname}
+                    <p className="cursor-pointer text-lg text-right">
+                      {user && user?.userName}
                     </p>
                     <img
                       src="/img/down_arrow.png"

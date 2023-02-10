@@ -3,11 +3,8 @@ import { setAlert } from "../actions/alert";
 import {
   AUTH_ERROR,
   GOOGLE_LOGIN,
-  LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
-  REGISTER_FAIL,
-  REGISTER_SUCCESS,
   USER_LOADED,
 } from "../actions/types";
 import store from "../store";
@@ -16,11 +13,11 @@ import api from "../utils/api";
 export default function useAuth() {
   const loadUser = async () => {
     try {
-      const res = await api.get("/auth");
+      const res = await api.get("/auth/me");
 
       store.dispatch({
         type: USER_LOADED,
-        payload: res.data,
+        payload: res.data.user,
       });
     } catch (err) {
       store.dispatch({
@@ -32,28 +29,49 @@ export default function useAuth() {
   // Login User
   const login = async (req) => {
     try {
-      const res = await api.post("/auth", req);
-
-      store.dispatch({
-        type: LOGIN_SUCCESS,
-        payload: res.data,
-      });
-      setAlert("Login Success.", "success");
-      loadUser();
-    } catch (err) {
-      const errors = err.response.data.errors;
-
-      if (errors) {
-        errors.forEach((error) =>
-          store.dispatch(setAlert(error.msg, "danger"))
-        );
+      const res = await api.post("/auth/login", req);
+      if (res.data.success) {
+        await store.dispatch({
+          type: LOGIN_SUCCESS,
+          payload: res.data,
+        });
+        loadUser();
+        setAlert("Login Success.", "success");
+        return true;
       }
-
-      store.dispatch({
-        type: LOGIN_FAIL,
-      });
+      return false;
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        store.dispatch(setAlert(error?.response?.data?.message, "error"));
+        if (error?.response?.data?.message === "Must Be Verified By Email") {
+          return "VerifyEmail";
+        }
+      } else {
+        store.dispatch(setAlert("Server Error.", "error"));
+      }
+      return false;
     }
   };
+
+  // const login = async (req) => {
+  //   try {
+  //     const res = await api.post("/auth/login", req);
+  //     if (res.data.success) {
+  //       setAlert(res.data.message, "success");
+  //       loadUser();
+  //       return true;
+  //     }
+  //     return false;
+  //   } catch (error) {
+  //     console.log("errror", error);
+  //     if (error?.response?.data?.message) {
+  //       setAlert(error?.response?.data?.message, "error");
+  //     } else {
+  //       setAlert("Sesrver Error.", "error");
+  //     }
+  //     return false;
+  //   }
+  // };
 
   // GOOGLE LOGIN
   const googleLogin = async (formData) => {
@@ -75,26 +93,22 @@ export default function useAuth() {
   };
 
   // Register User
-  const register = async (formData) => {
+  const register = async (req) => {
     try {
-      const res = await api.post("/users", formData);
-      store.dispatch({
-        type: REGISTER_SUCCESS,
-        payload: res.data,
-      });
-      loadUser();
-    } catch (err) {
-      const errors = err.response.data.errors;
-
-      if (errors) {
-        errors.forEach((error) =>
-          store.dispatch(setAlert(error.msg, "danger"))
-        );
+      const res = await api.post("/auth/signup", req);
+      if (res.data.success) {
+        setAlert(res.data.message, "success");
+        return true;
       }
-
-      store.dispatch({
-        type: REGISTER_FAIL,
-      });
+      return false;
+    } catch (error) {
+      console.log("errror", error);
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Sesrver Error.", "error");
+      }
+      return false;
     }
   };
 
@@ -125,5 +139,31 @@ export default function useAuth() {
     }
   };
 
-  return { loadUser, login, googleLogin, register, logout, updateProfile };
+  const sendVerificationCode = async (req) => {
+    try {
+      const res = await api.post("/auth/verify/request", req);
+      if (res.data.success) {
+        store.dispatch(setAlert(res.data.message, "success"));
+        return true;
+      }
+      return false;
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        store.dispatch(setAlert(error?.response?.data?.message, "error"));
+      } else {
+        store.dispatch(setAlert("Server Error.", "error"));
+      }
+      return false;
+    }
+  };
+
+  return {
+    loadUser,
+    login,
+    googleLogin,
+    register,
+    logout,
+    updateProfile,
+    sendVerificationCode,
+  };
 }

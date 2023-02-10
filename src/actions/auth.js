@@ -1,17 +1,6 @@
 import api from "../utils/api";
 import { setAlert } from "./alert";
-import {
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  USER_LOADED,
-  AUTH_ERROR,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-  UPDATE_SUCCESS,
-  UPDATE_FAIL,
-  GOOGLE_LOGIN,
-} from "./types";
+import { USER_LOADED, AUTH_ERROR, UPDATE_SUCCESS, UPDATE_FAIL } from "./types";
 
 /*
   NOTE: we don't need a config object for axios as the
@@ -23,7 +12,7 @@ import {
 // Load User
 export const loadUser = () => async (dispatch) => {
   try {
-    const res = await api.get("/auth");
+    const res = await api.get("/auth/me");
 
     dispatch({
       type: USER_LOADED,

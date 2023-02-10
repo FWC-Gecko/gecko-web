@@ -25,7 +25,7 @@ function AssetsTable() {
   });
 
   const columns = [
-    { name: "#", selector: (row, key) => key + 1, width: "3%" },
+    { name: "#", selector: (row, key) => key + 1, width: "50px" },
     {
       name: "Name",
       selector: (row) => (
@@ -109,7 +109,6 @@ function AssetsTable() {
       name: "Last 7 Days",
       selector: (row) => {
         const { max, min } = getMaxMinValue(row.quoteHistorical);
-        console.log(max, min);
         return (
           <svg height="40" width="150">
             <polyline
@@ -124,7 +123,11 @@ function AssetsTable() {
               // points="0,10 5,20 10,10"
               style={{
                 fill: "none",
-                stroke: row?.quoteHistorical[0].price > row?.quoteHistorical[row?.quoteHistorical.length - 1].price ? "red" : "green",
+                stroke:
+                  row?.quoteHistorical[0].price >
+                  row?.quoteHistorical[row?.quoteHistorical.length - 1].price
+                    ? "red"
+                    : "green",
                 strokeWidth: "1",
               }}
             />
