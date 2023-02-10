@@ -3,7 +3,7 @@ import SwapVertIcon from "@mui/icons-material/SwapVert";
 
 function Converter() {
   return (
-    <div className="w-fullsm:min-w-[400px] mt-4">
+    <div className="w-fullsm:min-w-[400px]">
       <p className="text-3xl font-medium dark:text-white">
         BTC to USD Converter
       </p>

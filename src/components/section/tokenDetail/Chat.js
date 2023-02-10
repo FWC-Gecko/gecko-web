@@ -7,7 +7,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 function Chat(props) {
   return (
-    <div className="w-full text-[#101115] dark:text-white mt-10 s:mt-0">
+    <div className="w-full text-[#101115] dark:text-white mt-10 sm:mt-0">
       <div className="sm:flex justify-between items-center">
         <p className="text-xl sm:text-3xl text-center sm:text-start font-medium">
           Live Qatar 2022 Token Chat
