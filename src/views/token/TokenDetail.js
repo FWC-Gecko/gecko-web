@@ -91,7 +91,7 @@ function TokenDetail() {
                 );
               })}
             </div>
-            {subMenu === "Overview" && <Overview />}
+            {/* {subMenu === "Overview" && <Overview />} */}
             {subMenu === "Price Estimates" && <Estimate />}
             {subMenu === "News" && <News />}
           </div>

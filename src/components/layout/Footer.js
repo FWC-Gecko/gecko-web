@@ -18,7 +18,7 @@ const Footer = () => {
               </p>
             </div>
 
-            <div className="grid-cols-2 sm:grid-cols-4 px-2 sm:px-0 gap-5  hidden sm:grid ">
+            <div className="grid-cols-2 sm:grid-cols-4 px-2 sm:px-0 gap-5 grid ">
               <div className="mt-3">
                 <h1 className="footer_title bg-gradient-to-r from-[]">
                   {t("Products")}

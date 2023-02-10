@@ -5,7 +5,7 @@ import { useEffectOnce } from "../../../hook/useEffectOnce";
 function Overview() {
   useEffectOnce(() => {
     const chart = createChart(document.getElementById("OverviewChart"), {
-      width: "100%",
+      width: 500,
       height: 300,
     });
     const lineSeries = chart.addLineSeries();
@@ -24,8 +24,8 @@ function Overview() {
   });
 
   return (
-    <div>
-      <p>asdfasdf</p>
+    <div className="mt-5">
+      <p></p>
       <div id="OverviewChart" className="w-full"></div>
     </div>
   );
