@@ -13,7 +13,18 @@ import WarningIcon from "@mui/icons-material/Warning";
 import InfoIcon from "@mui/icons-material/Info";
 import { formatNumber, formatPrice } from "../../../utils";
 
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+} from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 function TokenInfo({ tokenInfo }) {
+  const { t } = useTranslation();
+
   return (
     <div className="bg-white dark:bg-[#121318] rounded-lg p-4 sm:p-6 text-[#101115] dark:text-white">
       <div className="sm:flex justify-between gap-6">
@@ -59,9 +70,38 @@ function TokenInfo({ tokenInfo }) {
             </p>
 
             <p className="itemBg1 px-3 py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full">
-              <SearchIcon style={{ fontSize: "22px" }} />
+              {/* <SearchIcon style={{ fontSize: "22px" }} />
               Explorers
-              <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
+              <KeyboardArrowDownIcon style={{ fontSize: "14px" }} /> */}
+              <Menu>
+                <MenuHandler>
+                  <div className="flex justify-end gap-2 items-center cursor-pointer">
+                    <p className="cursor-pointer text-lg text-right">
+                      Explorers
+                    </p>
+                    <img
+                      src="/img/down_arrow.png"
+                      alt=""
+                      className="w-3 mt-1"
+                    />
+                  </div>
+                </MenuHandler>
+                <MenuList className="w-45 bg-[#101115] border-white/5 border p-0 mt-1">
+                  {tokenInfo &&
+                    tokenInfo?.explorer?.map((item, index) => (
+                      <MenuItem
+                        key={index}
+                        className="hover:bg-white/40 flex justify-center items-center py-2 w-[100%]"
+                      >
+                        <a href={item} target="_blank">
+                          <p className="text-white cursor-pointer text-sm text-center w-[100%]">
+                            {item?.split("/")[2]}
+                          </p>
+                        </a>
+                      </MenuItem>
+                    ))}
+                </MenuList>
+              </Menu>
             </p>
             <p className="itemBg1 px-3 py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full">
               <PersonIcon style={{ fontSize: "22px" }} />
@@ -75,15 +115,21 @@ function TokenInfo({ tokenInfo }) {
             </p>
           </div>
 
-          {tokenInfo && tokenInfo.contractAddress && (
-            <>
-              <p className="mt-4">Contracts:</p>
-              <div className="mt-2 sm:flex justify-start gap-3 items-center">
+          <p className="mt-4">Contracts:</p>
+          {tokenInfo?.contractAddress?.length > 0 ? (
+            <div className="mt-2 sm:flex justify-start gap-3 items-center">
+              <a href={tokenInfo?.explorer[0]} target="_blank">
                 <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center text-sm sm:text-md gap-2">
-                  <img src="/img/icons/18391.png" alt="" className="h-6 w-6" />
+                  <img src={tokenInfo?.logo} alt="" className="h-6 w-6" />
                   <div className="block sm:flex justify-center items-center">
-                    BNB Smart Chain (BEP20):{" "}
-                    <span className="text-[#FF5665]">0x6d3a...ade19fc</span>
+                    Blockchain ({tokenInfo?.contractAddress[0].blockchain}):{" "}
+                    <span className="text-[#FF5665]">
+                      {tokenInfo?.contractAddress[0].address.substr(0, 7)}...
+                      {tokenInfo?.contractAddress[0].address.substr(
+                        tokenInfo?.contractAddress[0].address.length - 7,
+                        7
+                      )}
+                    </span>
                   </div>
                   <ContentCopyIcon style={{ fontSize: "16px" }} />
                   <img
@@ -92,30 +138,55 @@ function TokenInfo({ tokenInfo }) {
                     className="h-5 w-5"
                   />
                 </p>
+              </a>
 
-                <p className="itemBg1 px-4 py-2 rounded-lg font-bold flex justify-center items-center gap-2 mt-3 sm:mt-0">
-                  <ArticleIcon style={{ fontSize: "16px" }} />
-                  More
-                  <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
-                </p>
-              </div>
-            </>
+              <p className="itemBg1 px-4 py-2 rounded-lg font-bold flex justify-center items-center gap-2 mt-3 sm:mt-0">
+                {/* <ArticleIcon style={{ fontSize: "16px" }} />
+                More
+                <KeyboardArrowDownIcon style={{ fontSize: "14px" }} /> */}
+                <Menu>
+                  <MenuHandler>
+                    <div className="flex justify-end gap-2 items-center cursor-pointer">
+                      <p className="cursor-pointer text-lg text-right">More</p>
+                      <img
+                        src="/img/down_arrow.png"
+                        alt=""
+                        className="w-3 mt-1"
+                      />
+                    </div>
+                  </MenuHandler>
+                  <MenuList className="w-45 bg-[#101115] border-white/5 border p-0 mt-1">
+                    {tokenInfo &&
+                      tokenInfo?.explorer?.map((item, index) => (
+                        <MenuItem
+                          key={index}
+                          className="hover:bg-white/40 flex justify-center items-center py-2 w-[100%]"
+                        >
+                          <a href={item} target="_blank">
+                            <p className="text-white cursor-pointer text-sm text-center w-[100%]">
+                              {item?.split("/")[2]}
+                            </p>
+                          </a>
+                        </MenuItem>
+                      ))}
+                  </MenuList>
+                </Menu>
+              </p>
+            </div>
+          ) : (
+            <div className="mt-3">Contract Address Not Supported</div>
           )}
 
           <p className="mt-4">Tags:</p>
           <div className="mt-2 sm:flex justify-start gap-3 items-center flex-wrap sm:flex-nowrap">
-            <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 mt-3 sm:mt-0">
-              Decentralized Exchange (DEX) Token
-            </p>
-            <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 mt-3 sm:mt-0">
-              Defi
-            </p>
-            <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 mt-3 sm:mt-0">
-              Yield Farming
-            </p>
-            <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 mt-3 sm:mt-0">
-              DAO
-            </p>
+            {tokenInfo?.cryptoAssetTags?.map((item, index) => {
+              if (index < 4)
+                return (
+                  <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 mt-3 sm:mt-0">
+                    {item}
+                  </p>
+                );
+            })}
           </div>
           <button className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-4">
             View All
@@ -146,29 +217,29 @@ function TokenInfo({ tokenInfo }) {
           </div>
           <div className="mt-4 flex justify-between items-center">
             <p className="text-4xl font-medium">
-              ${tokenInfo && formatNumber(tokenInfo.price)}
+              ${tokenInfo?.price_usd?.toFixed(10)}
             </p>
             <button className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-4">
-              {tokenInfo && formatNumber(tokenInfo.percent_change_24h)}%
+              {tokenInfo?.percent_change_24h_usd?.toFixed(2)}%
             </button>
           </div>
           <div className="mt-4 flex justify-between items-center">
-            <p className="text-lg">{`<`}0.000000000001 BTC</p>
-            <p className="text-sm text-[#FF5665]">10.64%</p>
+            <p className="text-lg">{tokenInfo?.price_btc?.toFixed(9) < 0.000001 ? `< 0.00000000001` : tokenInfo?.price_btc?.toFixed(9)} BTC</p>
+            <p className="text-sm text-[#FF5665]">{tokenInfo?.price_change_24h_btc?.toFixed(2)}%</p>
           </div>
           <div className="mt-4 flex justify-between items-center">
-            <p className="text-lg">{`<`}0.000000000001 ETH</p>
-            <p className="text-sm text-[#FF5665]">11.87%</p>
+            <p className="text-lg">{tokenInfo?.price_eth?.toFixed(9) < 0.000001 ? `< 0.00000000001` : tokenInfo?.price_eth?.toFixed(9)} ETH</p>
+            <p className="text-sm text-[#FF5665]">{tokenInfo?.price_change_24h_btc?.toFixed(2)}%</p>
           </div>
           <div className="mt-4 flex items-end gap-3">
             <div>
               <p className="text-sm">Low:</p>
-              <p>{tokenInfo && formatPrice(tokenInfo.low_24h)}</p>
+              <p>{tokenInfo && formatPrice(tokenInfo?.low_24h)}</p>
             </div>
             <div className="w-full h-[6px] bg-[#D1D1D1] rounded mb-2" />
             <div>
               <p className="text-sm">High:</p>
-              <p>{tokenInfo && formatPrice(tokenInfo.high_24h)}</p>
+              <p>{tokenInfo && formatPrice(tokenInfo?.high_24h)}</p>
             </div>
             <div>
               <p className="itemBg1 px-1 py-1 rounded-lg font-medium flex justify-center items-center text-sm gap-1 cursor-pointer">
@@ -194,15 +265,15 @@ function TokenInfo({ tokenInfo }) {
           </div>
           <div className="flex justify-between items-center mt-2">
             <p className="text-xl font-medium tracking-tighter">
-              {tokenInfo && formatPrice(tokenInfo.market_cap)}
+              {tokenInfo && formatPrice(tokenInfo?.market_cap_usd)}
             </p>
             <p className={`rounded-lg bg-[#16C784] px-4 py-2 text-white`}>
-              {tokenInfo && formatNumber(tokenInfo.percent_change_24h)}%
+              {tokenInfo && formatNumber(tokenInfo?.market_cap_dominance_usd?.toFixed(2))}%
             </p>
           </div>
           <div className="flex justify-between items-center text-sm mt-2">
-            <p>24h Volume / Market Cap</p>
-            <p>{tokenInfo && formatPrice(tokenInfo.volume_24h)}</p>
+            <p>24h Volume</p>
+            <p>{tokenInfo && formatPrice(tokenInfo?.volume_24h_usd)}</p>
           </div>
         </div>
         <div className="grayGradientBg1 rounded-lg p-6 w-full mt-3 sm:mt-0">
@@ -218,7 +289,7 @@ function TokenInfo({ tokenInfo }) {
             />
           </div>
           <div className="flex justify-between items-center mt-2">
-            <p className="text-3xl font-medium tracking-tighter">$19,628,422</p>
+            <p className="text-xl font-medium tracking-tighter">{formatPrice(tokenInfo?.fully_diluted_market_cap_usd)}</p>
             <p className="rounded-lg bg-gradient-to-tr from-[#FF6673] to-[#FF1A2D] px-4 py-2 text-white">
               13.05%
             </p>
@@ -235,10 +306,10 @@ function TokenInfo({ tokenInfo }) {
           </div>
           <div className="flex justify-between items-center mt-2">
             <p className="text-xl font-medium tracking-tighter">
-              {tokenInfo && formatPrice(tokenInfo.volume_24h)}
+              {tokenInfo && formatPrice(tokenInfo?.volume_24h_usd)}
             </p>
             <p className="rounded-lg bg-gradient-to-tr from-[#FF6673] to-[#FF1A2D] px-4 py-2 text-white">
-              {tokenInfo && formatNumber(tokenInfo.volume_change_24h)}%
+              {tokenInfo && formatNumber(tokenInfo?.volume_change_24h_usd)}%
             </p>
           </div>
           <div className="flex justify-between items-center text-sm mt-2">
