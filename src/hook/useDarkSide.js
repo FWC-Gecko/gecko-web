@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { CHANGE_THEME } from "../actions/types";
+import store from "../store";
 
 export default function useDarkSide() {
   const [theme, setTheme] = useState(localStorage.theme);
@@ -8,6 +10,11 @@ export default function useDarkSide() {
     const root = window.document.documentElement;
     root.classList.remove(colorTheme);
     root.classList.add(theme);
+
+    store.dispatch({
+      type: CHANGE_THEME,
+      payload: theme,
+    });
 
     // Save theme to local Storage
     localStorage.setItem("theme", theme);

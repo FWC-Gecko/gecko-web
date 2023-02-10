@@ -4,11 +4,11 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
-  //LOGIN_FAIL,
-  LOGOUT,
+  CHANGE_THEME,
   ACCOUNT_DELETED,
   UPDATE_SUCCESS,
   GOOGLE_LOGIN,
+  LOGOUT,
 } from "../actions/types";
 
 const initialState = {
@@ -16,6 +16,7 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
+  theme: "dark",
 };
 
 function authReducer(state = initialState, action) {
@@ -30,6 +31,10 @@ function authReducer(state = initialState, action) {
         user: payload,
       };
     case REGISTER_SUCCESS:
+    case CHANGE_THEME:
+      return {
+        theme: payload,
+      };
     case LOGIN_SUCCESS:
       return {
         ...state,

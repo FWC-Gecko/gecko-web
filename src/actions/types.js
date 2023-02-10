@@ -33,3 +33,4 @@ export const UPDATE_SUCCESS = "UPDATE_SUCCESS";
 export const UPDATE_FAIL = "UPDATE_FAIL";
 export const GOOGLE_LOGIN = "GOOGLE_LOGIN";
 export const SET_LOADING = "SET_LOADING";
+export const CHANGE_THEME = "CHANGE_THEME";

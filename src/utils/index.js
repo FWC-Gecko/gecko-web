@@ -55,6 +55,14 @@ function formatDateTime(date) {
   }
 }
 
+function dateToTimeStamp(date) {
+  if (date) {
+    const newDate = new Date(date);
+    return newDate.getTime();
+  }
+  return 0;
+}
+
 function getDeltaDate(date, delta) {
   let tempDate = new Date(date);
   tempDate.setDate(tempDate.getDate() + delta);
@@ -124,4 +132,5 @@ export {
   validURL,
   formatNumber,
   getMaxMinValue,
+  dateToTimeStamp,
 };

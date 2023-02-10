@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
+import { useSelector } from "react-redux";
 import Filters from "./Filters";
 import Pagination from "./Pagination";
 import PerPageSelect from "./PerPageSelect";
@@ -9,7 +10,7 @@ import TileTable from "./TileTable";
 import WatchListButton from "./WatchListButton";
 
 function Table({ columns, data, onRowClick, isTableLoading = false }) {
-  const themeColor = localStorage.getItem("theme");
+  const themeColor = useSelector((state) => state.auth.theme);
 
   const customStyles = {
     table: {

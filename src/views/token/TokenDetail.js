@@ -14,8 +14,7 @@ import { useParams } from "react-router-dom";
 import Overview from "../../components/section/tokenDetail/Overview";
 
 function TokenDetail() {
-  const { tokeId } = useParams();
-  console.log(tokeId);
+  const { tokenId } = useParams();
 
   useEffectOnce(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -37,7 +36,7 @@ function TokenDetail() {
 
   useEffectOnce(() => {
     const getTokenInfo = async () => {
-      const res = await getTokenInformation(tokeId);
+      const res = await getTokenInformation(tokenId);
       setTokenInfo(res.token);
     };
     getTokenInfo();
@@ -91,7 +90,7 @@ function TokenDetail() {
                 );
               })}
             </div>
-            {/* {subMenu === "Overview" && <Overview />} */}
+            {subMenu === "Overview" && <Overview tokenId={tokenId} />}
             {subMenu === "Price Estimates" && <Estimate />}
             {subMenu === "News" && <News />}
           </div>

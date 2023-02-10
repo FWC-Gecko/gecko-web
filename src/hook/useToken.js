@@ -93,11 +93,31 @@ export default function useToken() {
     }
   };
 
+  const getTokenOverview = async (tokenId) => {
+    try {
+      const res = await api.get(
+        `/global/token/${tokenId}/overview?period=ALL&timeStart&timeEnd`
+      );
+      if (res.data.success) {
+        return res.data.data;
+      }
+      return [];
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Sesrver Error.", "error");
+      }
+      return [];
+    }
+  };
+
   return {
     list,
     getAllowedTokens,
     getTokenInformation,
     getNewTokens,
     getRecommendInfos,
+    getTokenOverview,
   };
 }
