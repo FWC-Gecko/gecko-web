@@ -87,7 +87,7 @@ const Login = () => {
               onChange={setPassword}
             />
             <div className="flex justify-end mt-4">
-              <p className="font-medium text-sm">Forgot Password?</p>
+              <p className="font-medium text-sm"></p>
             </div>
             <SubmitButton label={"Sign Up"} />
           </form>
