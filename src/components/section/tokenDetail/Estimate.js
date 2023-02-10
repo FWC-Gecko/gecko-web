@@ -18,7 +18,7 @@ function Estimate() {
             are based on user input compiled by CoinMarketCap. The cut-off for
             estimates for each month-end is on the 21st of each month.
           </p>
-          <div className="flex justify-between gap-6 mt-5">
+          <div className="sm:flex justify-between gap-6 mt-5">
             <div className="bg-[#F1F3F5] dark:bg-[#121318] rounded-lg w-full p-6">
               <div className="flex justify-between items-center gap-4 border-b border-[#BDBDBD] dark:border-white pb-4">
                 <div>
@@ -38,7 +38,7 @@ function Estimate() {
                 Estimate Closed
               </button>
             </div>
-            <div className="bg-[#F1F3F5] dark:bg-[#121318] rounded-lg w-full p-6">
+            <div className="bg-[#F1F3F5] dark:bg-[#121318] rounded-lg w-full p-6 mt-4 sm:mt-0">
               <div className="flex justify-between items-center gap-4 border-b border-[#BDBDBD] dark:border-white pb-4">
                 <div>
                   <p className="text-xl">31/12/2022</p>
