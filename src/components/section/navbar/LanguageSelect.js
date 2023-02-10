@@ -21,7 +21,7 @@ function LanguageSelect() {
   };
 
   return (
-    <div>
+    <div className="hidden sm:block">
       <div className="w-max relative">
         <Menu>
           <MenuHandler>

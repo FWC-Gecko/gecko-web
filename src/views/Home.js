@@ -41,7 +41,7 @@ const Home = () => {
           </div>
         </div>
         <div className="n-container">
-          <div className="flex justify-between py-4 sm:py-10">
+          <div className="justify-between py-4 sm:py-10 hidden sm:flex">
             <TrendingTokens />
             <MewTokens />
           </div>

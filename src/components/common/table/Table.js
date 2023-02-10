@@ -118,13 +118,13 @@ function Table({ columns, data, onRowClick, isTableLoading = false }) {
             <WatchListButton />
             <PortfolioButton />
           </div>
-          <div className="flex justify-end gap-3 sm:gap-6 mt-3 sm:mt-0">
+          <div className="flex justify-between sm:justify-end gap-3 sm:gap-6 mt-3 sm:mt-0">
             <PerPageSelect
               perPages={perPages}
               perPage={perPage}
               setPerPage={setPerPage}
             />
-            <Filters />
+            {/* <Filters /> */}
             <SwitchTheme themes={themes} theme={theme} setTheme={setTheme} />
           </div>
         </div>
