@@ -30,8 +30,6 @@ function Header() {
   const { setLoading } = useLoading();
   const { getRecommendInfos } = useToken();
 
-  console.log("user", user);
-
   const onLogout = async () => {
     setLoading(true);
     await logout();

@@ -39,11 +39,7 @@ function NewTokens() {
                   key={key}
                 >
                   {/* <p>{key + 1}</p> */}
-                  <img
-                    src={row?.icon || "/img/tokens/token3.png"}
-                    alt=""
-                    className="h-10 w-10"
-                  />
+                  <img src={row?.logo} alt="" className="h-10 w-10" />
                   <div className="flex items-start gap-1">
                     <div>
                       <p className="text-[20px] font-[400]">{row?.name}</p>
