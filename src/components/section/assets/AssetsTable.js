@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useToken from "../../../hook/useToken";
 import Table from "../../common/table/Table";
-import { formatNumber, formatPrice, getMaxMinValue } from "../../../utils";
+import { formatPrice, getMaxMinValue } from "../../../utils";
 import { useEffectOnce } from "../../../hook/useEffectOnce";
 
 function AssetsTable() {
