@@ -104,11 +104,7 @@ function App() {
           />
           <Route
             path="/list-token"
-            element={
-              <Container>
-                <PrivateRoute component={ListToken} />
-              </Container>
-            }
+            element={<Container Component={ListToken} />}
           />
         </Routes>
       </Router>
