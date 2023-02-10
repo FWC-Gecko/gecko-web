@@ -1,15 +1,16 @@
 import React from "react";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import { formatPrice } from "../../../utils";
 
-function Satistic() {
+function Satistic({tokenInfo}) {
   return (
     <div className="my-10 sm:my-20">
       <div className="px-6">
         <div className="sm:flex justify-between items-center gap-4">
           <p className="text-2xl sm:text-4xl font-bold tracking-widest text-center sm:text-start leading-snug">
             <span className="text-[#BA4DF9] text-center sm:text-left">
-              BTC Price
+              {tokenInfo?.symbol} Price
             </span>{" "}
             Statistics
           </p>
@@ -23,14 +24,14 @@ function Satistic() {
         </div>
         <div className="mt-4 sm:flex justify-between items-start gap-6">
           <div className="itemBg3 p-3 rounded-lg w-full">
-            <p className="text-xl font-medium">Bitcoin Price Today</p>
+            <p className="text-xl font-medium">{tokenInfo?.name} Price Today</p>
             <div className="itemBg2 rounded-lg my-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
-              <p>QATAR 2022 TOKEN Price</p>
-              <p className="text-[#9B9B9B]">$0.000000000099</p>
+              <p>{tokenInfo?.name} Price</p>
+              <p className="text-[#9B9B9B]">{formatPrice(tokenInfo?.price_usd)}</p>
             </div>
             <div className="itemBg2 rounded-lg my-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
               <p>Price Change</p>
-              <p className="text-[#FF5665]">$0.000000000099</p>
+              <p className={tokenInfo?.percent_change_24h_usd < 0 ? 'text-[#FF5665]' : 'text-[#16C784]'}>{tokenInfo?.percent_change_24h_usd?.toFixed(2)}%</p>
             </div>
             <div className="itemBg2 rounded-lg my-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
               <p>24h Low / 24h High</p>

@@ -98,8 +98,8 @@ function TokenDetail() {
             <Chat />
           </div>
           <Description />
-          <Revaluation />
-          <Satistic />
+          <Revaluation tokenInfo={tokenInfo} />
+          <Satistic tokenInfo={tokenInfo} />
         </div>
       </div>
       <Ad />
