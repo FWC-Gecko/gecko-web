@@ -25,7 +25,7 @@ function AssetsTable() {
   });
 
   const columns = [
-    { name: "#", selector: (row, index) => row?.tid + 1, width: "50px" },
+    { name: "#", selector: (row, index) => row?.tid + 1, width: "62px" },
     {
       name: "Name",
       selector: (row) => (
