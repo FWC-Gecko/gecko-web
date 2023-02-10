@@ -17,7 +17,7 @@ const Home = () => {
             <div className="sm:w-1/2">
               <p className="text-color2 dark:text-white text-2xl sm:text-4xl font-bold tracking-widest text-center sm:text-start leading-snug">
                 Today's Cryptocurrency Prices By{" "}
-                <span className="text-[#BA4DF9]">Football World Community</span>
+                <span className="text-[#BA4DF9]">FWC Digital</span>
               </p>
               <p className="text-color2 dark:text-white text-lg sm:text-xl mt-5 leading-relaxed text-center sm:text-start">
                 The total crypto market volume over the last 24 hours is{" "}
