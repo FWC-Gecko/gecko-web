@@ -234,12 +234,12 @@ function TokenInfo({ tokenInfo }) {
           <div className="mt-4 flex items-end gap-3">
             <div>
               <p className="text-sm">Low:</p>
-              <p>{tokenInfo && formatPrice(tokenInfo?.low_24h)}</p>
+              <p>{tokenInfo && formatPrice(tokenInfo?.low_24h_usd)}</p>
             </div>
             <div className="w-full h-[6px] bg-[#D1D1D1] rounded mb-2" />
             <div>
               <p className="text-sm">High:</p>
-              <p>{tokenInfo && formatPrice(tokenInfo?.high_24h)}</p>
+              <p>{tokenInfo && formatPrice(tokenInfo?.high_24h_usd)}</p>
             </div>
             <div>
               <p className="itemBg1 px-1 py-1 rounded-lg font-medium flex justify-center items-center text-sm gap-1 cursor-pointer">
@@ -258,16 +258,16 @@ function TokenInfo({ tokenInfo }) {
               className="text-black/40 dark:text-white/60"
               style={{ fontSize: "16px" }}
             />
-            <WarningIcon
+            {/* <WarningIcon
               className="text-[#FF5665] "
               style={{ fontSize: "16px" }}
-            />
+            /> */}
           </div>
           <div className="flex justify-between items-center mt-2">
             <p className="text-xl font-medium tracking-tighter">
               {tokenInfo && formatPrice(tokenInfo?.market_cap_usd)}
             </p>
-            <p className={`rounded-lg bg-[#16C784] px-4 py-2 text-white`}>
+            <p className={`rounded-lg ${tokenInfo?.market_cap_dominance_usd > 0 ? 'bg-[#16C784]' : 'bg-gradient-to-tr from-[#FF6673] to-[#FF1A2D]'} px-4 py-2 text-white`}>
               {tokenInfo && formatNumber(tokenInfo?.market_cap_dominance_usd?.toFixed(2))}%
             </p>
           </div>
@@ -283,14 +283,14 @@ function TokenInfo({ tokenInfo }) {
               className="text-black/40 dark:text-white/60"
               style={{ fontSize: "16px" }}
             />
-            <WarningIcon
+            {/* <WarningIcon
               className="text-[#FF5665]"
               style={{ fontSize: "16px" }}
-            />
+            /> */}
           </div>
           <div className="flex justify-between items-center mt-2">
             <p className="text-xl font-medium tracking-tighter">{formatPrice(tokenInfo?.fully_diluted_market_cap_usd)}</p>
-            <p className="rounded-lg bg-gradient-to-tr from-[#FF6673] to-[#FF1A2D] px-4 py-2 text-white">
+            <p className={`rounded-lg bg-[#16C784]  px-4 py-2 text-white`}>
               13.05%
             </p>
           </div>
@@ -308,7 +308,7 @@ function TokenInfo({ tokenInfo }) {
             <p className="text-xl font-medium tracking-tighter">
               {tokenInfo && formatPrice(tokenInfo?.volume_24h_usd)}
             </p>
-            <p className="rounded-lg bg-gradient-to-tr from-[#FF6673] to-[#FF1A2D] px-4 py-2 text-white">
+            <p className={`rounded-lg ${tokenInfo?.volume_change_24h_usd > 0 ? 'bg-[#16C784]' : 'bg-gradient-to-tr from-[#FF6673] to-[#FF1A2D]'} px-4 py-2 text-white`}>
               {tokenInfo && formatNumber(tokenInfo?.volume_change_24h_usd)}%
             </p>
           </div>
