@@ -92,7 +92,7 @@ function AssetsTable() {
       width: "12%",
       selector: (row) => (
         <div>
-          <p>${formatPrice(row.quoteLatest.volume_24h)}</p>
+          <p>{formatPrice(row.quoteLatest.volume_24h)}</p>
         </div>
       ),
     },
@@ -117,14 +117,14 @@ function AssetsTable() {
                 .map(
                   (row1, key) =>
                     `${key * 3},${parseInt(
-                      (row1.price - min) / ((max - min) / 40)
+                      (max - row1.price) / ((max - min) / 40)
                     )}`
                 )
                 .join(" ")}
               // points="0,10 5,20 10,10"
               style={{
                 fill: "none",
-                stroke: "green",
+                stroke: row?.quoteHistorical[0].price > row?.quoteHistorical[row?.quoteHistorical.length - 1].price ? "red" : "green",
                 strokeWidth: "1",
               }}
             />
