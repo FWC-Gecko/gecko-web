@@ -4,7 +4,7 @@ import { LOGOUT } from "../actions/types";
 
 // Create an instance of axios
 const api = axios.create({
-  baseURL: "http://45.15.25.187:3000/api/v1",
+  baseURL: "https://www.fwc.digital/api/v1",
   headers: {
     "Content-Type": "application/json",
   },
