@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import useLoading from "../../hook/useLoading";
 import { chains } from "../../constants";
+import PreviousButton from "../../components/section/listToken/PreviousButton";
+import NextButton from "../../components/section/listToken/NextButton";
+import Input from "../../components/section/listToken/Input";
 
 function Step3({ activeStep, setActiveStep }) {
   const { setLoading } = useLoading();
@@ -98,58 +101,35 @@ function Step3({ activeStep, setActiveStep }) {
         </div>
         <div className="flex justify-between gap-6 mt-6">
           <div className="w-full">
-            <p className="text-white font-medium">Total Supply*</p>
-            <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-              <input
-                type={"number"}
-                className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-                placeholder="Enter Contract Address"
-                value={totalSupply}
-                onChange={(e) => setTotalSupply(e.target.value)}
-                required
-              />
-            </div>
+            <Input
+              type={"number"}
+              label="Total Supply"
+              placeholder={"Enter Total Supply"}
+              value={totalSupply}
+              onChange={setTotalSupply}
+            />
           </div>
           <div className="w-full">
-            <p className="text-white font-medium">Max Supply*</p>
-            <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-              <input
-                type={"number"}
-                className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-                placeholder="Enter Max Supply"
-                value={maxSupply}
-                onChange={(e) => setMaxSupply(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-        </div>
-        <div className="mt-6">
-          <p className="text-white font-medium">Circulating Supply*</p>
-          <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-            <input
-              type={"number"}
-              className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-              placeholder="Enter Circulating Supply"
-              value={circulatingSupply}
-              onChange={(e) => setCirculatingSupply(e.target.value)}
-              required
+            <Input
+              label="Max Supply"
+              placeholder={"Enter Max Supply"}
+              value={maxSupply}
+              onChange={setMaxSupply}
             />
           </div>
         </div>
+        <div className="mt-6">
+          <Input
+            type={"number"}
+            label="Circulating Supply"
+            placeholder={"Enter Circulating Supply"}
+            value={circulatingSupply}
+            onChange={setCirculatingSupply}
+          />
+        </div>
         <div className="mt-6 flex justify-end gap-4">
-          <button
-            className="border border-[#BA4DF9] text-white text-sm font-medium rounded-full py-2 px-6"
-            onClick={onPrevStep}
-          >
-            Back
-          </button>
-          <button
-            type="submit"
-            className="bg-gradient-to-r from-[#5B46DF] text-white to-[#BA4DF9] text-sm font-medium rounded-full py-2 px-6"
-          >
-            Next Step
-          </button>
+          <PreviousButton onClick={onPrevStep} />
+          <NextButton />
         </div>
       </form>
     </div>

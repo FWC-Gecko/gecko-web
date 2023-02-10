@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import StepSelector from "./StepSelector";
 
 import Step1 from "./Step1";
@@ -61,11 +60,11 @@ function ListToken() {
               setActiveStep={setActiveStep}
             />
           </div>
-          <div className="w-full">
+          <div className="w-full" id="form">
             <p className="text-md font-medium text-white mt-4 sm:mt-0">
               Step {activeStep + 1} / {steps.length}
             </p>
-            {activeStep === 0 && (
+            {/* {activeStep === 0 && (
               <Step1 activeStep={activeStep} setActiveStep={setActiveStep} />
             )}
             {activeStep === 1 && (
@@ -74,9 +73,9 @@ function ListToken() {
             {activeStep === 2 && (
               <Step3 activeStep={activeStep} setActiveStep={setActiveStep} />
             )}
-            {activeStep === 3 && (
-              <Step4 activeStep={activeStep} setActiveStep={setActiveStep} />
-            )}
+            {activeStep === 3 && ( */}
+            <Step4 activeStep={activeStep} setActiveStep={setActiveStep} />
+            {/* )} */}
           </div>
         </div>
       </div>

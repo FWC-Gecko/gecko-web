@@ -1,9 +1,18 @@
-import { list } from "postcss";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import NextButton from "../../components/section/listToken/NextButton";
+import { useEffectOnce } from "../../hook/useEffectOnce";
 import useLoading from "../../hook/useLoading";
 
 function StepOne({ activeStep, setActiveStep }) {
+  useEffectOnce(() => {
+    const element = document.getElementById("form");
+    if (element) {
+      // 👇 Will scroll smoothly to the top of the next section
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+
   const { setLoading } = useLoading();
   const user = useSelector((state) => state.auth.user);
 
@@ -21,9 +30,7 @@ function StepOne({ activeStep, setActiveStep }) {
     list_token_data?.position ? list_token_data.position : positions[0]
   );
 
-  const [name, setName] = useState(
-    list_token_data?.name || user?.firstname + " " + user?.lastname
-  );
+  const [name, setName] = useState(list_token_data?.name);
   const [contactEmail, setContactEmail] = useState(
     list_token_data?.contactEmail || user?.email
   );
@@ -122,12 +129,7 @@ function StepOne({ activeStep, setActiveStep }) {
           </div>
         </div>
         <div className="mt-6 flex justify-end">
-          <button
-            type="submit"
-            className="bg-gradient-to-r from-[#5B46DF] text-white to-[#BA4DF9] text-sm font-medium rounded-full py-2 px-6"
-          >
-            Next Step
-          </button>
+          <NextButton />
         </div>
       </form>
     </div>

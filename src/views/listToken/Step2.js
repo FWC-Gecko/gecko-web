@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import useLoading from "../../hook/useLoading";
-import { chains } from "../../constants";
+import { useEffectOnce } from "../../hook/useEffectOnce";
+import PreviousButton from "../../components/section/listToken/PreviousButton";
+import NextButton from "../../components/section/listToken/NextButton";
 
 function Step2({ activeStep, setActiveStep }) {
   const { setLoading } = useLoading();
+
+  useEffectOnce(() => {
+    const element = document.getElementById("form");
+    if (element) {
+      // 👇 Will scroll smoothly to the top of the next section
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  });
 
   let list_token_data = JSON.parse(localStorage.getItem("list-token"));
 
@@ -66,7 +76,7 @@ function Step2({ activeStep, setActiveStep }) {
             />
           </div>
         </div>
-        <div className="flex justify-between gap-6 mt-4">
+        <div className="sm:flex justify-between gap-6 mt-4">
           <div className="w-full">
             <p className="text-white font-medium">Project Symbol</p>
             <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
@@ -79,7 +89,7 @@ function Step2({ activeStep, setActiveStep }) {
               />
             </div>
           </div>
-          <div className="w-full">
+          <div className="w-full mt-4 sm:mt-0">
             <p className="text-white font-medium">Project Launch Date*</p>
             <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
               <input
@@ -117,18 +127,8 @@ function Step2({ activeStep, setActiveStep }) {
         </div>
 
         <div className="mt-6 flex justify-end gap-4">
-          <button
-            className="border border-[#BA4DF9] text-white text-sm font-medium rounded-full py-2 px-6"
-            onClick={onPrevStep}
-          >
-            Back
-          </button>
-          <button
-            type="submit"
-            className="bg-gradient-to-r from-[#5B46DF] text-white to-[#BA4DF9] text-sm font-medium rounded-full py-2 px-6"
-          >
-            Next Step
-          </button>
+          <PreviousButton onClick={onPrevStep} />
+          <NextButton />
         </div>
       </form>
     </div>
