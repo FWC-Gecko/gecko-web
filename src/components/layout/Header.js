@@ -17,6 +17,10 @@ import useLoading from "../../hook/useLoading";
 import ToggleColorTheme from "../section/navbar/ToggleColorTheme";
 import SignInButton from "../section/navbar/SignInButton";
 import SignUpButton from "../section/navbar/SignUpButton";
+import { useEffectOnce } from "../../hook/useEffectOnce";
+import useToken from "../../hook/useToken";
+import { useState } from "react";
+import { formatPrice } from "../../utils";
 
 function Header() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -24,6 +28,7 @@ function Header() {
   const { t } = useTranslation();
   const { logout } = useAuth();
   const { setLoading } = useLoading();
+  const { getRecommendInfos } = useToken();
 
   console.log("user", user);
 
@@ -33,20 +38,36 @@ function Header() {
     setLoading(false);
   };
 
+  const [infos, setInfos] = useState([]);
+  useEffectOnce(() => {
+    async function init() {
+      const res = await getRecommendInfos();
+      setInfos(res);
+    }
+    init();
+  });
+
   const Infos = () => {
     return (
       <div className="hidden sm:flex justify-start gap-4 items-center">
         <p className="text-sm font-normal">
-          Cryptos: <span className="text-[#BA4DF9]">22,011</span>
+          Cryptos: <span className="text-[#BA4DF9]">{infos?.cryptoCount}</span>
         </p>
         <p className="text-sm font-normal">
-          Market Cap: <span className="text-[#BA4DF9]">$840,576,683,048</span>
+          Market Cap:{" "}
+          <span className="text-[#BA4DF9]">
+            {formatPrice(infos?.totalMarketCap)}
+          </span>
         </p>
         <p className="text-sm font-normal">
-          Exchanges: <span className="text-[#BA4DF9]">529</span>
+          Exchanges:{" "}
+          <span className="text-[#BA4DF9]">{infos?.exchangeCount}</span>
         </p>
         <p className="text-sm font-normal">
-          Market Cap: <span className="text-[#BA4DF9]">$840,576,683,048</span>
+          24h Vol:{" "}
+          <span className="text-[#BA4DF9]">
+            {formatPrice(infos?.totalVolume24h)}
+          </span>
         </p>
       </div>
     );

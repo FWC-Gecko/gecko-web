@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import StepSelector from "./StepSelector";
 
 import Step1 from "./Step1";
@@ -6,9 +6,21 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
 import Ad from "../../components/section/ad/Ad";
+import { useEffectOnce } from "../../hook/useEffectOnce";
+import usePosition from "../../hook/usePosition";
+import useLoading from "../../hook/useLoading";
+import useChain from "../../hook/useChain";
+import useAssetTag from "../../hook/useAssetTag";
 
 function ListToken() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const { setLoading } = useLoading();
+  const { getPositions } = usePosition();
+  const { getChains } = useChain();
+  const { getAssettags } = useAssetTag();
+  const [userPositions, setUserPositions] = useState([]);
+  const [chains, setChains] = useState([]);
+  const [assetstags, setAssetstags] = useState([]);
+  const [activeStep, setActiveStep] = useState(0);
   const steps = [
     {
       step: 1,
@@ -32,6 +44,32 @@ function ListToken() {
       description: "Write something",
     },
   ];
+
+  useEffectOnce(() => {
+    async function getPositionsData() {
+      setLoading(true);
+      const res = await getPositions();
+      setLoading(false);
+      setUserPositions(res);
+    }
+    getPositionsData();
+
+    async function getChainsData() {
+      setLoading(true);
+      const res = await getChains();
+      setLoading(false);
+      setChains(res);
+    }
+    getChainsData();
+
+    async function getAssettagsData() {
+      setLoading(true);
+      const res = await getAssettags();
+      setLoading(false);
+      setAssetstags(res);
+    }
+    getAssettagsData();
+  });
 
   return (
     <>
@@ -68,16 +106,28 @@ function ListToken() {
                 Step {activeStep + 1} / {steps.length}
               </p>
               {activeStep === 0 && (
-                <Step1 activeStep={activeStep} setActiveStep={setActiveStep} />
+                <Step1
+                  activeStep={activeStep}
+                  setActiveStep={setActiveStep}
+                  userPositions={userPositions}
+                />
               )}
               {activeStep === 1 && (
                 <Step2 activeStep={activeStep} setActiveStep={setActiveStep} />
               )}
               {activeStep === 2 && (
-                <Step3 activeStep={activeStep} setActiveStep={setActiveStep} />
+                <Step3
+                  activeStep={activeStep}
+                  setActiveStep={setActiveStep}
+                  chains={chains}
+                />
               )}
               {activeStep === 3 && (
-                <Step4 activeStep={activeStep} setActiveStep={setActiveStep} />
+                <Step4
+                  activeStep={activeStep}
+                  setActiveStep={setActiveStep}
+                  assetstags={assetstags}
+                />
               )}
             </div>
           </div>

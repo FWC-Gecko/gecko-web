@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import Ad from "../components/section/ad/Ad";
 import AssetsTable from "../components/section/assets/AssetsTable";
-import MewTokens from "../components/section/home/MewTokens";
+import NewTokens from "../components/section/home/NewTokens";
 import TrendingTokens from "../components/section/home/TrendingTokens";
 
 const Home = () => {
@@ -43,7 +43,7 @@ const Home = () => {
         <div className="n-container">
           <div className="justify-between py-4 sm:py-10 hidden sm:flex">
             <TrendingTokens />
-            <MewTokens />
+            <NewTokens />
           </div>
           <AssetsTable />
 

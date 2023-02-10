@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import Input from "../../components/section/listToken/Input";
 import NextButton from "../../components/section/listToken/NextButton";
 import { useEffectOnce } from "../../hook/useEffectOnce";
 import useLoading from "../../hook/useLoading";
 
-function StepOne({ activeStep, setActiveStep }) {
+function Step1({ activeStep, setActiveStep, userPositions }) {
   useEffectOnce(() => {
     const element = document.getElementById("form");
     if (element) {
@@ -15,28 +14,16 @@ function StepOne({ activeStep, setActiveStep }) {
   });
 
   const { setLoading } = useLoading();
-  const user = useSelector((state) => state.auth.user);
 
   let list_token_data = JSON.parse(localStorage.getItem("list-token"));
 
-  const positions = [
-    "Founder",
-    "Member of the Leadership Team",
-    "CEO",
-    "Admin / Community Manager",
-    "CMO",
-    "Administrative Assistant",
-  ];
-  const [position, setPosition] = useState(
-    list_token_data?.position ? list_token_data.position : positions[0]
+  const [userPosition, setUserPosition] = useState(
+    list_token_data?.userPosition
   );
-
-  const [name, setName] = useState(list_token_data?.name);
-  const [contactEmail, setContactEmail] = useState(
-    list_token_data?.contactEmail || user?.email
-  );
-  const [contactTelegram, setContactTelegram] = useState(
-    list_token_data?.contactTelegram
+  const [userName, setUserName] = useState(list_token_data?.userName);
+  const [userEmail, setUserEmail] = useState(list_token_data?.userEmail);
+  const [userTelegram, setUserTelegram] = useState(
+    list_token_data?.userTelegram
   );
 
   const onNextStep = async (e) => {
@@ -45,10 +32,10 @@ function StepOne({ activeStep, setActiveStep }) {
     // Save the data in the LocalStorage.
     let list_token_data = JSON.parse(localStorage.getItem("list-token"));
     if (!list_token_data) list_token_data = {};
-    list_token_data.position = position;
-    list_token_data.name = name;
-    list_token_data.contactEmail = contactEmail;
-    list_token_data.contactTelegram = contactTelegram;
+    list_token_data.userPosition = userPosition;
+    list_token_data.userName = userName;
+    list_token_data.userEmail = userEmail;
+    list_token_data.userTelegram = userTelegram;
     localStorage.setItem("list-token", JSON.stringify(list_token_data));
     setLoading(false);
     // Go to the next step.
@@ -69,16 +56,16 @@ function StepOne({ activeStep, setActiveStep }) {
           Please Confirm Your Position with the Project.
         </p>
         <div className="sm:grid grid-cols-2 w-max mt-2">
-          {positions.map((row, key) => {
+          {userPositions.map((row, key) => {
             return (
               <div
                 className="flex items-center my-2 cursor-pointer"
                 key={key}
-                onClick={() => setPosition(row)}
+                onClick={() => setUserPosition(row)}
               >
                 <div
                   className={`${
-                    position === row
+                    userPosition === row
                       ? "bg-[#BA4DF9] border-2 border-[#DDBCF3] dark:border-[#46255E]"
                       : "bg-[#9F9F9F] dark:bg-[#54555A]"
                   }  w-4 h-4 rounded-full`}
@@ -97,8 +84,8 @@ function StepOne({ activeStep, setActiveStep }) {
           <Input
             label="Your Name"
             placeholder={"Enter Your Name"}
-            value={name}
-            onChange={setName}
+            value={userName}
+            onChange={setUserName}
           />
         </div>
         <div className="mt-4">
@@ -106,16 +93,16 @@ function StepOne({ activeStep, setActiveStep }) {
             type={"email"}
             label="Email Address"
             placeholder={"Enter Email Address"}
-            value={contactEmail}
-            onChange={setContactEmail}
+            value={userEmail}
+            onChange={setUserEmail}
           />
         </div>
         <div className="mt-4">
           <Input
             label="Your Telegram @Username"
             placeholder={"Enter Your Telegram @Username"}
-            value={contactTelegram}
-            onChange={setContactTelegram}
+            value={userTelegram}
+            onChange={setUserTelegram}
           />
         </div>
         <div className="mt-6 flex justify-end">
@@ -126,4 +113,4 @@ function StepOne({ activeStep, setActiveStep }) {
   );
 }
 
-export default StepOne;
+export default Step1;
