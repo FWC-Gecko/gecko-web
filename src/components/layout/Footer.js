@@ -76,7 +76,7 @@ const Footer = () => {
 
           <div className="border-t border-[#595959] py-4 sm:flex justify-between items-center">
             <div className="text-center sm:text-right text-sm sm:text-base text-[#101115] dark:text-white">
-              <p>© 2022 Football World Communityt. All rights reserved</p>
+              <p>© 2023 Football World Communityt. All rights reserved</p>
             </div>
             <div className="flex gap-2 justify-center mt-4 sm:mt-0">
               <img src="/img/socials/discord.png" alt="" />

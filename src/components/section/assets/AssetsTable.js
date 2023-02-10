@@ -50,7 +50,7 @@ function AssetsTable() {
               : "text-[#FF0000]"
           }
         >
-          {row.quoteLatest.percent_change_1h}%
+          {row.quoteLatest.percent_change_1h.toFixed(2)}%
         </p>
       ),
     },
@@ -64,7 +64,7 @@ function AssetsTable() {
               : "text-[#FF0000]"
           }
         >
-          {row.quoteLatest.percent_change_24h}%
+          {row.quoteLatest.percent_change_24h.toFixed(2)}%
         </p>
       ),
     },
@@ -78,7 +78,7 @@ function AssetsTable() {
               : "text-[#FF0000]"
           }
         >
-          {row.quoteLatest.percent_change_7d}%
+          {row.quoteLatest.percent_change_7d.toFixed(2)}%
         </p>
       ),
     },
