@@ -324,11 +324,12 @@ function TokenInfo({ tokenInfo }) {
         </div>
         <div className="grayGradientBg1 rounded-lg p-6 w-full mt-3 sm:mt-0">
           <div className="flex justify-start items-center gap-1">
-            <p>Self Reported Circulating Supply</p>
+            <p>Circulating Supply</p>
             <InfoIcon
               className="text-black/40 dark:text-white/60"
               style={{ fontSize: "16px" }}
             />
+            <img src="/img/certified.svg" />
             {/* <img src="/img/certified.svg" /> */}
           </div>
           <div className="flex justify-between items-center mt-2">
@@ -336,6 +337,7 @@ function TokenInfo({ tokenInfo }) {
               {tokenInfo && formatNumber(tokenInfo.circulatingSupply)}{" "}
               {tokenInfo && tokenInfo.symbol}
             </p>
+            <p>{(tokenInfo?.totalSupply / tokenInfo?.maxSupply * 100).toFixed(2)}%</p>
           </div>
           <div className="flex justify-between items-center text-sm mt-2">
             <p>Max Supply</p>
