@@ -61,11 +61,11 @@ function Step1({ activeStep, setActiveStep, userPositions }) {
               <div
                 className="flex items-center my-2 cursor-pointer"
                 key={key}
-                onClick={() => setUserPosition(row)}
+                onClick={() => setUserPosition(row.index)}
               >
                 <div
                   className={`${
-                    userPosition === row
+                    userPosition === row.index
                       ? "bg-[#BA4DF9] border-2 border-[#DDBCF3] dark:border-[#46255E]"
                       : "bg-[#9F9F9F] dark:bg-[#54555A]"
                   }  w-4 h-4 rounded-full`}
@@ -74,7 +74,7 @@ function Step1({ activeStep, setActiveStep, userPositions }) {
                   for="red-radio"
                   className="ml-2 text-sm text-[#646464] dark:text-white  cursor-pointer"
                 >
-                  {row}
+                  {row.position}
                 </label>
               </div>
             );

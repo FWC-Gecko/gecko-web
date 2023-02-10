@@ -104,7 +104,7 @@ function Step4({ activeStep, setActiveStep, assetstags }) {
             options={assetstags} // Options to display in the dropdown
             selectedValues={cryptoAssetTags} // Preselected value to persist in dropdown
             className="mt-2 bg-transparent outline-0 w-full text-color2 "
-            isObject={false}
+            // isObject={false}
             onSelect={(selectedList) => {
               setCryptoAssetTags(selectedList);
             }}
@@ -127,7 +127,8 @@ function Step4({ activeStep, setActiveStep, assetstags }) {
                 margin: 0,
               },
             }}
-            // selectionLimit={4}
+            selectionLimit={4}
+            displayValue={"tag"}
           />
         </div>
         <div className="mt-6 flex justify-between gap-6">

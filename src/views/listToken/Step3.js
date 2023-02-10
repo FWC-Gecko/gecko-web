@@ -62,7 +62,11 @@ function Step3({ activeStep, setActiveStep, chains }) {
               required
             >
               {chains.map((row, key) => {
-                return <option key={key}>{row}</option>;
+                return (
+                  <option key={key} value={row.index}>
+                    {row.blockchain}
+                  </option>
+                );
               })}
             </select>
           </div>
