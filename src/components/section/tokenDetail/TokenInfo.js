@@ -12,6 +12,7 @@ import ArticleIcon from "@mui/icons-material/Article";
 import WarningIcon from "@mui/icons-material/Warning";
 import InfoIcon from "@mui/icons-material/Info";
 import { formatNumber, formatPrice } from "../../../utils";
+import { Tooltip, Button } from "@material-tailwind/react";
 
 import {
   Menu,
@@ -224,12 +225,26 @@ function TokenInfo({ tokenInfo }) {
             </button>
           </div>
           <div className="mt-4 flex justify-between items-center">
-            <p className="text-lg">{tokenInfo?.price_btc?.toFixed(9) < 0.000001 ? `< 0.00000000001` : tokenInfo?.price_btc?.toFixed(9)} BTC</p>
-            <p className="text-sm text-[#FF5665]">{tokenInfo?.price_change_24h_btc?.toFixed(2)}%</p>
+            <p className="text-lg">
+              {tokenInfo?.price_btc?.toFixed(9) < 0.000001
+                ? `< 0.00000000001`
+                : tokenInfo?.price_btc?.toFixed(9)}{" "}
+              BTC
+            </p>
+            <p className="text-sm text-[#FF5665]">
+              {tokenInfo?.price_change_24h_btc?.toFixed(2)}%
+            </p>
           </div>
           <div className="mt-4 flex justify-between items-center">
-            <p className="text-lg">{tokenInfo?.price_eth?.toFixed(9) < 0.000001 ? `< 0.00000000001` : tokenInfo?.price_eth?.toFixed(9)} ETH</p>
-            <p className="text-sm text-[#FF5665]">{tokenInfo?.price_change_24h_btc?.toFixed(2)}%</p>
+            <p className="text-lg">
+              {tokenInfo?.price_eth?.toFixed(9) < 0.000001
+                ? `< 0.00000000001`
+                : tokenInfo?.price_eth?.toFixed(9)}{" "}
+              ETH
+            </p>
+            <p className="text-sm text-[#FF5665]">
+              {tokenInfo?.price_change_24h_btc?.toFixed(2)}%
+            </p>
           </div>
           <div className="mt-4 flex items-end gap-3">
             <div>
@@ -267,8 +282,16 @@ function TokenInfo({ tokenInfo }) {
             <p className="text-xl font-medium tracking-tighter">
               {tokenInfo && formatPrice(tokenInfo?.market_cap_usd)}
             </p>
-            <p className={`rounded-lg ${tokenInfo?.market_cap_dominance_usd > 0 ? 'bg-[#16C784]' : 'bg-gradient-to-tr from-[#FF6673] to-[#FF1A2D]'} px-4 py-2 text-white`}>
-              {tokenInfo && formatNumber(tokenInfo?.market_cap_dominance_usd?.toFixed(2))}%
+            <p
+              className={`rounded-lg ${
+                tokenInfo?.market_cap_dominance_usd > 0
+                  ? "bg-[#16C784]"
+                  : "bg-gradient-to-tr from-[#FF6673] to-[#FF1A2D]"
+              } px-4 py-2 text-white`}
+            >
+              {tokenInfo &&
+                formatNumber(tokenInfo?.market_cap_dominance_usd?.toFixed(2))}
+              %
             </p>
           </div>
           <div className="flex justify-between items-center text-sm mt-2">
@@ -290,7 +313,9 @@ function TokenInfo({ tokenInfo }) {
             /> */}
           </div>
           <div className="flex justify-between items-center mt-2">
-            <p className="text-xl font-medium tracking-tighter">{formatPrice(tokenInfo?.fully_diluted_market_cap_usd)}</p>
+            <p className="text-xl font-medium tracking-tighter">
+              {formatPrice(tokenInfo?.fully_diluted_market_cap_usd)}
+            </p>
             <p className={`rounded-lg bg-[#16C784]  px-4 py-2 text-white`}>
               13.05%
             </p>
@@ -309,7 +334,13 @@ function TokenInfo({ tokenInfo }) {
             <p className="text-xl font-medium tracking-tighter">
               {tokenInfo && formatPrice(tokenInfo?.volume_24h_usd)}
             </p>
-            <p className={`rounded-lg ${tokenInfo?.volume_change_24h_usd > 0 ? 'bg-[#16C784]' : 'bg-gradient-to-tr from-[#FF6673] to-[#FF1A2D]'} px-4 py-2 text-white`}>
+            <p
+              className={`rounded-lg ${
+                tokenInfo?.volume_change_24h_usd > 0
+                  ? "bg-[#16C784]"
+                  : "bg-gradient-to-tr from-[#FF6673] to-[#FF1A2D]"
+              } px-4 py-2 text-white`}
+            >
               {tokenInfo && formatNumber(tokenInfo?.volume_change_24h_usd)}%
             </p>
           </div>
@@ -325,10 +356,24 @@ function TokenInfo({ tokenInfo }) {
         <div className="grayGradientBg1 rounded-lg p-6 w-full mt-3 sm:mt-0">
           <div className="flex justify-start items-center gap-1">
             <p>Circulating Supply</p>
-            <InfoIcon
-              className="text-black/40 dark:text-white/60"
-              style={{ fontSize: "16px" }}
-            />
+            <Tooltip
+              content={
+                <div className="w-80">
+                  The FWC Digital team has verified the project's circulating
+                  supply to be as follows:
+                  <br /> <br />
+                  <p className="bold flex justify-between">
+                    <span>Circulating Supply</span>
+                    <span>{tokenInfo?.circulatingSupply?.toFixed(2)}{tokenInfo?.symbol}</span>
+                  </p>
+                </div>
+              }
+            >
+              <InfoIcon
+                className="text-black/40 dark:text-white/60 cursor-pointer"
+                style={{ fontSize: "16px" }}
+              />
+            </Tooltip>
             <img src="/img/certified.svg" />
             {/* <img src="/img/certified.svg" /> */}
           </div>
@@ -337,7 +382,12 @@ function TokenInfo({ tokenInfo }) {
               {tokenInfo && formatNumber(tokenInfo.circulatingSupply)}{" "}
               {tokenInfo && tokenInfo.symbol}
             </p>
-            <p>{(tokenInfo?.totalSupply / tokenInfo?.maxSupply * 100).toFixed(2)}%</p>
+            <p>
+              {((tokenInfo?.totalSupply / tokenInfo?.maxSupply) * 100).toFixed(
+                2
+              )}
+              %
+            </p>
           </div>
           <div className="flex justify-between items-center text-sm mt-2">
             <p>Max Supply</p>
