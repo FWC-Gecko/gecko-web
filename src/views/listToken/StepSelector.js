@@ -15,7 +15,9 @@ function StepSelector({ steps, activeStep, setActiveStep }) {
               <div className="flex justify-start sm:justify-end ml-2 mr-2">
                 <div
                   className={`w-1 h-10 sm:h-20 -my-4 z-0 ${
-                    key <= activeStep ? "bg-[#BA4DF9]" : "bg-[#54555A]"
+                    key <= activeStep
+                      ? "bg-[#BA4DF9]"
+                      : "bg-[#9F9F9F] dark:bg-[#54555A]"
                   }`}
                 ></div>
               </div>
@@ -24,14 +26,14 @@ function StepSelector({ steps, activeStep, setActiveStep }) {
               <div className="text-start sm:text-end">
                 <p
                   className={`${
-                    key === activeStep ? "text-white" : "text-white/40"
+                    key === activeStep ? "" : "text-black/40 dark:text-white/40"
                   }  text-lg font-bold`}
                 >
                   {step.title}
                 </p>
                 <p
                   className={`${
-                    key === activeStep ? "text-white" : "text-white/40"
+                    key === activeStep ? "" : "text-black/40 dark:text-white/40"
                   }  text-sm font-medium`}
                 >
                   {step.description}
@@ -40,8 +42,8 @@ function StepSelector({ steps, activeStep, setActiveStep }) {
               <div
                 className={`w-5 h-5 rounded-full z-10 ${
                   key <= activeStep
-                    ? "bg-[#BA4DF9] border-2 border-[#4E2D67]"
-                    : "bg-[#54555A]"
+                    ? "bg-[#BA4DF9] border-2 border-[#BA4DF9]/30 dark:border-[#4E2D67]"
+                    : "bg-[#9F9F9F] dark:bg-[#54555A]"
                 } `}
               ></div>
             </div>

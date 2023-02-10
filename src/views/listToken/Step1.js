@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import Input from "../../components/section/listToken/Input";
 import NextButton from "../../components/section/listToken/NextButton";
 import { useEffectOnce } from "../../hook/useEffectOnce";
 import useLoading from "../../hook/useLoading";
@@ -56,15 +57,15 @@ function StepOne({ activeStep, setActiveStep }) {
 
   return (
     <div>
-      <p className="text-2xl font-bold text-white">
+      <p className="text-2xl font-bold ">
         Let’s start with your Personal Information
       </p>
-      <p className="text-[#A3A3A3] text-md mt-4">
+      <p className="text-[#3C3C3C] dark:text-[#A3A3A3] text-md mt-4">
         Please fill in the details below so that we can get in contact with you.
       </p>
-      <hr className="text-[#DADADA] my-6" />
+      <hr className="text-black/50 text-[#DADADA] my-6" />
       <form onSubmit={onNextStep}>
-        <p className="text-[#D0D0DD] font-medium">
+        <p className="dark:text-[#D0D0DD] font-bold">
           Please Confirm Your Position with the Project.
         </p>
         <div className="sm:grid grid-cols-2 w-max mt-2">
@@ -78,13 +79,13 @@ function StepOne({ activeStep, setActiveStep }) {
                 <div
                   className={`${
                     position === row
-                      ? "bg-[#BA4DF9] border-2 border-[#46255E]"
-                      : "bg-[#54555A]"
+                      ? "bg-[#BA4DF9] border-2 border-[#DDBCF3] dark:border-[#46255E]"
+                      : "bg-[#9F9F9F] dark:bg-[#54555A]"
                   }  w-4 h-4 rounded-full`}
                 ></div>
                 <label
                   for="red-radio"
-                  className="ml-2 text-sm text-white cursor-pointer"
+                  className="ml-2 text-sm text-[#646464] dark:text-white  cursor-pointer"
                 >
                   {row}
                 </label>
@@ -93,40 +94,29 @@ function StepOne({ activeStep, setActiveStep }) {
           })}
         </div>
         <div className="mt-4">
-          <p className="text-white font-medium">Your Name</p>
-          <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-            <input
-              type={"text"}
-              className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
+          <Input
+            label="Your Name"
+            placeholder={"Enter Your Name"}
+            value={name}
+            onChange={setName}
+          />
         </div>
         <div className="mt-4">
-          <p className="text-white font-medium">Email Address</p>
-          <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-            <input
-              type={"email"}
-              className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-              value={contactEmail}
-              onChange={(e) => setContactEmail(e.target.value)}
-              required
-            />
-          </div>
+          <Input
+            type={"email"}
+            label="Email Address"
+            placeholder={"Enter Email Address"}
+            value={contactEmail}
+            onChange={setContactEmail}
+          />
         </div>
         <div className="mt-4">
-          <p className="text-white font-medium">Your Telegram @Username</p>
-          <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-            <input
-              type={"text"}
-              className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-              value={contactTelegram}
-              onChange={(e) => setContactTelegram(e.target.value)}
-              required
-            />
-          </div>
+          <Input
+            label="Your Telegram @Username"
+            placeholder={"Enter Your Telegram @Username"}
+            value={contactTelegram}
+            onChange={setContactTelegram}
+          />
         </div>
         <div className="mt-6 flex justify-end">
           <NextButton />

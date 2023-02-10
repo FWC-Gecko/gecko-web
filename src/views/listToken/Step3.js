@@ -58,10 +58,10 @@ function Step3({ activeStep, setActiveStep }) {
       <hr className="text-[#DADADA] my-6" />
       <form onSubmit={onNextStep}>
         <div className="mt-6">
-          <p className="text-white font-medium">Project Blockchain</p>
+          <p className="font-medium">Project Blockchain</p>
           <div className="w-full rounded-md mt-2">
             <select
-              className="outline-0 px-3 py-2 text-white w-full bg-gradient-to-r bg-[#202129]"
+              className="outline-0 px-3 py-2 w-full bg-gradient-to-r bg-[#575A70]/10 dark:bg-[#202129]"
               value={chain}
               onChange={(e) => setChain(e.target.value)}
             >
@@ -73,30 +73,21 @@ function Step3({ activeStep, setActiveStep }) {
         </div>
         <div className="flex justify-between gap-6 mt-6">
           <div className="w-full">
-            <p className="text-white font-medium">Contract Address*</p>
-            <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-              <input
-                type={"text"}
-                className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-                placeholder="Enter Contract Address"
-                value={contractAddress}
-                onChange={(e) => setContractAddress(e.target.value)}
-                required
-              />
-            </div>
+            <Input
+              label="Contract Address"
+              placeholder={"Enter Contract Address"}
+              value={contractAddress}
+              onChange={setContractAddress}
+            />
           </div>
           <div className="w-full">
-            <p className="text-white font-medium">Decimals*</p>
-            <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-              <input
-                type={"number"}
-                className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-                placeholder="Enter Decimals"
-                value={decimals}
-                onChange={(e) => setDecimals(e.target.value)}
-                required
-              />
-            </div>
+            <Input
+              type={"number"}
+              label="Decimals"
+              placeholder={"Enter Decimals"}
+              value={decimals}
+              onChange={setDecimals}
+            />
           </div>
         </div>
         <div className="flex justify-between gap-6 mt-6">

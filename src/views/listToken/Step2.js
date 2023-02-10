@@ -3,6 +3,7 @@ import useLoading from "../../hook/useLoading";
 import { useEffectOnce } from "../../hook/useEffectOnce";
 import PreviousButton from "../../components/section/listToken/PreviousButton";
 import NextButton from "../../components/section/listToken/NextButton";
+import Input from "../../components/section/listToken/Input";
 
 function Step2({ activeStep, setActiveStep }) {
   const { setLoading } = useLoading();
@@ -65,60 +66,45 @@ function Step2({ activeStep, setActiveStep }) {
       <hr className="text-[#DADADA] my-6" />
       <form onSubmit={onNextStep}>
         <div className="mt-4">
-          <p className="text-white font-medium">Project Name*</p>
-          <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-            <input
-              type={"text"}
-              className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-              placeholder="Enter Project Name"
-              value={projectName}
-              onChange={(e) => setProjectName(e.target.value)}
-            />
-          </div>
+          <Input
+            label="Project Name"
+            placeholder={"Enter Email Address"}
+            value={projectName}
+            onChange={setProjectName}
+          />
         </div>
         <div className="sm:flex justify-between gap-6 mt-4">
           <div className="w-full">
-            <p className="text-white font-medium">Project Symbol</p>
-            <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-              <input
-                type={"text"}
-                className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-                placeholder="Enter Project Symbol"
-                value={projectSymbol}
-                onChange={(e) => setProjectSymbol(e.target.value)}
-              />
-            </div>
+            <Input
+              label="Project Symbol"
+              placeholder={"Enter Project Symbol"}
+              value={projectSymbol}
+              onChange={setProjectSymbol}
+            />
           </div>
           <div className="w-full mt-4 sm:mt-0">
-            <p className="text-white font-medium">Project Launch Date*</p>
-            <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-              <input
-                type={"date"}
-                className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-                placeholder="Date"
-                value={projectLaunchDate}
-                onChange={(e) => setProjectLaunchDate(e.target.value)}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="mt-4">
-          <p className="text-white font-medium">One Liner Description*</p>
-          <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
-            <input
-              type={"text"}
-              className="bg-transparent outline-0 px-3 py-2 text-white w-full"
-              placeholder="Enter Description"
-              value={oneLinerDescription}
-              onChange={(e) => setOneLinerDescription(e.target.value)}
+            <Input
+              type={"date"}
+              label="Project Launch Date"
+              placeholder={"Enter Project Launch Date"}
+              value={projectLaunchDate}
+              onChange={setProjectLaunchDate}
             />
           </div>
         </div>
         <div className="mt-4">
-          <p className="text-white font-medium">Detailed Description*</p>
+          <Input
+            label="One Liner Description"
+            placeholder={"Enter One Liner Description"}
+            value={oneLinerDescription}
+            onChange={setOneLinerDescription}
+          />
+        </div>
+        <div className="mt-4">
+          <p className="font-medium">Detailed Description*</p>
           <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
             <textarea
-              className="bg-transparent outline-0 px-3 py-2 h-32 text-white w-full"
+              className="bg-transparent outline-0 px-3 py-2 h-32 w-full"
               placeholder="Enter Description"
               value={detailedDescription}
               onChange={(e) => setDetailedDescription(e.target.value)}
