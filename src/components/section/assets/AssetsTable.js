@@ -4,6 +4,7 @@ import useToken from "../../../hook/useToken";
 import Table from "../../common/table/Table";
 import { formatPrice, getMaxMinValue } from "../../../utils";
 import { useEffectOnce } from "../../../hook/useEffectOnce";
+import { toast } from "react-toastify";
 
 function AssetsTable() {
   const navigate = useNavigate();
@@ -24,8 +25,13 @@ function AssetsTable() {
     getAllowedTokensData();
   });
 
+  const giveStarToCoin = async (row) => {
+    console.log(row);
+    toast.success(`You gave a star to ${row.name}`);
+  }
+
   const columns = [
-    { name: "#", selector: (row, index) => row?.tid + 1, width: "62px" },
+    { name: "", selector: (row, index) => <img className="cursor-pointer" onClick={() => giveStarToCoin(row)} src="/img/star1.png" width={"100%"} />, width: "50px" },
     {
       name: "Name",
       selector: (row) => (
