@@ -5,7 +5,7 @@ function AssetTileItem({ row, onRowClicked }) {
   const { max, min } = getMaxMinValue(row.quoteHistorical);
   return (
     <div
-      className="itemBg7 text-sm rounded-lg border border-[#23262F] p-3 mt-3 sm:mt-0"
+      className="itemBg7 text-sm rounded-lg border border-[#DFDFDF]  dark:border-[#23262F] p-3 mt-3 sm:mt-0"
       onClick={onRowClicked}
     >
       <div className="flex justify-start items-center gap-2">
@@ -54,7 +54,7 @@ function AssetTileItem({ row, onRowClicked }) {
           </p>
         </div>
       </div>
-      <hr className="text-[#666666] w-full my-2" />
+      <hr className="text-[#DFDFDF] dark:text-[#666666] w-full my-2" />
       <div className="flex justify-start gap-6">
         <div>
           <p className="text1">Market Cap</p>
@@ -65,7 +65,7 @@ function AssetTileItem({ row, onRowClicked }) {
           <p>{formatPrice(row.quoteLatest.volume_24h)}</p>
         </div>
       </div>
-      <hr className="text-[#666666] w-full my-2" />
+      <hr className="text-[#DFDFDF] dark:text-[#666666] w-full my-2" />
       <div className="flex justify-between items-center">
         <div>
           <p className="text1">Circulating Supply</p>
