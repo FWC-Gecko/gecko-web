@@ -98,7 +98,7 @@ function TokenDetail() {
             <Converter tokenInfo={tokenInfo} />
             <Chat tokenInfo={tokenInfo} />
           </div>
-          <Description />
+          <Description tokenInfo={tokenInfo} />
           <Revaluation tokenInfo={tokenInfo} />
           <Satistic tokenInfo={tokenInfo} />
         </div>

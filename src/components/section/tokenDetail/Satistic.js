@@ -76,24 +76,24 @@ function Satistic({ tokenInfo }) {
           </div>
           <div className="w-full mt-3 sm:mt-0">
             <div className="itemBg3 p-3 rounded-lg w-full">
-              <p className="text-xl font-medium">Bitcoin Market Cap</p>
+              <p className="text-xl font-medium">{tokenInfo?.name} Market Cap</p>
               <div className="itemBg2 rounded-lg my-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
                 <p>Market Cap</p>
                 <div className="text-right">
-                  <p className="text-[#9B9B9B]">$1,313,963</p>
+                  <p className="text-[#9B9B9B]">{formatPrice(tokenInfo?.market_cap_usd)}</p>
                   <p className="text-[#16C784]">1.51%</p>
                 </div>
               </div>
               <div className="itemBg2 rounded-lg mt-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
                 <p>Fully Diluted Market Cap</p>
                 <div className="text-right">
-                  <p className="text-[#9B9B9B]">$1,313,963,200</p>
+                  <p className="text-[#9B9B9B]">{formatPrice(tokenInfo?.fully_diluted_market_cap_usd)}</p>
                   <p className="text-[#16C784]">17.36%</p>
                 </div>
               </div>
             </div>
             <div className="itemBg3 p-3 rounded-lg w-full mt-3">
-              <p className="text-xl font-medium">Bitcoin Price Yesterday</p>
+              <p className="text-xl font-medium">{tokenInfo?.name} Price Yesterday</p>
               <div className="itemBg2 rounded-lg mt-3 px-4 py-2 flex justify-between gap-4 items-center text-sm">
                 <p>Yesterday's Low / High</p>
                 <div className="text-right">
