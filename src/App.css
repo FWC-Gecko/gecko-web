@@ -66,6 +66,11 @@
 .itemBg8 {
   @apply bg-[#1B1C23]/5 dark:bg-[#1B1C23]/70;
 }
+
+.text1 {
+  @apply text-black dark:text-[#C2C2C2];
+}
+
 .list-token-input {
   @apply bg-transparent outline-0 px-3 py-2 text-white w-full;
 }
