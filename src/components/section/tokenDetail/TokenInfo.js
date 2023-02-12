@@ -3,16 +3,13 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import IosShareIcon from "@mui/icons-material/IosShare";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import SearchIcon from "@mui/icons-material/Search";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import PersonIcon from "@mui/icons-material/Person";
 import SmsIcon from "@mui/icons-material/Sms";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import ArticleIcon from "@mui/icons-material/Article";
-import WarningIcon from "@mui/icons-material/Warning";
 import InfoIcon from "@mui/icons-material/Info";
 import { formatNumber, formatPrice } from "../../../utils";
-import { Tooltip, Button } from "@material-tailwind/react";
+import { Tooltip } from "@material-tailwind/react";
 
 import {
   Menu,
@@ -20,8 +17,11 @@ import {
   MenuList,
   MenuItem,
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import BuyDropdown from "./dropdowns/BuyDropdown";
+import ExchangeDropdown from "./dropdowns/ExchangeDropdown";
+import GamingDropdown from "./dropdowns/GamingDropdown";
+import EarnCryptoDropdown from "./dropdowns/EarnCryptoDropdown";
 
 function TokenInfo({ tokenInfo }) {
   const { t } = useTranslation();
@@ -94,7 +94,7 @@ function TokenInfo({ tokenInfo }) {
                         key={index}
                         className="hover:bg-white/40 flex justify-center items-center py-2 w-[100%]"
                       >
-                        <a href={item} target="_blank">
+                        <a href={item} target="_blank" rel="noreferrer">
                           <p className="text-white cursor-pointer text-sm text-center w-[100%]">
                             {item?.split("/")[2]}
                           </p>
@@ -183,7 +183,10 @@ function TokenInfo({ tokenInfo }) {
             {tokenInfo?.cryptoAssetTags?.map((item, index) => {
               if (index < 4)
                 return (
-                  <p key={index} className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 mt-3 sm:mt-0">
+                  <p
+                    key={index}
+                    className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 mt-3 sm:mt-0"
+                  >
                     {item}
                   </p>
                 );
@@ -199,22 +202,10 @@ function TokenInfo({ tokenInfo }) {
             {tokenInfo && tokenInfo.name} ({tokenInfo && tokenInfo.symbol})
           </p>
           <div className="sm:flex items-center text-sm gap-3 mt-4">
-            <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full shadow mt-3 sm:mt-0">
-              Buy
-              <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
-            </p>
-            <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full shadow mt-3 sm:mt-0">
-              Exchange
-              <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
-            </p>
-            <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full shadow mt-3 sm:mt-0">
-              Gaming
-              <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
-            </p>
-            <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 whitespace-nowrap w-full shadow mt-3 sm:mt-0">
-              Earn Crypto
-              <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
-            </p>
+            <BuyDropdown />
+            <ExchangeDropdown />
+            <GamingDropdown />
+            <EarnCryptoDropdown />
           </div>
           <div className="mt-4 flex justify-between items-center">
             <p className="text-4xl font-medium">
@@ -306,7 +297,7 @@ function TokenInfo({ tokenInfo }) {
               className="text-black/40 dark:text-white/60"
               style={{ fontSize: "16px" }}
             /> */}
-            <img src="/img/certified.svg" />
+            <img src="/img/certified.svg" alt="" />
             {/* <WarningIcon
               className="text-[#FF5665]"
               style={{ fontSize: "16px" }}
@@ -364,7 +355,10 @@ function TokenInfo({ tokenInfo }) {
                   <br /> <br />
                   <p className="bold flex justify-between">
                     <span>Circulating Supply</span>
-                    <span>{tokenInfo?.circulatingSupply?.toFixed(2)}{tokenInfo?.symbol}</span>
+                    <span>
+                      {tokenInfo?.circulatingSupply?.toFixed(2)}
+                      {tokenInfo?.symbol}
+                    </span>
                   </p>
                 </div>
               }
@@ -374,7 +368,7 @@ function TokenInfo({ tokenInfo }) {
                 style={{ fontSize: "16px" }}
               />
             </Tooltip>
-            <img src="/img/certified.svg" />
+            <img src="/img/certified.svg" alt="" />
             {/* <img src="/img/certified.svg" /> */}
           </div>
           <div className="flex justify-between items-center mt-2">

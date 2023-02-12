@@ -14,9 +14,11 @@ import { useParams } from "react-router-dom";
 import Overview from "../../components/section/tokenDetail/overview/Overview";
 import HistoricalData from "../../components/section/tokenDetail/HistoricalData";
 import Markets from "../../components/section/tokenDetail/Markets";
+import useLoading from "../../hook/useLoading";
 
 function TokenDetail() {
   const { tokenId } = useParams();
+  const { setLoading } = useLoading();
 
   useEffectOnce(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -38,11 +40,13 @@ function TokenDetail() {
 
   useEffectOnce(() => {
     const getTokenInfo = async () => {
+      setLoading(true);
       const res = await getTokenInformation(tokenId);
+      setLoading(false);
       setTokenInfo(res.token);
     };
     getTokenInfo();
-  }, []);
+  });
 
   return (
     <>
@@ -95,10 +99,16 @@ function TokenDetail() {
             {subMenu === "Overview" && (
               <Overview tokenId={tokenId} tokenInfo={tokenInfo} />
             )}
-            {subMenu === "Markets" && <Markets tokenId={tokenId} tokenInfo={tokenInfo} />}
+            {subMenu === "Markets" && (
+              <Markets tokenId={tokenId} tokenInfo={tokenInfo} />
+            )}
             {subMenu === "Price Estimates" && <Estimate />}
-            {subMenu === "News" && <News tokenId={tokenId} tokenInfo={tokenInfo} />}
-            {subMenu === "Historical Data" && <HistoricalData tokenId={tokenId} tokenInfo={tokenInfo} />}
+            {subMenu === "News" && (
+              <News tokenId={tokenId} tokenInfo={tokenInfo} />
+            )}
+            {subMenu === "Historical Data" && (
+              <HistoricalData tokenId={tokenId} tokenInfo={tokenInfo} />
+            )}
           </div>
           <div className="mt-5 sm:mt-10 sm:flex justify-between gap-6">
             <Converter tokenInfo={tokenInfo} />
