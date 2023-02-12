@@ -5,7 +5,6 @@ import {
   MenuList,
   MenuItem,
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
 
 function Dropdown({ Header, items }) {
   return (
@@ -18,9 +17,7 @@ function Dropdown({ Header, items }) {
               key={key}
               className="hover:bg-white/10 flex justify-center items-center p-2"
             >
-              <Link to="/user/profile" className="">
-                <p className="cursor-pointer text-sm text-center">{row.item}</p>
-              </Link>
+              <p className="cursor-pointer text-sm text-center">{row.item}</p>
             </MenuItem>
           );
         })}
