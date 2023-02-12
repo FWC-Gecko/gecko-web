@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -14,7 +14,6 @@ const Login = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const { t } = useTranslation();
   const { login } = useAuth();
-  const navigate = useNavigate();
   const { setLoading } = useLoading();
 
   useEffect(() => {

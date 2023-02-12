@@ -33,6 +33,7 @@ function authReducer(state = initialState, action) {
     case REGISTER_SUCCESS:
     case CHANGE_THEME:
       return {
+        ...state,
         theme: payload,
       };
     case LOGIN_SUCCESS:
