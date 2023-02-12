@@ -12,8 +12,6 @@ const Navbar = () => {
     { title: "Cryptocurrencies", link: "" },
     { title: "Exchanges", link: "" },
     { title: "Community", link: "" },
-    { title: "Products", link: "" },
-    { title: "Learn", link: "" },
   ];
 
   return (
