@@ -136,14 +136,14 @@ function Table({ columns, data, onRowClick, isTableLoading = false }) {
               columns={columns}
               data={currentTableData}
               customStyles={customStyles}
-              onRowClicked={onRowClick}
+              // onRowClicked={onRowClick}
             />
           )}
           {!isTableLoading && theme === "tile" && (
             <TileTable
               columns={columns}
               data={currentTableData}
-              onRowClicked={onRowClick}
+              // onRowClicked={onRowClick}
             />
           )}
         </div>
