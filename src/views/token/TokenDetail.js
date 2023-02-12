@@ -11,7 +11,7 @@ import Estimate from "../../components/section/tokenDetail/Estimate";
 import News from "../../components/section/tokenDetail/News";
 import { useEffectOnce } from "../../hook/useEffectOnce";
 import { useParams } from "react-router-dom";
-import Overview from "../../components/section/tokenDetail/Overview";
+import Overview from "../../components/section/tokenDetail/overview/Overview";
 
 function TokenDetail() {
   const { tokenId } = useParams();
@@ -90,7 +90,9 @@ function TokenDetail() {
                 );
               })}
             </div>
-            {subMenu === "Overview" && <Overview tokenId={tokenId} />}
+            {subMenu === "Overview" && (
+              <Overview tokenId={tokenId} tokenInfo={tokenInfo} />
+            )}
             {subMenu === "Price Estimates" && <Estimate />}
             {subMenu === "News" && <News />}
           </div>

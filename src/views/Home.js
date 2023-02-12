@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import Ad from "../components/section/ad/Ad";
 import AssetsTable from "../components/section/assets/AssetsTable";
 import NewTokens from "../components/section/home/NewTokens";
@@ -61,9 +62,11 @@ const Home = () => {
                 up here so you don't miss a single newsletter.
               </p>
               <div className="flex justify-center sm:justify-start">
-                <button className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-6">
-                  Sign Up
-                </button>
+                <Link to={"/signup"}>
+                  <button className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-6">
+                    Sign Up
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

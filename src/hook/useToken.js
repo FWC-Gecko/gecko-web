@@ -59,11 +59,11 @@ export default function useToken() {
     }
   };
 
-  const getNewTokens = async () => {
+  const getFeaturedTokens = async () => {
     try {
-      const res = await api.get("/global/tokens/new");
+      const res = await api.get("/global/tokens/featured");
       if (res.data.success) {
-        return res.data.data.tokens;
+        return res.data.data;
       }
       return [];
     } catch (error) {
@@ -74,6 +74,16 @@ export default function useToken() {
       }
       return [];
     }
+  };
+
+  const getNewTokens = async () => {
+    const res = await getFeaturedTokens();
+    return res?.newTokens || [];
+  };
+
+  const getTrendingTokens = async () => {
+    const res = await getFeaturedTokens();
+    return res?.highestTokens || [];
   };
 
   const getRecommendInfos = async () => {
@@ -93,12 +103,17 @@ export default function useToken() {
     }
   };
 
-  const getTokenOverview = async (tokenId) => {
+  const getTokenOverview = async ({ tokenId, chartType, period }) => {
     try {
       const res = await api.get(
-        `/global/token/${tokenId}/overview?period=ALL&timeStart&timeEnd`
+        `/global/token/${tokenId}/overview?period=${period}&timeStart&timeEnd`
       );
       if (res.data.success) {
+        // return res.data.data.sort(function (a, b) {
+        //   // Turn your strings into dates, and then subtract them
+        //   // to get a value that is either negative, positive, or zero.
+        //   return new Date(a.timestamp) - new Date(b.timestamp);
+        // });
         return res.data.data;
       }
       return [];
@@ -119,5 +134,6 @@ export default function useToken() {
     getNewTokens,
     getRecommendInfos,
     getTokenOverview,
+    getTrendingTokens,
   };
 }
