@@ -95,8 +95,8 @@ function TokenDetail() {
             {subMenu === "News" && <News />}
           </div>
           <div className="mt-5 sm:mt-10 sm:flex justify-between gap-6">
-            <Converter />
-            <Chat />
+            <Converter tokenInfo={tokenInfo} />
+            <Chat tokenInfo={tokenInfo} />
           </div>
           <Description />
           <Revaluation tokenInfo={tokenInfo} />
