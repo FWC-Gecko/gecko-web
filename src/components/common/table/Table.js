@@ -23,9 +23,9 @@ function Table({ columns, data, onRowClick, isTableLoading = false }) {
       style: {
         backgroundColor: themeColor === "light" ? "#F2F2F2" : "#0B0B0F",
         minHeight: "50px",
-        borderBottomWidth: "1px",
-        borderColor: "#23262F",
-        borderWidth: "1px",
+        // borderBottomWidth: "1px",
+        // borderColor: "#23262F",
+        // borderWidth: "1px",
         borderRadius: "32px",
         color: themeColor === "light" ? "black" : "white",
       },
