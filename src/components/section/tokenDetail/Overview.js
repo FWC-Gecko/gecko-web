@@ -1310,7 +1310,6 @@ function Overview({ tokenId }) {
   // }, [overview]);
   return (
     <div className="mt-5">
-      <p>asdfasdf</p>
       <div
         ref={chartContainerRef}
         className="chart-container"
