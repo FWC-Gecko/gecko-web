@@ -61,7 +61,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Container Component={Home} />} />
           <Route
-            path="/token/:tokenId"
+            path="/currencies/:tokenId"
             element={<Container Component={TokenDetail} />}
           />
           <Route

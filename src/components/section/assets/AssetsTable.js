@@ -161,7 +161,7 @@ function AssetsTable() {
 
   const onRowClick = async (row) => {
     console.log(row);
-    navigate(`/token/${row?._id}`);
+    navigate(`/currencies/${row?._id}`);
   };
 
   return (
