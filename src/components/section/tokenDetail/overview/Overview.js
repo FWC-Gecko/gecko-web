@@ -36,7 +36,6 @@ function Overview({ tokenId, tokenInfo }) {
     async function getTokenOverviewData() {
       if (tokenId) {
         const res = await getTokenOverview({ tokenId, chartType, period });
-        console.log(res);
         setOverview(res);
       }
     }
@@ -92,7 +91,7 @@ function Overview({ tokenId, tokenInfo }) {
           />
         </div>
         <div className="mt-5">
-          <Chart data={tableData} />
+          {/* <Chart data={tableData} /> */}
         </div>
       </div>
     </FullScreen>

@@ -16,10 +16,10 @@ function Satistic({ tokenInfo }) {
           </p>
 
           <div className="flex justify-center sm:justify-end mt-6 ">
-            <button className="text-white px-4 py-2 -full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow">
+            {/* <button className="text-white px-4 py-2 -full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow">
               Show more
               <ChevronRightIcon />
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="mt-4 sm:flex justify-between items-start gap-6">
