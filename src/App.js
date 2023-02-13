@@ -31,6 +31,7 @@ import TokenDetail from "./views/token/TokenDetail";
 import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import NotFound from "./components/layout/NotFound";
 
 function App() {
   const { loadUser } = useAuth();
@@ -107,6 +108,7 @@ function App() {
             path="/list-token"
             element={<Container Component={ListToken} />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
       <Loading />

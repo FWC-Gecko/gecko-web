@@ -45,10 +45,10 @@ const Home = () => {
         </div>
         <div className="n-container">
           <div className="justify-between py-4 sm:py-10 hidden sm:flex">
-            <div className="w-1/2">
+            <div className="sm:w-1/2">
               <LeftTokenPart />
             </div>
-            <div className="w-1/2">
+            <div className="sm:w-1/2">
               <RightTokenPart />
             </div>
           </div>
