@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
 
 import { withTrans } from "./i18n/withTranslations";
 // Redux
@@ -32,6 +31,7 @@ import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NotFound from "./components/layout/NotFound";
+import Alert from "./components/layout/Alert";
 
 function App() {
   const { loadUser } = useAuth();
@@ -112,7 +112,7 @@ function App() {
         </Routes>
       </Router>
       <Loading />
-      <ToastContainer theme="dark" autoClose={3000} />
+      <Alert />
     </Provider>
   );
 }

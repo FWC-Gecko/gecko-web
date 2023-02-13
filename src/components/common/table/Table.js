@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
 import { useSelector } from "react-redux";
-import Filters from "./Filters";
 import Pagination from "./Pagination";
 import PerPageSelect from "./PerPageSelect";
 import PortfolioButton from "./PortfolioButton";
