@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 // import { useEffectOnce } from "../../../hook/useEffectOnce";
 import useToken from "../../../hook/useToken";
 
 function Markets({ tokenId, tokenInfo }) {
+  const theme = useSelector((state) => state.auth.theme);
   const [spotMarketData, setSpotMarketData] = useState([]);
   const [futureMarketData, setFutureMarketData] = useState([]);
   const [perpetualMarketData, setPerpetualMarketData] = useState([]);
@@ -41,14 +43,29 @@ function Markets({ tokenId, tokenInfo }) {
             <tr key={index}>
               <td className="p-3 text-left">{index + 1}</td>
               <td className="p-3 text-left">{item.source}</td>
-              <td className="p-3 text-left" style={{color: "blue", fontWeight: "bold"}}>{item.pairs}</td>
+              <th
+                className="p-3 text-left"
+                style={{ color: theme === "light" ? "blue" : "cyan" }}
+              >
+                {item.pairs}
+              </th>
               <td className="p-3 text-right">{item.price?.toFixed(3)}</td>
-              <td className="p-3 text-center">{item.depth_positive_two?.toFixed(1)}</td>
-              <td className="p-3 text-right">{item.depth_negative_two?.toFixed(1)}</td>
+              <td className="p-3 text-center">
+                {item.depth_positive_two?.toFixed(1)}
+              </td>
+              <td className="p-3 text-right">
+                {item.depth_negative_two?.toFixed(1)}
+              </td>
               <td className="p-3 text-right">{item.volume_24h?.toFixed(2)}</td>
-              <td className="p-3 text-right">{(Math.random().toFixed(2) * 10).toFixed(2)}</td>
-              <td className="p-3 text-right">{Math.random().toFixed(2) * 50 + 50}</td>
-              <td className="p-3 text-right">{Math.random().toFixed(2) * 100 + 9000}</td>
+              <td className="p-3 text-right">
+                {(Math.random().toFixed(2) * 10).toFixed(2)}
+              </td>
+              <td className="p-3 text-right">
+                {Math.random().toFixed(2) * 50 + 50}
+              </td>
+              <td className="p-3 text-right">
+                {Math.random().toFixed(2) * 100 + 9000}
+              </td>
               <td className="p-3 text-right">{"3 hours ago"}</td>
             </tr>
           ))}
