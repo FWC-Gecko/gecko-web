@@ -21,7 +21,7 @@ function LeftTokenPart(props) {
   return (
     <div className="TredingTokenBG text-white p-8">
       <div className="rounded-[18px] dark:bg-gradient-to-r to-[#BA4DF9]/0 from-[#BA4DF9] p-[1px]">
-        <div className="bg-[#F6F6F6] dark:bg-[#21232C] rounded-[18px] p-5 pb-8">
+        <div className="bg-[#F6F6F6] dark:bg-[#21232C] rounded-[18px] p-5 pb-8 pt-8">
           <Slider {...settings} prevNextDotClassName="hidden">
             <TrendingTokens />
             <NewTokens />

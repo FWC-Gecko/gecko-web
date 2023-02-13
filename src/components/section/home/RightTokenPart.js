@@ -21,7 +21,7 @@ function RightTokenPart(props) {
   return (
     <div className="NewTokenBG text-white p-8">
       <div className="rounded-[18px] dark:bg-gradient-to-r from-[#BA4DF9]/0 to-[#BA4DF9] p-[1px]">
-        <div className="bg-[#F6F6F6] dark:bg-[#21232C] rounded-[18px] p-5 pb-8">
+        <div className="bg-[#F6F6F6] dark:bg-[#21232C] rounded-[18px] p-5 pb-8 pt-8">
           <Slider {...settings} prevNextDotClassName="hidden">
             <TopGainers />
             <TopLosers />
