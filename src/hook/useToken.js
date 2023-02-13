@@ -79,12 +79,18 @@ export default function useToken() {
     const res = await getFeaturedTokens();
     return res?.newTokens || [];
   };
-
   const getTrendingTokens = async () => {
     const res = await getFeaturedTokens();
     return res?.highestTokens || [];
   };
-
+  const getLosers = async () => {
+    const res = await getFeaturedTokens();
+    return res?.lowestTokens || [];
+  };
+  const getGainers = async () => {
+    const res = await getFeaturedTokens();
+    return res?.highestTokens || [];
+  };
   const getRecommendInfos = async () => {
     try {
       const res = await api.get("/global/recommend");
@@ -162,7 +168,9 @@ export default function useToken() {
 
   const voteToken = async (tokenId, mode = 1) => {
     try {
-      const res = await api.post(`/global/token/${tokenId}/${mode == 1 ? 'up' : 'down'}`);
+      const res = await api.post(
+        `/global/token/${tokenId}/${mode == 1 ? "up" : "down"}`
+      );
       if (res.data.success) {
         const count = await api.get(`/global/token/${tokenId}/vote`);
         if (count.data.success) {
@@ -181,7 +189,7 @@ export default function useToken() {
       }
       return [];
     }
-  }
+  };
 
   return {
     list,
@@ -192,7 +200,8 @@ export default function useToken() {
     getTokenOverview,
     getTrendingTokens,
     getTokenHistoricalData,
-    getTokenMarkets, 
-    voteToken
+    getTokenMarkets,
+    getLosers,
+    getGainers,
   };
 }

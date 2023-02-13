@@ -92,3 +92,10 @@
   );
   opacity: 0.35;
 }
+
+.hiddenArrow {
+  @apply hidden;
+}
+.slick-arrow {
+  display: none !important;
+}
