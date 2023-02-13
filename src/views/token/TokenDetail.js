@@ -12,6 +12,7 @@ import News from "../../components/section/tokenDetail/News";
 import { useEffectOnce } from "../../hook/useEffectOnce";
 import { useParams } from "react-router-dom";
 import Overview from "../../components/section/tokenDetail/overview/Overview";
+import HistoricalData from "../../components/section/tokenDetail/HistoricalData";
 
 function TokenDetail() {
   const { tokenId } = useParams();
@@ -95,6 +96,7 @@ function TokenDetail() {
             )}
             {subMenu === "Price Estimates" && <Estimate />}
             {subMenu === "News" && <News />}
+            {subMenu === "Historical Data" && <HistoricalData tokenId={tokenId} tokenInfo={tokenInfo} />}
           </div>
           <div className="mt-5 sm:mt-10 sm:flex justify-between gap-6">
             <Converter tokenInfo={tokenInfo} />

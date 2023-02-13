@@ -34,16 +34,19 @@ function AssetsTable() {
 
   const columns = [
     {
-      name: "",
+      name: <div className="text-right"></div>,
       selector: (row, index) => (
-        <img
-          className="cursor-pointer"
-          onClick={() => giveStarToCoin(row)}
-          src={`/img/star${themeColor === "light" ? "1" : ""}.png`}
-          width={"100%"}
-        />
+        <div className="flex items-center justify-between">
+          <img
+            className="cursor-pointer"
+            onClick={() => giveStarToCoin(row)}
+            src={`/img/star${themeColor === "light" ? "1" : ""}.png`}
+            width={"40%"}
+          />
+          <span>{row.tid + 1}</span>
+        </div>
       ),
-      width: "50px",
+      width: "80px",
     },
     {
       name: "Name",

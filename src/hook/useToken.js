@@ -42,7 +42,7 @@ export default function useToken() {
 
   const getAllowedTokens = async () => {
     try {
-      const res = await api.get("/global/tokens?count=202&search=&page=1");
+      const res = await api.get("/global/tokens?count=20&search=&page=1");
       if (res.data.success) {
         return res.data.data.tokens.map((item, index) => {
           return { ...item, tid: index };
@@ -127,6 +127,23 @@ export default function useToken() {
     }
   };
 
+  const getTokenHistoricalData = async (tokenId) => {
+    try {
+      const res = await api.get(`/global/token/${tokenId}/historicaldata`);
+      if (res.data.success) {
+        return res.data.data;
+      }
+      return [];
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Sesrver Error.", "error");
+      }
+      return [];
+    }
+  };
+
   return {
     list,
     getAllowedTokens,
@@ -135,5 +152,6 @@ export default function useToken() {
     getRecommendInfos,
     getTokenOverview,
     getTrendingTokens,
+    getTokenHistoricalData,
   };
 }

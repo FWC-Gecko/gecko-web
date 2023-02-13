@@ -16,8 +16,7 @@ function Overview({ tokenId, tokenInfo }) {
 
   const chartTypes = [
     { slug: "Price", value: "Price" },
-    { slug: "Markets", value: "Markets" },
-    { slug: "Information", value: "Information" },
+    { slug: "MarketCap", value: "Market Cap" },
   ];
   const [chartType, setChartType] = useState(chartTypes[0].slug);
 

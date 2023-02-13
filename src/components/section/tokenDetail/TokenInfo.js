@@ -183,7 +183,7 @@ function TokenInfo({ tokenInfo }) {
             {tokenInfo?.cryptoAssetTags?.map((item, index) => {
               if (index < 4)
                 return (
-                  <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 mt-3 sm:mt-0">
+                  <p key={index} className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 mt-3 sm:mt-0">
                     {item}
                   </p>
                 );

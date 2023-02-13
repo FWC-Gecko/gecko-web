@@ -23,7 +23,7 @@ function TrendingTokens() {
             <div className="flex justify-start items-center gap-3">
               <img src="/img/icons/star.png" alt="" className="h-8 w-8" />
               <p className="text-[#101115] dark:text-white text-lg font-bold">
-                New Tokens
+                Trending Tokens
               </p>
             </div>
             {/* <p className="text-[#BA4DF9] text-lg cursor-pointer flex items-center">
