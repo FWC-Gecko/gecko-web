@@ -1,19 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import {
-  Menu,
-  MenuHandler,
-  MenuList,
-  MenuItem,
-} from "@material-tailwind/react";
-
 import LanguageSelect from "../section/navbar/LanguageSelect";
 import PriceSelect from "../section/navbar/PriceSelect";
-import { useTranslation } from "react-i18next";
-import useAuth from "../../hook/useAuth";
-import useLoading from "../../hook/useLoading";
 import ToggleColorTheme from "../section/navbar/ToggleColorTheme";
 import SignInButton from "../section/navbar/SignInButton";
 import SignUpButton from "../section/navbar/SignUpButton";
@@ -21,20 +9,11 @@ import { useEffectOnce } from "../../hook/useEffectOnce";
 import useToken from "../../hook/useToken";
 import { useState } from "react";
 import { formatPrice } from "../../utils";
+import ProfileDropdown from "../section/auth/ProfileDropdown";
 
 function Header() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const user = useSelector((state) => state.auth.user);
-  const { t } = useTranslation();
-  const { logout } = useAuth();
-  const { setLoading } = useLoading();
   const { getRecommendInfos } = useToken();
-
-  const onLogout = async () => {
-    setLoading(true);
-    await logout();
-    setLoading(false);
-  };
 
   const [infos, setInfos] = useState([]);
   useEffectOnce(() => {
@@ -80,40 +59,7 @@ function Header() {
           <PriceSelect />
           <ToggleColorTheme />
           {isAuthenticated ? (
-            <div className="">
-              <Menu>
-                <MenuHandler>
-                  <div className="flex justify-end gap-2 items-center">
-                    <img
-                      src={user && user.avatar}
-                      alt=""
-                      className="w-8 rounded-full"
-                    />
-                    <p className="cursor-pointer text-lg text-right">
-                      {user && user?.userName}
-                    </p>
-                    <KeyboardArrowDownIcon />
-                  </div>
-                </MenuHandler>
-                <MenuList className="w-32 bg-[#101115] border-white/5 border p-0">
-                  <MenuItem className="hover:bg-white/10 flex justify-center items-center p-2">
-                    <Link to="/user/profile" className="">
-                      <p className="text-white cursor-pointer text-sm text-center">
-                        {t("Profile")}
-                      </p>
-                    </Link>
-                  </MenuItem>
-                  <MenuItem className="hover:bg-white/10 flex justify-center items-center p-2">
-                    <p
-                      className="text-white cursor-pointer text-sm text-center"
-                      onClick={onLogout}
-                    >
-                      {t("Logout")}
-                    </p>
-                  </MenuItem>
-                </MenuList>
-              </Menu>
-            </div>
+            <ProfileDropdown />
           ) : (
             <div className="flex gap-4">
               <SignInButton />

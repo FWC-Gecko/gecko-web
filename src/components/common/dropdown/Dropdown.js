@@ -17,7 +17,7 @@ function Dropdown({ Header, items }) {
               key={key}
               className="hover:bg-white/10 flex justify-center items-center p-2"
             >
-              <p className="cursor-pointer text-sm text-center">{row.item}</p>
+              {row.content}
             </MenuItem>
           );
         })}

@@ -12,7 +12,15 @@ function GamingDropdown() {
             <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
           </p>
         }
-        items={[{ item: "https://paasdfkawue.com" }]}
+        items={[
+          {
+            content: (
+              <p className="cursor-pointer text-sm text-center">
+                https://paasdfkawue.com
+              </p>
+            ),
+          },
+        ]}
       />
     </div>
   );
