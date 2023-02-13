@@ -67,7 +67,7 @@ function Profile() {
               </div>
             </div>
 
-            <div className="bg-[#1B1C23]/70 rounded-2xl p-6 mt-5 sm:mt-10 sm:block flex justify-between">
+            <div className="bg-[#F1F3F5] dark:bg-[#1B1C23]/70 rounded-2xl p-6 mt-5 sm:mt-10 sm:block flex justify-between">
               <div>
                 <img
                   src={user?.avatar}
@@ -82,7 +82,7 @@ function Profile() {
                 <p className="text-center  mt-0">{user?.email}</p>
                 <div className="flex justify-center mt-5">
                   <button
-                    className="w-max px-5 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]  m-auto"
+                    className="w-max px-5 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] m-auto text-white"
                     onClick={() => toggleChangeAvatarModal(true)}
                   >
                     Edit Avatar
