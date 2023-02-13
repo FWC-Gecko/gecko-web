@@ -13,6 +13,7 @@ import { useEffectOnce } from "../../hook/useEffectOnce";
 import { useParams } from "react-router-dom";
 import Overview from "../../components/section/tokenDetail/overview/Overview";
 import HistoricalData from "../../components/section/tokenDetail/HistoricalData";
+import Markets from "../../components/section/tokenDetail/Markets";
 
 function TokenDetail() {
   const { tokenId } = useParams();
@@ -27,8 +28,8 @@ function TokenDetail() {
     "Markets",
     "Historical Data",
     "News",
-    "Price Estimates",
-    "More Info",
+    // "Price Estimates",
+    // "More Info",
   ];
 
   const [subMenu, setSubMenu] = useState(subMenus[0]);
@@ -94,8 +95,9 @@ function TokenDetail() {
             {subMenu === "Overview" && (
               <Overview tokenId={tokenId} tokenInfo={tokenInfo} />
             )}
+            {subMenu === "Markets" && <Markets tokenId={tokenId} tokenInfo={tokenInfo} />}
             {subMenu === "Price Estimates" && <Estimate />}
-            {subMenu === "News" && <News />}
+            {subMenu === "News" && <News tokenId={tokenId} tokenInfo={tokenInfo} />}
             {subMenu === "Historical Data" && <HistoricalData tokenId={tokenId} tokenInfo={tokenInfo} />}
           </div>
           <div className="mt-5 sm:mt-10 sm:flex justify-between gap-6">

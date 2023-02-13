@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 
-function News() {
+function News({tokenInfo}) {
   const types = ["ALL", "News", "Alexandria", "Articles"];
   const [type, setType] = useState(types[0]);
 
@@ -44,8 +44,9 @@ function News() {
   return (
     <div className="mt-5">
       <div className="sm:flex justify-between items-center gap-4">
-        <p className="text-2xl">Bitcoin News</p>
-        <div className="mt-4 sm:mt-0 flex justify-start sm:justify-end w-full overflow-auto items-center rounded-full border border-[#C4C4C4] dark:border-white p-1 gap-1">
+        <img width={"40"} src={tokenInfo?.logo} />
+        <p className="text-2xl">{tokenInfo?.name} News</p>
+        {/* <div className="mt-4 sm:mt-0 flex justify-start sm:justify-end w-full overflow-auto items-center rounded-full border border-[#C4C4C4] dark:border-white p-1 gap-1">
           {types.map((row, key) => {
             return (
               <p
@@ -63,7 +64,7 @@ function News() {
               </p>
             );
           })}
-        </div>
+        </div> */}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
         <NewsItem />

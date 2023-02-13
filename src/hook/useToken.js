@@ -144,6 +144,23 @@ export default function useToken() {
     }
   };
 
+  const getTokenMarkets = async (tokenId) => {
+    try {
+      const res = await api.get(`/global/token/${tokenId}/markets`);
+      if (res.data.success) {
+        return res.data.data;
+      }
+      return [];
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Sesrver Error.", "error");
+      }
+      return [];
+    }
+  };
+
   return {
     list,
     getAllowedTokens,
@@ -153,5 +170,6 @@ export default function useToken() {
     getTokenOverview,
     getTrendingTokens,
     getTokenHistoricalData,
+    getTokenMarkets
   };
 }
