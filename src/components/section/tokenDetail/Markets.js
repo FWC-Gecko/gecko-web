@@ -42,12 +42,12 @@ function Markets({ tokenId, tokenInfo }) {
           {spotMarketData?.spot?.map((item, index) => (
             <tr key={index}>
               <td className="p-3 text-left">{index + 1}</td>
-              <td className="p-3 text-left">{item.source}</td>
+              <td className="p-3 text-left flex items-center gap-5"><img src={item.logo} width={30} /><span>{item.source}</span></td>
               <th
                 className="p-3 text-left"
                 style={{ color: theme === "light" ? "blue" : "cyan" }}
               >
-                {item.pairs}
+                <span>{item.pairs}</span>
               </th>
               <td className="p-3 text-right">{item.price?.toFixed(3)}</td>
               <td className="p-3 text-center">

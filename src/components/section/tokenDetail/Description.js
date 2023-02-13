@@ -54,6 +54,9 @@ function Description({ tokenInfo }) {
             listed on our{" "}
             <span className="text-[#BA4DF9]">crypto exchanges page</span>.
           </p>
+          <p className="mt-10 text-2xl sm:text-4xl font-bold leading-snug text-center sm:text-start">
+            What is <span className="text-[#BA4DF9]">{tokenInfo?.name}</span>
+          </p>
         </div>
       </div>
     </div>

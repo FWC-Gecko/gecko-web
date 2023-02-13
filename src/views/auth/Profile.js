@@ -61,12 +61,12 @@ function Profile() {
                 </div>
                 <p className="text-white">Profile</p>
               </div>
-              <div className="flex justify-start gap-4 items-center rounded-full p-1 mt-4 cursor-pointer hover:bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]">
+              {/* <div className="flex justify-start gap-4 items-center rounded-full p-1 mt-4 cursor-pointer hover:bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]">
                 <div className="bg-white/5 w-10 h-10 flex justify-center items-center rounded-full p-3">
                   <img src="/img/notification.png" alt="" />
                 </div>
                 <p className="text-white">Notification</p>
-              </div>
+              </div> */}
             </div>
 
             <div className="bg-[#1B1C23]/70 rounded-2xl p-6 mt-5 sm:mt-10 sm:block flex justify-between">

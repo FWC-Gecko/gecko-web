@@ -30,3 +30,7 @@ export const fiats = [
   { text: "INR", slug: "usd" },
   { text: "GBP", slug: "usd" },
 ];
+
+export const description = [
+  
+]

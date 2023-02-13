@@ -36,6 +36,7 @@ function Overview({ tokenId, tokenInfo }) {
     async function getTokenOverviewData() {
       if (tokenId) {
         const res = await getTokenOverview({ tokenId, chartType, period });
+        console.log(res);
         setOverview(res);
       }
     }

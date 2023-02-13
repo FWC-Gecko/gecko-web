@@ -7,16 +7,35 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import useCommunity from "../../../hook/useCommunity";
+import { useEffect } from "react";
 
 function Chat({ tokenInfo }) {
+  const { getCommunityFollowersCount, followCommunity, unFollowCommunity } =
+    useCommunity();
   const [chat, setChat] = useState([]);
+  const [followerCount, setFollowerCount] = useState([]);
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  const followToken = async () => {
+  useEffect(() => {
+    const initComponent = async () => {
+      const _followerCount = await getCommunityFollowersCount();
+      setFollowerCount(_followerCount);
+    };
+
+    initComponent();
+  }, []);
+
+  const userFollowCommunity = async () => {
     if (!isAuthenticated) {
       toast.error("You should login to follow");
       return;
+    }
+
+    if ((await followCommunity()) == true) {
+      setFollowerCount(followerCount + 1);
+      toast.success("Thanks for following our FWC Digital community!");
     }
   };
 
@@ -39,19 +58,15 @@ function Chat({ tokenInfo }) {
       <div className="mt-4 bg-[#F1F3F5] dark:bg-[#121318] rounded-2xl border border-[#DFDFDF] dark:border-[#23262F]">
         <div className="border-b border-[#DFDFDF] dark:border-[#23262F] flex justify-between items-center px-6 py-4 w-full">
           <div className="flex justify-start items-center gap-3 w-full mt-3 sm:mt-0">
-            <img src={tokenInfo?.logo} alt="" className="h-10 w-10" />
+            <img src="/img/logo.png" alt="" className="h-12 w-12" />
             <div>
-              <p className="text-md sm:text-lg dark:text-white">
-                {tokenInfo?.name}
-              </p>
-              <p className="text-[#B9B9B9]">
-                {tokenInfo?.watchlistCount} Followers
-              </p>
+              <p className="text-md sm:text-lg dark:text-white">FWC Digital</p>
+              <p className="text-[#B9B9B9]">{followerCount} Followers</p>
             </div>
           </div>
 
           <button
-            onClick={followToken}
+            onClick={userFollowCommunity}
             className="text-white text-sm px-6 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow flex items-center gap-2 whitespace-nowrap"
           >
             + Follow
@@ -60,7 +75,9 @@ function Chat({ tokenInfo }) {
         <div className="p-6 min-h-[135px]">
           {!isAuthenticated && (
             <div className="flex justify-center items-center">
-              <Link className="text-3xl text-cyan-600" to={"/login"}>Login to view</Link>
+              <Link className="text-3xl text-cyan-600" to={"/login"}>
+                Login to view
+              </Link>
             </div>
           )}
         </div>
