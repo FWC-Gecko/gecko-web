@@ -160,6 +160,29 @@ export default function useToken() {
     }
   };
 
+  const voteToken = async (tokenId, mode = 1) => {
+    try {
+      const res = await api.post(`/global/token/${tokenId}/${mode == 1 ? 'up' : 'down'}`);
+      if (res.data.success) {
+        const count = await api.get(`/global/token/${tokenId}/vote`);
+        if (count.data.success) {
+          console.log(count.data);
+          return count.data.data;
+        }
+
+        return 0;
+      }
+      return 0;
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Sesrver Error.", "error");
+      }
+      return [];
+    }
+  }
+
   return {
     list,
     getAllowedTokens,
@@ -169,6 +192,7 @@ export default function useToken() {
     getTokenOverview,
     getTrendingTokens,
     getTokenHistoricalData,
-    getTokenMarkets
+    getTokenMarkets, 
+    voteToken
   };
 }
