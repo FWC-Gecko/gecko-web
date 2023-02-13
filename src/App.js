@@ -1,10 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Outlet,
-} from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
@@ -13,10 +8,10 @@ import { withTrans } from "./i18n/withTranslations";
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
-import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 import { LOGOUT } from "./actions/types";
 
+import useAuth from "./hook/useAuth";
 import { useEffectOnce } from "./hook/useEffectOnce";
 
 // Components
@@ -34,7 +29,8 @@ import ListToken from "./views/listToken/ListToken";
 import TokenDetail from "./views/token/TokenDetail";
 
 import "./App.css";
-import useAuth from "./hook/useAuth";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const { loadUser } = useAuth();

@@ -3,7 +3,9 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Ad from "../components/section/ad/Ad";
 import AssetsTable from "../components/section/assets/AssetsTable";
+import LeftTokenPart from "../components/section/home/LeftTokenPart";
 import NewTokens from "../components/section/home/NewTokens";
+import RightTokenPart from "../components/section/home/RightTokenPart";
 import TrendingTokens from "../components/section/home/TrendingTokens";
 
 const Home = () => {
@@ -43,8 +45,12 @@ const Home = () => {
         </div>
         <div className="n-container">
           <div className="justify-between py-4 sm:py-10 hidden sm:flex">
-            <TrendingTokens />
-            <NewTokens />
+            <div className="w-1/2">
+              <LeftTokenPart />
+            </div>
+            <div className="w-1/2">
+              <RightTokenPart />
+            </div>
           </div>
           <AssetsTable />
 

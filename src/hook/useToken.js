@@ -79,12 +79,18 @@ export default function useToken() {
     const res = await getFeaturedTokens();
     return res?.newTokens || [];
   };
-
   const getTrendingTokens = async () => {
     const res = await getFeaturedTokens();
     return res?.highestTokens || [];
   };
-
+  const getLosers = async () => {
+    const res = await getFeaturedTokens();
+    return res?.lowestTokens || [];
+  };
+  const getGainers = async () => {
+    const res = await getFeaturedTokens();
+    return res?.highestTokens || [];
+  };
   const getRecommendInfos = async () => {
     try {
       const res = await api.get("/global/recommend");
@@ -169,6 +175,8 @@ export default function useToken() {
     getTokenOverview,
     getTrendingTokens,
     getTokenHistoricalData,
-    getTokenMarkets
+    getTokenMarkets,
+    getGainers,
+    getLosers,
   };
 }

@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useEffectOnce } from "../../../hook/useEffectOnce";
 import useToken from "../../../hook/useToken";
-import WhatshotIcon from "@mui/icons-material/Whatshot";
 import TokenItem from "./TokenItem";
-function TrendingTokens() {
-  const { getTrendingTokens } = useToken();
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+
+function TopGainers() {
+  const { getGainers } = useToken();
   const [tokens, setTokens] = useState([]);
 
   useEffectOnce(() => {
-    async function getTrendingTokensData() {
-      const res = await getTrendingTokens();
+    async function getTokensData() {
+      const res = await getGainers();
       setTokens(res);
     }
-    getTrendingTokensData();
+    getTokensData();
   });
 
   return (
     <div>
       <div className="flex justify-between w-full items-center mb-6">
         <div className="flex justify-start items-center gap-3">
-          <WhatshotIcon className="text-[#F6EA00]" />
+          <TrendingUpIcon className="text-[#F6EA00]" />
           <p className="text-[#101115] dark:text-white text-lg font-bold">
-            Trending Tokens
+            Top Gainers
           </p>
         </div>
       </div>
@@ -35,4 +35,4 @@ function TrendingTokens() {
   );
 }
 
-export default TrendingTokens;
+export default TopGainers;
