@@ -34,15 +34,13 @@ function Profile() {
   };
 
   return (
-    <div className="bg-[#0B0B0F] py-5 sm:py-0">
+    <div className=" py-5 sm:py-0">
       <div className="n-container">
-        <div className="bg-[#1B1C23]/70 rounded-3xl flex justify-between items-center overflow-hidden ">
+        <div className="bg-[#1B1C23]/10 darj:bg-[#1B1C23]/70 rounded-3xl flex justify-between items-center overflow-hidden ">
           <div className="flex justify-start items-center gap-4 pl-4 sm:pl-10 h-32 sm:h-48 z-10">
             <div className="">
-              <p className="text-white text-2xl sm:text-3xl font-bold">
-                Profile
-              </p>
-              <p className="text-white text-sm">
+              <p className=" text-2xl sm:text-3xl font-bold">Profile</p>
+              <p className=" text-sm">
                 Home {`>`} <span className="text-[#BA4DF9]">Profile</span>
               </p>
             </div>
@@ -54,19 +52,19 @@ function Profile() {
 
         <div className="py-5 sm:py-10 sm:flex justify-between gap-10">
           <div className="sm:w-1/3">
-            <div className="bg-[#1B1C23]/70 rounded-2xl p-6">
+            <div className="bg-[#F1F3F5] dark:bg-[#1B1C23]/70 rounded-2xl p-6">
               <div className="flex justify-start gap-4 items-center bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] rounded-full p-1 cursor-pointer">
                 <div className="bg-white w-10 h-10 flex justify-center items-center rounded-full p-3">
                   <img src="/img/user.png" alt="" />
                 </div>
                 <p className="text-white">Profile</p>
               </div>
-              {/* <div className="flex justify-start gap-4 items-center rounded-full p-1 mt-4 cursor-pointer hover:bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]">
+              <div className="flex justify-start gap-4 items-center rounded-full p-1 mt-4 cursor-pointer hover:bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]">
                 <div className="bg-white/5 w-10 h-10 flex justify-center items-center rounded-full p-3">
                   <img src="/img/notification.png" alt="" />
                 </div>
-                <p className="text-white">Notification</p>
-              </div> */}
+                <p className="">Notification</p>
+              </div>
             </div>
 
             <div className="bg-[#1B1C23]/70 rounded-2xl p-6 mt-5 sm:mt-10 sm:block flex justify-between">
@@ -78,13 +76,13 @@ function Profile() {
                 />
               </div>
               <div>
-                <p className="text-center text-white font-bold text-lg mt-4">
+                <p className="text-center  font-bold text-lg mt-4">
                   {user?.firstname} {user?.lastname}
                 </p>
-                <p className="text-center text-white mt-0">{user?.email}</p>
+                <p className="text-center  mt-0">{user?.email}</p>
                 <div className="flex justify-center mt-5">
                   <button
-                    className="w-max px-5 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white m-auto"
+                    className="w-max px-5 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9]  m-auto"
                     onClick={() => toggleChangeAvatarModal(true)}
                   >
                     Edit Avatar
@@ -95,14 +93,14 @@ function Profile() {
           </div>
           <div className="sm:w-2/3 mt-5 sm:mt-0">
             <div>
-              <p className="text-xl font-medium text-white">Information</p>
+              <p className="text-xl font-medium ">Information</p>
               <div className="mt-4 sm:flex justify-between gap-8">
                 <div className="w-full">
-                  <p className="text-white font-medium">Display Name</p>
+                  <p className=" font-medium">Display Name</p>
                   <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
                     <input
                       type={"text"}
-                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                      className="bg-transparent outline-0 px-3 py-2  w-full"
                       placeholder="First Name"
                       value={firstname}
                       onChange={(e) => setFirstname(e.target.value)}
@@ -110,11 +108,11 @@ function Profile() {
                   </div>
                 </div>
                 <div className="w-full mt-4 sm:mt-0">
-                  <p className="text-white font-medium">User Name</p>
+                  <p className=" font-medium">User Name</p>
                   <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
                     <input
                       type={"text"}
-                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                      className="bg-transparent outline-0 px-3 py-2  w-full"
                       placeholder="Last Name"
                       value={lastname}
                       onChange={(e) => setLastname(e.target.value)}
@@ -124,10 +122,10 @@ function Profile() {
               </div>
               <div className="mt-4 sm:flex justify-between gap-8">
                 <div className="w-full">
-                  <p className="text-white font-medium">Biography</p>
+                  <p className=" font-medium">Biography</p>
                   <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
                     <textarea
-                      className="bg-transparent outline-0 px-3 py-2 text-white w-full h-28"
+                      className="bg-transparent outline-0 px-3 py-2  w-full h-28"
                       placeholder="A brief introduction about yourself"
                       value={biography}
                       onChange={(e) => setBiography(e.target.value)}
@@ -135,21 +133,21 @@ function Profile() {
                   </div>
                 </div>
                 <div className="w-full mt-4 sm:mt-0">
-                  <p className="text-white font-medium">Birthday</p>
+                  <p className=" font-medium">Birthday</p>
                   <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
                     <input
                       type={"text"}
-                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                      className="bg-transparent outline-0 px-3 py-2  w-full"
                       placeholder="Birthday"
                       value={birthday}
                       onChange={(e) => setBirthday(e.target.value)}
                     />
                   </div>
-                  <p className="text-white font-medium mt-4">Website</p>
+                  <p className=" font-medium mt-4">Website</p>
                   <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
                     <input
                       type={"text"}
-                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                      className="bg-transparent outline-0 px-3 py-2  w-full"
                       placeholder="Website"
                       value={website}
                       onChange={(e) => setWebsite(e.target.value)}
@@ -159,7 +157,7 @@ function Profile() {
               </div>
               <div className="mt-4 flex justify-end">
                 <button
-                  className="px-8 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white"
+                  className="px-8 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] "
                   onClick={onUpdateProfile}
                 >
                   Save
@@ -167,27 +165,27 @@ function Profile() {
               </div>
             </div>
             <div>
-              <p className="text-xl font-medium text-white mt-4 sm:mt-0">
+              <p className="text-xl font-medium  mt-4 sm:mt-0">
                 Accounts Information
               </p>
               <div className="sm:flex justify-between items-end gap-6 mt-4">
                 <div className="w-full">
-                  <p className="text-white font-medium">Email Address</p>
+                  <p className=" font-medium">Email Address</p>
                   <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
                     <input
                       type={"email"}
-                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                      className="bg-transparent outline-0 px-3 py-2  w-full"
                       value={email}
                       disabled
                     />
                   </div>
                 </div>
                 <div className="w-full mt-4 sm:mt-0">
-                  <p className="text-white font-medium">Wallet</p>
+                  <p className=" font-medium">Wallet</p>
                   <div className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full rounded-md mt-2">
                     <input
                       type={"text"}
-                      className="bg-transparent outline-0 px-3 py-2 text-white w-full"
+                      className="bg-transparent outline-0 px-3 py-2  w-full"
                       value={walletAddress}
                       disabled
                     />
@@ -199,13 +197,13 @@ function Profile() {
               </div>
               <div className="sm:flex justify-between items-end mt-4">
                 <div>
-                  <p className="text-white font-medium">Password</p>
+                  <p className=" font-medium">Password</p>
                   <p className="text-[#9A9A9A] font-medium mt-2">
                     Set a unique password to protect your personal account.{" "}
                   </p>
                 </div>
                 <div className="flex justify-end items-end mt-4 sm:mt-0">
-                  <button className="px-8 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white">
+                  <button className="px-8 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] ">
                     Change Password
                   </button>
                 </div>
