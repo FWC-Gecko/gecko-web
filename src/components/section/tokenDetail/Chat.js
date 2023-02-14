@@ -6,26 +6,28 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
 import useCommunity from "../../../hook/useCommunity";
 import { useEffect } from "react";
+import AddPost from "./post/AddPost";
+import Posts from "./post/Posts";
+import { useEffectOnce } from "../../../hook/useEffectOnce";
+import usePost from "../../../hook/usePost";
+import Tab from "../../common/Tab";
 
 function Chat({ tokenInfo }) {
-  const { getCommunityFollowersCount, followCommunity, unFollowCommunity } =
-    useCommunity();
-  const [chat, setChat] = useState([]);
+  const { getCommunityFollowersCount, followCommunity } = useCommunity();
   const [followerCount, setFollowerCount] = useState([]);
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  useEffect(() => {
+  useEffectOnce(() => {
     const initComponent = async () => {
       const _followerCount = await getCommunityFollowersCount();
       setFollowerCount(_followerCount);
     };
 
     initComponent();
-  }, []);
+  });
 
   const userFollowCommunity = async () => {
     if (!isAuthenticated) {
@@ -33,11 +35,32 @@ function Chat({ tokenInfo }) {
       return;
     }
 
-    if ((await followCommunity()) == true) {
+    if ((await followCommunity()) === true) {
       setFollowerCount(followerCount + 1);
       toast.success("Thanks for following our FWC Digital community!");
     }
   };
+
+  const [isDataLoading, setDataLoading] = useState(false);
+  const { getPosts } = usePost();
+  const [posts, setPosts] = useState([]);
+
+  const types = [
+    { slug: "top", value: "Top" },
+    { slug: "latest", value: "Latest" },
+  ];
+  const [type, setType] = useState(types[0].slug);
+
+  async function getPostsData() {
+    setDataLoading(true);
+    const res = await getPosts(type);
+    setDataLoading(false);
+    setPosts(res);
+  }
+
+  useEffect(() => {
+    getPostsData();
+  }, [type]);
 
   return (
     <div className="w-full text-[#101115] dark:text-white mt-10 sm:mt-0">
@@ -50,6 +73,7 @@ function Chat({ tokenInfo }) {
           href="https://t.me/QATAR2022TOKEN_BSC"
           target={"_blank"}
           className="text-white px-6 py-2 m-auto mt-3 sm:m-0 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow flex items-center gap-2"
+          rel="noreferrer"
         >
           View on Community
           <ChevronRightIcon />
@@ -72,7 +96,23 @@ function Chat({ tokenInfo }) {
             + Follow
           </button>
         </div>
-        <div className="p-6 min-h-[135px]">
+        <AddPost getPostsData={getPostsData} />
+
+        <div className="py-2">
+          <div className="px-4 flex justify-between">
+            <Tab
+              items={types}
+              selectedItem={type}
+              setItem={setType}
+              size="sm"
+            />
+          </div>
+          <div>
+            <Posts posts={posts} isDataLoading={isDataLoading} />
+          </div>
+          {/* <div>{type === "top" && <TopPosts />}</div> */}
+        </div>
+        {/* <div className="p-6 min-h-[135px]">
           {!isAuthenticated && (
             <div className="flex justify-center items-center">
               <Link className="text-3xl text-cyan-600" to={"/login"}>
@@ -80,7 +120,7 @@ function Chat({ tokenInfo }) {
               </Link>
             </div>
           )}
-        </div>
+        </div> */}
         <div className="border-t border-[#DFDFDF] dark:border-[#23262F] flex justify-between items-center px-6 py-4 w-full">
           <div className="flex justify-center gap-1 items-center mt-3 sm:mt-0">
             <SmsIcon />
