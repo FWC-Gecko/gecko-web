@@ -15,10 +15,10 @@ function TokenItem({ row }) {
         </p>
         <p
           className={`text-[${
-            row?.volume_change_24h > 100 ? "#16C784" : "#FF0000"
+            row?.volume_change_24h > 0 ? "#16C784" : "#FF0000"
           }] text-md font-normal flex justify-start items-center`}
         >
-          {row?.volume_change_24h > 100 ? (
+          {row?.volume_change_24h > 0 ? (
             <>
               <KeyboardArrowUpIcon />
               {row?.volume_change_24h?.toFixed(2)}%

@@ -76,12 +76,12 @@
 }
 
 .TredingTokenBG {
-  @apply bg-[length:100%_100%] w-full bg-Vector80 dark:bg-DarkVector80;
+  @apply bg-[length:100%_100%] w-full lg:bg-Vector80 dark:bg-DarkVector80;
   /* background-image: url("./assets/images/Vector80.png"); */
 }
 
 .NewTokenBG {
-  @apply bg-[length:100%_100%] w-full bg-Vector81 dark:bg-DarkVector81;
+  @apply bg-[length:100%_100%] w-full lg:bg-Vector81 dark:bg-DarkVector81;
 }
 
 .authMask {

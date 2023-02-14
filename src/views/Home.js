@@ -44,7 +44,7 @@ const Home = () => {
           </div>
         </div>
         <div className="n-container">
-          <div className="justify-between py-4 sm:py-10 hidden sm:flex">
+          <div className="sm:flex justify-between">
             <div className="sm:w-1/2">
               <LeftTokenPart />
             </div>

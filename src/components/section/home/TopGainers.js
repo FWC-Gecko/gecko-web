@@ -17,7 +17,7 @@ function TopGainers() {
   });
 
   return (
-    <div>
+    <div className="mx-2">
       <div className="flex justify-between w-full items-center mb-6">
         <div className="flex justify-start items-center gap-3">
           <TrendingUpIcon className="text-[#F6EA00]" />
@@ -26,7 +26,7 @@ function TopGainers() {
           </p>
         </div>
       </div>
-      <div className="flex justify-between items-center gap-3">
+      <div className="flex flex-col xl:flex-row  justify-between items-center gap-3">
         {tokens.map((row, key) => {
           return <TokenItem key={key} row={row} />;
         })}
