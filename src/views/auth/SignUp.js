@@ -33,7 +33,8 @@ const Login = () => {
       const res = await register(req);
       setLoading(false);
       if (res) {
-        navigate(`/auth/send-code?email=${email}`);
+        navigate("/login");
+        // navigate(`/auth/send-code?email=${email}`);
       }
     } catch (error) {
       setLoading(false);
@@ -49,7 +50,7 @@ const Login = () => {
       <Container>
         <div className="max-w-[400px] w-11/12 m-auto text-white/90">
           <form onSubmit={onSubmit}>
-          <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between">
               <div>
                 <p className="font-bold text-4xl text-center sm:text-start">
                   Sign Up
