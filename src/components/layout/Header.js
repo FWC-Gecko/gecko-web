@@ -26,7 +26,7 @@ function Header() {
 
   const Infos = () => {
     return (
-      <div className="w-full overflow-auto justify-center xl:justify-start flex  gap-4 items-center py-2">
+      <div className="w-full overflow-auto justify-start md:justify-center xl:justify-start flex items-center py-2 gap-4">
         <p className="text-sm font-normal flex sm:block whitespace-nowrap">
           Cryptos: <span className="text-[#BA4DF9]">{infos?.cryptoCount}</span>
         </p>

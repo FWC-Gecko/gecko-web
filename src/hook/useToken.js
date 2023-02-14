@@ -43,7 +43,7 @@ export default function useToken() {
     // alert(searchText);
     try {
       const res = await api.get(
-        `/global/tokens?count=20&search=${searchText}&page=1`
+        `/global/tokens?count=202&search=${searchText}&page=1`
       );
       if (res.data.success) {
         return res.data.data.tokens.map((item, index) => {
@@ -84,7 +84,7 @@ export default function useToken() {
   };
   const getTrendingTokens = async () => {
     const res = await getFeaturedTokens();
-    return res?.highestTokens || [];
+    return res?.trendingTokens || [];
   };
   const getLosers = async () => {
     const res = await getFeaturedTokens();

@@ -64,7 +64,13 @@ const Footer = () => {
 
                 <div className="mt-5">
                   <p className="footer_text">- {t("Facebook")}</p>
-                  <p className="footer_text">- {t("Twitter")}</p>
+                  <a
+                    className="footer_text"
+                    href="https://twitter.com/FWCDigital?s=35"
+                    target={"_blank"}
+                  >
+                    - {t("Twitter")}
+                  </a>
                   <p className="footer_text">- {t("Telegram")}</p>
                   <p className="footer_text">- {t("Instagram")}</p>
                   <p className="footer_text">- {t("Interactive Chat")}</p>
