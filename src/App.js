@@ -20,6 +20,7 @@ import SendCode from "./views/auth/SendCode";
 
 // Views
 import Home from "./views/Home";
+import Exchanges from "./views/Exchanges";
 import Login from "./views/auth/Login";
 import SignUp from "./views/auth/SignUp";
 import Loading from "./components/layout/Loading";
@@ -32,6 +33,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NotFound from "./components/layout/NotFound";
 import Alert from "./components/layout/Alert";
+import Search from "./views/Search";
 
 function App() {
   const { loadUser } = useAuth();
@@ -57,6 +59,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Container Component={Home} />} />
+          <Route path="/exchanges" element={<Container Component={Exchanges} />} />
+          <Route path="/search/:text" element={<Container Component={Search} />} />
           <Route
             path="/currencies/:tokenId"
             element={<Container Component={TokenDetail} />}

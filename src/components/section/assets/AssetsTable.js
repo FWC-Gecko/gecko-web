@@ -7,7 +7,7 @@ import { formatPrice, getMaxMinValue } from "../../../utils";
 import { useEffectOnce } from "../../../hook/useEffectOnce";
 import { toast } from "react-toastify";
 
-function AssetsTable() {
+function AssetsTable({searchText="", watchlistshow=true}) {
   const themeColor = useSelector((state) => state.auth.theme);
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ function AssetsTable() {
 
   const getAllowedTokensData = async () => {
     setTableLoading(true);
-    const res = await getAllowedTokens();
+    const res = await getAllowedTokens(searchText);
     setTokens(res);
     setTableLoading(false);
   };
@@ -174,6 +174,7 @@ function AssetsTable() {
         columns={columns}
         onRowClick={onRowClick}
         isTableLoading={isTableLoading}
+        watchlistshow={watchlistshow}
       />
     </div>
   );

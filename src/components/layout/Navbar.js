@@ -21,7 +21,11 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             <div className="flex justify-start gap-4 items-center">
               <Link to={"/"}>
-                <img src="/logo.png" className="h-10 sm:h-16" alt="" />
+                <img
+                  src="/logo.png"
+                  className="h-10 w-10 sm:h-16 sm:w-16"
+                  alt=""
+                />
               </Link>
               <SearchInput />
             </div>
@@ -54,7 +58,7 @@ const Navbar = () => {
             >
               <button className="bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] py-2 px-5 flex gap-1 justify-center items-center rounded-full text-white font-medium">
                 <img src="/img/list-token.png" alt="" className="h-6" />
-                Token Listing
+                Listing
               </button>
             </Link>
           </div>

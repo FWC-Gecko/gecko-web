@@ -8,7 +8,13 @@ import SwitchTheme from "./SwitchTheme";
 import TileTable from "./TileTable";
 import WatchListButton from "./WatchListButton";
 
-function Table({ columns, data, onRowClick, isTableLoading = false }) {
+function Table({
+  columns,
+  data,
+  onRowClick,
+  isTableLoading = false,
+  watchlistshow = true,
+}) {
   const themeColor = useSelector((state) => state.auth.theme);
 
   const customStyles = {
@@ -115,8 +121,12 @@ function Table({ columns, data, onRowClick, isTableLoading = false }) {
       <div className="itemBg6 p-4 sm:p-6 rounded-lg">
         <div className="sm:flex justify-between items-center">
           <div className="flex sm:justify-start justify-between gap-6">
-            <WatchListButton />
-            <PortfolioButton />
+            {watchlistshow && (
+              <>
+                <WatchListButton />
+                <PortfolioButton />
+              </>
+            )}
           </div>
           <div className="flex justify-between sm:justify-end gap-3 sm:gap-6 mt-3 sm:mt-0">
             <PerPageSelect
@@ -125,7 +135,7 @@ function Table({ columns, data, onRowClick, isTableLoading = false }) {
               setPerPage={setPerPage}
             />
             {/* <Filters /> */}
-            <SwitchTheme themes={themes} theme={theme} setTheme={setTheme} />
+            {watchlistshow && <SwitchTheme themes={themes} theme={theme} setTheme={setTheme} />}
           </div>
         </div>
         <div className="mt-4">

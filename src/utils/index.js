@@ -122,6 +122,23 @@ function getMaxMinValue(_arr) {
   };
 }
 
+function getMaxMinQuote(_arr) {
+  let max = 0;
+  let min = 9999999999999999999999999999999;
+  _arr.map((row, key) => {
+    if (max < row.volume_24h) {
+      max = row.volume_24h;
+    }
+    if (min > row.volume_24h) {
+      min = row.volume_24h;
+    }
+  });
+  return {
+    max: max,
+    min: min,
+  };
+}
+
 export {
   getDeltaTimeFromNow,
   formatDate,
@@ -133,4 +150,5 @@ export {
   formatNumber,
   getMaxMinValue,
   dateToTimeStamp,
+  getMaxMinQuote,
 };

@@ -49,19 +49,25 @@ const Login = () => {
       <Container>
         <div className="max-w-[400px] w-11/12 m-auto text-white/90">
           <form onSubmit={onSubmit}>
-            <Link to="/">
-              <img
-                src="/img/logo.png"
-                alt=""
-                className="w-32 h-32 m-auto sm:m-0"
-              />
-            </Link>
-            <p className="font-bold text-4xl text-center sm:text-start">
-              Sign Up
-            </p>
-            <p className="font-bold text-xl mt-3 text-center sm:text-start">
-              Your Account
-            </p>
+          <div className="flex items-center justify-between">
+              <div>
+                <p className="font-bold text-4xl text-center sm:text-start">
+                  Sign Up
+                </p>
+                <p className="font-bold text-xl mt-3 text-center sm:text-start">
+                  Your Account
+                </p>
+              </div>
+              <div>
+                <Link to="/">
+                  <img
+                    src="/img/logo.png"
+                    alt=""
+                    className="w-32 h-32 m-auto sm:m-0"
+                  />
+                </Link>
+              </div>
+            </div>
             <Input
               type={"text"}
               label="Name"

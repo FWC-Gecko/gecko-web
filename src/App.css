@@ -27,7 +27,7 @@
 }
 
 .authBg {
-  @apply w-full bg-[length:200%_100%] bg-left sm:bg-[length:100%_100%];
+  @apply w-full bg-[length:100%_100%];
   background-image: url("./assets/images/auth_bg.png");
 }
 .netBg {
