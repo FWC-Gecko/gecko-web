@@ -1,4 +1,5 @@
 import React from "react";
+import { description } from "../../../constants";
 import { formatPrice } from "../../../utils";
 
 function Description({ tokenInfo }) {
@@ -56,6 +57,10 @@ function Description({ tokenInfo }) {
           </p>
           <p className="mt-10 text-2xl sm:text-4xl font-bold leading-snug text-center sm:text-start">
             What is <span className="text-[#BA4DF9]">{tokenInfo?.name}</span>
+            {/* {description[0]} */}
+          </p>
+          <p className="text-lg mt-5 leading-relaxed text-center sm:text-start">
+            {description[`${tokenInfo.symbol}`]}
           </p>
         </div>
       </div>

@@ -80,6 +80,7 @@ const Pagination = (props) => {
               selected={pageNumber === currentPage}
               onClickFunction={() => onPageChange(pageNumber)}
               text={pageNumber}
+              key={pageNumber}
             />
           );
         })}

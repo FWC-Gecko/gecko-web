@@ -9,8 +9,8 @@ const Navbar = () => {
   const { t } = useTranslation();
 
   const menus = [
-    { title: "Cryptocurrencies", link: "" },
-    { title: "Exchanges", link: "" },
+    { title: "Cryptocurrencies", link: "/" },
+    { title: "Exchanges", link: "/exchanges" },
     { title: "Community", link: "" },
   ];
 
@@ -26,7 +26,7 @@ const Navbar = () => {
               <SearchInput />
             </div>
 
-            <div className="hidden lg:flex text-color2 dark:text-white text-lg text-center items-center gap-3">
+            <div className="hidden lg:flex text-color2 dark:text-white text-lg text-center items-center gap-6">
               {menus.map((row, key) => {
                 return (
                   <Link to={row.link}>
