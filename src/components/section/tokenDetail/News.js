@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 
-function News({tokenInfo}) {
+function News({ tokenInfo }) {
   const types = ["ALL", "News", "Alexandria", "Articles"];
   const [type, setType] = useState(types[0]);
 
@@ -43,7 +43,7 @@ function News({tokenInfo}) {
 
   return (
     <div className="mt-5">
-      <div className="sm:flex justify-between items-center gap-4">
+      <div className="flex justify-start items-center gap-4 pl-4">
         <img width={"40"} src={tokenInfo?.logo} />
         <p className="text-2xl">{tokenInfo?.name} News</p>
         {/* <div className="mt-4 sm:mt-0 flex justify-start sm:justify-end w-full overflow-auto items-center rounded-full border border-[#C4C4C4] dark:border-white p-1 gap-1">

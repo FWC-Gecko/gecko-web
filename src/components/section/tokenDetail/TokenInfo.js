@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import IosShareIcon from "@mui/icons-material/IosShare";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
@@ -26,9 +26,11 @@ import EarnCryptoDropdown from "./dropdowns/EarnCryptoDropdown";
 function TokenInfo({ tokenInfo }) {
   const { t } = useTranslation();
 
+  const [tagsCount, setTagsCount] = useState(4);
+
   return (
     <div className="bg-white dark:bg-[#121318] rounded-lg p-4 sm:p-6 text-[#101115] dark:text-white">
-      <div className="sm:flex justify-between gap-6">
+      <div className="xl:flex justify-between gap-6">
         <div className="grayGradientBg1 rounded-lg p-4 sm:p-6 w-full">
           <div className="sm:flex justify-between items-center gap-3">
             <div className="flex justify-start items-center gap-3">
@@ -179,9 +181,9 @@ function TokenInfo({ tokenInfo }) {
           )}
 
           <p className="mt-4">Tags:</p>
-          <div className="mt-2 sm:flex justify-start gap-3 items-center flex-wrap sm:flex-nowrap">
+          <div className="mt-2 flex justify-start gap-3 items-center flex-wrap">
             {tokenInfo?.cryptoAssetTags?.map((item, index) => {
-              if (index < 4)
+              if (index < tagsCount)
                 return (
                   <p
                     key={index}
@@ -191,13 +193,20 @@ function TokenInfo({ tokenInfo }) {
                   </p>
                 );
             })}
+            <p
+              className=" text-sm px-6 py-1.5 rounded-full cursor-pointer font-bold font-italic shadow mt-4"
+              onClick={() => {
+                setTagsCount(
+                  tagsCount > 4 ? 4 : tokenInfo?.cryptoAssetTags?.length
+                );
+              }}
+            >
+              {tagsCount > 4 ? "Show Less" : "View All"}
+            </p>
           </div>
-          <button className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-4">
-            View All
-          </button>
         </div>
 
-        <div className="grayGradientBg1 rounded-lg p-6 mt-4 sm:mt-0">
+        <div className="grayGradientBg1 rounded-lg p-6 mt-4 xl:mt-0">
           <p className="text-lg font-medium">
             {tokenInfo && tokenInfo.name} ({tokenInfo && tokenInfo.symbol})
           </p>
@@ -256,7 +265,7 @@ function TokenInfo({ tokenInfo }) {
           </div>
         </div>
       </div>
-      <div className="mt-6 sm:flex justify-between gap-6">
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6">
         <div className="grayGradientBg1 rounded-lg p-6 w-full mt-3 sm:mt-0">
           <div className="flex justify-start items-center gap-1">
             <p>Market Cap</p>

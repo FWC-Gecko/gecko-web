@@ -21,28 +21,33 @@ function Markets({ tokenId, tokenInfo }) {
   }, []);
 
   return (
-    <div className="mt-5 bg-white dark:bg-[#121318] dark:bg-gray-100 text-[#47484E] dark:text-white">
+    <div className="mt-5 bg-white dark:bg-[#121318] dark:bg-gray-100 text-[#47484E] dark:text-white w-full overflow-auto">
       <table className="table-auto w-full">
         <thead>
           <tr>
-            <th className="p-3 text-left">#</th>
-            <th className="p-3 text-left">Source</th>
-            <th className="p-3 text-left">Pairs</th>
-            <th className="p-3 text-right">Price</th>
-            <th className="p-3 text-center">+2% Depth</th>
-            <th className="p-3 text-right">-2% Depth</th>
-            <th className="p-3 text-right">Volume</th>
-            <th className="p-3 text-right">Volume %</th>
-            <th className="p-3 text-right">Confidence</th>
-            <th className="p-3 text-right">Liquidity Score</th>
-            <th className="p-3 text-right">Updated</th>
+            <th className="p-3 text-left whitespace-nowrap">#</th>
+            <th className="p-3 text-left whitespace-nowrap">Source</th>
+            <th className="p-3 text-left whitespace-nowrap">Pairs</th>
+            <th className="p-3 text-right whitespace-nowrap">Price</th>
+            <th className="p-3 text-center whitespace-nowrap">+2% Depth</th>
+            <th className="p-3 text-right whitespace-nowrap">-2% Depth</th>
+            <th className="p-3 text-right whitespace-nowrap">Volume</th>
+            <th className="p-3 text-right whitespace-nowrap">Volume %</th>
+            <th className="p-3 text-right whitespace-nowrap">Confidence</th>
+            <th className="p-3 text-right whitespace-nowrap">
+              Liquidity Score
+            </th>
+            <th className="p-3 text-right whitespace-nowrap">Updated</th>
           </tr>
         </thead>
         <tbody>
           {spotMarketData?.spot?.map((item, index) => (
             <tr key={index}>
               <td className="p-3 text-left">{index + 1}</td>
-              <td className="p-3 text-left flex items-center gap-5"><img src={item.logo} width={30} /><span>{item.source}</span></td>
+              <td className="p-3 text-left flex items-center gap-5">
+                <img src={item.logo} width={30} />
+                <span>{item.source}</span>
+              </td>
               <th
                 className="p-3 text-left"
                 style={{ color: theme === "light" ? "blue" : "cyan" }}

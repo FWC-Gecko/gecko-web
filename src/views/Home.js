@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import Ad from "../components/section/ad/Ad";
 import AssetsTable from "../components/section/assets/AssetsTable";
 import LeftTokenPart from "../components/section/home/LeftTokenPart";
-import NewTokens from "../components/section/home/NewTokens";
 import RightTokenPart from "../components/section/home/RightTokenPart";
-import TrendingTokens from "../components/section/home/TrendingTokens";
+import { useEffectOnce } from "../hook/useEffectOnce";
 
 const Home = () => {
   const { t } = useTranslation();
+  useEffectOnce(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  });
 
   return (
     <>
@@ -33,9 +35,11 @@ const Home = () => {
                 volume.
               </p>
               <div className="flex justify-center sm:justify-start">
-                <button className="text-white px-4 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-6">
-                  Start Trading
-                </button>
+                <Link to="/exchanges">
+                  <button className="text-white px-4 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-6">
+                    Start Trading
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="sm:w-1/2">

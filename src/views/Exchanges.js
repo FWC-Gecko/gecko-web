@@ -2,11 +2,14 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Ad from "../components/section/ad/Ad";
-import AssetsTable from "../components/section/assets/AssetsTable";
 import ExchangesTable from "../components/section/assets/ExchangesTable";
+import { useEffectOnce } from "../hook/useEffectOnce";
 
 const Exchanges = () => {
   const { t } = useTranslation();
+  useEffectOnce(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  });
 
   return (
     <>

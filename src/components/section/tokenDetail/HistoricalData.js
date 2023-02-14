@@ -17,23 +17,25 @@ function HistoricalData({ tokenId, tokenInfo }) {
   }, []);
 
   return (
-    <div className="mt-5 bg-white dark:bg-[#121318] dark:bg-gray-100 text-[#47484E] dark:text-white">
+    <div className="mt-5 bg-white dark:bg-[#121318] dark:bg-gray-100 text-[#47484E] dark:text-white w-full overflow-auto">
       <table className="table-auto w-full">
         <thead>
           <tr>
-            <th className="p-3 text-left">Date</th>
-            <th className="p-3 text-left">Open*</th>
-            <th className="p-3 text-left">High</th>
-            <th className="p-3 text-right">Low</th>
-            <th className="p-3 text-center">Close**</th>
-            <th className="p-3 text-right">Volume</th>
-            <th className="p-3 text-right">Market Cap</th>
+            <th className="whitespace-nowrap p-3 text-left">Date</th>
+            <th className="whitespace-nowrap p-3 text-left">Open*</th>
+            <th className="whitespace-nowrap p-3 text-left">High</th>
+            <th className="whitespace-nowrap p-3 text-right">Low</th>
+            <th className="whitespace-nowrap p-3 text-center">Close**</th>
+            <th className="whitespace-nowrap p-3 text-right">Volume</th>
+            <th className="whitespace-nowrap p-3 text-right">Market Cap</th>
           </tr>
         </thead>
         <tbody>
           {thistoricalData?.map((item, index) => (
             <tr key={index}>
-              <td className="p-2 text-left">{item.timestamp}</td>
+              <td className="p-2 text-left whitespace-nowrap">
+                {item.timestamp}
+              </td>
               <td className="p-2 text-left">{item.open.toFixed(7)}</td>
               <td className="p-2 text-left">{item.high.toFixed(7)}</td>
               <td className="p-2 text-right">{item.low.toFixed(7)}</td>

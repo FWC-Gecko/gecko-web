@@ -59,8 +59,14 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Container Component={Home} />} />
-          <Route path="/exchanges" element={<Container Component={Exchanges} />} />
-          <Route path="/search/:text" element={<Container Component={Search} />} />
+          <Route
+            path="/exchanges"
+            element={<Container Component={Exchanges} />}
+          />
+          <Route
+            path="/search/:text"
+            element={<Container Component={Search} />}
+          />
           <Route
             path="/currencies/:tokenId"
             element={<Container Component={TokenDetail} />}
