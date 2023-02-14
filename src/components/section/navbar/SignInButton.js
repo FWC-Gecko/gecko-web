@@ -7,8 +7,8 @@ function SignInButton() {
 
   return (
     <Link to={"/login"}>
-      <button className="px-4 text-color1 dark:text-white bg-white dark:bg-white/20 h-9 rounded-full border border- dark:border-none ">
-        {t("Log In")}
+      <button className="px-4 text-color1 dark:text-white whitespace-nowrap bg-white dark:bg-white/20 h-9 rounded-full border border- dark:border-none ">
+        {t("Sign In")}
       </button>
     </Link>
   );

@@ -7,7 +7,7 @@ function SignUpButton() {
 
   return (
     <Link to={"/signup"}>
-      <button className="px-4 text-white  bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] h-9 rounded-full">
+      <button className="px-4 text-white whitespace-nowrap bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] h-9 rounded-full">
         {t("Sign Up")}
       </button>
     </Link>

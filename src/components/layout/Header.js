@@ -26,7 +26,7 @@ function Header() {
 
   const Infos = () => {
     return (
-      <div className="w-full overflow-auto flex justify-start gap-4 items-center py-2">
+      <div className="w-full overflow-auto justify-center xl:justify-start flex  gap-4 items-center py-2">
         <p className="text-sm font-normal flex sm:block whitespace-nowrap">
           Cryptos: <span className="text-[#BA4DF9]">{infos?.cryptoCount}</span>
         </p>
@@ -54,7 +54,7 @@ function Header() {
     <div className="bg-white dark:bg-[#101115] py-2">
       <div className="n-container flex justify-between gap-4">
         <Infos />
-        <div className="hidden sm:flex justify-end items-center gap-4 w-full sm:w-max">
+        <div className="hidden lg:flex justify-end items-center gap-4 w-full sm:w-max">
           <LanguageSelect />
           <PriceSelect />
           <ToggleColorTheme />

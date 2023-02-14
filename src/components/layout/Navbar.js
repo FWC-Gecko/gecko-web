@@ -5,15 +5,15 @@ import SearchInput from "../section/navbar/SearchInput";
 import StarIcon from "@mui/icons-material/Star";
 import PieChartIcon from "@mui/icons-material/PieChart";
 import ListingButton from "../section/navbar/ListingButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import MobileMenu from "../section/navbar/MobileMenu";
+import { useState } from "react";
+import Menus from "../section/navbar/Menus";
 
 const Navbar = () => {
   const { t } = useTranslation();
 
-  const menus = [
-    { title: "Cryptocurrencies", link: "/" },
-    { title: "Exchanges", link: "/exchanges" },
-    { title: "Community", link: "" },
-  ];
+  const [isMobileMenuShow, setMobileMenuShow] = useState(false);
 
   return (
     <>
@@ -31,17 +31,11 @@ const Navbar = () => {
               <SearchInput />
             </div>
 
-            <div className="hidden lg:flex text-color2 dark:text-white text-lg text-center items-center gap-6">
-              {menus.map((row, key) => {
-                return (
-                  <Link to={row.link}>
-                    <p>{t(row.title)}</p>
-                  </Link>
-                );
-              })}
+            <div className="hidden lg:block">
+              <Menus />
             </div>
 
-            <div className="hidden sm:flex justify-end gap-5 items-center">
+            <div className="hidden lg:flex justify-end gap-5 items-center">
               <div className="flex justify-start items-center gap-2">
                 {/* <img src="/img/star.png" alt="" /> */}
                 <StarIcon className="h-4 cursor-pointer text-[#B9B9B9] dark:text-white" />
@@ -53,9 +47,19 @@ const Navbar = () => {
               </div>
             </div>
 
-            <ListingButton />
+            <div className="hidden lg:flex justify-end">
+              <ListingButton />
+            </div>
+
+            <p
+              className="lg:hidden cursor-pointer"
+              onClick={() => setMobileMenuShow(true)}
+            >
+              <MenuIcon />
+            </p>
           </div>
         </div>
+        <MobileMenu isShow={isMobileMenuShow} setShow={setMobileMenuShow} />
       </div>
     </>
   );

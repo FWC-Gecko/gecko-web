@@ -42,7 +42,9 @@ export default function useToken() {
   const getAllowedTokens = async (searchText) => {
     // alert(searchText);
     try {
-      const res = await api.get(`/global/tokens?count=202&search=${searchText}&page=1`);
+      const res = await api.get(
+        `/global/tokens?count=20&search=${searchText}&page=1`
+      );
       if (res.data.success) {
         return res.data.data.tokens.map((item, index) => {
           return { ...item, tid: index };

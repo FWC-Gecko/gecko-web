@@ -12,7 +12,7 @@ const Container = ({
 }) => {
   return (
     <>
-      <div className="flex flex-col-reverse sm:block">
+      <div className="flex flex-col-reverse lg:block">
         {isHeader && <Header />}
         {isNavbar && <Navbar />}
       </div>
