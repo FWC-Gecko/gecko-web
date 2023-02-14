@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -80,6 +81,7 @@ const Login = () => {
               <p className="font-medium text-sm"></p>
             </div>
             <SubmitButton label={"LOGIN"} />
+            <ReCAPTCHA sitekey="6LeRFXwkAAAAACIa-mzBs2qrCTHFW-qgHnsMxiIa"/>
           </form>
           <div className="mt-4 flex items-center  justify-between">
             <hr className="w-2/5 text-white/60" />
