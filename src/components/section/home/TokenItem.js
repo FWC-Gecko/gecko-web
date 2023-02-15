@@ -1,10 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 function TokenItem({ row }) {
+  const navigate = useNavigate();
+
   return (
-    <div className="flex w-full gap-2 items-center bg-[#E9E9E9] dark:bg-[#121318] rounded-[15px] px-4 h-24 text-[#101115] dark:text-white ">
+    <div
+      onClick={() => {
+        navigate(`/currencies/${row?._id}`);
+      }}
+      className="flex cursor-pointer w-full gap-2 items-center bg-[#E9E9E9] dark:bg-[#121318] rounded-[15px] px-4 h-24 text-[#101115] dark:text-white "
+    >
       <img src={row?.logo} alt="" className="h-10 w-10" />
       <div>
         <p
