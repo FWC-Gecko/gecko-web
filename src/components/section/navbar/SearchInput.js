@@ -19,8 +19,7 @@ function SearchInput() {
       toast.error("Please input search box correctly.");
       return;
     }
-
-    location.href = `/search/${searchValue}`;
+    navigate(`/search/${searchValue}`);
   };
 
   const [searchWidth, setSearchWidth] = useState("0px");
@@ -47,7 +46,7 @@ function SearchInput() {
                 return;
               }
 
-              location.href = `/search/${searchValue}`;
+              navigate(`/search/${searchValue}`);
             }
           }}
         />
