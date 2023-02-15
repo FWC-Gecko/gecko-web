@@ -26,20 +26,20 @@ function Table({
     },
     headRow: {
       style: {
-        backgroundColor: themeColor === "light" ? "#F2F2F2" : "#0B0B0F",
+        backgroundColor: themeColor === "dark" ? "#0B0B0F" : "#F2F2F2",
         minHeight: "50px",
         // borderBottomWidth: "1px",
         // borderColor: "#23262F",
         // borderWidth: "1px",
         borderRadius: "32px",
-        color: themeColor === "light" ? "black" : "white",
+        color: themeColor === "dark" ? "white" : "black",
       },
     },
     rows: {
       style: {
         paddingTop: "3px",
         backgroundColor: "transparent",
-        color: themeColor === "light" ? "black" : "white",
+        color: themeColor === "dark" ? "white" : "black",
         "&:not(:last-of-type)": {
           borderBottomStyle: "solid",
           borderBottomWidth: "1px",
@@ -77,9 +77,9 @@ function Table({
         "&:focus": {
           outline: "none",
           background:
-            themeColor === "light"
-              ? "#F2F2F2"
-              : "linear-gradient(58.78deg, #5B46DF 1.9%, #BA4DF9 98.4%)",
+            themeColor === "dark"
+              ? "linear-gradient(58.78deg, #5B46DF 1.9%, #BA4DF9 98.4%)"
+              : "#F2F2F2",
         },
       },
     },
@@ -135,7 +135,9 @@ function Table({
               setPerPage={setPerPage}
             />
             {/* <Filters /> */}
-            {watchlistshow && <SwitchTheme themes={themes} theme={theme} setTheme={setTheme} />}
+            {watchlistshow && (
+              <SwitchTheme themes={themes} theme={theme} setTheme={setTheme} />
+            )}
           </div>
         </div>
         <div className="mt-4">

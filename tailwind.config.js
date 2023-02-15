@@ -1,7 +1,7 @@
 const withMT = require("@material-tailwind/react/utils/withMT");
 
 module.exports = withMT({
-  darkMode: "media",
+  darkMode: "class",
   content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
