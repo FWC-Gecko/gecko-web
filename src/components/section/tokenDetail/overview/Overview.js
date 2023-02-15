@@ -7,17 +7,31 @@ import Tab from "../../../common/Tab";
 import { addDays } from "date-fns";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import RangeDateSelector from "./RangeDateSelector";
+import { useEffectOnce } from "../../../../hook/useEffectOnce";
 
 function Overview({ tokenId, tokenInfo }) {
-  const { getTokenOverview } = useToken();
+  const { getTokenOverview, getTokenMarketCap } = useToken();
   const [overview, setOverview] = useState([]);
   const [isChartLoading, setChartLoading] = useState(false);
+
+  useEffectOnce(() => {
+    console.log("100", 100);
+    console.log("Math", Math.log(100));
+  });
 
   const chartTypes = [
     { slug: "Price", value: "Price" },
     { slug: "MarketCap", value: "Market Cap" },
   ];
   const [chartType, setChartType] = useState(chartTypes[0].slug);
+
+  const [searchDate, setSearchDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 7),
+      key: "selection",
+    },
+  ]);
 
   const periods = [
     { slug: "1D", value: "1D" },
@@ -33,31 +47,43 @@ function Overview({ tokenId, tokenInfo }) {
 
   useEffect(() => {
     async function getTokenOverviewData() {
-      if (tokenId) {
+      if (tokenId && period !== "LOG") {
         setChartLoading(true);
-        console.log("searchDate", searchDate);
-        const res = await getTokenOverview({
-          tokenId,
-          chartType,
-          period,
-          searchDate,
-        });
-        setOverview(res);
+        if (chartType === "Price") {
+          const res = await getTokenOverview({
+            tokenId,
+            chartType,
+            period,
+            searchDate,
+          });
+          setOverview(res);
+        } else if (chartType === "MarketCap") {
+          const res = await getTokenMarketCap({
+            tokenId,
+            chartType,
+            period,
+            searchDate,
+          });
+          setOverview(res);
+        }
         setChartLoading(false);
+      } else if (period === "LOG") {
+        console.log(overview);
+        setChartLoading(true);
+        const res = overview.map((item, index) => {
+          return [item[0], Math.log(item[1])];
+        });
+
+        setTimeout(() => {
+          setOverview(res);
+          setChartLoading(false);
+        }, 200);
       }
     }
     getTokenOverviewData();
-  }, [tokenId, chartType, period]);
+  }, [tokenId, chartType, period, searchDate, chartType]);
 
   const handleFullScreen = useFullScreenHandle();
-
-  const [searchDate, setSearchDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: addDays(new Date(), 7),
-      key: "selection",
-    },
-  ]);
 
   return (
     <FullScreen handle={handleFullScreen}>
@@ -115,6 +141,16 @@ function Overview({ tokenId, tokenInfo }) {
                 searchDate={searchDate}
                 setSearchDate={setSearchDate}
               />
+            </button>
+            <button
+              className={`rounded-full whitespace-nowrap ${
+                period === "LOG"
+                  ? "bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white"
+                  : "text-[#8E8E8E]"
+              } px-5 py-1 text-sm `}
+              onClick={() => setPeriod("LOG")}
+            >
+              LOG
             </button>
           </div>
         </div>
