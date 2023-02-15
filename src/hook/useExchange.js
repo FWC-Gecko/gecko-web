@@ -23,10 +23,9 @@ export default function useExchanges() {
   const getExchangeByID = async (exchangeID = 270) => {
     try {
       const res = await api.get(`/global/exchange/${exchangeID}`);
-      console.log(res.data.data);
-      // if (res.data.success) {
-      //   return res.data.data.exchanges;
-      // }
+      if (res.data.success) {
+        return res.data.data.exchange;
+      }
       return [];
     } catch (error) {
       if (error?.response?.data?.message) {
