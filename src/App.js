@@ -35,6 +35,7 @@ import NotFound from "./components/layout/NotFound";
 import Alert from "./components/layout/Alert";
 import Search from "./views/Search";
 import ExchangeDetail from "./views/exchange/ExchangeDetail";
+import RequestUpdate from "./views/RequestUpdate";
 
 function App() {
   const { loadUser } = useAuth();
@@ -116,6 +117,14 @@ function App() {
             element={
               <Container>
                 <PrivateRoute component={Profile} />
+              </Container>
+            }
+          />
+          <Route
+            path="/request-update"
+            element={
+              <Container>
+                <PrivateRoute component={RequestUpdate} />
               </Container>
             }
           />

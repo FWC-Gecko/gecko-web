@@ -16,6 +16,8 @@ function LeftTokenPart(props) {
       return <MagicSliderDots dots={dots} numDotsToShow={4} dotWidth={40} />;
     },
     prevNextDotClassName: "hiddenArrow",
+    autoplay: true,
+    autoplaySpeed: 5000,
   };
 
   return (

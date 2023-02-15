@@ -10,7 +10,7 @@ import Revaluation from "../../components/section/tokenDetail/Revaluation";
 import Estimate from "../../components/section/tokenDetail/Estimate";
 import News from "../../components/section/tokenDetail/News";
 import { useEffectOnce } from "../../hook/useEffectOnce";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Overview from "../../components/section/tokenDetail/overview/Overview";
 import HistoricalData from "../../components/section/tokenDetail/HistoricalData";
 import Markets from "../../components/section/tokenDetail/Markets";
@@ -66,9 +66,11 @@ function TokenDetail() {
                     {tokenInfo && tokenInfo.name}
                   </span>
                 </p>
-                <button className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-3">
-                  Request update
-                </button>
+                <Link to={"/request-update"}>
+                  <button className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-3">
+                    Request update
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="absolute sm:relative right-0">
