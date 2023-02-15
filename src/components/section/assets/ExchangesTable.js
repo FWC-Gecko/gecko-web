@@ -3,9 +3,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useExchanges from "../../../hook/useExchange";
 import Table from "../../common/table/Table";
-import { formatPrice, getMaxMinQuote } from "../../../utils";
+import { getMaxMinQuote } from "../../../utils";
 import { useEffectOnce } from "../../../hook/useEffectOnce";
-import { toast } from "react-toastify";
 
 function ExchangesTable() {
   const themeColor = useSelector((state) => state.auth.theme);
@@ -21,7 +20,10 @@ function ExchangesTable() {
     const res = await getExchangesList();
     let _exs = [];
     for (let i = 0; i < res.length; i++)
-      if (res[i].volume_24h != -1) _exs.push(res[i]);
+      if (res[i].volume_24h != -1) {
+        _exs.push({ ...res[i] });
+        _exs[_exs.length - 1].index = _exs.length;
+      }
     setExchanges(_exs);
     setTableLoading(false);
   };
@@ -30,18 +32,20 @@ function ExchangesTable() {
     getExchanges();
   });
 
-  // const giveStarToCoin = async (row) => {
-  //   console.log(row);
-  //   toast.success(`You gave a star to ${row.name}`);
-  // };
-
   const columns = [
     {
-      name: "Exchanges",
+      name: "#",
+      selector: (row) => {
+        return row.index;
+      },
+      width: "50px",
+    },
+    {
+      name: "Exchange",
       selector: (row) => (
         <div
           className="flex justify-start items-center gap-3 py-2 cursor-pointer"
-          // onClick={() => onRowClick(row)}
+          onClick={() => onRowClick(row)}
         >
           <img src={row.logo} alt="" className="h-8 w-8 rounded-full" />
           <div>
@@ -51,7 +55,18 @@ function ExchangesTable() {
       ),
       width: "15%",
     },
-    { name: "Score", selector: (row) => row.exchange_score.toFixed(6) },
+    {
+      name: "Score",
+      selector: (row) => (
+        <p
+          className={`rounded-md ${
+            row.exchange_score > 6 ? "bg-[#16C784]" : "bg-[#f5b97f]"
+          }  px-3 py-2 text-white`}
+        >
+          {row.exchange_score.toFixed(1)}
+        </p>
+      ),
+    },
     {
       name: "Trading volume(24h)",
       selector: (row) => <p>{row.volume_24h}</p>,
@@ -93,7 +108,6 @@ function ExchangesTable() {
                     )}`
                 )
                 .join(" ")}
-              // points="0,10 5,20 10,10"
               style={{
                 fill: "none",
                 stroke:
@@ -111,8 +125,7 @@ function ExchangesTable() {
   ];
 
   const onRowClick = async (row) => {
-    console.log(row);
-    navigate(`/currencies/${row?._id}`);
+    navigate(`/exchanges/${row?.id}`);
   };
 
   return (
@@ -120,7 +133,6 @@ function ExchangesTable() {
       <Table
         data={exchanges}
         columns={columns}
-        // onRowClick={onRowClick}
         isTableLoading={isTableLoading}
         watchlistshow={false}
       />

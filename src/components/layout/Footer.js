@@ -84,10 +84,30 @@ const Footer = () => {
               <p>© 2023 Football World Communityt. All rights reserved</p>
             </div>
             <div className="flex gap-2 justify-center mt-4 sm:mt-0">
-              <img src="/img/socials/discord.png" alt="" />
-              <img src="/img/socials/facebook.png" alt="" />
-              <img src="/img/socials/twitter.png" alt="" />
-              <img src="/img/socials/instagram.png" alt="" />
+              <img
+                src="/img/socials/reddit.png"
+                width={"40px"}
+                height={"40px"}
+                alt=""
+              />
+              <img
+                width={"40px"}
+                height={"40px"}
+                src="/img/socials/facebook.png"
+                alt=""
+              />
+              <img
+                width={"40px"}
+                height={"40px"}
+                src="/img/socials/twitter.png"
+                alt=""
+              />
+              <img
+                width={"40px"}
+                height={"40px"}
+                src="/img/socials/instagram.png"
+                alt=""
+              />
             </div>
           </div>
         </div>

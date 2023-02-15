@@ -34,6 +34,7 @@ import "slick-carousel/slick/slick-theme.css";
 import NotFound from "./components/layout/NotFound";
 import Alert from "./components/layout/Alert";
 import Search from "./views/Search";
+import ExchangeDetail from "./views/exchange/ExchangeDetail";
 
 function App() {
   const { loadUser } = useAuth();
@@ -70,6 +71,10 @@ function App() {
           <Route
             path="/currencies/:tokenId"
             element={<Container Component={TokenDetail} />}
+          />
+          <Route
+            path="/exchanges/:exchangeID"
+            element={<Container Component={ExchangeDetail} />}
           />
           <Route
             path="/login"

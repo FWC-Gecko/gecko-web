@@ -15,6 +15,8 @@ function Header() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const { getRecommendInfos } = useToken();
 
+  const [ethGas, setEthGas] = useState(24);
+
   const [infos, setInfos] = useState([]);
   useEffectOnce(() => {
     async function init() {
@@ -45,6 +47,15 @@ function Header() {
           <span className="text-[#BA4DF9]">
             {formatPrice(infos?.totalVolume24h)}
           </span>
+        </p>
+        <p className="text-sm font-normal flex sm:block whitespace-nowrap">
+          Dominance:{" "}
+          <span className="text-[#BA4DF9]">
+            BTC: {41.7}% ETH: {18.5}%
+          </span>
+        </p>
+        <p className="text-sm font-normal flex sm:block whitespace-nowrap">
+          ETH Gas: <span className="text-[#BA4DF9]">{ethGas} Gwei</span>
         </p>
       </div>
     );
