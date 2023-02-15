@@ -30,8 +30,6 @@ export default function ExchangeDetail() {
     }
   }, []);
 
-  console.log(marketsInfo);
-
   return (
     <>
       <Ad />

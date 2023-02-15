@@ -69,7 +69,7 @@ export default function ExchangeInformation({ exchangeInfo }) {
       <div className="px-5 mx-5">
         <p className="mt-3">Total Trading Volume(24h)</p>
         <p className="text-4xl font-bold">
-          {formatPrice(exchangeInfo?.volume_24h_usd)}
+          {exchangeInfo && formatPrice(exchangeInfo?.volume_24h_usd)}
         </p>
         <p className="text-xl my-2">
           {exchangeInfo?.volume_24h_btc?.toFixed(2)} BTC
