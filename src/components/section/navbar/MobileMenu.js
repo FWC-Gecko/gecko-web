@@ -67,6 +67,7 @@ export default function MobileMenu({ setShow, isShow }) {
               onClick={() => {
                 setShow(false);
               }}
+              key={key}
             >
               <p className="mt-2 py-2 hover:bg-white/10 border-b border-[#DFDFDF]/30 dark:border-[#23262F]/30 ">
                 {row.title}
