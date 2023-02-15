@@ -1,54 +1,55 @@
-import { ColorType, createChart } from "lightweight-charts";
-import { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import Highcharts from "highcharts/highstock";
+import { useEffectOnce } from "../../../hook/useEffectOnce";
 
 export const Chart = ({ data }) => {
-  const themeColor = useSelector((state) => state.auth.theme);
-  const backgroundColor = "transparent";
-  const lineColor = "#BA4DF9";
-  const textColor = themeColor === "light" ? "#C4C4C4" : "white";
-  const areaTopColor = "#BA4DF9";
-  const areaBottomColor = "rgba(0,0,0,0)";
-
-  const chartContainerRef = useRef();
-
-  useEffect(() => {
-    const handleResize = () => {
-      chart.applyOptions({ width: chartContainerRef.current.clientWidth });
-    };
-
-    const chart = createChart(chartContainerRef.current, {
-      layout: {
-        background: { type: ColorType.Solid, color: backgroundColor },
-        textColor,
+  useEffectOnce(() => {
+    const chart = Highcharts.stockChart("container", {
+      chart: {
+        height: 400,
       },
-      width: chartContainerRef.current.clientWidth,
-      height: 300,
+
+      rangeSelector: {
+        enabled: false,
+      },
+
+      series: [
+        {
+          name: "",
+          data: data,
+          type: "area",
+          threshold: null,
+          tooltip: {
+            valueDecimals: 2,
+          },
+        },
+      ],
+
+      responsive: {
+        rules: [
+          {
+            condition: {
+              maxWidth: 500,
+            },
+            chartOptions: {
+              chart: {
+                height: 300,
+              },
+              subtitle: {
+                text: null,
+              },
+              navigator: {
+                enabled: false,
+              },
+            },
+          },
+        ],
+      },
     });
-    chart.timeScale().fitContent();
+  });
 
-    const newSeries = chart.addAreaSeries({
-      lineColor,
-      topColor: areaTopColor,
-      bottomColor: areaBottomColor,
-    });
-    newSeries.setData(data);
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-
-      chart.remove();
-    };
-  }, [
-    data,
-    backgroundColor,
-    lineColor,
-    textColor,
-    areaTopColor,
-    areaBottomColor,
-  ]);
-
-  return <div ref={chartContainerRef} />;
+  return (
+    <div id="container">
+      <p>asdf</p>
+    </div>
+  );
 };

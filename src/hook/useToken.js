@@ -1,4 +1,5 @@
 import { setAlert } from "../actions/alert";
+import { dateToTimeStamp } from "../utils";
 
 import api from "../utils/api";
 
@@ -122,7 +123,9 @@ export default function useToken() {
         //   // to get a value that is either negative, positive, or zero.
         //   return new Date(a.timestamp) - new Date(b.timestamp);
         // });
-        return res.data.data;
+        return res.data.data.map((item, index) => {
+          return [dateToTimeStamp(item?.timestamp), item?.price];
+        });
       }
       return [];
     } catch (error) {

@@ -13,6 +13,7 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 function Overview({ tokenId, tokenInfo }) {
   const { getTokenOverview } = useToken();
   const [overview, setOverview] = useState([]);
+  const [isChartLoading, setChartLoading] = useState(false);
 
   const chartTypes = [
     { slug: "Price", value: "Price" },
@@ -35,27 +36,15 @@ function Overview({ tokenId, tokenInfo }) {
   useEffect(() => {
     async function getTokenOverviewData() {
       if (tokenId) {
+        setChartLoading(true);
         const res = await getTokenOverview({ tokenId, chartType, period });
+        console.log("_______________________r", res);
         setOverview(res);
+        setChartLoading(false);
       }
     }
     getTokenOverviewData();
   }, [tokenId, chartType, period]);
-
-  const [tableData, setTableData] = useState([]);
-
-  useEffect(() => {
-    const tempArray = [];
-    for (let i = 0; i < overview.length; i++) {
-      const element = overview[i];
-      const row = {
-        time: formatDateDash(element.timestamp),
-        value: element.price,
-      };
-      tempArray.push(row);
-    }
-    setTableData(tempArray);
-  }, [overview]);
 
   const handleFullScreen = useFullScreenHandle();
 
@@ -91,7 +80,13 @@ function Overview({ tokenId, tokenInfo }) {
           />
         </div>
         <div className="mt-5">
-          <Chart data={tableData} />
+          {isChartLoading ? (
+            <div className="flex justify-center items-center h-[300px]">
+              <p className="text-center">Loading...</p>
+            </div>
+          ) : (
+            <Chart data={overview} />
+          )}
         </div>
       </div>
     </FullScreen>
