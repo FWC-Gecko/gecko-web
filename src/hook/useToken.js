@@ -147,6 +147,36 @@ export default function useToken() {
     }
   };
 
+  const getTokenMarketCap = async ({
+    tokenId,
+    chartType,
+    period,
+    searchDate,
+  }) => {
+    try {
+      const res = await api.get(
+        `/global/token/${tokenId}/overview?period=${period}&timeStart${
+          period === "DATE" && `=${formatDateDash(searchDate[0].startDate)}`
+        }&timeEnd${
+          period === "DATE" && `=${formatDateDash(searchDate[0].endDate)}`
+        }`
+      );
+      if (res.data.success) {
+        return res.data.data.map((item, index) => {
+          return [dateToTimeStamp(item?.timestamp), item?.marketCap];
+        });
+      }
+      return [];
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Sesrver Error.", "error");
+      }
+      return [];
+    }
+  };
+
   const getTokenHistoricalData = async (tokenId) => {
     try {
       const res = await api.get(`/global/token/${tokenId}/historicaldata`);
@@ -213,6 +243,7 @@ export default function useToken() {
     getNewTokens,
     getRecommendInfos,
     getTokenOverview,
+    getTokenMarketCap,
     getTrendingTokens,
     getTokenHistoricalData,
     getTokenMarkets,
