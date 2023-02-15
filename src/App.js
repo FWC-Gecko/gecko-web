@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import "react-toastify/dist/ReactToastify.css";
-
 import { withTrans } from "./i18n/withTranslations";
 // Redux
 import { Provider } from "react-redux";
@@ -28,14 +26,18 @@ import Profile from "./views/auth/Profile";
 import ListToken from "./views/listToken/ListToken";
 import TokenDetail from "./views/token/TokenDetail";
 
-import "./App.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import NotFound from "./components/layout/NotFound";
 import Alert from "./components/layout/Alert";
 import Search from "./views/Search";
 import ExchangeDetail from "./views/exchange/ExchangeDetail";
 import RequestUpdate from "./views/RequestUpdate";
+
+import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
 
 function App() {
   const { loadUser } = useAuth();

@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useEffectOnce } from "../../../../hook/useEffectOnce";
 import useToken from "../../../../hook/useToken";
-import { formatDateDash } from "../../../../utils";
 import { Chart } from "../../../common/chart/Chart";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Tab from "../../../common/Tab";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import DatePicker from "rsuite/DatePicker";
+import { addDays } from "date-fns";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import RangeDateSelector from "./RangeDateSelector";
 
 function Overview({ tokenId, tokenInfo }) {
   const { getTokenOverview } = useToken();
@@ -28,8 +26,8 @@ function Overview({ tokenId, tokenInfo }) {
     { slug: "1Y", value: "1Y" },
     { slug: "YTD", value: "YTD" },
     { slug: "ALL", value: "ALL" },
-    { slug: "Calendar", value: <CalendarTodayIcon /> },
-    { slug: "LOG", value: "LOG" },
+    // { slug: "Calendar", value: <CalendarTodayIcon /> },
+    // { slug: "LOG", value: "LOG" },
   ];
   const [period, setPeriod] = useState(periods[5].slug);
 
@@ -37,8 +35,13 @@ function Overview({ tokenId, tokenInfo }) {
     async function getTokenOverviewData() {
       if (tokenId) {
         setChartLoading(true);
-        const res = await getTokenOverview({ tokenId, chartType, period });
-        console.log("_______________________r", res);
+        console.log("searchDate", searchDate);
+        const res = await getTokenOverview({
+          tokenId,
+          chartType,
+          period,
+          searchDate,
+        });
         setOverview(res);
         setChartLoading(false);
       }
@@ -47,6 +50,14 @@ function Overview({ tokenId, tokenInfo }) {
   }, [tokenId, chartType, period]);
 
   const handleFullScreen = useFullScreenHandle();
+
+  const [searchDate, setSearchDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 7),
+      key: "selection",
+    },
+  ]);
 
   return (
     <FullScreen handle={handleFullScreen}>
@@ -72,12 +83,40 @@ function Overview({ tokenId, tokenInfo }) {
             setItem={setChartType}
             size="sm"
           />
-          <Tab
-            items={periods}
-            selectedItem={period}
-            setItem={setPeriod}
-            size="sm"
-          />
+
+          <div
+            className={`itemBg5 rounded-full flex justify-start border-[#23262F] dark:border overflow-auto p-1`}
+          >
+            {periods.map((row, key) => {
+              return (
+                <button
+                  key={key}
+                  className={`rounded-full whitespace-nowrap ${
+                    period === row?.slug
+                      ? "bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white"
+                      : "text-[#8E8E8E]"
+                  } px-5 py-1 text-sm `}
+                  onClick={() => setPeriod(row?.slug)}
+                >
+                  {row.value}
+                </button>
+              );
+            })}
+
+            <button
+              className={`rounded-full whitespace-nowrap ${
+                period === "DATE"
+                  ? "bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] text-white"
+                  : "text-[#8E8E8E]"
+              } px-5 py-1 text-sm `}
+            >
+              <RangeDateSelector
+                setPeriod={setPeriod}
+                searchDate={searchDate}
+                setSearchDate={setSearchDate}
+              />
+            </button>
+          </div>
         </div>
         <div className="mt-5">
           {isChartLoading ? (

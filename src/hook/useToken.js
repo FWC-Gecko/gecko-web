@@ -1,5 +1,5 @@
 import { setAlert } from "../actions/alert";
-import { dateToTimeStamp } from "../utils";
+import { dateToTimeStamp, formatDateDash } from "../utils";
 
 import api from "../utils/api";
 
@@ -112,10 +112,19 @@ export default function useToken() {
     }
   };
 
-  const getTokenOverview = async ({ tokenId, chartType, period }) => {
+  const getTokenOverview = async ({
+    tokenId,
+    chartType,
+    period,
+    searchDate,
+  }) => {
     try {
       const res = await api.get(
-        `/global/token/${tokenId}/overview?period=${period}&timeStart&timeEnd`
+        `/global/token/${tokenId}/overview?period=${period}&timeStart${
+          period === "DATE" && `=${formatDateDash(searchDate[0].startDate)}`
+        }&timeEnd${
+          period === "DATE" && `=${formatDateDash(searchDate[0].endDate)}`
+        }`
       );
       if (res.data.success) {
         // return res.data.data.sort(function (a, b) {
