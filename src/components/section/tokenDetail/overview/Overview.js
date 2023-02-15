@@ -35,7 +35,6 @@ function Overview({ tokenId, tokenInfo }) {
     async function getTokenOverviewData() {
       if (tokenId) {
         setChartLoading(true);
-        console.log("searchDate", searchDate);
         const res = await getTokenOverview({
           tokenId,
           chartType,
