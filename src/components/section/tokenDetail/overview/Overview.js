@@ -102,6 +102,7 @@ function Overview({ tokenId, tokenInfo }) {
             </button>
           </div>
         </div>
+
         <div className="md:flex justify-between items-center gap-2 mt-3">
           <Tab
             items={chartTypes}
@@ -111,7 +112,7 @@ function Overview({ tokenId, tokenInfo }) {
           />
 
           <div
-            className={`itemBg5 rounded-full flex justify-start border-[#23262F] dark:border overflow-auto p-1`}
+            className={`itemBg5 rounded-full flex justify-start border-[#23262F] dark:border overflow-auto p-1 mt-2 md:mt-0`}
           >
             {periods.map((row, key) => {
               return (

@@ -3,7 +3,7 @@ import React from "react";
 function Tab({ items, selectedItem, setItem, size = "lg" }) {
   return (
     <div
-      className={`itemBg5 rounded-full flex justify-start border-[#23262F] dark:border overflow-auto ${
+      className={`itemBg5 rounded-full w-max flex justify-start border-[#23262F] dark:border overflow-auto ${
         size === "lg" ? "p-2" : "p-1"
       }`}
     >

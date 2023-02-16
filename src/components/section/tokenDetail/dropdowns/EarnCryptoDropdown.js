@@ -7,7 +7,7 @@ function EarnCryptoDropdown() {
     <div>
       <Dropdown
         Header={
-          <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full shadow mt-3 sm:mt-0 cursor-pointer whitespace-nowrap">
+          <p className="itemBg1 px-2 sm:px-4 py-1 sm:py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full shadow cursor-pointer">
             Earn Crypto
             <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
           </p>

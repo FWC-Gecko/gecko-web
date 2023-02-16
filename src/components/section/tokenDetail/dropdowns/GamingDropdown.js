@@ -7,7 +7,7 @@ function GamingDropdown() {
     <div>
       <Dropdown
         Header={
-          <p className="itemBg1 px-4 py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full shadow mt-3 sm:mt-0 cursor-pointer">
+          <p className="itemBg1 px-2 sm:px-4 py-1 sm:py-2 rounded-lg font-medium flex justify-center items-center gap-2 w-full shadow cursor-pointer">
             Gaming
             <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
           </p>
