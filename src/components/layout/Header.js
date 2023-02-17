@@ -21,6 +21,7 @@ function Header() {
   useEffectOnce(() => {
     async function init() {
       const res = await getRecommendInfos();
+      console.log(res);
       setInfos(res);
     }
     init();
@@ -51,7 +52,8 @@ function Header() {
         <p className="text-sm font-normal flex sm:block whitespace-nowrap">
           Dominance:{" "}
           <span className="text-[#BA4DF9]">
-            BTC: {41.7}% ETH: {18.5}%
+            BTC: {infos?.dominanceBTC?.toFixed(2)}% ETH:{" "}
+            {infos?.dominanceETH?.toFixed(2)}%
           </span>
         </p>
         <p className="text-sm font-normal flex sm:block whitespace-nowrap">
