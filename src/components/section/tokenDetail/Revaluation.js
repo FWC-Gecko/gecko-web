@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import useToken from "../../../hook/useToken";
-import { useEffectOnce } from "../../../hook/useEffectOnce";
 import { formatDate } from "../../../utils";
 
 function Revaluation({ tokenInfo }) {
@@ -16,7 +15,6 @@ function Revaluation({ tokenInfo }) {
       const res = localStorage.getItem(
         `vote-token-${tokenInfo?._id}-${formatDate(currentTime)}`
       );
-      console.log(JSON.parse(res));
       setVoteStatus(JSON.parse(res));
     } catch (error) {
       console.log(error);
