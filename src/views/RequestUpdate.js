@@ -17,7 +17,7 @@ function RequestUpdate() {
 
   return (
     <div>
-      <div className="n-container py-5 smLpy-10">
+      <div className="n-container py-5 sm:py-10">
         <p className="text-3xl font-bold">Submit a request</p>
         <form className="text-sm">
           <p className="mt-10">
