@@ -214,27 +214,40 @@ export default function useToken() {
   };
 
   const voteToken = async (tokenId, mode = 1) => {
+    // Mode - 1: up, -1: down
     try {
       const res = await api.post(
-        `/global/token/${tokenId}/${mode == 1 ? "up" : "down"}`
+        `/global/token/${tokenId}/${mode === 1 ? "up" : "down"}`
       );
       if (res.data.success) {
-        const count = await api.get(`/global/token/${tokenId}/vote`);
-        if (count.data.success) {
-          console.log(count.data);
-          return count.data.data;
-        }
-
-        return 0;
+        setAlert(res.data.message, "success");
+        return true;
       }
-      return 0;
+      return false;
     } catch (error) {
       if (error?.response?.data?.message) {
         setAlert(error?.response?.data?.message, "error");
       } else {
         setAlert("Sesrver Error.", "error");
       }
-      return [];
+      return false;
+    }
+  };
+
+  const getVoteStatus = async (tokenId) => {
+    try {
+      const res = await api.get(`/global/token/${tokenId}/vote`);
+      if (res.data.success) {
+        return res.data.data.voteStatus;
+      }
+      return null;
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Sesrver Error.", "error");
+      }
+      return null;
     }
   };
 
@@ -251,5 +264,7 @@ export default function useToken() {
     getTokenMarkets,
     getLosers,
     getGainers,
+    getVoteStatus,
+    voteToken,
   };
 }
