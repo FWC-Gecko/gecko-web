@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef } from "react";
 import { Link, Navigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -24,8 +24,22 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Google reCapcha start
+    
+  const captchaRef = useRef(null) ;
+
+  const GenerateCaptchaToken =() =>{
+    const token = captchaRef.current.getValue() ;
+    captchaRef.current.reset() ;
+    console.log(token) ;
+  }
+
+// Google reCapcha end
+
+
   const onSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault() ;
+    GenerateCaptchaToken() ;
     try {
       setLoading(true);
       const req = { email, password };
@@ -86,6 +100,11 @@ const Login = () => {
             <div className="flex justify-end mt-4">
               <p className="font-medium text-sm"></p>
             </div>
+            <ReCAPTCHA 
+              sitekey="6Lff6ookAAAAAM6eFUFK6ESvdhPidAb6YJJmYkVz"
+              ref={captchaRef}
+
+            />
             <SubmitButton label={"LOGIN"} />
             {/* <ReCAPTCHA sitekey="6LeRFXwkAAAAACIa-mzBs2qrCTHFW-qgHnsMxiIa"/> */}
           </form>
