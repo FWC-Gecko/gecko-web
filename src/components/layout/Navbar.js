@@ -31,11 +31,11 @@ const Navbar = () => {
               <SearchInput />
             </div>
 
-            <div className="hidden lg:block">
+            <div className="hidden xl:block">
               <Menus />
             </div>
 
-            <div className="hidden lg:flex justify-end gap-5 items-center">
+            <div className="hidden xl:flex justify-end gap-5 items-center">
               <div className="flex justify-start items-center gap-2">
                 {/* <img src="/img/star.png" alt="" /> */}
                 <StarIcon className="h-4 cursor-pointer text-[#B9B9B9] dark:text-white" />
@@ -47,12 +47,12 @@ const Navbar = () => {
               </div>
             </div>
 
-            <div className="hidden lg:flex justify-end">
+            <div className="hidden xl:flex justify-end">
               <ListingButton />
             </div>
 
             <p
-              className="lg:hidden cursor-pointer"
+              className="xl:hidden cursor-pointer"
               onClick={() => setMobileMenuShow(true)}
             >
               <MenuIcon />

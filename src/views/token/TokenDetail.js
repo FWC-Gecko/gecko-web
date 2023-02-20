@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useToken from "../../hook/useToken";
 import Ad from "../../components/section/ad/Ad";
 import Satistic from "../../components/section/tokenDetail/Satistic";

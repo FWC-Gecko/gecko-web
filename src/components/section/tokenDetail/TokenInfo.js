@@ -213,11 +213,11 @@ function TokenInfo({ tokenInfo }) {
           </div>
         </div>
 
-        <div className="grayGradientBg1 rounded-lg p-3 sm:p-6 mt-4 xl:mt-0">
+        <div className="grayGradientBg1 rounded-lg p-3 sm:p-6 mt-4 xl:mt-0 w-full 2xl:w-max">
           <p className="text-lg font-medium">
             {tokenInfo && tokenInfo.name} ({tokenInfo && tokenInfo.symbol})
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 items-center text-sm gap-2 sm:gap-3 mt-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 items-center text-sm gap-2 sm:gap-3 mt-4 w-full 2xl:w-max">
             <BuyDropdown />
             <ExchangeDropdown />
             <GamingDropdown />

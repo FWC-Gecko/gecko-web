@@ -30,35 +30,33 @@ function Header() {
   const Infos = () => {
     return (
       <div className="w-full overflow-auto justify-start md:justify-center xl:justify-start flex items-center py-2 gap-4">
-        <p className="text-sm font-normal flex sm:block whitespace-nowrap">
-          Cryptos: <span className="text-[#BA4DF9]">{infos?.cryptoCount}</span>
-        </p>
-        <p className="text-sm font-normal flex sm:block whitespace-nowrap">
-          Market Cap:{" "}
-          <span className="text-[#BA4DF9]">
-            {formatPrice(infos?.totalMarketCap)}
-          </span>
-        </p>
-        <p className="text-sm font-normal flex sm:block whitespace-nowrap">
-          Exchanges:{" "}
-          <span className="text-[#BA4DF9]">{infos?.exchangeCount}</span>
-        </p>
-        <p className="text-sm font-normal flex sm:block whitespace-nowrap">
-          24h Vol:{" "}
-          <span className="text-[#BA4DF9]">
-            {formatPrice(infos?.totalVolume24h)}
-          </span>
-        </p>
-        <p className="text-sm font-normal flex sm:block whitespace-nowrap">
-          Dominance:{" "}
-          <span className="text-[#BA4DF9]">
+        <div className="flex lg:block text-sm">
+          <p className="whitespace-nowrap">Cryptos:</p>
+          <p className="text-[#BA4DF9]">{infos?.cryptoCount}</p>
+        </div>
+        <div className="flex lg:block text-sm">
+          <p className="whitespace-nowrap">Market Cap:</p>
+          <p className="text-[#BA4DF9]">{formatPrice(infos?.totalMarketCap)}</p>
+        </div>
+        <div className="flex lg:block text-sm">
+          <p className="whitespace-nowrap">Exchanges:</p>
+          <p className="text-[#BA4DF9]">{infos?.exchangeCount}</p>
+        </div>
+        <div className="flex lg:block text-sm">
+          <p className="whitespace-nowrap">24h Vol:</p>
+          <p className="text-[#BA4DF9]">{formatPrice(infos?.totalVolume24h)}</p>
+        </div>
+        <div className="flex lg:block text-sm">
+          <p className="whitespace-nowrap">Dominance:</p>
+          <p className="text-[#BA4DF9] whitespace-nowrap">
             BTC: {infos?.dominanceBTC?.toFixed(2)}% ETH:{" "}
             {infos?.dominanceETH?.toFixed(2)}%
-          </span>
-        </p>
-        <p className="text-sm font-normal flex sm:block whitespace-nowrap">
-          ETH Gas: <span className="text-[#BA4DF9]">{ethGas} Gwei</span>
-        </p>
+          </p>
+        </div>
+        <div className="flex lg:block text-sm">
+          <p className="whitespace-nowrap">ETH Gas:</p>
+          <p className="text-[#BA4DF9]">{ethGas} Gwei</p>
+        </div>
       </div>
     );
   };
@@ -67,7 +65,7 @@ function Header() {
     <div className="bg-white dark:bg-[#101115] py-2">
       <div className="n-container flex justify-between gap-4">
         <Infos />
-        <div className="hidden lg:flex justify-end items-center gap-4 w-full sm:w-max">
+        <div className="hidden xl:flex justify-end items-center gap-4 w-full sm:w-max">
           <LanguageSelect />
           <PriceSelect />
           <ToggleColorTheme />
