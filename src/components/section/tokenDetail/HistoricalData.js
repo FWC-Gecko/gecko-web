@@ -17,7 +17,7 @@ function HistoricalData({ tokenId, tokenInfo }) {
   }, []);
 
   return (
-    <div className="mt-5 bg-white dark:bg-[#121318] dark:bg-gray-100 text-[#47484E] dark:text-white w-full overflow-auto">
+    <div className="mt-5 bg-white dark:bg-[#121318] text-[#47484E] dark:text-white w-full overflow-auto">
       <table className="table-auto w-full">
         <thead>
           <tr>
