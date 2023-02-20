@@ -239,7 +239,7 @@ export default function useToken() {
     try {
       const res = await api.get(`/global/token/${tokenId}/vote`);
       if (res.data.success) {
-        return res.data.data.voteStatus;
+        return res.data.data.vote;
       }
       return null;
     } catch (error) {

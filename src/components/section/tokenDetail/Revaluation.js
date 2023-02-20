@@ -3,9 +3,11 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import useToken from "../../../hook/useToken";
 import { formatDate } from "../../../utils";
+import { useEffectOnce } from "../../../hook/useEffectOnce";
+import { Progress } from "@material-tailwind/react";
 
 function Revaluation({ tokenInfo }) {
-  const { voteToken } = useToken();
+  const { voteToken, getVoteStatus } = useToken();
 
   const [voteStatus, setVoteStatus] = useState(null);
   const currentTime = new Date();
@@ -20,6 +22,19 @@ function Revaluation({ tokenInfo }) {
       console.log(error);
     }
   }
+
+  const [voteStatusInfo, setVoteStatusInfo] = useState();
+
+  useEffect(() => {
+    async function onGetVoteStatusInfo() {
+      if (tokenInfo?._id) {
+        const res = await getVoteStatus(tokenInfo?._id);
+        setVoteStatusInfo(res);
+      }
+    }
+
+    onGetVoteStatusInfo();
+  }, [getVoteStatus, tokenInfo?._id]);
 
   useEffect(() => {
     if (tokenInfo?._id) {
@@ -44,39 +59,68 @@ function Revaluation({ tokenInfo }) {
   }
 
   return (
-    <div className="rounded-lg bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] my-10 sm:my-20 p-8 sm:flex justify-between items-center">
-      <div>
-        <p className="text-3xl text-white">
-          How do you feel about {tokenInfo?.name} today?
-        </p>
-        <p className="text-white mt-2">
-          Vote to see what our Community thinks!
-        </p>
-      </div>
-      <div className="flex justify-center sm:justify-end gap-3 mt-3 sm:mt-0">
-        <button
-          className={`${
-            voteStatus?.status === 1
-              ? "bg-transparent border border-white text-white"
-              : "bg-white text-[#BA4DF9] "
-          } rounded-lg px-6 py-2 flex items-center gap-2`}
-          disabled={voteStatus?.status === 1 ? true : false}
-          onClick={() => onVote(1)}
-        >
-          <ThumbUpAltIcon /> <p>Good</p>
-        </button>
-        <button
-          className={`${
-            voteStatus?.status === -1
-              ? "bg-transparent border border-white text-white"
-              : "bg-white text-[#BA4DF9] "
-          } rounded-lg px-6 py-2 flex items-center gap-2`}
-          disabled={voteStatus?.status === -1 ? true : false}
-          onClick={() => onVote(-1)}
-        >
-          <ThumbDownAltIcon /> <p>Bad</p>
-        </button>
-      </div>
+    <div className="rounded-lg text-white bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] my-10 sm:my-20 p-8 sm:flex justify-between items-center">
+      {voteStatus ? (
+        <>
+          <div className="w-full">
+            <p className="text-xl">You've voted</p>
+            <p className="max-w-[400px]">
+              Your vote is for 24 hours. In order to update how you feel about
+              Ethereum, come back tomorrow!
+            </p>
+          </div>
+          <div className="w-full mt-4 sm:mt-0">
+            <div className="max-w-[400px] ml-auto mr-0">
+              <Progress value={voteStatusInfo?.upPercent || 0} color="blue" />
+              <div className="w-full mt-2 flex justify-between items-center">
+                <p>
+                  {voteStatusInfo?.upPercent} Good <ThumbUpAltIcon />
+                </p>
+                <p>
+                  <ThumbDownAltIcon /> Bad {voteStatusInfo?.downPercent}
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div>
+            <p className="text-3xl text-white">
+              How do you feel about {tokenInfo?.name} today?
+            </p>
+            <p className="text-white mt-2">
+              Vote to see what our Community thinks!
+            </p>
+          </div>
+          <div>
+            <div className="flex justify-center sm:justify-end gap-3 mt-3 sm:mt-0">
+              <button
+                className={`${
+                  voteStatus?.status === 1
+                    ? "bg-transparent border border-white text-white"
+                    : "bg-white text-[#BA4DF9] "
+                } rounded-lg px-6 py-2 flex items-center gap-2`}
+                disabled={voteStatus?.status === 1 ? true : false}
+                onClick={() => onVote(1)}
+              >
+                <ThumbUpAltIcon /> <p>Good</p>
+              </button>
+              <button
+                className={`${
+                  voteStatus?.status === -1
+                    ? "bg-transparent border border-white text-white"
+                    : "bg-white text-[#BA4DF9] "
+                } rounded-lg px-6 py-2 flex items-center gap-2`}
+                disabled={voteStatus?.status === -1 ? true : false}
+                onClick={() => onVote(-1)}
+              >
+                <ThumbDownAltIcon /> <p>Bad</p>
+              </button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
