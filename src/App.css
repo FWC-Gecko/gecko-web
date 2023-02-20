@@ -113,26 +113,23 @@ body::-webkit-scrollbar-thumb {
   display: none !important;
 }
 
-
 /* SCROLL BUTTON CSS */
 
 .back-to-top {
+  @apply bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow shadow-white/50 dark:shadow-black/50;
   position: fixed;
   bottom: 20px;
   right: 20px;
   font-size: 35px;
   padding: 10px;
-  background: red;
   color: white;
   cursor: pointer;
   border-radius: 40px;
   border: none;
-  box-shadow: 0 5px 10px #df7373;
 }
 
 .back-to-top:hover {
-  background: red;
+  @apply bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9];
 }
-
 
 /* SCROLL BUTTON CSS */
