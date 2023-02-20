@@ -55,7 +55,7 @@ function Header() {
         </div>
         <div className="flex lg:block text-sm">
           <p className="whitespace-nowrap">ETH Gas:</p>
-          <p className="text-[#BA4DF9]">{ethGas} Gwei</p>
+          <p className="text-[#BA4DF9]">{infos?.gasPrice?.toFixed(2)} Gwei</p>
         </div>
       </div>
     );

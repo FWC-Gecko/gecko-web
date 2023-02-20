@@ -198,6 +198,7 @@ export default function useToken() {
     try {
       const res = await api.get(`/global/token/${tokenId}/markets`);
       if (res.data.success) {
+        return res.data.data;
         return res.data.data.map((item, index) => {
           return [dateToTimeStamp(item?.timestamp), item?.price];
         });
