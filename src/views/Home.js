@@ -48,11 +48,11 @@ const Home = () => {
           </div>
         </div>
         <div className="n-container">
-          <div className="sm:flex justify-between">
-            <div className="sm:w-1/2">
+          <div className="md:flex justify-between">
+            <div className="md:w-1/2">
               <LeftTokenPart />
             </div>
-            <div className="sm:w-1/2">
+            <div className="md:w-1/2">
               <RightTokenPart />
             </div>
           </div>

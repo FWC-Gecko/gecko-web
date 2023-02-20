@@ -29,31 +29,31 @@ function Header() {
 
   const Infos = () => {
     return (
-      <div className="w-full overflow-auto justify-start md:justify-center xl:justify-start flex items-center py-2 gap-4">
-        <div className="flex lg:block text-sm">
+      <div className="w-full text-xs overflow-auto justify-start md:justify-center xl:justify-start flex items-center py-2 gap-2 infoScroller">
+        <div className="flex gap-1">
           <p className="whitespace-nowrap">Cryptos:</p>
           <p className="text-[#BA4DF9]">{infos?.cryptoCount}</p>
         </div>
-        <div className="flex lg:block text-sm">
-          <p className="whitespace-nowrap">Market Cap:</p>
+        <div className="flex gap-1">
+          <p className="whitespace-nowrap">Market Cap: </p>
           <p className="text-[#BA4DF9]">{formatPrice(infos?.totalMarketCap)}</p>
         </div>
-        <div className="flex lg:block text-sm">
+        <div className="flex gap-1">
           <p className="whitespace-nowrap">Exchanges:</p>
           <p className="text-[#BA4DF9]">{infos?.exchangeCount}</p>
         </div>
-        <div className="flex lg:block text-sm">
+        <div className="flex gap-1">
           <p className="whitespace-nowrap">24h Vol:</p>
           <p className="text-[#BA4DF9]">{formatPrice(infos?.totalVolume24h)}</p>
         </div>
-        <div className="flex lg:block text-sm">
+        <div className="flex gap-1">
           <p className="whitespace-nowrap">Dominance:</p>
           <p className="text-[#BA4DF9] whitespace-nowrap">
             BTC: {infos?.dominanceBTC?.toFixed(2)}% ETH:{" "}
             {infos?.dominanceETH?.toFixed(2)}%
           </p>
         </div>
-        <div className="flex lg:block text-sm">
+        <div className="flex gap-1">
           <p className="whitespace-nowrap">ETH Gas:</p>
           <p className="text-[#BA4DF9] whitespace-nowrap">
             {infos?.gasPrice?.toFixed(2)} Gwei
@@ -67,14 +67,14 @@ function Header() {
     <div className="bg-white dark:bg-[#101115] py-2">
       <div className="n-container flex justify-between gap-4">
         <Infos />
-        <div className="hidden xl:flex justify-end items-center gap-4 w-full sm:w-max">
+        <div className="hidden 2xl:flex justify-end items-center gap-3 w-full sm:w-max">
           <LanguageSelect />
           <PriceSelect />
           <ToggleColorTheme />
           {isAuthenticated ? (
             <ProfileDropdown />
           ) : (
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               <SignInButton />
               <SignUpButton />
             </div>

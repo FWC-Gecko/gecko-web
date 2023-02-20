@@ -26,7 +26,7 @@ function TrendingTokens() {
           </p>
         </div>
       </div>
-      <div className="flex flex-col xl:flex-row  justify-between items-center gap-3">
+      <div className="flex flex-col 2xl:flex-row  justify-between items-center gap-3">
         {tokens.map((row, key) => {
           return <TokenItem key={key} row={row} />;
         })}
