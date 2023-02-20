@@ -99,3 +99,27 @@
 .slick-arrow {
   display: none !important;
 }
+
+
+/* SCROLL BUTTON CSS */
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 35px;
+  padding: 10px;
+  background: red;
+  color: white;
+  cursor: pointer;
+  border-radius: 40px;
+  border: none;
+  box-shadow: 0 5px 10px #df7373;
+}
+
+.back-to-top:hover {
+  background: red;
+}
+
+
+/* SCROLL BUTTON CSS */
