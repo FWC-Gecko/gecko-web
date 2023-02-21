@@ -10,6 +10,7 @@ import useToken from "../../hook/useToken";
 import { useState } from "react";
 import { formatPrice } from "../../utils";
 import ProfileDropdown from "../section/auth/ProfileDropdown";
+import { Link } from "react-router-dom";
 
 function Header() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -30,18 +31,22 @@ function Header() {
   const Infos = () => {
     return (
       <div className="w-full text-xs overflow-auto justify-start md:justify-center xl:justify-start flex items-center py-2 gap-2 infoScroller">
-        <div className="flex gap-1">
-          <p className="whitespace-nowrap">Cryptos:</p>
-          <p className="text-[#BA4DF9]">{infos?.cryptoCount}</p>
-        </div>
+        <Link to={"/"}>
+          <div className="flex gap-1">
+            <p className="whitespace-nowrap">Cryptos:</p>
+            <p className="text-[#BA4DF9]">{infos?.cryptoCount}</p>
+          </div>
+        </Link>
         <div className="flex gap-1">
           <p className="whitespace-nowrap">Market Cap: </p>
           <p className="text-[#BA4DF9]">{formatPrice(infos?.totalMarketCap)}</p>
         </div>
-        <div className="flex gap-1">
-          <p className="whitespace-nowrap">Exchanges:</p>
-          <p className="text-[#BA4DF9]">{infos?.exchangeCount}</p>
-        </div>
+        <Link to={"/exchanges"}>
+          <div className="flex gap-1">
+            <p className="whitespace-nowrap">Exchanges:</p>
+            <p className="text-[#BA4DF9]">{infos?.exchangeCount}</p>
+          </div>
+        </Link>
         <div className="flex gap-1">
           <p className="whitespace-nowrap">24h Vol:</p>
           <p className="text-[#BA4DF9]">{formatPrice(infos?.totalVolume24h)}</p>

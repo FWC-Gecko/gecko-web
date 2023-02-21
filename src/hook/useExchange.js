@@ -14,7 +14,7 @@ export default function useExchanges() {
       if (error?.response?.data?.message) {
         setAlert(error?.response?.data?.message, "error");
       } else {
-        setAlert("Sesrver Error.", "error");
+        setAlert("Server Error.", "error");
       }
       return [];
     }
@@ -31,7 +31,7 @@ export default function useExchanges() {
       if (error?.response?.data?.message) {
         setAlert(error?.response?.data?.message, "error");
       } else {
-        setAlert("Sesrver Error.", "error");
+        setAlert("Server Error.", "error");
       }
       return [];
     }
@@ -48,7 +48,7 @@ export default function useExchanges() {
       if (error?.response?.data?.message) {
         setAlert(error?.response?.data?.message, "error");
       } else {
-        setAlert("Sesrver Error.", "error");
+        setAlert("Server Error.", "error");
       }
       return {};
     }

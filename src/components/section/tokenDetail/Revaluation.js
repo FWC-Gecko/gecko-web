@@ -74,10 +74,12 @@ function Revaluation({ tokenInfo }) {
               <Progress value={voteStatusInfo?.upPercent || 0} color="blue" />
               <div className="w-full mt-2 flex justify-between items-center">
                 <p>
-                  {voteStatusInfo?.upPercent} Good <ThumbUpAltIcon />
+                  {voteStatusInfo?.upPercent?.toFixed(1)}% Good{" "}
+                  <ThumbUpAltIcon />
                 </p>
                 <p>
-                  <ThumbDownAltIcon /> Bad {voteStatusInfo?.downPercent}
+                  <ThumbDownAltIcon /> Bad{" "}
+                  {voteStatusInfo?.downPercent?.toFixed(1)}%
                 </p>
               </div>
             </div>

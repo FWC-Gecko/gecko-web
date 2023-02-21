@@ -15,7 +15,7 @@ export default function usePost() {
       if (error?.response?.data?.message) {
         setAlert(error?.response?.data?.message, "error");
       } else {
-        setAlert("Sesrver Error.", "error");
+        setAlert("Server Error.", "error");
       }
       return false;
     }
@@ -32,7 +32,7 @@ export default function usePost() {
       if (error?.response?.data?.message) {
         setAlert(error?.response?.data?.message, "error");
       } else {
-        setAlert("Sesrver Error.", "error");
+        setAlert("Server Error.", "error");
       }
       return [];
     }
