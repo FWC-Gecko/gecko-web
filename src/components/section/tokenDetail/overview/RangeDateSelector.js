@@ -27,6 +27,7 @@ function RangeDateSelector({ setSearchDate, searchDate, setPeriod }) {
                     onChange={(item) => setSearchDate([item.selection])}
                     moveRangeOnFirstSelection={false}
                     ranges={searchDate}
+                    color="#3d91ff"
                   />
                 </div>
                 <div className="hidden lg:block text-black">
