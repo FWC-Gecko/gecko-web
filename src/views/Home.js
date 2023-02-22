@@ -48,7 +48,7 @@ const Home = () => {
           </div>
         </div>
         <div className="n-container">
-          <div className="md:flex justify-between hidden sm:block">
+          <div className="md:flex justify-between sm:block">
             <div className="md:w-1/2">
               <LeftTokenPart />
             </div>
