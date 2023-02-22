@@ -51,21 +51,21 @@ const Exchanges = () => {
               <img src="/img/plt.png" alt="" />
             </div>
             <div className="sm:w-1/2 mt-5 sm:mt-0 text-[#101115] dark:text-white">
-              <p className="text-2xl sm:text-4xl font-bold leading-snug text-center sm:text-start">
+              <p className="text-xl sm:text-4xl font-bold leading-snug text-center sm:text-start">
                 Be The First To Know About{" "}
                 <span className="text-[#BA4DF9]">Crypto News</span> Every Day
               </p>
-              <p className="text-lg mt-5 leading-relaxed text-center sm:text-start">
+              <p className="text-sm mt-5 leading-relaxed text-center sm:text-start sm:text-lg">
                 Get crypto analysis, news and updates right to your inbox! Sign
                 up here so you don't miss a single newsletter.
               </p>
-              <div className="flex justify-center sm:justify-start">
+              {/* <div className="flex justify-center sm:justify-start">
                 <Link to={"/signup"}>
                   <button className="px-4 py-2 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-6">
                     Sign Up
                   </button>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

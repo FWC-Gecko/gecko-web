@@ -144,3 +144,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* SCROLL BUTTON CSS */
+
+coingecko-coin-heatmap-widget .cg-bold {
+  display: none !important;
+}

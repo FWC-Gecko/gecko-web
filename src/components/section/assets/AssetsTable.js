@@ -7,7 +7,7 @@ import { formatPrice, getMaxMinValue } from "../../../utils";
 import { useEffectOnce } from "../../../hook/useEffectOnce";
 import { toast } from "react-toastify";
 
-function AssetsTable({searchText="", watchlistshow=true}) {
+function AssetsTable({ searchText = "", watchlistshow = true }) {
   const themeColor = useSelector((state) => state.auth.theme);
   const navigate = useNavigate();
 

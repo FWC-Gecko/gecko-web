@@ -151,11 +151,33 @@ function Table({
             />
           )}
           {!isTableLoading && theme === "tile" && (
-            <TileTable
-              columns={columns}
-              data={currentTableData}
-              // onRowClicked={onRowClick}
-            />
+            // <div
+            //   class="cr-heatmap-widget"
+            //   data-top="100"
+            //   data-site-url="https://cryptorank.io"
+            //   data-api-url="https://api.cryptorank.io/v0"
+            //   data-range="24H"
+            //   data-order="cap"
+            //   style={{ width: "1300px", height: "500px" }}
+            // >
+            //   <a
+            //     target="_blank"
+            //     rel="noopener"
+            //     href="https://cryptorank.io/heatmaps"
+            //   >
+            //     Market State by FWC Digital
+            //   </a>
+            // </div>
+            <coingecko-coin-heatmap-widget
+              height="600"
+              locale="en"
+            ></coingecko-coin-heatmap-widget>
+            // <TileTable
+            //   columns={columns}
+            //   data={currentTableData}
+            // onRowClicked={onRowClick}
+
+            // />
           )}
         </div>
       </div>

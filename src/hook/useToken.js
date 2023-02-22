@@ -41,10 +41,30 @@ export default function useToken() {
   };
 
   const getAllowedTokens = async (searchText) => {
-    // alert(searchText);
     try {
       const res = await api.get(
-        `/global/tokens?count=10&search=${searchText}&page=1`
+        `/global/tokens?count=202&search=${searchText}&page=1`
+      );
+      if (res.data.success) {
+        return res.data.data.tokens.map((item, index) => {
+          return { ...item, tid: index };
+        });
+      }
+      return [];
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Server Error.", "error");
+      }
+      return [];
+    }
+  };
+
+  const get5AllowedTokens = async (searchText) => {
+    try {
+      const res = await api.get(
+        `/global/tokens?count=5&search=${searchText}&page=1`
       );
       if (res.data.success) {
         return res.data.data.tokens.map((item, index) => {
@@ -255,6 +275,7 @@ export default function useToken() {
   return {
     list,
     getAllowedTokens,
+    get5AllowedTokens,
     getTokenInformation,
     getNewTokens,
     getRecommendInfos,
