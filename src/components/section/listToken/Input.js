@@ -7,6 +7,7 @@ function Input({
   value,
   onChange,
   required = true,
+  description,
 }) {
   return (
     <div className="w-full">
@@ -24,6 +25,7 @@ function Input({
           required={required}
         />
       </div>
+      <p className="mt-2 text-[0.75rem]">{description}</p>
     </div>
   );
 }
