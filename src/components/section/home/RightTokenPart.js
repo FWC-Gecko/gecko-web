@@ -1,5 +1,4 @@
 import React from "react";
-import MagicSliderDots from "react-magic-slider-dots";
 import Slider from "react-slick";
 import TopGainers from "./TopGainers";
 import TopLosers from "./TopLosers";

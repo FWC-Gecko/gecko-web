@@ -1,10 +1,9 @@
 import React from "react";
-import MagicSliderDots from "react-magic-slider-dots";
 import Slider from "react-slick";
 import NewTokens from "./NewTokens";
 import TrendingTokens from "./TrendingTokens";
 
-function LeftTokenPart(props) {
+function LeftTokenPart() {
   const settings = {
     dots: true,
     arrows: true,
