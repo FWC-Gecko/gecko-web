@@ -87,7 +87,7 @@ function Overview({ tokenId, tokenInfo }) {
 
   return (
     <FullScreen handle={handleFullScreen}>
-      <div className="mt-5 bg-white dark:bg-[#121318] p-6 rounded-lg">
+      <div className="mt-5 bg-white dark:bg-[#121318] p-3 sm:p-6 rounded-lg">
         <div className="flex justify-between items-center gap-4">
           <p className="text-xl">{tokenInfo?.name} to USD Chart</p>
           <div className="flex justify-end items-center gap-2">
