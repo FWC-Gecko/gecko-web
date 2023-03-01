@@ -148,38 +148,29 @@ function TokenInfo({ tokenInfo }) {
                 </a>
 
                 <p className="itemBg1 px-4 py-2 rounded-lg font-bold flex justify-center items-center gap-2 mt-3 sm:mt-0">
-                  {/* <ArticleIcon style={{ fontSize: "16px" }} />
-                More
-                <KeyboardArrowDownIcon style={{ fontSize: "14px" }} /> */}
-                  <Menu>
-                    <MenuHandler>
+                  <Dropdown
+                    Header={
                       <div className="flex justify-end gap-2 items-center cursor-pointer">
-                        <p className="cursor-pointer text-lg text-right">
-                          More
-                        </p>
-                        <img
-                          src="/img/down_arrow.png"
-                          alt=""
-                          className="w-3 mt-1"
-                        />
+                        <p className="cursor-pointer text-right">More</p>
+                        <KeyboardArrowDownIcon style={{ fontSize: "14px" }} />
                       </div>
-                    </MenuHandler>
-                    <MenuList className="w-45 bg-[#101115] border-white/5 border p-0 mt-1">
-                      {tokenInfo &&
-                        tokenInfo?.explorer?.map((item, index) => (
-                          <MenuItem
-                            key={index}
-                            className="hover:bg-white/40 flex justify-center items-center py-2 w-[100%]"
-                          >
-                            <a href={item} target="_blank" rel="noreferrer">
-                              <p className="text-white cursor-pointer text-sm text-center w-[100%]">
-                                {item?.split("/")[2]}
-                              </p>
-                            </a>
-                          </MenuItem>
-                        ))}
-                    </MenuList>
-                  </Menu>
+                    }
+                    items={
+                      tokenInfo && tokenInfo?.explorer
+                        ? tokenInfo?.explorer?.map((item) => {
+                            return {
+                              content: (
+                                <a href={item} target="_blank" rel="noreferrer">
+                                  <p className="cursor-pointer text-sm text-center w-[100%]">
+                                    {item?.split("/")[2]}
+                                  </p>
+                                </a>
+                              ),
+                            };
+                          })
+                        : []
+                    }
+                  />
                 </p>
               </div>
             )}

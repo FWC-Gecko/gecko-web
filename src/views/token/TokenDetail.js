@@ -11,7 +11,7 @@ import Revaluation from "../../components/section/tokenDetail/Revaluation";
 import Estimate from "../../components/section/tokenDetail/Estimate";
 import News from "../../components/section/tokenDetail/News";
 import { useEffectOnce } from "../../hook/useEffectOnce";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Overview from "../../components/section/tokenDetail/overview/Overview";
 import HistoricalData from "../../components/section/tokenDetail/HistoricalData";
 import Markets from "../../components/section/tokenDetail/Markets";
@@ -84,7 +84,7 @@ function TokenDetail() {
                 {/* </Link> */}
               </div>
             </div>
-            <div className="absolute sm:relative right-0">
+            <div className="absolute hidden sm:block sm:relative right-0">
               <img src="/img/56538722.png" alt="" className="h-32 sm:h-48" />
             </div>
           </div>
