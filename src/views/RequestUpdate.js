@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffectOnce } from "../hook/useEffectOnce";
 import Input from "../components/section/listToken/Input";
+import Select from "../components/section/listToken/Select";
 
 function RequestUpdate() {
   const [tokenInfo, setTokenInfo] = useState({});
@@ -10,6 +11,89 @@ function RequestUpdate() {
   useEffectOnce(() => {
     setTokenInfo(JSON.parse(localStorage.getItem("update-item")));
   });
+
+  const requestTypes = [
+    // {
+    //   no: "1",
+    //   text: "[New Listing] Add cryptoasset",
+    // },
+    // {
+    //   no: "2",
+    //   text: "[New listing] ICO Calendar Form redirect [Apply here instead - https://tinyurl.com/yvwf7ra3]",
+    // },
+    {
+      no: "3",
+      text: "[New Listing] Add exchange",
+    },
+    {
+      no: "4",
+      text: "[Existing Cryptoasset &amp; Exchange] Add market/pair",
+    },
+    {
+      no: "5",
+      text: "[Existing Cryptoasset] Update supply figures",
+    },
+    {
+      no: "6",
+      text: "[Existing Cryptoasset] Coin/Token Swap",
+    },
+    {
+      no: "7",
+      text: "[Existing Exchange] Update info (e.g. Fiat on-ramp, Rebrand, API update)",
+    },
+    // {
+    //   no: "8",
+    //   text: "[Existing Cryptoasset] Update info (e.g. Rebrand, URL update, Tagging)",
+    // },
+    // {
+    //   no: "9",
+    //   text: "[Self-reporting Dashboard] Cryptoassets/KOLs/Organizations (official representatives only)",
+    // },
+    // {
+    //   no: "10",
+    //   text: "[Self-reporting Dashboard] Exchanges (official representatives only)",
+    // },
+    // {
+    //   no: "11",
+    //   text: "Add a new event to the events calendar",
+    // },
+    // {
+    //   no: "12",
+    //   text: "Report a bug",
+    // },
+    // {
+    //   no: "13",
+    //   text: "Feedback, Questions, Complaints, Account Deletion, &amp; Privacy Data Inquiry",
+    // },
+    // {
+    //   no: "14",
+    //   text: "Feature Request",
+    // },
+    // {
+    //   no: "15",
+    //   text: "[New Listing] Add Interest Product [Under Maintenance]",
+    // },
+    // {
+    //   no: "16",
+    //   text: "[Headlines by CoinMarketCap] Application [Under maintenance]",
+    // },
+    // {
+    //   no: "17",
+    //   text: "CoinMarketCap API Inquiries [pro.coinmarketcap.com]",
+    // },
+    // {
+    //   no: "18",
+    //   text: "Earn Campaign",
+    // },
+    // {
+    //   no: "19",
+    //   text: "CMC Airdrop Campaign",
+    // },
+    // {
+    //   no: "20",
+    //   text: "Mobile App Support [iOS and Android]",
+    // },
+  ];
 
   return (
     <div>
@@ -22,6 +106,9 @@ function RequestUpdate() {
             given to requesters that submit well-structured, actionable, and
             complete information to the CORRECT form.
           </p>
+          <div>
+            <Select items={requestTypes} />
+          </div>
           <div className="mt-4">
             <Input
               label="Your Email"
