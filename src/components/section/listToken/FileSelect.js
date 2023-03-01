@@ -26,7 +26,7 @@ function FileSelect(props) {
     <>
       <p>Attachments(optional)</p>
       <div
-        className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full h-12 flex justify-center items-center rounded-md cursor-pointer"
+        className="bg-[#575A70]/10 dark:bg-[#202129] w-full h-12 flex justify-center items-center rounded-md cursor-pointer"
         onClick={handleClick}
       >
         <input

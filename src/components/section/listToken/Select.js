@@ -5,7 +5,7 @@ function Select({ label, items, description, setItem }) {
     <>
       <p>{label}</p>
       <select
-        className="bg-gradient-to-r from-[#575A70]/20 to-[#575A70]/20 w-full outline-none py-2 px-2 rounded-md mt-2"
+        className="bg-[#575A70]/10 dark:bg-[#202129] w-full outline-none py-2 px-2 rounded-md mt-2"
         onChange={(e) => {
           setItem(e.target.value);
         }}

@@ -18,9 +18,21 @@ import Markets from "../../components/section/tokenDetail/Markets";
 import useLoading from "../../hook/useLoading";
 
 function TokenDetail() {
-  const { tokenId } = useParams();
   const { setLoading } = useLoading();
   const navigate = useNavigate();
+
+  const { tokenId } = useParams();
+  const { getTokenInformation } = useToken();
+
+  useEffectOnce(() => {
+    const getTokenInfo = async () => {
+      setLoading(true);
+      const res = await getTokenInformation(tokenId);
+      setLoading(false);
+      setTokenInfo(res.token);
+    };
+    getTokenInfo();
+  });
 
   useEffectOnce(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -37,18 +49,6 @@ function TokenDetail() {
   ];
 
   const [subMenu, setSubMenu] = useState(subMenus[0]);
-
-  const { getTokenInformation } = useToken();
-
-  useEffectOnce(() => {
-    const getTokenInfo = async () => {
-      setLoading(true);
-      const res = await getTokenInformation(tokenId);
-      setLoading(false);
-      setTokenInfo(res.token);
-    };
-    getTokenInfo();
-  });
 
   return (
     <>
@@ -75,7 +75,7 @@ function TokenDetail() {
                       "update-item",
                       JSON.stringify(tokenInfo)
                     );
-                    navigate("/request-update");
+                    navigate(`/request-update/${tokenId}`);
                   }}
                   className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-3"
                 >

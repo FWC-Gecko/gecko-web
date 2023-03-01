@@ -6,9 +6,27 @@ import Select from "../components/section/listToken/Select";
 import CheckBox from "../components/section/listToken/CheckBox";
 import TextArea from "../components/section/listToken/TextArea";
 import FileSelect from "../components/section/listToken/FileSelect";
+import useLoading from "../hook/useLoading";
+import { useNavigate, useParams } from "react-router-dom";
+import useToken from "../hook/useToken";
 
 function RequestUpdate() {
   const [tokenInfo, setTokenInfo] = useState({});
+  const { setLoading } = useLoading();
+
+  const { tokenId } = useParams();
+  const { getTokenInformation } = useToken();
+
+  useEffectOnce(() => {
+    const getTokenInfo = async () => {
+      setLoading(true);
+      const res = await getTokenInformation(tokenId);
+      setLoading(false);
+      setTokenInfo(res.token);
+    };
+    getTokenInfo();
+  });
+
   const [email, setemail] = useState("");
 
   useEffectOnce(() => {
@@ -121,7 +139,20 @@ function RequestUpdate() {
   return (
     <div>
       <div className="n-container py-5 sm:py-10 lg:w-[80%] xl:w-[40%]">
-        <p className="text-3xl font-bold">Request To Update</p>
+        <div className="flex justify-between items-center">
+          <p className="text-3xl font-bold">Request To Update</p>
+          <div className="flex justify-end items-center gap-2">
+            <img
+              src={tokenInfo?.logo}
+              alt=""
+              className="h-12 w-12 rounded-full"
+            />
+            <p className="text-3xl font-bold">{tokenInfo?.name}</p>
+            <p className="text-2xl text-[#BA4DF9] font-bold">
+              ({tokenInfo?.symbol})
+            </p>
+          </div>
+        </div>
         <form className="text-sm">
           <p className="mt-10">
             Please review ALL the options and select the CORRECT form to ensure
@@ -145,8 +176,6 @@ function RequestUpdate() {
             <Input
               label="Subject Field (Please adhere to the format)"
               placeholder={"Subject Fields"}
-              value={email}
-              onChange={setemail}
               required={false}
               description={`Please refer to this format as an example. [Project's full name] -
               [Symbol] - [Request, e.g. Add Market, Add cryptoasset/exchange,

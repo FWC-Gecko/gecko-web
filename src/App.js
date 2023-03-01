@@ -123,7 +123,7 @@ function App() {
             }
           />
           <Route
-            path="/request-update"
+            path="/request-update/:tokenId"
             element={
               <Container>
                 <PrivateRoute component={RequestUpdate} />
