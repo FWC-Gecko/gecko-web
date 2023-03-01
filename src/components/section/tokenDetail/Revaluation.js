@@ -59,12 +59,12 @@ function Revaluation({ tokenInfo }) {
   }
 
   return (
-    <div className="rounded-lg text-white bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] my-10 sm:my-20 p-8 sm:flex justify-between items-center">
+    <div className="rounded-lg text-white bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] my-10 sm:my-20 p-4 sm:p-8 sm:flex justify-between items-center">
       {voteStatus ? (
         <>
           <div className="w-full">
             <p className="text-xl">You've voted</p>
-            <p className="max-w-[400px]">
+            <p className="max-w-[400px] text-sm sm:text-base">
               Your vote is for 24 hours. In order to update how you feel about
               Ethereum, come back tomorrow!
             </p>
@@ -72,7 +72,7 @@ function Revaluation({ tokenInfo }) {
           <div className="w-full mt-4 sm:mt-0">
             <div className="max-w-[400px] ml-auto mr-0">
               <Progress value={voteStatusInfo?.upPercent || 0} color="blue" />
-              <div className="w-full mt-2 flex justify-between items-center">
+              <div className="w-full text-sm sm:text-base mt-2 flex justify-between items-center">
                 <p>
                   {voteStatusInfo?.upPercent?.toFixed(1)}% Good{" "}
                   <ThumbUpAltIcon />
@@ -88,10 +88,10 @@ function Revaluation({ tokenInfo }) {
       ) : (
         <>
           <div>
-            <p className="text-3xl text-white">
+            <p className="text-xl sm:text-3xl text-white">
               How do you feel about {tokenInfo?.name} today?
             </p>
-            <p className="text-white mt-2">
+            <p className="text-white text-sm sm:text-base mt-2">
               Vote to see what our Community thinks!
             </p>
           </div>

@@ -14,7 +14,7 @@ function Description({ tokenInfo }) {
             <span className="text-[#BA4DF9]">{tokenInfo?.symbol}</span> Price
             Live Data
           </p>
-          <p className="text-lg mt-5 leading-relaxed text-center sm:text-start">
+          <p className="text-sm md:text-lg mt-5 leading-relaxed text-center sm:text-start">
             The live <span className="text-[#BA4DF9]">{tokenInfo?.name}</span>{" "}
             price today is{" "}
             <span className="text-[#BA4DF9]">${tokenInfo?.price_usd}</span> USD
@@ -42,7 +42,7 @@ function Description({ tokenInfo }) {
             </span>{" "}
             BTC coins.
           </p>
-          <p className="text-lg mt-5 leading-relaxed text-center sm:text-start">
+          <p className="text-sm md:text-lg mt-5 leading-relaxed text-center sm:text-start">
             If you would like to know where to buy Bitcoin at the current rate,
             the top cryptocurrency exchanges for trading in{" "}
             <span className="text-[#BA4DF9]">Bitcoin</span>
@@ -59,7 +59,7 @@ function Description({ tokenInfo }) {
             What is <span className="text-[#BA4DF9]">{tokenInfo?.name}</span>
             {/* {description[0]} */}
           </p>
-          <p className="text-lg mt-5 leading-relaxed text-center sm:text-start">
+          <p className="text-sm md:text-lg leading-5 mt-5 md:leading-relaxed text-center sm:text-start">
             {description[`${tokenInfo.symbol}`]}
           </p>
         </div>
