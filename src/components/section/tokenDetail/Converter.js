@@ -56,10 +56,9 @@ function Converter({ tokenInfo }) {
             <p className="text-md sm:text-lg dark:text-white">{token1?.name}</p>
           </div>
         </div>
-        {/* <p className="text-2xl font-medium dark:text-white">1</p> */}
         <input
           type={"number"}
-          className="bg-transparent outline-none text-2xl text-color2 text-right dark:text-white/40"
+          className="bg-transparent outline-none text-2xl text-color2 text-right w-20 sm:w-32 dark:text-white/40"
           value={token1Amount}
           onChange={(e) => setToken1Amount(e.target.value)}
         />
