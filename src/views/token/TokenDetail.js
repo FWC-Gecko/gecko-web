@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useToken from "../../hook/useToken";
 import Ad from "../../components/section/ad/Ad";
 import Satistic from "../../components/section/tokenDetail/Satistic";
@@ -19,6 +20,7 @@ import useLoading from "../../hook/useLoading";
 function TokenDetail() {
   const { tokenId } = useParams();
   const { setLoading } = useLoading();
+  const navigate = useNavigate();
 
   useEffectOnce(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -66,11 +68,20 @@ function TokenDetail() {
                     {tokenInfo && tokenInfo.name}
                   </span>
                 </p>
-                <Link to={"/request-update"}>
-                  <button className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-3">
-                    Request update
-                  </button>
-                </Link>
+                {/* <Link to={"/request-update"}> */}
+                <button
+                  onClick={() => {
+                    localStorage.setItem(
+                      "update-item",
+                      JSON.stringify(tokenInfo)
+                    );
+                    navigate("/request-update");
+                  }}
+                  className="text-white text-sm px-6 py-1.5 rounded-full bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] shadow mt-3"
+                >
+                  Request update
+                </button>
+                {/* </Link> */}
               </div>
             </div>
             <div className="absolute sm:relative right-0">

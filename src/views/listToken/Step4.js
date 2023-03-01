@@ -46,7 +46,7 @@ function Step4({ activeStep, setActiveStep, assetstags }) {
     setLoading(false);
     if (res) {
       localStorage.removeItem("list-token");
-      navigate("/");
+      // navigate("/");
     }
   };
 
@@ -60,7 +60,9 @@ function Step4({ activeStep, setActiveStep, assetstags }) {
   const saveToLocalStorage = () => {
     list_token_data.website1 = website1;
     list_token_data.website2 = website2;
-    list_token_data.cryptoAssetTags = cryptoAssetTags;
+    list_token_data.cryptoAssetTags = cryptoAssetTags
+      ?.map((item) => item.tag)
+      .join(",");
     list_token_data.coinmarketcap = coinmarketcap;
     list_token_data.coingecko = coingecko;
     list_token_data.explorer = explorer;

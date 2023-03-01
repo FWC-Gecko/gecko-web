@@ -1,38 +1,59 @@
 import React from "react";
+import { useState } from "react";
+import { useEffectOnce } from "../hook/useEffectOnce";
+import Input from "../components/section/listToken/Input";
 
 function RequestUpdate() {
-  const requestTypes = [
-    { slug: "1", text: " [New Listing] Add cryptoasset" },
-    {
-      slug: "1a",
-      text: "[New listing] ICO Calendar Form redirect [Apply here instead - https://tinyurl.com/yvwf7ra3]",
-    },
-    { slug: "2", text: "2 - [New Listing] Add exchange" },
-    {
-      slug: "3",
-      text: "3 - [Existing Cryptoasset & Exchange] Add market/pair",
-    },
-    { slug: "4", text: "4 - [Existing Cryptoasset] Update supply figures" },
-  ];
+  const [tokenInfo, setTokenInfo] = useState({});
+  const [email, setemail] = useState("");
+
+  useEffectOnce(() => {
+    setTokenInfo(JSON.parse(localStorage.getItem("update-item")));
+  });
 
   return (
     <div>
-      <div className="n-container py-5 sm:py-10">
-        <p className="text-3xl font-bold">Submit a request</p>
+      <div className="n-container py-5 sm:py-10 lg:w-[60%] xl:w-[40%]">
+        <p className="text-3xl font-bold">Request To Update</p>
         <form className="text-sm">
           <p className="mt-10">
-            For advertising queries, please complete this form -
-            https://coinmarketcap.com/advertising. Please review ALL the options
-            and select the CORRECT form to ensure that your request gets routed
-            to the correct team. Priority will be given to requesters that
-            submit well-structured, actionable, and complete information to the
-            CORRECT form.
+            Please review ALL the options and select the CORRECT form to ensure
+            that your request gets routed to the correct team. Priority will be
+            given to requesters that submit well-structured, actionable, and
+            complete information to the CORRECT form.
           </p>
-          <select className="mt-3 px-2 py-2 outline-none itemBg1 ">
-            {requestTypes.map((row, key) => {
-              return <option value={row?.slug}>{row?.text}</option>;
-            })}
-          </select>
+          <div className="mt-4">
+            <Input
+              label="Your Email"
+              placeholder={"Enter Email Address"}
+              value={email}
+              onChange={setemail}
+              required={false}
+            />
+          </div>
+          <div className="mt-4">
+            <Input
+              label="Subject Field (Please adhere to the format)"
+              placeholder={"Subject Fields"}
+              value={email}
+              onChange={setemail}
+              required={false}
+            />
+          </div>
+          <div className="mt-2 text-[0.75rem]">
+            Please refer to this format as an example. [Project's full name] -
+            [Symbol] - [Request, e.g. Add Market, Add cryptoasset/exchange,
+            Update cryptoasset/exchange, update supply]
+          </div>
+          <div className="mt-4">
+            <Input
+              label="Project(s)' CMC URL(s)"
+              placeholder={"Type URL(s) here"}
+              value={email}
+              onChange={setemail}
+              required={false}
+            />
+          </div>
         </form>
       </div>
     </div>
