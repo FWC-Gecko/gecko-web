@@ -269,6 +269,32 @@ export default function useToken() {
     }
   };
 
+  const getWalletAddress = async () => {
+    try {
+      return "0x7D9209a1b4aC33710bc6F918F8C4166a1898eab8";
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Server Error.", "error");
+      }
+      return null;
+    }
+  };
+
+  const getPaymentAmount = async () => {
+    try {
+      return 1;
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Server Error.", "error");
+      }
+      return null;
+    }
+  };
+
   return {
     list,
     getAllowedTokens,
@@ -285,5 +311,7 @@ export default function useToken() {
     getGainers,
     getVoteStatus,
     voteToken,
+    getWalletAddress,
+    getPaymentAmount,
   };
 }
