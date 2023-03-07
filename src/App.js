@@ -41,6 +41,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import EnterCode from "./views/auth/EnterCode";
 import ForgotPassword from "./views/auth/ForgotPassword";
 import VerificationEmail from "./views/auth/VerificationEmail";
+import ResetPassword from "./views/auth/ResetPassword";
 
 function App() {
   const { loadUser } = useAuth();
@@ -143,6 +144,17 @@ function App() {
             element={
               <Container
                 Component={SignUp}
+                isNavbar={false}
+                isHeader={false}
+                isFooter={false}
+              />
+            }
+          />
+          <Route
+            path="/password/reset/:token"
+            element={
+              <Container
+                Component={ResetPassword}
                 isNavbar={false}
                 isHeader={false}
                 isFooter={false}

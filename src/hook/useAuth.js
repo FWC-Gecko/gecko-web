@@ -193,6 +193,24 @@ export default function useAuth() {
     }
   };
 
+  const resetPassword = async ({ token, password }) => {
+    try {
+      const res = await api.put(`/auth/password/reset/${token}`, { password });
+      if (res.data.success) {
+        setAlert(res.data.message, "success");
+        return true;
+      }
+      return false;
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Server Error.", "error");
+      }
+      return false;
+    }
+  };
+
   return {
     loadUser,
     login,
@@ -203,5 +221,6 @@ export default function useAuth() {
     sendVerificationCode,
     verifyEmailWithCode,
     sendForgotPasswordRequest,
+    resetPassword,
   };
 }
