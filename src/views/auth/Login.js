@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, Navigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -25,21 +25,20 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   // Google reCapcha start
-    
-  const captchaRef = useRef(null) ;
 
-  const GenerateCaptchaToken =() =>{
-    const token = captchaRef.current.getValue() ;
-    captchaRef.current.reset() ;
-    console.log(token) ;
-  }
+  const captchaRef = useRef(null);
 
-// Google reCapcha end
+  const GenerateCaptchaToken = () => {
+    const token = captchaRef.current.getValue();
+    captchaRef.current.reset();
+    console.log(token);
+  };
 
+  // Google reCapcha end
 
   const onSubmit = async (e) => {
-    e.preventDefault() ;
-    GenerateCaptchaToken() ;
+    e.preventDefault();
+    GenerateCaptchaToken();
     try {
       setLoading(true);
       const req = { email, password };
@@ -97,16 +96,20 @@ const Login = () => {
               value={password}
               onChange={setPassword}
             />
-            <div className="flex justify-end mt-4">
-              <p className="font-medium text-sm"></p>
+            <div className="flex justify-center mt-4">
+              <ReCAPTCHA
+                sitekey="6Lff6ookAAAAAM6eFUFK6ESvdhPidAb6YJJmYkVz"
+                ref={captchaRef}
+              />
             </div>
-            <ReCAPTCHA 
-              sitekey="6Lff6ookAAAAAM6eFUFK6ESvdhPidAb6YJJmYkVz"
-              ref={captchaRef}
-
-            />
+            <div className="mt-2">
+              <Link to={"/auth/forgot-password"}>
+                <p className="text-color14 cursor-pointer text-sm text-end">
+                  Forgot password
+                </p>
+              </Link>
+            </div>
             <SubmitButton label={"LOGIN"} />
-            {/* <ReCAPTCHA sitekey="6LeRFXwkAAAAACIa-mzBs2qrCTHFW-qgHnsMxiIa"/> */}
           </form>
           <div className="mt-4 flex items-center  justify-between">
             <hr className="w-2/5 text-white/60" />

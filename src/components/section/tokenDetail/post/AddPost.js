@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import useLoading from "../../../../hook/useLoading";
@@ -7,6 +8,9 @@ import usePost from "../../../../hook/usePost";
 
 function AddPost() {
   const user = useSelector((state) => state.auth.user);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
+
   const { setLoading } = useLoading();
   const { addPost } = usePost();
 
@@ -15,6 +19,10 @@ function AddPost() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (!isAuthenticated) {
+      navigate("/login");
+      return false;
+    }
 
     const req = {
       text: description,

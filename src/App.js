@@ -38,6 +38,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import EnterCode from "./views/auth/EnterCode";
+import ForgotPassword from "./views/auth/ForgotPassword";
+import VerificationEmail from "./views/auth/VerificationEmail";
 
 function App() {
   const { loadUser } = useAuth();
@@ -79,6 +82,7 @@ function App() {
             path="/exchanges/:exchangeID"
             element={<Container Component={ExchangeDetail} />}
           />
+
           <Route
             path="/login"
             element={
@@ -101,7 +105,39 @@ function App() {
               />
             }
           />
-
+          <Route
+            path="/auth/enter-code"
+            element={
+              <Container
+                Component={EnterCode}
+                isNavbar={false}
+                isHeader={false}
+                isFooter={false}
+              />
+            }
+          />
+          <Route
+            path="/auth/forgot-password"
+            element={
+              <Container
+                Component={ForgotPassword}
+                isNavbar={false}
+                isHeader={false}
+                isFooter={false}
+              />
+            }
+          />
+          <Route
+            path="/auth/verify-email"
+            element={
+              <Container
+                Component={VerificationEmail}
+                isNavbar={false}
+                isHeader={false}
+                isFooter={false}
+              />
+            }
+          />
           <Route
             path="/signup"
             element={

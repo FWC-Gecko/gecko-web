@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import ReCAPTCHA from "react-google-recaptcha";
@@ -27,29 +27,26 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   // Google reCapcha start
-    
-  const captchaRef = useRef(null) ;
+  const captchaRef = useRef(null);
 
-  const GenerateCaptchaToken =() =>{
-    const token = captchaRef.current.getValue() ;
-    captchaRef.current.reset() ;
-    console.log(token) ;
-  }
-
-// Google reCapcha end
-
+  const GenerateCaptchaToken = () => {
+    const token = captchaRef.current.getValue();
+    captchaRef.current.reset();
+    console.log(token);
+  };
+  // Google reCapcha end
 
   const onSubmit = async (e) => {
-    e.preventDefault() ;
-    GenerateCaptchaToken() ;
+    e.preventDefault();
+    GenerateCaptchaToken();
     try {
       setLoading(true);
       const req = { userName: name, email, password };
       const res = await register(req);
       setLoading(false);
       if (res) {
-        navigate("/login");
-        // navigate(`/auth/send-code?email=${email}`);
+        // navigate("/login");
+        navigate(`/auth/send-code?email=${email}`);
       }
     } catch (error) {
       setLoading(false);
@@ -108,14 +105,12 @@ const Login = () => {
               value={password}
               onChange={setPassword}
             />
-            <div className="flex justify-end mt-4">
-              <p className="font-medium text-sm"></p>
+            <div className="flex justify-center mt-4">
+              <ReCAPTCHA
+                sitekey="6Lff6ookAAAAAM6eFUFK6ESvdhPidAb6YJJmYkVz"
+                ref={captchaRef}
+              />
             </div>
-            <ReCAPTCHA 
-              sitekey="6Lff6ookAAAAAM6eFUFK6ESvdhPidAb6YJJmYkVz"
-              ref={captchaRef}
-
-            />
             <SubmitButton label={"Sign Up"} />
           </form>
           <div className="mt-4 flex items-center  justify-between">

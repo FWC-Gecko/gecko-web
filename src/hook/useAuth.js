@@ -143,7 +143,25 @@ export default function useAuth() {
     try {
       const res = await api.post("/auth/verify/request", req);
       if (res.data.success) {
-        store.dispatch(setAlert(res.data.message, "success"));
+        setAlert(res.data.message, "success");
+        return true;
+      }
+      return false;
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Server Error.", "error");
+      }
+      return false;
+    }
+  };
+
+  const verifyEmailWithCode = async (req) => {
+    try {
+      const res = await api.post("/auth/verify/confirm", req);
+      if (res.data.success) {
+        setAlert(res.data.message, "success");
         return true;
       }
       return false;
@@ -157,6 +175,24 @@ export default function useAuth() {
     }
   };
 
+  const sendForgotPasswordRequest = async (req) => {
+    try {
+      const res = await api.post("/auth/password/forgot", req);
+      if (res.data.success) {
+        setAlert(res.data.message, "success");
+        return true;
+      }
+      return false;
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Server Error.", "error");
+      }
+      return false;
+    }
+  };
+
   return {
     loadUser,
     login,
@@ -165,5 +201,7 @@ export default function useAuth() {
     logout,
     updateProfile,
     sendVerificationCode,
+    verifyEmailWithCode,
+    sendForgotPasswordRequest,
   };
 }

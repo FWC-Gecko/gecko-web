@@ -16,7 +16,7 @@ function SendCode() {
     const res = await sendVerificationCode({ email });
     console.log("SendCode - res", res);
     if (res) {
-      navigate(`/customer/auth/enter-code?email=${email}`);
+      navigate(`/auth/enter-code?email=${email}`);
     }
   };
 
