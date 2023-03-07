@@ -18,8 +18,9 @@ const tokenTypes = [
 ];
 
 function RequestUpdate() {
-  const { getWalletAddress, getPaymentAmount } = useToken();
+  const { getWalletAddress, submitUpdateRequest } = useToken();
   const [tokenInfo, setTokenInfo] = useState({});
+  const [tokenPrices, setTokenPrices] = useState([]);
   const [step, setStep] = useState(0);
   const [walletAddress, setWalletAddress] = useState(
     "0x7D9209a1b4aC33710bc6F918F8C4166a1898eab8"
@@ -92,9 +93,15 @@ function RequestUpdate() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const _addr = await getWalletAddress();
-    setWalletAddress(_addr);
+    const { address, prices } = await getWalletAddress();
+    setTokenPrices(prices);
+    setWalletAddress(address);
     setStep(step + 1);
+  };
+
+  const submitContent = async () => {
+    console.log("Handle Submit");
+    await submitUpdateRequest();
   };
 
   return (
@@ -297,7 +304,7 @@ function RequestUpdate() {
                 items={tokenTypes}
                 setItem={async (val) => {
                   setPaymentType(val);
-                  setAmount(await getPaymentAmount(val));
+                  setAmount(tokenPrices[tokenTypes[val].text].toFixed(3));
                 }}
               />
             </div>
@@ -338,10 +345,15 @@ function RequestUpdate() {
               Prev
             </button>
             <button
-              onClick={() => setStep(step + 1)}
+              onClick={() => {
+                setStep(step + 1);
+                if (step == 3) {
+                  submitContent();
+                }
+              }}
               className="bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] py-2 px-10 flex gap-1 justify-center items-center rounded-full text-white font-medium"
             >
-              Next
+              {step < 3 ? "Next" : "Submit"}
             </button>
           </div>
         )}

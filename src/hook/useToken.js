@@ -271,7 +271,11 @@ export default function useToken() {
 
   const getWalletAddress = async () => {
     try {
-      return "0x7D9209a1b4aC33710bc6F918F8C4166a1898eab8";
+      const res = await api.get("/global/new_wallet");
+      return {
+        address: res.data.data.address,
+        prices: res.data.data.price,
+      };
     } catch (error) {
       if (error?.response?.data?.message) {
         setAlert(error?.response?.data?.message, "error");
@@ -285,6 +289,19 @@ export default function useToken() {
   const getPaymentAmount = async () => {
     try {
       return 1;
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        setAlert(error?.response?.data?.message, "error");
+      } else {
+        setAlert("Server Error.", "error");
+      }
+      return null;
+    }
+  };
+
+  const submitUpdateRequest = async () => {
+    try {
+      console.log("Handle Submit Request");
     } catch (error) {
       if (error?.response?.data?.message) {
         setAlert(error?.response?.data?.message, "error");
@@ -313,5 +330,6 @@ export default function useToken() {
     voteToken,
     getWalletAddress,
     getPaymentAmount,
+    submitUpdateRequest,
   };
 }
