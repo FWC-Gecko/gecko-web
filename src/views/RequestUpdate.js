@@ -124,7 +124,7 @@ function RequestUpdate() {
           <p className="text-xl sm:text-3xl font-bold text-center sm:text-start">
             Request To Update
           </p>
-          <div className="flex justify-center sm:justify-end items-center gap-2">
+          <div className="flex justify-center sm:justify-end items-center gap-2 mt-2 sm:mt-0">
             <img
               src={tokenInfo?.logo}
               alt=""
