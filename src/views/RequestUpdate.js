@@ -9,6 +9,7 @@ import FileSelect from "../components/section/listToken/FileSelect";
 import useLoading from "../hook/useLoading";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useToken from "../hook/useToken";
+import { formatAddress } from "../utils";
 
 const tokenTypes = [
   { no: 0, text: "BNB" },
@@ -119,9 +120,11 @@ function RequestUpdate() {
   return (
     <div>
       <div className="n-container py-5 sm:py-10 lg:w-[80%] xl:w-[40%]">
-        <div className="flex justify-between items-center">
-          <p className="text-3xl font-bold">Request To Update</p>
-          <div className="flex justify-end items-center gap-2">
+        <div className="sm:flex justify-between items-center">
+          <p className="text-xl sm:text-3xl font-bold text-center sm:text-start">
+            Request To Update
+          </p>
+          <div className="flex justify-center sm:justify-end items-center gap-2">
             <img
               src={tokenInfo?.logo}
               alt=""
@@ -133,7 +136,7 @@ function RequestUpdate() {
             </p>
           </div>
         </div>
-        <p className="mt-10">
+        <p className="mt-10 text-sm sm:text-base">
           Please review ALL the options and select the CORRECT form to ensure
           that your request gets routed to the correct team. Priority will be
           given to requesters that submit well-structured, actionable, and
@@ -339,7 +342,9 @@ function RequestUpdate() {
             </div>
             <div className="mt-2 flex justify-between">
               <div>Wallet Address:</div>
-              <div className="text-right">{walletAddress}</div>
+              <p className="text-right" title={walletAddress}>
+                {formatAddress(walletAddress)}
+              </p>
             </div>
             <div className="mt-2 flex justify-between">
               <div>Payment Type:</div>
@@ -377,7 +382,7 @@ function RequestUpdate() {
         )}
         {step == 4 && (
           <Link to={"/"}>
-            <p className="text-center text-2xl mt-7 underline font-black">
+            <p className="text-center text-xl sm:text-2xl mt-7 underline font-black">
               {/* Go back to dashboard! */}
               Please send specific amount of token to the address
             </p>

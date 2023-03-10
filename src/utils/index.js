@@ -63,6 +63,13 @@ function dateToTimeStamp(date) {
   return 0;
 }
 
+function formatAddress(addr) {
+  if (addr) {
+    return addr.slice(0, 5) + "..." + addr.slice(addr.length - 4, addr.length);
+  }
+  return "";
+}
+
 function getDeltaDate(date, delta) {
   let tempDate = new Date(date);
   tempDate.setDate(tempDate.getDate() + delta);
@@ -151,4 +158,5 @@ export {
   getMaxMinValue,
   dateToTimeStamp,
   getMaxMinQuote,
+  formatAddress,
 };

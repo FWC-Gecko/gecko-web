@@ -12,7 +12,13 @@ function Select({ label, items, description, setItem }) {
       >
         <option>-</option>
         {items.map((row, key) => {
-          return <option value={row.no}>{row.text}</option>;
+          return (
+            <option value={row.no}>
+              {row?.text.length > 50
+                ? row?.text.slice(0, 50) + ".."
+                : row?.text}
+            </option>
+          );
         })}
       </select>
       <p className="mt-2 text-[0.75rem]">{description}</p>
