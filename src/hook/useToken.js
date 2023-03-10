@@ -299,16 +299,33 @@ export default function useToken() {
     }
   };
 
-  const submitUpdateRequest = async () => {
+  const submitUpdateRequest = async (
+    requestType,
+    email,
+    walletAddress,
+    amount,
+    tokenType
+  ) => {
     try {
-      console.log("Handle Submit Request");
+      const res = await api.post("/global/request/submit", {
+        type: requestType,
+        email: email,
+        subject: "Hello, there!",
+        market: "2",
+        url: "https://fwc.digital/request-update/63eede4cb2699cd445d68a1a",
+        description: "Update request test.",
+        address: walletAddress,
+        paymentToken: tokenType,
+      });
+
+      return true;
     } catch (error) {
       if (error?.response?.data?.message) {
         setAlert(error?.response?.data?.message, "error");
       } else {
         setAlert("Server Error.", "error");
       }
-      return null;
+      return false;
     }
   };
 

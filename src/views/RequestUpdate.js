@@ -51,7 +51,7 @@ function RequestUpdate() {
   const [requestType, setRequestType] = useState();
   const requestTypes = [
     {
-      no: "3",
+      no: "1",
       text: "[Existing Cryptoasset & Exchange] Add market/pair",
     },
     // {
@@ -59,15 +59,15 @@ function RequestUpdate() {
     //   text: "[Existing Cryptoasset] Update supply figures",
     // },
     {
-      no: "5",
+      no: "1",
       text: "[Existing Cryptoasset] Update supply figures",
     },
     {
-      no: "6",
+      no: "1",
       text: "[Existing Cryptoasset] Coin/Token Swap",
     },
     {
-      no: "7",
+      no: "1",
       text: "[Existing Cryptoasset] Update Info (e.g. Rebrand, URL update, Tagging)",
     },
   ];
@@ -101,7 +101,19 @@ function RequestUpdate() {
 
   const submitContent = async () => {
     console.log("Handle Submit");
-    await submitUpdateRequest();
+    console.log(email);
+    console.log(requestType);
+    console.log(walletAddress);
+    console.log(amount);
+    console.log(tokenTypes[paymentType]["text"]);
+    await submitUpdateRequest(
+      requestType,
+      email,
+      walletAddress,
+      amount,
+      tokenTypes[paymentType]["text"]
+    );
+    setStep(step + 1);
   };
 
   return (
@@ -304,7 +316,12 @@ function RequestUpdate() {
                 items={tokenTypes}
                 setItem={async (val) => {
                   setPaymentType(val);
-                  setAmount(tokenPrices[tokenTypes[val].text].toFixed(3));
+                  setAmount(
+                    (
+                      (tokenPrices[tokenTypes[val].text].toFixed(3) * 100 + 1) /
+                      100
+                    ).toFixed(2)
+                  );
                 }}
               />
             </div>
@@ -314,7 +331,7 @@ function RequestUpdate() {
             </div>
           </>
         )}
-        {step == 3 && (
+        {step >= 3 && (
           <div className="my-5">
             <div className="mt-2 flex justify-between">
               <div>Order ID:</div>
@@ -346,9 +363,10 @@ function RequestUpdate() {
             </button>
             <button
               onClick={() => {
-                setStep(step + 1);
                 if (step == 3) {
                   submitContent();
+                } else {
+                  setStep(step + 1);
                 }
               }}
               className="bg-gradient-to-r from-[#5B46DF] to-[#BA4DF9] py-2 px-10 flex gap-1 justify-center items-center rounded-full text-white font-medium"
@@ -360,7 +378,8 @@ function RequestUpdate() {
         {step == 4 && (
           <Link to={"/"}>
             <p className="text-center text-2xl mt-7 underline font-black">
-              Go back to dashboard!
+              {/* Go back to dashboard! */}
+              Please send specific amount of token to the address
             </p>
           </Link>
         )}

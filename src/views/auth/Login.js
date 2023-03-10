@@ -38,7 +38,7 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    GenerateCaptchaToken();
+    // GenerateCaptchaToken();
     try {
       setLoading(true);
       const req = { email, password };
@@ -96,12 +96,12 @@ const Login = () => {
               value={password}
               onChange={setPassword}
             />
-            <div className="flex justify-center mt-4">
+            {/* <div className="flex justify-center mt-4">
               <ReCAPTCHA
                 sitekey="6Lff6ookAAAAAM6eFUFK6ESvdhPidAb6YJJmYkVz"
                 ref={captchaRef}
               />
-            </div>
+            </div> */}
             <div className="mt-2">
               <Link to={"/auth/forgot-password"}>
                 <p className="text-color14 cursor-pointer text-sm text-end">
