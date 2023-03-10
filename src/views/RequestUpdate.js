@@ -10,7 +10,8 @@ import useLoading from "../hook/useLoading";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useToken from "../hook/useToken";
 import { formatAddress } from "../utils";
-
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { setAlert } from "../actions/alert";
 const tokenTypes = [
   { no: 0, text: "BNB" },
   { no: 1, text: "USDT" },
@@ -342,9 +343,18 @@ function RequestUpdate() {
             </div>
             <div className="mt-2 flex justify-between">
               <div>Wallet Address:</div>
-              <p className="text-right" title={walletAddress}>
-                {formatAddress(walletAddress)}
-              </p>
+              <div className="flex justify-end items-center gap-2">
+                <ContentCopyIcon
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setAlert("Copied", "success");
+                    navigator.clipboard.writeText(walletAddress);
+                  }}
+                />
+                <p className="text-right" title={walletAddress}>
+                  {formatAddress(walletAddress)}
+                </p>
+              </div>
             </div>
             <div className="mt-2 flex justify-between">
               <div>Payment Type:</div>
